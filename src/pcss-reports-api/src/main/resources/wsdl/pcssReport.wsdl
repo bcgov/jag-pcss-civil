@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="pcssReport" targetNamespace="http://reeks.bcgov/JusticePCSSCommon.wsProvider:pcssReport" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://reeks.bcgov/JusticePCSSCommon.wsProvider:pcssReport" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:HDR1="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:HDR2="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0">
+            <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"/>
+            <xsd:element name="getJustinReportRequest" type="pcss:getJustinReportRequest"/>
+            <xsd:element name="getJustinReportResponse" type="pcss:getJustinReportResponse"/>
+            <xsd:complexType name="getJustinReportRequest">
+                <xsd:sequence>
+                    <xsd:element name="RequestAgencyIdentifierId" form="qualified" type="dx:AgencyIdentifierType"/>
+                    <xsd:element name="RequestPartId" form="qualified" type="dx:SystemIdType"/>
+                    <xsd:element name="RequestDtm" form="qualified" type="dx:DateTimeType"/>
+                    <xsd:element name="ReportName" form="qualified" type="xsd:string"/>
+                    <xsd:element name="Parameters" form="qualified" type="pcss:Parameters" minOccurs="0" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Parameters">
+                <xsd:sequence>
+                    <xsd:element name="ParmNm" form="qualified" type="xsd:string"/>
+                    <xsd:element name="ParmValue" form="qualified" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getJustinReportResponse">
+                <xsd:sequence>
+                    <xsd:element name="ResponseCd" form="qualified" type="xsd:string"/>
+                    <xsd:element name="ResponseMessageTxt" form="qualified" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="ReportContent" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+        <xsd:schema targetNamespace="http://reeks.bcgov/JusticePCSSCommon.wsProvider:pcssReport" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://reeks.bcgov/JusticePCSSCommon.wsProvider:pcssReport" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+            <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"/>
+            <xsd:element name="getJustinAdobeReport" type="tns:getJustinAdobeReport"/>
+            <xsd:element name="getJustinAdobeReportResponse" type="tns:getJustinAdobeReportResponse"/>
+            <xsd:element name="getJustinReport" type="tns:getJustinReport"/>
+            <xsd:element name="getJustinReportResponse" type="tns:getJustinReportResponse"/>
+            <xsd:complexType name="getJustinAdobeReport">
+                <xsd:sequence>
+                    <xsd:element name="getJustinAdobeReportRequest" nillable="true" type="tns:getJustinReportAdobeRequest"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getJustinReportAdobeRequest">
+                <xsd:sequence>
+                    <xsd:element name="RequestAgencyIdentifierId" type="xsd:string"/>
+                    <xsd:element name="RequestPartId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="RequestDtm" nillable="true" type="xsd:string"/>
+                    <xsd:element name="FormNm" nillable="true" type="xsd:string"/>
+                    <xsd:element name="PrintYn" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param1" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param2" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param3" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param4" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param5" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param6" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param7" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param8" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param9" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param10" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param11" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param12" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param13" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param14" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Param15" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getJustinAdobeReportResponse">
+                <xsd:sequence>
+                    <xsd:element name="getJustinAdobeReportResponse" nillable="true" type="tns:getJustinReportAdobeResponse"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getJustinReportAdobeResponse">
+                <xsd:sequence>
+                    <xsd:element name="ResponseCd" nillable="true" type="xsd:string"/>
+                    <xsd:element name="ResponseMessageTxt" nillable="true" type="xsd:string"/>
+                    <xsd:element name="ReportContent" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getJustinReport">
+                <xsd:sequence>
+                    <xsd:element name="getJustinReportRequest" nillable="true" type="tns:getJustinReportRequest"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getJustinReportRequest">
+                <xsd:sequence>
+                    <xsd:element ref="pcss:getJustinReportRequest"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getJustinReportResponse">
+                <xsd:sequence>
+                    <xsd:element name="getJustinReportResponse" nillable="true" type="tns:getJustinReportResponse2"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getJustinReportResponse2">
+                <xsd:sequence>
+                    <xsd:element ref="pcss:getJustinReportResponse"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+        <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0">
+            <xsd:simpleType name="AgencyIdentifierType">
+                <xsd:restriction base="xsd:string">
+                    <xsd:whiteSpace value="preserve"/>
+                    <xsd:maxLength value="16"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType name="SystemIdType">
+                <xsd:restriction base="xsd:string">
+                    <xsd:whiteSpace value="preserve"/>
+                    <xsd:maxLength value="16"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType name="DateTimeType">
+                <xsd:restriction base="xsd:string">
+                    <xsd:whiteSpace value="preserve"/>
+                    <xsd:length value="21"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="pcssReport_PortType_getJustinReportResponse">
+        <wsdl:part name="parameters" element="tns:getJustinReportResponse">
+    </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pcssReport_PortType_getJustinAdobeReportResponse">
+        <wsdl:part name="parameters" element="tns:getJustinAdobeReportResponse">
+    </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pcssReport_PortType_getJustinAdobeReport">
+        <wsdl:part name="parameters" element="tns:getJustinAdobeReport">
+    </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pcssReport_PortType_getJustinReport">
+        <wsdl:part name="parameters" element="tns:getJustinReport">
+    </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="pcssReport_PortType">
+        <wsdl:operation name="getJustinReport">
+            <wsdl:input message="tns:pcssReport_PortType_getJustinReport">
+    </wsdl:input>
+            <wsdl:output message="tns:pcssReport_PortType_getJustinReportResponse">
+    </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getJustinAdobeReport">
+            <wsdl:input message="tns:pcssReport_PortType_getJustinAdobeReport">
+    </wsdl:input>
+            <wsdl:output message="tns:pcssReport_PortType_getJustinAdobeReportResponse">
+    </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="JusticePCSSCommon_wsProvider_pcssReport_Binder" type="tns:pcssReport_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getJustinReport">
+            <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssReport_Binder_getJustinReport" style="document"/>
+            <wsdl:input>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getJustinAdobeReport">
+            <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssReport_Binder_getJustinAdobeReport" style="document"/>
+            <wsdl:input>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="pcssReport">
+        <wsdl:port name="JusticePCSSCommon_wsProvider_pcssReport_Port" binding="tns:JusticePCSSCommon_wsProvider_pcssReport_Binder">
+            <soap12:address location="http://reeks.bcgov:5555/ws/JusticePCSSCommon.wsProvider:pcssReport/JusticePCSSCommon_wsProvider_pcssReport_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
