@@ -19,7 +19,7 @@
         <profile>
             <id>all</id>
             <modules>
-				<module>pcsswebservice</module>
+				<module>pcss-web-service</module>
             </modules>
         </profile>
     </profiles>

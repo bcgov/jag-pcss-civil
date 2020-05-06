@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ca.bc.gov.open.pcss</groupId>
-	<artifactId>pcsswebservice</artifactId>
+	<artifactId>pcss-web-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pcsswebservice</name>
 	<description>SOAP server for PCSS</description>
