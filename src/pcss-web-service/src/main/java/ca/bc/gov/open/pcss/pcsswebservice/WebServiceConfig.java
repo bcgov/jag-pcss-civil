@@ -40,7 +40,7 @@ public class WebServiceConfig {
     public Endpoint CivilEndpoint(Bus bus, PcssCivilEndpoint pcssCivilEndpoint) {
 
         EndpointImpl endpoint = new EndpointImpl(bus, pcssCivilEndpoint);
-        endpoint.publish("/pcssCivil");
+        endpoint.publish("/JusticePCSSCivil.wsProvider:pcssCivil");
 
         return endpoint;
     }
@@ -49,7 +49,7 @@ public class WebServiceConfig {
     public Endpoint CommonEndpoint(Bus bus, PcssCommonEndpoint pcssCommonEndpoint) {
 
         EndpointImpl endpoint = new EndpointImpl(bus, pcssCommonEndpoint);
-        endpoint.publish("/pcssCommon");
+        endpoint.publish("/JusticePCSSCommon.wsProvider:pcssCommon");
 
         return endpoint;
     }
@@ -58,7 +58,7 @@ public class WebServiceConfig {
     public Endpoint CriminalEndpoint(Bus bus, PcssCriminalEndpoint pcssCriminalEndpoint) {
 
         EndpointImpl endpoint = new EndpointImpl(bus, pcssCriminalEndpoint);
-        endpoint.publish("/pcssCriminal");
+        endpoint.publish("/JusticePCSSCriminal.wsProvider:pcssCriminal");
 
         return endpoint;
     }
@@ -67,7 +67,7 @@ public class WebServiceConfig {
     public Endpoint ReportEndpoint(Bus bus, PcssReportEndpoint pcssReportEndpoint) {
 
         EndpointImpl endpoint = new EndpointImpl(bus, pcssReportEndpoint);
-        endpoint.publish("/pcssReport");
+        endpoint.publish("/JusticePCSSCommon.wsProvider:pcssReport");
 
         return endpoint;
     }
@@ -76,7 +76,7 @@ public class WebServiceConfig {
     public Endpoint JusticeCddsEndpoint(Bus bus, JusticeCddsEndpoint justiceCddsEndpoint) {
 
         EndpointImpl endpoint = new EndpointImpl(bus, justiceCddsEndpoint);
-        endpoint.publish("/justiceCDDS");
+        endpoint.publish("/JusticeCDDS.wsProvider:cdds");
 
         return endpoint;
     }
