@@ -11,7 +11,7 @@
 	<groupId>ca.bc.gov.open.pcss</groupId>
 	<artifactId>pcss-web-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>pcsswebservice</name>
+	<name>pcss-web-service</name>
 	<description>SOAP server for PCSS</description>
 
 	<properties>
