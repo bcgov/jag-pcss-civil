@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="cdds" targetNamespace="http://courts.gov.bc.ca/xml/ns/cdds/v1" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:tns="http://courts.gov.bc.ca/xml/ns/cdds/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:HDR1="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:HDR2="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"/>
+          <xsd:element name="getDigitalDisplayCourtListRequest" type="pcss:getDigitalDisplayCourtListRequest"/>
+          <xsd:element name="getDigitalDisplayCourtListResponse" type="pcss:getDigitalDisplayCourtListResponse"/>
+          <xsd:complexType name="getDigitalDisplayCourtListRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateType"/>
+              <xsd:element form="qualified" name="AgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="AppearanceDt" type="dx:DateType"/>
+              <xsd:element form="qualified" minOccurs="0" name="CtrmRoomCd" type="dx:CourtRoomCdType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getDigitalDisplayCourtListResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Appearance" type="pcss:Appearance"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Appearance">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="LastNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="Given1Nm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="InitialNm" type="xsd:string"/>
+              <xsd:element form="qualified" name="CtrmRoomCd" type="dx:CourtRoomCdType"/>
+              <xsd:element form="qualified" name="CourtListTypeDsc" type="xsd:string"/>
+              <xsd:element form="qualified" name="StatusDsc" type="xsd:string"/>
+              <xsd:element form="qualified" name="AppearanceTime" type="dx:TimeType"/>
+              <xsd:element form="qualified" name="AppearanceReasonCd" type="xsd:string"/>
+              <xsd:element form="qualified" name="AppearanceReasonDsc" type="xsd:string"/>
+              <xsd:element form="qualified" name="CourtDivisionCd" type="xsd:string"/>
+              <xsd:element form="qualified" name="CourtLevelCd" type="xsd:string"/>
+              <xsd:element form="qualified" name="CourtClassCd" type="xsd:string"/>
+              <xsd:element form="qualified" name="FileNumberTxt" type="xsd:string"/>
+              <xsd:element form="qualified" name="CounselFullNm" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        	</xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/xml/ns/cdds/v1" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:tns="http://courts.gov.bc.ca/xml/ns/cdds/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"/>
+          <xsd:element name="getDigitalDisplayCourtList" type="tns:getDigitalDisplayCourtList"/>
+          <xsd:element name="getDigitalDisplayCourtListResponse" type="tns:getDigitalDisplayCourtListResponse"/>
+          <xsd:complexType name="getDigitalDisplayCourtList">
+            <xsd:sequence>
+              <xsd:element name="getDigitalDisplayCourtListRequest" nillable="true" type="tns:getDigitalDisplayCourtListRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getDigitalDisplayCourtListRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getDigitalDisplayCourtListRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getDigitalDisplayCourtListResponse">
+            <xsd:sequence>
+              <xsd:element name="getDigitalDisplayCourtListResponse" nillable="true" type="tns:getDigitalDisplayCourtListResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getDigitalDisplayCourtListResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getDigitalDisplayCourtListResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        	</xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <xsd:simpleType name="AgencyIdentifierType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="16"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="SystemIdType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="16"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="DateType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:length value="21"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="CourtRoomCdType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="6"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="TimeType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:length value="21"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        	</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="cdds_PortType_getDigitalDisplayCourtListResponse">
+    <wsdl:part name="parameters" element="tns:getDigitalDisplayCourtListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cdds_PortType_getDigitalDisplayCourtList">
+    <wsdl:part name="parameters" element="tns:getDigitalDisplayCourtList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="cdds_PortType">
+    <wsdl:operation name="getDigitalDisplayCourtList">
+      <wsdl:input message="tns:cdds_PortType_getDigitalDisplayCourtList">
+    </wsdl:input>
+      <wsdl:output message="tns:cdds_PortType_getDigitalDisplayCourtListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JusticeCDDS_wsProvider_cdds_Binder" type="tns:cdds_PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getDigitalDisplayCourtList">
+      <soap12:operation soapAction="JusticeCDDS_wsProvider_cdds_Binder_getDigitalDisplayCourtList" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JusticeCDDS.wsProvider.cdds">
+    <wsdl:port name="JusticeCDDS_wsProvider_cdds_Port" binding="tns:JusticeCDDS_wsProvider_cdds_Binder">
+      <soap12:address location="http://reeks.bcgov:5556/ws/JusticeCDDS.wsProvider.cdds/JusticeCDDS_wsProvider_cdds_Port"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

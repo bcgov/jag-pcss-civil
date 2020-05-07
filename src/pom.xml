@@ -19,10 +19,7 @@
         <profile>
             <id>all</id>
             <modules>
-                <module>pcss-reports-api</module>
-                <module>pcss-civil-api</module>
-                <module>pcss-criminal-api</module>
-				<module>pcss-common-api</module>
+				<module>pcss-web-service</module>
             </modules>
         </profile>
     </profiles>

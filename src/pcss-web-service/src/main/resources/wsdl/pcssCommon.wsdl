@@ -1,0 +1,1472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="pcssCommon" targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:tns="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:HDR1="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:HDR2="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"/>
+          <xsd:element name="getCodeValuesRequest" type="pcss:getCodeValuesRequest"/>
+          <xsd:element name="getCodeValuesResponse" type="pcss:getCodeValuesResponse"/>
+          <xsd:element name="getOperationReportRequest" type="pcss:getOperationReportRequest"/>
+          <xsd:element name="getOperationReportResponse" type="pcss:getOperationReportResponse"/>
+          <xsd:element name="getOperationReportLovRequest" type="pcss:getOperationReportLovRequest"/>
+          <xsd:element name="getOperationReportLovResponse" type="pcss:getOperationReportLovResponse"/>
+          <xsd:element name="getReservedJudgmentRequest" type="pcss:getReservedJudgmentRequest"/>
+          <xsd:element name="getReservedJudgmentResponse" type="pcss:getReservedJudgmentResponse"/>
+          <xsd:element name="getResourceAvailabilityRequest" type="pcss:getResourceAvailabilityRequest"/>
+          <xsd:element name="getResourceAvailabilityResponse" type="pcss:getResourceAvailabilityResponse"/>
+          <xsd:element name="getUserLoginRequest" type="pcss:getUserLoginRequest"/>
+          <xsd:element name="getUserLoginResponse" type="pcss:getUserLoginResponse"/>
+          <xsd:element name="setResourceBookingRequest" type="pcss:setResourceBookingRequest"/>
+          <xsd:element name="setResourceBookingResponse" type="pcss:setResourceBookingResponse"/>
+          <xsd:element name="setResourceCancelRequest" type="pcss:setResourceCancelRequest"/>
+          <xsd:element name="setResourceCancelResponse" type="pcss:setResourceCancelResponse"/>
+          <xsd:element name="setAppearanceStatusRequest" type="pcss:setAppearanceStatusRequest"/>
+          <xsd:element name="setAppearanceStatusResponse" type="pcss:setAppearanceStatusResponse"/>
+          <xsd:element name="setSyncCompleteRequest" type="pcss:setSyncCompleteRequest"/>
+          <xsd:element name="setSyncCompleteResponse" type="pcss:setSyncCompleteResponse"/>
+          <xsd:element name="setAppearanceMoveRequest" type="pcss:setAppearanceMoveRequest"/>
+          <xsd:element name="setAppearanceMoveResponse" type="pcss:setAppearanceMoveResponse"/>
+          <xsd:element name="setCourtCalendarRequest" type="pcss:setCourtCalendarRequest"/>
+          <xsd:element name="setCourtCalendarResponse" type="pcss:setCourtCalendarResponse"/>
+          <xsd:element name="setAppearanceUpdateRequest" type="pcss:setAppearanceUpdateRequest"/>
+          <xsd:element name="setAppearanceUpdateResponse" type="pcss:setAppearanceUpdateResponse"/>
+          <xsd:element name="getFileSearchRequest" type="pcss:getFileSearchRequest"/>
+          <xsd:element name="getFileSearchResponse" type="pcss:getFileSearchResponse"/>
+          <xsd:element name="getCourtCalendarDetailByDayRequest" type="pcss:getCourtCalendarDetailByDayRequest"/>
+          <xsd:element name="getCourtCalendarDetailByDayResponse" type="pcss:getCourtCalendarDetailByDayResponse"/>
+          <xsd:complexType name="getCodeValuesRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" minOccurs="0" name="lastRetrievedDate" type="dx:DateType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCodeValuesResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" name="CeisCodeValues" type="pcss:CeisCodeValues"/>
+              <xsd:element form="qualified" name="JustinCodeValues" type="pcss:JustinCodeValues"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="CeisCodeValues">
+            <xsd:sequence>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="CodeValue" type="pcss:CodeValue"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="CodeValue">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="codeType" type="xsd:string"/>
+              <xsd:element form="qualified" name="code" type="xsd:string"/>
+              <xsd:element form="qualified" name="shortDesc" type="xsd:string"/>
+              <xsd:element form="qualified" name="longDesc" type="xsd:string"/>
+              <xsd:element form="qualified" name="flex" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="JustinCodeValues">
+            <xsd:sequence>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="CodeValue" type="pcss:CodeValue2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="CodeValue2">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="codeType" type="xsd:string"/>
+              <xsd:element form="qualified" name="code" type="xsd:string"/>
+              <xsd:element form="qualified" name="shortDesc" type="xsd:string"/>
+              <xsd:element form="qualified" name="longDesc" type="xsd:string"/>
+              <xsd:element form="qualified" name="flex" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Report" type="pcss:Report"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Report">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ReportNm" type="xsd:string"/>
+              <xsd:element form="qualified" name="ReportDscTxt" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Parm" type="pcss:Parm"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Parm">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ParmNm" type="xsd:string"/>
+              <xsd:element form="qualified" name="VisibleYN" type="dx:YesNoType"/>
+              <xsd:element form="qualified" name="MandatoryYN" type="dx:YesNoType"/>
+              <xsd:element form="qualified" name="LovYN" type="dx:YesNoType"/>
+              <xsd:element form="qualified" name="PromptNm" type="xsd:string"/>
+              <xsd:element form="qualified" name="SeqNo" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="DefaultValTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="DataTypeTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="FormatMaskTxt" type="xsd:string"/>
+              <xsd:element form="qualified" name="BindVariableYN" type="dx:YesNoType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportLovRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="ReportNm" type="xsd:string"/>
+              <xsd:element form="qualified" name="ParmNm" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ParmValue" type="pcss:ParmValue"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ParmValue">
+            <xsd:sequence>
+              <xsd:element form="qualified" minOccurs="0" name="ValTxt" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportLovResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Lov" type="pcss:Lov"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Lov">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="Cd" type="xsd:string"/>
+              <xsd:element form="qualified" name="Val" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getReservedJudgmentRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getReservedJudgmentResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ReservedJudgment" type="pcss:ReservedJudgment"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ReservedJudgment">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="AdjudicatorPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="CourtDivisionCd" type="dx:CourtDivisionType"/>
+              <xsd:element form="qualified" name="CourtClassCd" type="dx:CourtClassType"/>
+              <xsd:element form="qualified" name="CourtFileHomeAgencyId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="FileNumberTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="NextAppearancetDt" type="dx:DateType"/>
+              <xsd:element form="qualified" minOccurs="0" name="NextAppearancetAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" minOccurs="0" name="AccusedNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="SocTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="JustinNo" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="ProfPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="ProfSeqNo" type="dx:SystemSeqNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getResourceAvailabilityRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="ModeCd" type="dx:OperationModeRscAvType"/>
+              <xsd:element form="qualified" name="BookingDt" type="dx:DateType"/>
+              <xsd:element form="qualified" minOccurs="0" name="AssetTypeCd" type="dx:AssetType"/>
+              <xsd:element form="qualified" minOccurs="0" name="BookingForRoleCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="BookingFromTm" type="dx:TimeType"/>
+              <xsd:element form="qualified" minOccurs="0" name="BookingToTm" type="dx:TimeType"/>
+              <xsd:element form="qualified" minOccurs="0" name="PrimaryAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" minOccurs="0" name="PrimaryCourtRoomCd" type="dx:CourtRoomCdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="SecondaryAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" minOccurs="0" name="SecondaryCourtRoomCd" type="dx:CourtRoomCdType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getResourceAvailabilityResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="PrimaryResource" type="dx:ResourceType"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="SecondaryResource" type="dx:ResourceType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getUserLoginRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="DomainNm" type="dx:DomainNmType"/>
+              <xsd:element form="qualified" name="DomainUserGuid" type="dx:GuidType"/>
+              <xsd:element form="qualified" name="DomainUserId" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="TemporaryAccessGuid" type="dx:GuidType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getUserLoginResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="UserPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="UserLastNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="UserGivenNm" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceBookingRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="OperationModeCd" type="dx:OperationModeBookType"/>
+              <xsd:element form="qualified" minOccurs="0" name="AppearanceId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="CourtDivisionCd" type="dx:CourtDivisionType"/>
+              <xsd:element form="qualified" name="ResourceId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="BookingDt" type="dx:DateType"/>
+              <xsd:element form="qualified" name="BookingFromTm" type="dx:TimeType"/>
+              <xsd:element form="qualified" name="BookingToTm" type="dx:TimeType"/>
+              <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="BookingCommentTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="BookingId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="BookingCcn" type="dx:ConcurrencyControlType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceBookingResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="BookingId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="BookingCcn" type="dx:ConcurrencyControlType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceCancelRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="BookingId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="BookingCcn" type="dx:ConcurrencyControlType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceCancelResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceStatusRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Detail" type="pcss:Detail"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Detail">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="OperationModeCd" type="dx:OperationModeSchdType"/>
+              <xsd:element form="qualified" name="FileDivisionCd" type="dx:CourtDivisionType"/>
+              <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="AppearanceCcn" type="dx:ConcurrencyControlType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceStatusResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setSyncCompleteRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="ProcessUpToDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="CriminalAppearanceYn" type="dx:YesNoType"/>
+              <xsd:element form="qualified" name="CivilAppearanceYn" type="dx:YesNoType"/>
+              <xsd:element form="qualified" name="CriminalHearingRestrictionYn" type="dx:YesNoType"/>
+              <xsd:element form="qualified" name="CivilHearingRestrictionYn" type="dx:YesNoType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setSyncCompleteResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceMoveRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Detail" type="pcss:Detail2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Detail2">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="FileDivisionCd" type="dx:CourtDivisionType"/>
+              <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceMoveResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setCourtCalendarRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Detail" type="pcss:Detail3"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Detail3">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+              <xsd:element form="qualified" name="AvailableDt" type="dx:DateType"/>
+              <xsd:element form="qualified" name="CourtRoomSittingCd" type="dx:CourtRoomSittingType"/>
+              <xsd:element form="qualified" minOccurs="0" name="AdjudicatorPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="JudgeSeizedYn" type="dx:YesNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="ActivityCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="RoomAssignedYn" type="dx:YesNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="PcssCourtActivityId" type="dx:SystemIdType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setCourtCalendarResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceUpdateRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="FileDivisionCd" type="dx:CourtDivisionType"/>
+              <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="AppearanceReasonCd" type="dx:AppearanceReasonCivilType"/>
+              <xsd:element form="qualified" name="AppearanceTm" type="dx:TimeType"/>
+              <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeHour" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeMin" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="SupplementalEquipmentTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="SecurityRestrictionTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="OutOfTownJudgeTxt" type="xsd:string"/>
+              <xsd:element form="qualified" name="AppearanceCcn" type="dx:ConcurrencyControlType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceUpdateResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="AppearanceCcn" type="dx:ConcurrencyControlType"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getFileSearchRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="SearchMode" type="dx:SearchModeType"/>
+              <xsd:element form="qualified" minOccurs="0" name="FileDivisionCd" type="dx:CourtDivisionType"/>
+              <xsd:element form="qualified" minOccurs="0" name="FileHomeAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" minOccurs="0" name="FileNumberTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="FilePrefixTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="FileSuffixNo" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="MdocRefTypeCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="CourtClassCd" type="dx:CourtClassType"/>
+              <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
+              <xsd:element form="qualified" minOccurs="0" name="NameSearchTypeCd" type="dx:NameSearchType"/>
+              <xsd:element form="qualified" minOccurs="0" name="LastNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="OrgNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="GivenNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="BirthDt" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" name="Permission" type="pcss:Permission"/>
+              <xsd:element form="qualified" minOccurs="0" name="SearchByCrown" type="pcss:SearchByCrown"/>
+              <xsd:element form="qualified" minOccurs="0" name="MdocJustinNoSet" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="PhysicalFileIdSet" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ApplicationCd" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Permission">
+            <xsd:sequence>
+              <xsd:element form="qualified" minOccurs="0" name="CourtClassCd" type="dx:CourtClassType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SearchByCrown">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="CrownPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="ActiveOnlyYN" type="dx:YesNoType"/>
+              <xsd:element form="qualified" name="FileDesignationCd" type="dx:FileComplexityType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getFileSearchResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="RecCount" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="FileDetail" type="pcss:FileDetail"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="FileDetail">
+            <xsd:sequence>
+              <xsd:element form="qualified" minOccurs="0" name="MdocJustinNo" type="dx:JustinNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="FileHomeAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="FileNumberTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="MdocSeqNo" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="TicketSeriesTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="MdocRefTypeCd" type="xsd:string"/>
+              <xsd:element form="qualified" name="CourtLevelCd" type="dx:CourtLevelType"/>
+              <xsd:element form="qualified" name="CourtClassCd" type="dx:CourtClassType"/>
+              <xsd:element form="qualified" minOccurs="0" name="WarrantYN" type="dx:YesNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="InCustodyYN" type="dx:YesNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="NextApprDt" type="dx:DateType"/>
+              <xsd:element form="qualified" name="PcssCourtDivisionCd" type="dx:PcssCourtDivisionType"/>
+              <xsd:element form="qualified" minOccurs="0" name="SealStatusCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ApprovalCrownAgencyTypeCd" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Participant" type="pcss:Participant"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Participant">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="FullNm" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Charge" type="pcss:Charge"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Charge">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="SectionTxt" type="xsd:string"/>
+              <xsd:element form="qualified" name="SectionDscTxt" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCourtCalendarDetailByDayRequest">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+              <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="AppearanceDt" type="dx:DateType"/>
+              <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCourtCalendarDetailByDayResponse">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Appearance" type="pcss:Appearance"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Appearance">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="CourtDivisionCd" type="dx:CourtDivisionType"/>
+              <xsd:element form="qualified" name="CourtClassCd" type="dx:CourtClassType"/>
+              <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+              <xsd:element form="qualified" name="AppearanceDt" type="dx:DateType"/>
+              <xsd:element form="qualified" name="AppearanceTm" type="dx:TimeType"/>
+              <xsd:element form="qualified" name="AppearanceReasonCd" type="dx:AppearanceReasonCriminalType"/>
+              <xsd:element form="qualified" minOccurs="0" name="DurationHour" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="DurationMin" type="xsd:string"/>
+              <xsd:element form="qualified" name="CourtFileNumber" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="StyleOfCause" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="AdjudicatorInitials" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="AdjudicatorNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="HearingRestrictionCd" type="dx:HearingRestrictionType"/>
+              <xsd:element form="qualified" minOccurs="0" name="CaseAgeDays" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="VideoYn" type="dx:YesNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="InCustodyYn" type="dx:YesNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="ApprId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="AccusedNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="AccusedCounselNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="AppearanceId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="ProfPartId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="ProfSeqNo" type="dx:SystemSeqNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="AppearanceStatusCd" type="dx:AppearanceStatusType"/>
+              <xsd:element form="qualified" minOccurs="0" name="RemoteVideoYn" type="dx:YesNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="HomeLocationAgenId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" minOccurs="0" name="CourtlistRefNumber" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="MdocJustinNo" type="dx:JustinNoType"/>
+              <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Party">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="PartyNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="CounselNm" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        	</xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:tns="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"/>
+          <xsd:element name="getCodeValues" type="tns:getCodeValues"/>
+          <xsd:element name="getCodeValuesResponse" type="tns:getCodeValuesResponse"/>
+          <xsd:element name="getOperationReport" type="tns:getOperationReport"/>
+          <xsd:element name="getOperationReportResponse" type="tns:getOperationReportResponse"/>
+          <xsd:element name="getOperationReportLov" type="tns:getOperationReportLov"/>
+          <xsd:element name="getOperationReportLovResponse" type="tns:getOperationReportLovResponse"/>
+          <xsd:element name="getReservedJudgment" type="tns:getReservedJudgment"/>
+          <xsd:element name="getReservedJudgmentResponse" type="tns:getReservedJudgmentResponse"/>
+          <xsd:element name="getResourceAvailability" type="tns:getResourceAvailability"/>
+          <xsd:element name="getResourceAvailabilityResponse" type="tns:getResourceAvailabilityResponse"/>
+          <xsd:element name="getUserLogin" type="tns:getUserLogin"/>
+          <xsd:element name="getUserLoginResponse" type="tns:getUserLoginResponse"/>
+          <xsd:element name="setResourceBooking" type="tns:setResourceBooking"/>
+          <xsd:element name="setResourceBookingResponse" type="tns:setResourceBookingResponse"/>
+          <xsd:element name="setResourceCancel" type="tns:setResourceCancel"/>
+          <xsd:element name="setResourceCancelResponse" type="tns:setResourceCancelResponse"/>
+          <xsd:element name="setAppearanceStatus" type="tns:setAppearanceStatus"/>
+          <xsd:element name="setAppearanceStatusResponse" type="tns:setAppearanceStatusResponse"/>
+          <xsd:element name="setSyncComplete" type="tns:setSyncComplete"/>
+          <xsd:element name="setSyncCompleteResponse" type="tns:setSyncCompleteResponse"/>
+          <xsd:element name="setAppearanceMove" type="tns:setAppearanceMove"/>
+          <xsd:element name="setAppearanceMoveResponse" type="tns:setAppearanceMoveResponse"/>
+          <xsd:element name="setCourtCalendar" type="tns:setCourtCalendar"/>
+          <xsd:element name="setCourtCalendarResponse" type="tns:setCourtCalendarResponse"/>
+          <xsd:element name="setAppearanceUpdate" type="tns:setAppearanceUpdate"/>
+          <xsd:element name="setAppearanceUpdateResponse" type="tns:setAppearanceUpdateResponse"/>
+          <xsd:element name="getFileSearch" type="tns:getFileSearch"/>
+          <xsd:element name="getFileSearchResponse" type="tns:getFileSearchResponse"/>
+          <xsd:element name="getCourtCalendarDetailByDay" type="tns:getCourtCalendarDetailByDay"/>
+          <xsd:element name="getCourtCalendarDetailByDayResponse" type="tns:getCourtCalendarDetailByDayResponse"/>
+          <xsd:complexType name="getCodeValues">
+            <xsd:sequence>
+              <xsd:element name="getCodeValuesRequest" nillable="true" type="tns:getCodeValuesRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCodeValuesRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getCodeValuesRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCodeValuesResponse">
+            <xsd:sequence>
+              <xsd:element name="getCodeValuesResponse" nillable="true" type="tns:getCodeValuesResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCodeValuesResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getCodeValuesResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReport">
+            <xsd:sequence>
+              <xsd:element name="getOperationReportRequest" nillable="true" type="tns:getOperationReportRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getOperationReportRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportResponse">
+            <xsd:sequence>
+              <xsd:element name="getOperationReportResponse" nillable="true" type="tns:getOperationReportResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getOperationReportResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportLov">
+            <xsd:sequence>
+              <xsd:element name="getOperationReportLovRequest" nillable="true" type="tns:getOperationReportLovRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportLovRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getOperationReportLovRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportLovResponse">
+            <xsd:sequence>
+              <xsd:element name="getOperationReportLovResponse" nillable="true" type="tns:getOperationReportLovResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getOperationReportLovResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getOperationReportLovResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getReservedJudgment">
+            <xsd:sequence>
+              <xsd:element name="getReservedJudgmentRequest" nillable="true" type="tns:getReservedJudgmentRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getReservedJudgmentRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getReservedJudgmentRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getReservedJudgmentResponse">
+            <xsd:sequence>
+              <xsd:element name="getReservedJudgmentResponse" nillable="true" type="tns:getReservedJudgmentResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getReservedJudgmentResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getReservedJudgmentResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getResourceAvailability">
+            <xsd:sequence>
+              <xsd:element name="getResourceAvailabilityRequest" nillable="true" type="tns:getResourceAvailabilityRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getResourceAvailabilityRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getResourceAvailabilityRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getResourceAvailabilityResponse">
+            <xsd:sequence>
+              <xsd:element name="getResourceAvailabilityResponse" nillable="true" type="tns:getResourceAvailabilityResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getResourceAvailabilityResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getResourceAvailabilityResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getUserLogin">
+            <xsd:sequence>
+              <xsd:element name="getUserLoginRequest" nillable="true" type="tns:getUserLoginRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getUserLoginRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getUserLoginRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getUserLoginResponse">
+            <xsd:sequence>
+              <xsd:element name="getUserLoginResponse" nillable="true" type="tns:getUserLoginResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getUserLoginResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getUserLoginResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceBooking">
+            <xsd:sequence>
+              <xsd:element name="setResourceBookingRequest" nillable="true" type="tns:setResourceBookingRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceBookingRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setResourceBookingRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceBookingResponse">
+            <xsd:sequence>
+              <xsd:element name="setResourceBookingResponse" nillable="true" type="tns:setResourceBookingResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceBookingResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setResourceBookingResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceCancel">
+            <xsd:sequence>
+              <xsd:element name="setResourceCancelRequest" nillable="true" type="tns:setResourceCancelRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceCancelRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setResourceCancelRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceCancelResponse">
+            <xsd:sequence>
+              <xsd:element name="setResourceCancelResponse" nillable="true" type="tns:setResourceCancelResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setResourceCancelResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setResourceCancelResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceStatus">
+            <xsd:sequence>
+              <xsd:element name="setAppearanceStatusRequest" nillable="true" type="tns:setAppearanceStatusRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceStatusRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setAppearanceStatusRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceStatusResponse">
+            <xsd:sequence>
+              <xsd:element name="setAppearanceStatusResponse" nillable="true" type="tns:setAppearanceStatusResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceStatusResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setAppearanceStatusResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setSyncComplete">
+            <xsd:sequence>
+              <xsd:element name="setSyncCompleteRequest" nillable="true" type="tns:setSyncCompleteRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setSyncCompleteRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setSyncCompleteRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setSyncCompleteResponse">
+            <xsd:sequence>
+              <xsd:element name="setSyncCompleteResponse" nillable="true" type="tns:setSyncCompleteResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setSyncCompleteResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setSyncCompleteResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceMove">
+            <xsd:sequence>
+              <xsd:element name="setAppearanceMoveRequest" nillable="true" type="tns:setAppearanceMoveRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceMoveRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setAppearanceMoveRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceMoveResponse">
+            <xsd:sequence>
+              <xsd:element name="setAppearanceMoveResponse" nillable="true" type="tns:setAppearanceMoveResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceMoveResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setAppearanceMoveResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setCourtCalendar">
+            <xsd:sequence>
+              <xsd:element name="setCourtCalendarRequest" nillable="true" type="tns:setCourtCalendarRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setCourtCalendarRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setCourtCalendarRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setCourtCalendarResponse">
+            <xsd:sequence>
+              <xsd:element name="setCourtCalendarResponse" nillable="true" type="tns:setCourtCalendarResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setCourtCalendarResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setCourtCalendarResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceUpdate">
+            <xsd:sequence>
+              <xsd:element name="setAppearanceUpdateRequest" nillable="true" type="tns:setAppearanceUpdateRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceUpdateRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setAppearanceUpdateRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceUpdateResponse">
+            <xsd:sequence>
+              <xsd:element name="setAppearanceUpdateResponse" nillable="true" type="tns:setAppearanceUpdateResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="setAppearanceUpdateResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:setAppearanceUpdateResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getFileSearch">
+            <xsd:sequence>
+              <xsd:element name="getFileSearchRequest" nillable="true" type="tns:getFileSearchRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getFileSearchRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getFileSearchRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getFileSearchResponse">
+            <xsd:sequence>
+              <xsd:element name="getFileSearchResponse" nillable="true" type="tns:getFileSearchResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getFileSearchResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getFileSearchResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCourtCalendarDetailByDay">
+            <xsd:sequence>
+              <xsd:element name="getCourtCalendarDetailByDayRequest" nillable="true" type="tns:getCourtCalendarDetailByDayRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCourtCalendarDetailByDayRequest">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getCourtCalendarDetailByDayRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCourtCalendarDetailByDayResponse">
+            <xsd:sequence>
+              <xsd:element name="getCourtCalendarDetailByDayResponse" nillable="true" type="tns:getCourtCalendarDetailByDayResponse2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCourtCalendarDetailByDayResponse2">
+            <xsd:sequence>
+              <xsd:element ref="pcss:getCourtCalendarDetailByDayResponse"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        	</xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <xsd:simpleType name="AgencyIdentifierType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="16"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="SystemIdType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="16"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="DateTimeType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:length value="21"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="DateType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:length value="21"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="YesNoType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="Y"/>
+              <xsd:enumeration value="N"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="CourtDivisionType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="R"/>
+              <xsd:enumeration value="I"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="CourtClassType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="A"/>
+              <xsd:enumeration value="Y"/>
+              <xsd:enumeration value="T"/>
+              <xsd:enumeration value="F"/>
+              <xsd:enumeration value="C"/>
+              <xsd:enumeration value="M"/>
+              <xsd:enumeration value="L"/>
+              <xsd:enumeration value="R"/>
+              <xsd:enumeration value="B"/>
+              <xsd:enumeration value="D"/>
+              <xsd:enumeration value="E"/>
+              <xsd:enumeration value="G"/>
+              <xsd:enumeration value="H"/>
+              <xsd:enumeration value="N"/>
+              <xsd:enumeration value="O"/>
+              <xsd:enumeration value="P"/>
+              <xsd:enumeration value="S"/>
+              <xsd:enumeration value="V"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="SystemSeqNoType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="10"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="OperationModeRscAvType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="D"/>
+              <xsd:enumeration value="W"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="AssetType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="4"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="TimeType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:length value="21"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="CourtRoomCdType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="6"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:complexType name="ResourceType">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="AgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="ResourceId" type="dx:SystemIdType"/>
+              <xsd:element form="qualified" name="ResourceNm" type="xsd:string"/>
+              <xsd:element form="qualified" name="AssetTypeCd" type="dx:AssetType"/>
+              <xsd:element form="qualified" name="AssetUsageRuleCd" type="dx:AssetUsageRuleType"/>
+              <xsd:element form="qualified" minOccurs="0" name="PhoneNumberTxt" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="CommentTxt" type="xsd:string"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="AvailableRoom" type="dx:AvailableRoom"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Day" type="dx:Day"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:simpleType name="AssetUsageRuleType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="FIX"/>
+              <xsd:enumeration value="MOB"/>
+              <xsd:enumeration value="WIT"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:complexType name="AvailableRoom">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Day">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="DayOfWeek" type="dx:DayOfWeekType"/>
+              <xsd:element form="qualified" name="DayOfMonth" type="xsd:string"/>
+              <xsd:element form="qualified" name="BookedHours" type="xsd:string"/>
+              <xsd:element form="qualified" name="AvailabilityDt" type="dx:DateType"/>
+              <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="BookedTime" type="dx:BookedTime"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:simpleType name="DayOfWeekType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="Mo"/>
+              <xsd:enumeration value="Tu"/>
+              <xsd:enumeration value="We"/>
+              <xsd:enumeration value="Th"/>
+              <xsd:enumeration value="Fr"/>
+              <xsd:enumeration value="Sa"/>
+              <xsd:enumeration value="Su"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:complexType name="BookedTime">
+            <xsd:sequence>
+              <xsd:element form="qualified" name="BookedFromTm" type="dx:TimeType"/>
+              <xsd:element form="qualified" name="BookedToTm" type="dx:TimeType"/>
+              <xsd:element form="qualified" minOccurs="0" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+              <xsd:element form="qualified" minOccurs="0" name="CourtRoomCd" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="BookedByNm" type="xsd:string"/>
+              <xsd:element form="qualified" minOccurs="0" name="CourtFileNumberTxt" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:simpleType name="DomainNmType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="IDIR"/>
+              <xsd:enumeration value="PROVJUDGE"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="GuidType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="100"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="OperationModeBookType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="BOOK"/>
+              <xsd:enumeration value="UPDATE"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="ConcurrencyControlType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="12"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="OperationModeSchdType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="CANCEL"/>
+              <xsd:enumeration value="DELETE"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="CourtRoomSittingType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="D"/>
+              <xsd:enumeration value="M"/>
+              <xsd:enumeration value="A"/>
+              <xsd:enumeration value="E"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="AppearanceReasonCivilType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="4"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="SearchModeType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="FILENO"/>
+              <xsd:enumeration value="PARTNAME"/>
+              <xsd:enumeration value="CROWN"/>
+              <xsd:enumeration value="JUSTINNO"/>
+              <xsd:enumeration value="PHYSID"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="CourtLevelType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="P"/>
+              <xsd:enumeration value="S"/>
+              <xsd:enumeration value="A"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="NameSearchType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="E"/>
+              <xsd:enumeration value="P"/>
+              <xsd:enumeration value="S"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="FileComplexityType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="SPC"/>
+              <xsd:enumeration value="GA"/>
+              <xsd:enumeration value="SA"/>
+              <xsd:enumeration value="ALL"/>
+              <xsd:enumeration value="SG"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="JustinNoType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="12"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="PcssCourtDivisionType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="I"/>
+              <xsd:enumeration value="R"/>
+              <xsd:enumeration value="F"/>
+              <xsd:enumeration value=" "/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="AppearanceReasonCriminalType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:maxLength value="3"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="HearingRestrictionType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="S"/>
+              <xsd:enumeration value="D"/>
+              <xsd:enumeration value="A"/>
+              <xsd:enumeration value="G"/>
+              <xsd:enumeration value="XXX"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="AppearanceStatusType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="SCHD"/>
+              <xsd:enumeration value="CNCL"/>
+              <xsd:enumeration value="UNCF"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        	</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="pcssCommon_PortType_getOperationReportLov">
+    <wsdl:part name="parameters" element="tns:getOperationReportLov">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getCodeValues">
+    <wsdl:part name="parameters" element="tns:getCodeValues">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setSyncComplete">
+    <wsdl:part name="parameters" element="tns:setSyncComplete">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setCourtCalendar">
+    <wsdl:part name="parameters" element="tns:setCourtCalendar">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setAppearanceUpdate">
+    <wsdl:part name="parameters" element="tns:setAppearanceUpdate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getFileSearch">
+    <wsdl:part name="parameters" element="tns:getFileSearch">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getCourtCalendarDetailByDayResponse">
+    <wsdl:part name="parameters" element="tns:getCourtCalendarDetailByDayResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getOperationReportLovResponse">
+    <wsdl:part name="parameters" element="tns:getOperationReportLovResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setAppearanceStatus">
+    <wsdl:part name="parameters" element="tns:setAppearanceStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setAppearanceMove">
+    <wsdl:part name="parameters" element="tns:setAppearanceMove">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setResourceBooking">
+    <wsdl:part name="parameters" element="tns:setResourceBooking">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getCourtCalendarDetailByDay">
+    <wsdl:part name="parameters" element="tns:getCourtCalendarDetailByDay">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setAppearanceStatusResponse">
+    <wsdl:part name="parameters" element="tns:setAppearanceStatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getFileSearchResponse">
+    <wsdl:part name="parameters" element="tns:getFileSearchResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getReservedJudgmentResponse">
+    <wsdl:part name="parameters" element="tns:getReservedJudgmentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setResourceCancelResponse">
+    <wsdl:part name="parameters" element="tns:setResourceCancelResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getResourceAvailabilityResponse">
+    <wsdl:part name="parameters" element="tns:getResourceAvailabilityResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getUserLogin">
+    <wsdl:part name="parameters" element="tns:getUserLogin">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getUserLoginResponse">
+    <wsdl:part name="parameters" element="tns:getUserLoginResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setCourtCalendarResponse">
+    <wsdl:part name="parameters" element="tns:setCourtCalendarResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setResourceCancel">
+    <wsdl:part name="parameters" element="tns:setResourceCancel">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getResourceAvailability">
+    <wsdl:part name="parameters" element="tns:getResourceAvailability">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getReservedJudgment">
+    <wsdl:part name="parameters" element="tns:getReservedJudgment">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getOperationReport">
+    <wsdl:part name="parameters" element="tns:getOperationReport">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getOperationReportResponse">
+    <wsdl:part name="parameters" element="tns:getOperationReportResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setResourceBookingResponse">
+    <wsdl:part name="parameters" element="tns:setResourceBookingResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setAppearanceMoveResponse">
+    <wsdl:part name="parameters" element="tns:setAppearanceMoveResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setAppearanceUpdateResponse">
+    <wsdl:part name="parameters" element="tns:setAppearanceUpdateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_getCodeValuesResponse">
+    <wsdl:part name="parameters" element="tns:getCodeValuesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommon_PortType_setSyncCompleteResponse">
+    <wsdl:part name="parameters" element="tns:setSyncCompleteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="pcssCommon_PortType">
+    <wsdl:operation name="setAppearanceMove">
+      <wsdl:input message="tns:pcssCommon_PortType_setAppearanceMove">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_setAppearanceMoveResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourtCalendarDetailByDay">
+      <wsdl:input message="tns:pcssCommon_PortType_getCourtCalendarDetailByDay">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_getCourtCalendarDetailByDayResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservedJudgment">
+      <wsdl:input message="tns:pcssCommon_PortType_getReservedJudgment">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_getReservedJudgmentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFileSearch">
+      <wsdl:input message="tns:pcssCommon_PortType_getFileSearch">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_getFileSearchResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOperationReport">
+      <wsdl:input message="tns:pcssCommon_PortType_getOperationReport">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_getOperationReportResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setResourceCancel">
+      <wsdl:input message="tns:pcssCommon_PortType_setResourceCancel">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_setResourceCancelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAppearanceUpdate">
+      <wsdl:input message="tns:pcssCommon_PortType_setAppearanceUpdate">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_setAppearanceUpdateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOperationReportLov">
+      <wsdl:input message="tns:pcssCommon_PortType_getOperationReportLov">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_getOperationReportLovResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCodeValues">
+      <wsdl:input message="tns:pcssCommon_PortType_getCodeValues">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_getCodeValuesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserLogin">
+      <wsdl:input message="tns:pcssCommon_PortType_getUserLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_getUserLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setResourceBooking">
+      <wsdl:input message="tns:pcssCommon_PortType_setResourceBooking">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_setResourceBookingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAppearanceStatus">
+      <wsdl:input message="tns:pcssCommon_PortType_setAppearanceStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_setAppearanceStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSyncComplete">
+      <wsdl:input message="tns:pcssCommon_PortType_setSyncComplete">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_setSyncCompleteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResourceAvailability">
+      <wsdl:input message="tns:pcssCommon_PortType_getResourceAvailability">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_getResourceAvailabilityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setCourtCalendar">
+      <wsdl:input message="tns:pcssCommon_PortType_setCourtCalendar">
+    </wsdl:input>
+      <wsdl:output message="tns:pcssCommon_PortType_setCourtCalendarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JusticePCSSCommon_wsProvider_pcssCommon_Binder" type="tns:pcssCommon_PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="setAppearanceMove">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_setAppearanceMove" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourtCalendarDetailByDay">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_getCourtCalendarDetailByDay" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservedJudgment">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_getReservedJudgment" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFileSearch">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_getFileSearch" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOperationReport">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_getOperationReport" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setResourceCancel">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_setResourceCancel" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAppearanceUpdate">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_setAppearanceUpdate" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOperationReportLov">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_getOperationReportLov" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCodeValues">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_getCodeValues" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserLogin">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_getUserLogin" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setResourceBooking">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_setResourceBooking" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAppearanceStatus">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_setAppearanceStatus" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSyncComplete">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_setSyncComplete" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResourceAvailability">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_getResourceAvailability" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setCourtCalendar">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommon_Binder_setCourtCalendar" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JusticePCSSCommon.wsProvider.pcssCommon">
+    <wsdl:port name="JusticePCSSCommon_wsProvider_pcssCommon_Port" binding="tns:JusticePCSSCommon_wsProvider_pcssCommon_Binder">
+      <soap12:address location="http://reeks.bcgov:5556/ws/JusticePCSSCommon.wsProvider.pcssCommon/JusticePCSSCommon_wsProvider_pcssCommon_Port"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
