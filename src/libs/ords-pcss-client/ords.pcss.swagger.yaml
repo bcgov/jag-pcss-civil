@@ -53,6 +53,54 @@ paths:
         type: string
         description: implicit
         pattern: '^[^/]+$'
+  '/search-file/appearancemethod/':
+    get:
+      tags:
+      - PCSS    
+      description: Get the appearance method data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/searchFileAppearanceMethodResponse'
+      parameters:
+        - name: appearance_id
+          in: query
+          type: string
+          description: implicit
+          pattern: '^[^/]+$'
+  '/search-file/appearancedocument/':
+    get:
+      tags:
+      - PCSS      
+      description: Get the appearance document data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/searchFileAppearanceDocumentResponse'
+      parameters:
+        - name: appearance_id
+          in: query
+          type: string
+          description: implicit
+          pattern: '^[^/]+$'
+  '/search-file/appearanceresources/':
+    get:
+      tags:
+      - PCSS     
+      description: Get the appearance resources data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/searchFileAppearanceResourcesResponse'
+      parameters:
+        - name: appearance_id
+          in: query
+          type: string
+          description: implicit
+          pattern: '^[^/]+$'         
   '/search-file/appearance/':
     get:
       description: Get the appearance data
@@ -179,6 +227,98 @@ definitions:
       courtparticipantid:
         type: number
       courtparticipantccn:
+        type: string
+  searchFileAppearanceMethodResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/searchFileAppearanceMethodData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  searchFileAppearanceMethodData:
+    type: object
+    properties:
+      roletypecd:
+        type: string
+      appearancemethodcd:
+        type: string
+      appearancemethodccn:
+        type: string
+  searchFileAppearanceDocumentResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/searchFileAppearanceDocumentData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  searchFileAppearanceDocumentData:
+    type: object
+    properties:
+      documentid:
+        type: string
+      filesegno:
+        type: string
+      documenttypecd:
+        type: string
+      appearancereasoncd:
+        type: string
+      appearancerusltcd:
+        type: string
+      fileddt:
+        type: string
+      documenthearingccn:
+        type: string                                 
+  searchFileAppearanceResourcesResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/searchFileAppearanceResourcesData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  searchFileAppearanceResourcesData:
+    type: object
+    properties:
+      bookingid:
+        type: string
+      bookingseqno:
+        type: string
+      assettypecd:
+        type: string
+      assetusagerulecd:
+        type: string
+      bookedforrolecd:
+        type: string
+      courtagencyid:
+        type: string
+      courtroomcd:
+        type: string
+      resourcenm:
+        type: string
+      bookedfordt:
+        type: string
+      bookedfromtm:
+        type: string
+      bookedtotm:
+        type: string
+      bookedbynm:
+        type: string
+      bookingcommenttxt:
+        type: string
+      bookingccn:
+        type: string
+      resourceid:
         type: string
   partyResults:
     type: object
