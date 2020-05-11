@@ -1,0 +1,6 @@
+ords:
+  pcss:
+    client:
+      base-path: ${ORDS_PCSS_BASEPATH}
+      username: ${ORDS_PCSS_USERNAME}
+      password: ${ORDS_PCSS_PASSWORD}

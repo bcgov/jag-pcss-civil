@@ -20,6 +20,14 @@
     </properties>
 
     <dependencies>
+
+
+        <dependency>
+            <groupId>ca.bc.gov.open.pcss</groupId>
+            <artifactId>ords-pcss-client</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
