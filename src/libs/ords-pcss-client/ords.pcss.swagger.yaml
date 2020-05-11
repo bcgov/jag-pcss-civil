@@ -1,0 +1,127 @@
+swagger: '2.0'
+info:
+  title: ORDS generated API for web
+  version: 1.0.0
+host: dev.jag.gov.bc.ca
+basePath: /ords/devj/pcssords/web
+schemes:
+- http
+produces:
+- application/json
+securityDefinitions:
+  basicAuth:
+    type: basic
+    description: HTTP Basic Authentication.
+tags:
+- name: PCSS
+paths:
+  '/civil-file-content/party':
+    get:
+      tags:
+      - PCSS
+      security:
+      - basicAuth: []
+      description: Get the party data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/partyResults'
+      parameters:
+      - name: physical_file_id
+        in: query
+        required: true
+        type: string
+        description: implicit
+        pattern: '^[^/]+$'
+  '/search-file/party':
+    get:
+      tags:
+      - PCSS
+      security:
+      - basicAuth: []
+      description: Get the search file party data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/searchFilePartyResponse'
+      parameters:
+      - name: appearance_id
+        in: query
+        required: true
+        type: string
+        description: implicit
+        pattern: '^[^/]+$'
+  /health:
+    get:
+      tags:
+      - PCSS
+      security:
+      - basicAuth: []
+      description: Health endpoint to check that API calls are working
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties: {}
+definitions:
+  searchFilePartyResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/searchFilePartyData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  searchFilePartyData:
+    type: object
+    properties:
+      partyid:
+        type: number
+      partyroletypecd:
+        type: string
+      lastnm:
+        type: string
+      givennm:
+        type: string
+      orgnm:
+        type: string
+      counselnm:
+        type: string
+      courtparticipantid:
+        type: number
+      courtparticipantccn:
+        type: string
+  partyResults:
+    type: object
+    properties:
+      party_data:
+        type: array
+        items:
+          $ref: '#/definitions/party_data'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  party_data:
+    type: object
+    properties:
+      partyid:
+        type: number
+      lastnm:
+        type: string
+      givennm:
+        type: string
+      orgnm:
+        type: string
+      partyroletype:
+        type: string
+      leftrightcd:
+        type: string
+      selfrepresentedyn:
+        type: string
