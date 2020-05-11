@@ -20,7 +20,7 @@
         <default-package>ca.bc.gov.open.pcss.ords.pcss.client</default-package>
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <jersey-version>2.29</jersey-version>
-        <jackson-version>2.9.9</jackson-version>
+        <jackson-version>2.11.0</jackson-version>
     </properties>
 
     <!-- HTTP client: jersey-client -->
