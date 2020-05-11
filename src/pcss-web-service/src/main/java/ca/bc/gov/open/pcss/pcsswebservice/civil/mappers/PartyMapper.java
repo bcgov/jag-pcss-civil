@@ -9,14 +9,14 @@ import org.mapstruct.Mapping;
 @Mapper(uses= { ObjectFactory.class } )
 public interface PartyMapper {
 
-    @Mapping(source = "partyid", target = "partyId")
-    @Mapping(source = "partyroletypecd", target = "partyRoleTypeCd")
-    @Mapping(source = "lastnm", target = "lastNm")
-    @Mapping(source = "givennm", target = "givenNm")
-    @Mapping(source = "orgnm", target = "orgNm")
-    @Mapping(source = "counselnm", target = "counselNm")
-    @Mapping(source = "courtparticipantid", target = "courtParticipantId")
-    @Mapping(source = "courtparticipantccn", target = "courtParticipantCcn")
+    @Mapping(target = "partyId", source = "partyid")
+    @Mapping( target = "partyRoleTypeCd",source = "partyroletypecd")
+    @Mapping(target = "lastNm", source = "lastnm")
+    @Mapping(target = "givenNm", source = "givennm")
+    @Mapping(target = "orgNm", source = "orgnm")
+    @Mapping(target = "counselNm", source = "counselnm")
+    @Mapping(target = "courtParticipantId", source = "courtparticipantid")
+    @Mapping(target = "courtParticipantCcn", source = "courtparticipantccn")
     Party toSearchFilePartyData(SearchFilePartyData searchFilePartyData);
 
 }

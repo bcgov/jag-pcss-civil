@@ -8,12 +8,17 @@ import ca.bc.gov.open.pcss.pcsswebservice.Keys;
 import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilPartyMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PcssCivilEndpoint implements PcssCivilPortType {
 
 
+    private static final String PART_ID = "partId";
+    private static final String AGENCY_IDENTIFIER_ID = "agencyIdentifierId";
+    private static final String UNKNOWN = "UNKNOWN";
+    private static final String OPERATION = "operation";
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final PcssApi pcssApi;
@@ -80,30 +85,53 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
     @Override
     public GetAppearanceCivilPartyResponse2 getAppearanceCivilParty(GetAppearanceCivilPartyRequest getAppearanceCivilPartyRequest) {
 
+        logger.debug("received new getAppearanceCivilParty");
 
         try {
 
+            if (getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest() != null) {
+                MDC.put(OPERATION, "getAppearanceCivilParty");
+                MDC.put(AGENCY_IDENTIFIER_ID,
+                        getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getRequestAgencyIdentifierId());
+                MDC.put(PART_ID, getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getRequestPartId());
+            }
+
             GetAppearanceCivilPartyResponse2 response2 = new GetAppearanceCivilPartyResponse2();
 
+            logger.debug("attempting to call ords api");
             response2
                     .setGetAppearanceCivilPartyResponse(
                             AppearanceCivilPartyMapper
                                     .INSTANCE.toGetAppearanceCivilPartyResponse(
                                     this.pcssApi.searchFilePartyGet(getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getAppearanceId())));
 
+            if (response2.getGetAppearanceCivilPartyResponse().getResponseCd() == "0")
+                logger.info("successfully retrieved getAppearanceCivilParty [{}]",
+                        getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getAppearanceId());
+            else
+                logger.error("error retrieving getAppearanceCivilParty [{}], error: [{}] - {}",
+                        getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getAppearanceId(),
+                        response2.getGetAppearanceCivilPartyResponse() == null ? UNKNOWN :
+                                response2.getGetAppearanceCivilPartyResponse().getResponseCd(),
+                        response2.getGetAppearanceCivilPartyResponse() == null ? UNKNOWN :
+                                response2.getGetAppearanceCivilPartyResponse().getResponseMessageTxt());
+
             return response2;
 
 
         } catch (ApiException e) {
+
             GetAppearanceCivilPartyResponse2 response2 = new GetAppearanceCivilPartyResponse2();
-
-            ca.bc.gov.open.pcss.civil.GetAppearanceCivilPartyResponse response = new ca.bc.gov.open.pcss.civil.GetAppearanceCivilPartyResponse();
-
-            response.setResponseCd(Keys.DEFAULT_ERROR_RESPONSE_CD);
-            response.setResponseMessageTxt(e.getResponseBody());
-            response2.setGetAppearanceCivilPartyResponse(response);
-
+            response2.setGetAppearanceCivilPartyResponse(AppearanceCivilPartyMapper.INSTANCE.toGetAppearanceCivilPartyResponse(e));
+            logger.error("ORDS Api exception while calling getAppearanceCivilParty", e);
             return response2;
+
+        } finally {
+
+            MDC.remove(OPERATION);
+            MDC.remove(AGENCY_IDENTIFIER_ID);
+            MDC.remove(PART_ID);
+
         }
 
     }
