@@ -53,6 +53,31 @@ paths:
         type: string
         description: implicit
         pattern: '^[^/]+$'
+  '/search-file/appearance/':
+    get:
+      description: Get the appearance data
+      tags:
+      - PCSS
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/searchFileAppearanceResponse'
+      parameters:
+      - name: future_yn
+        in: query
+        type: string
+        description: Implicit parameter
+      - name: history_yn
+        in: query
+        type: string
+        description: Implicit parameter
+      - name: physical_file_id
+        in: query
+        type: string
+        description: Implicit parameter
   /health:
     get:
       tags:
@@ -67,6 +92,64 @@ paths:
             type: object
             properties: {}
 definitions:
+  searchFileAppearanceResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/searchFileAppearanceData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+      history_record_cnt:
+        type: number
+      future_record_cnt:
+        type: number
+  searchFileAppearanceData:
+    type: object
+    properties:
+      historyyn:
+        type: string
+      appearanceid:
+        type: number
+      appearancedt:
+        type: string
+      appearancetm:
+        type: string
+      appearancereasoncd:
+        type: string
+      courtagencyid:
+        type: number
+      courroomcd:
+        type: string
+      judgefullnm:
+        type: string
+      judgeinitials:
+        type: string
+      estimatedtimehour:
+        type: number
+      estimatedtimemin:
+        type: number
+      partoftrialyn:
+        type: string
+      appearancestatuscd:
+        type: string
+      appearanceresultcd:
+        type: string
+      appearanceccn:
+        type: string
+      documenttypecd:
+        type: string
+      documentreccount:
+        type: number
+      supplementalequipmenttxt:
+        type: string
+      securityrestrictiontxt:
+        type: string
+      outoftownjudgetxt:
+        type: string
   searchFilePartyResponse:
     type: object
     properties:
