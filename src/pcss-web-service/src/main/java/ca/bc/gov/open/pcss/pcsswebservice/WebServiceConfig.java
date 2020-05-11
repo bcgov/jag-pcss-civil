@@ -1,5 +1,6 @@
 package ca.bc.gov.open.pcss.pcsswebservice;
 
+import ca.bc.gov.open.pcss.pcsswebservice.civil.PcssCivilEndpoint;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.jaxws.EndpointImpl;
