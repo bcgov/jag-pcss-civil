@@ -44,7 +44,6 @@ public class EndpointGetAppearanceCivilPartyTest {
 
         MockitoAnnotations.initMocks(this);
 
-        PartyResults test;
         Mockito.when(pcssApiMock.searchFilePartyGet(Mockito.eq(CASE_1))).thenReturn(fakeSearchFilePartyResponse());
 
         Mockito.when(pcssApiMock.searchFilePartyGet(Mockito.eq(CASE_2))).thenThrow(new ApiException(500, "internal server error", null, RESPONSE_BODY));
