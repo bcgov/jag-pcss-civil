@@ -34,6 +34,26 @@ paths:
         type: string
         description: implicit
         pattern: '^[^/]+$'
+  'civil/file-content/hearing-restrictions/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/fileContentHearingRestrictionResponse'
+      parameters:
+        - name: physical_file_id
+          in: query
+          type: string
+          description: implicit  
+          pattern: '^[^/]+$'      
   'civil/search-file/party':
     get:
       tags:
@@ -354,3 +374,35 @@ definitions:
         type: string
       selfrepresentedyn:
         type: string
+  fileContentHearingRestrictionResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/fileContentHearingRestrictionData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  fileContentHearingRestrictionData:
+    type: object
+    properties:
+      hearingrestrictionid:
+        type: string
+      adjpartid:
+        type: string
+      applytonm:
+        type: string
+      adjfullnm:
+        type: string
+      civildocumentid:
+        type: string
+      physicalfileid:
+        type: string
+      adjinitials:
+        type: string
+      hearingrestrictionccn:
+        type: string
+      hearingrestrictiontypecd:
+        type: string                     
