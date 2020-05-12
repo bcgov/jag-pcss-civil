@@ -152,6 +152,38 @@ paths:
         in: query
         type: string
         description: Implicit parameter
+  '/civil/sync-civil-appr/':
+    get:
+      description: Get the sync civil appr data
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []      
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/syncCivilApprResponse'
+      parameters:
+        - name: agency_id
+          in: query
+          type: string
+          description: Implicit parameter
+        - name: party_id
+          in: query
+          type: string
+          description: Implicit parameter
+        - name: request_dtm
+          in: query
+          type: string
+          description: Implicit parameter
+        - name: up_to_dtm
+          in: query
+          type: string
+          description: Implicit parameter        
   /health:
     get:
       tags:
@@ -405,4 +437,52 @@ definitions:
       hearingrestrictionccn:
         type: string
       hearingrestrictiontypecd:
-        type: string                     
+        type: string
+  syncCivilApprResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/syncCivilApprData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  syncCivilApprData:
+    type: object
+    properties:
+      lvOperationModeCd:
+        type: string
+      ldTransactionDtm:
+        type: string
+      lnAppearanceId:
+        type: string
+      ldAppearanceDt:
+        type: string
+      ldAppearanceTm:
+        type: string
+      lvAppearanceReasonCd:
+        type: string
+      lnEstimatedDurationHours:
+        type: string
+      lnEstimatedDurationMinutes:
+        type: string
+      lnAgencyId:
+        type: string
+      lvCourtRoomCd:
+        type: string
+      lvAdjournedPriorYN:
+        type: string
+      lnCancelledYN:
+        type: string
+      lvPartofTrialYn:
+        type: string
+      lnPhysicalFileId:
+        type: string
+      lvPcssCourtDivisionCd:
+        type: string
+      lvFileNumberTxt:
+        type: string 
+      courtLevelCd:
+        type: string                                                                     
