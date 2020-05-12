@@ -13,12 +13,12 @@ securityDefinitions:
     type: basic
     description: HTTP Basic Authentication.
 tags:
-- name: PCSS
+- name: PCSS-CIVIL
 paths:
-  '/civil-file-content/party':
+  'civil/file-content/party':
     get:
       tags:
-      - PCSS
+      - PCSS-CIVIL
       security:
       - basicAuth: []
       description: Get the party data
@@ -34,10 +34,10 @@ paths:
         type: string
         description: implicit
         pattern: '^[^/]+$'
-  '/search-file/party':
+  'civil/search-file/party':
     get:
       tags:
-      - PCSS
+      - PCSS-CIVIL
       security:
       - basicAuth: []
       description: Get the search file party data
@@ -53,10 +53,12 @@ paths:
         type: string
         description: implicit
         pattern: '^[^/]+$'
-  '/search-file/appearancemethod/':
+  'civil/search-file/appearance-method/':
     get:
       tags:
-      - PCSS    
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []
       description: Get the appearance method data
       responses:
         '200':
@@ -69,10 +71,12 @@ paths:
           type: string
           description: implicit
           pattern: '^[^/]+$'
-  '/search-file/appearancedocument/':
+  'civil/search-file/appearance-document/':
     get:
       tags:
-      - PCSS      
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []
       description: Get the appearance document data
       responses:
         '200':
@@ -85,10 +89,12 @@ paths:
           type: string
           description: implicit
           pattern: '^[^/]+$'
-  '/search-file/appearanceresources/':
+  'civil/search-file/appearance-resources/':
     get:
       tags:
-      - PCSS     
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []
       description: Get the appearance resources data
       responses:
         '200':
@@ -101,11 +107,11 @@ paths:
           type: string
           description: implicit
           pattern: '^[^/]+$'         
-  '/search-file/appearance/':
+  'civil/search-file/appearance/':
     get:
       description: Get the appearance data
       tags:
-      - PCSS
+      - PCSS-CIVIL
       security:
       - basicAuth: []
       responses:
