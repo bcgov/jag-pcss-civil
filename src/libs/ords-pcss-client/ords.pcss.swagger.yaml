@@ -126,7 +126,33 @@ paths:
           in: query
           type: string
           description: implicit
-          pattern: '^[^/]+$'         
+          pattern: '^[^/]+$'
+  '/civil/search-file/appearance-issue/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []    
+      description: Get the appearance issue data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/searchFileAppearanceIssueResponse'
+      parameters:
+        - name: appearance_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
+        - name: civil_document_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'          
   'civil/search-file/appearance/':
     get:
       description: Get the appearance data
@@ -172,18 +198,22 @@ paths:
           in: query
           type: string
           description: Implicit parameter
+          pattern: '^[^/]+$'
         - name: party_id
           in: query
           type: string
           description: Implicit parameter
+          pattern: '^[^/]+$'
         - name: request_dtm
           in: query
           type: string
           description: Implicit parameter
+          pattern: '^[^/]+$'
         - name: up_to_dtm
           in: query
           type: string
-          description: Implicit parameter        
+          description: Implicit parameter
+          pattern: '^[^/]+$'        
   /health:
     get:
       tags:
@@ -378,6 +408,26 @@ definitions:
         type: string
       resourceid:
         type: string
+  searchFileAppearanceIssueResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/searchFileAppearanceIssueData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  searchFileAppearanceIssueData:
+    type: object
+    properties:
+      issueNumber:
+        type: string
+      issueDsc:
+        type: string
+      issueResultCd:
+        type: string                              
   partyResults:
     type: object
     properties:
