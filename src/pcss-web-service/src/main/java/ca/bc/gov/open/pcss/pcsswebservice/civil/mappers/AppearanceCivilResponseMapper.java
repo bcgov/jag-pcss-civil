@@ -1,6 +1,5 @@
 package ca.bc.gov.open.pcss.pcsswebservice.civil.mappers;
 
-import ca.bc.gov.open.pcss.civil.GetAppearanceCivilPartyResponse;
 import ca.bc.gov.open.pcss.civil.GetAppearanceCivilResponse;
 import ca.bc.gov.open.pcss.civil.ObjectFactory;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;

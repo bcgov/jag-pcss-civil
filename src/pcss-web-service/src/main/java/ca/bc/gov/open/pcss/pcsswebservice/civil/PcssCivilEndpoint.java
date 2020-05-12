@@ -2,11 +2,13 @@ package ca.bc.gov.open.pcss.pcsswebservice.civil;
 
 
 import ca.bc.gov.courts.xml.ns.pcss.civil.v1.*;
-import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
+import ca.bc.gov.open.pcss.pcsswebservice.Keys;
+import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilApprMethodResponseMapper;
 import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilPartyMapper;
 import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilResponseMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -30,21 +32,21 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
 
     @Override
     public GetAppearanceCivilResponse2 getAppearanceCivil(GetAppearanceCivilRequest getAppearanceCivilRequest) {
-        logger.debug("received new getAppearanceCivil");
 
+        logger.debug("received new getAppearanceCivil");
 
         GetAppearanceCivilResponse2 response2 = new GetAppearanceCivilResponse2();
 
         try {
 
             if (getAppearanceCivilRequest.getGetAppearanceCivilRequest() != null) {
-                MDC.put(OPERATION, "getAppearanceCivil");
-                MDC.put(AGENCY_IDENTIFIER_ID,
-                        getAppearanceCivilRequest.getGetAppearanceCivilRequest().getRequestAgencyIdentifierId());
-                MDC.put(PART_ID, getAppearanceCivilRequest.getGetAppearanceCivilRequest().getRequestPartId());
+                setMDC("getAppearanceCivil",
+                        getAppearanceCivilRequest.getGetAppearanceCivilRequest().getRequestAgencyIdentifierId(),
+                        getAppearanceCivilRequest.getGetAppearanceCivilRequest().getRequestPartId());
             }
 
             logger.debug("attempting to call ords api");
+
             response2
                     .setGetAppearanceCivilResponse(
                             AppearanceCivilResponseMapper
@@ -55,7 +57,7 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
                                             getAppearanceCivilRequest.getGetAppearanceCivilRequest().getPhysicalFileId())));
 
             if (response2.getGetAppearanceCivilResponse() != null
-                    && response2.getGetAppearanceCivilResponse().getResponseCd() == "0") {
+                    && isSuccessResponse(response2.getGetAppearanceCivilResponse().getResponseCd())) {
                 logger.info("successfully retrieved getAppearanceCivilParty [{}]",
                         getAppearanceCivilRequest.getGetAppearanceCivilRequest().getPhysicalFileId());
             } else {
@@ -67,21 +69,16 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
                                 response2.getGetAppearanceCivilResponse().getResponseMessageTxt());
             }
 
-            return response2;
-
         } catch (ApiException e) {
 
             response2.setGetAppearanceCivilResponse(AppearanceCivilResponseMapper.INSTANCE.toGetAppearanceCivilResponse(e));
             logger.error("ORDS Api exception while calling getAppearanceCivilParty", e);
-            return response2;
 
         } finally {
-
-            MDC.remove(OPERATION);
-            MDC.remove(AGENCY_IDENTIFIER_ID);
-            MDC.remove(PART_ID);
-
+            cleanUpMDC();
         }
+
+        return response2;
     }
 
     @Override
@@ -131,7 +128,49 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
 
     @Override
     public GetAppearanceCivilApprMethodResponse2 getAppearanceCivilApprMethod(GetAppearanceCivilApprMethodRequest getAppearanceCivilApprMethodRequest) {
-        return null;
+
+        logger.debug("received new getAppearanceCivilApprMethod");
+
+        GetAppearanceCivilApprMethodResponse2 response2 = new GetAppearanceCivilApprMethodResponse2();
+
+        try {
+
+            if (getAppearanceCivilApprMethodRequest.getGetAppearanceCivilApprMethodRequest() != null) {
+                setMDC("getAppearanceCivilApprMethod",
+                        getAppearanceCivilApprMethodRequest.getGetAppearanceCivilApprMethodRequest().getRequestAgencyIdentifierId(),
+                        getAppearanceCivilApprMethodRequest.getGetAppearanceCivilApprMethodRequest().getRequestPartId());
+            }
+
+            logger.debug("attempting to call ords api");
+            response2
+                    .setGetAppearanceCivilApprMethodResponse(
+                            AppearanceCivilApprMethodResponseMapper
+                                    .INSTANCE.toGetAppearanceCivilApprMethodResponse(
+                                    this.pcssCivilApi.civilSearchFileAppearanceMethodGet(
+                                            getAppearanceCivilApprMethodRequest.getGetAppearanceCivilApprMethodRequest().getAppearanceId())));
+
+            if (response2.getGetAppearanceCivilApprMethodResponse() != null
+                    && isSuccessResponse(response2.getGetAppearanceCivilApprMethodResponse().getResponseCd())) {
+                logger.info("successfully retrieved from ORDS");
+            } else {
+                logger.error("error retrieving civilSearchFileAppearanceMethod  [{}]",
+                        getAppearanceCivilApprMethodRequest.getGetAppearanceCivilApprMethodRequest() == null ?
+                                UNKNOWN :
+                                getAppearanceCivilApprMethodRequest.getGetAppearanceCivilApprMethodRequest().getAppearanceId());
+            }
+
+        } catch (ApiException e) {
+
+            response2.setGetAppearanceCivilApprMethodResponse(AppearanceCivilApprMethodResponseMapper.INSTANCE.toGetAppearanceCivilApprMethodResponse(e));
+            logger.error("ORDS Api exception while calling getAppearanceCivilParty", e);
+
+        } finally {
+            cleanUpMDC();
+        }
+
+
+        return response2;
+
     }
 
     @Override
@@ -139,25 +178,25 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
 
         logger.debug("received new getAppearanceCivilParty");
 
+        GetAppearanceCivilPartyResponse2 response2 = new GetAppearanceCivilPartyResponse2();
+
         try {
 
             if (getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest() != null) {
-                MDC.put(OPERATION, "getAppearanceCivilParty");
-                MDC.put(AGENCY_IDENTIFIER_ID,
-                        getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getRequestAgencyIdentifierId());
-                MDC.put(PART_ID, getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getRequestPartId());
+                setMDC("getAppearanceCivilParty",
+                        getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getRequestAgencyIdentifierId(),
+                        getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getRequestPartId());
             }
 
-            GetAppearanceCivilPartyResponse2 response2 = new GetAppearanceCivilPartyResponse2();
-
             logger.debug("attempting to call ords api");
+
             response2
                     .setGetAppearanceCivilPartyResponse(
                             AppearanceCivilPartyMapper
                                     .INSTANCE.toGetAppearanceCivilPartyResponse(
                                     this.pcssCivilApi.civilSearchFilePartyGet(getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getAppearanceId())));
 
-            if (response2.getGetAppearanceCivilPartyResponse().getResponseCd() == "0")
+            if (isSuccessResponse(response2.getGetAppearanceCivilPartyResponse().getResponseCd()))
                 logger.info("successfully retrieved getAppearanceCivilParty [{}]",
                         getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getAppearanceId());
             else
@@ -168,23 +207,34 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
                         response2.getGetAppearanceCivilPartyResponse() == null ? UNKNOWN :
                                 response2.getGetAppearanceCivilPartyResponse().getResponseMessageTxt());
 
-            return response2;
-
-
         } catch (ApiException e) {
 
-            GetAppearanceCivilPartyResponse2 response2 = new GetAppearanceCivilPartyResponse2();
+            response2 = new GetAppearanceCivilPartyResponse2();
             response2.setGetAppearanceCivilPartyResponse(AppearanceCivilPartyMapper.INSTANCE.toGetAppearanceCivilPartyResponse(e));
             logger.error("ORDS Api exception while calling getAppearanceCivilParty", e);
-            return response2;
 
         } finally {
-
-            MDC.remove(OPERATION);
-            MDC.remove(AGENCY_IDENTIFIER_ID);
-            MDC.remove(PART_ID);
-
+            cleanUpMDC();
         }
 
+        return response2;
+
+    }
+
+    private void setMDC(String operation, String requestAgencyIdentifierId, String requestPartId) {
+        MDC.put(OPERATION, operation);
+        MDC.put(AGENCY_IDENTIFIER_ID,
+                requestAgencyIdentifierId);
+        MDC.put(PART_ID, requestPartId);
+    }
+
+    private void cleanUpMDC() {
+        MDC.remove(OPERATION);
+        MDC.remove(AGENCY_IDENTIFIER_ID);
+        MDC.remove(PART_ID);
+    }
+
+    private boolean isSuccessResponse(String responseCd) {
+        return StringUtils.equals(Keys.DEFAULT_SUCCESS_RESPONSE_CD, responseCd);
     }
 }
