@@ -3,6 +3,7 @@ package ca.bc.gov.open.pcss.pcsswebservice.civil;
 
 import ca.bc.gov.courts.xml.ns.pcss.civil.v1.*;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssApi;
+import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
 import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilPartyMapper;
 import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilResponseMapper;
@@ -21,10 +22,10 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
     private static final String OPERATION = "operation";
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final PcssApi pcssApi;
+    private final PcssCivilApi pcssCivilApi;
 
-    public PcssCivilEndpoint(PcssApi pcssApi) {
-        this.pcssApi = pcssApi;
+    public PcssCivilEndpoint(PcssCivilApi pcssCivilApi) {
+        this.pcssCivilApi = pcssCivilApi;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
                     .setGetAppearanceCivilResponse(
                             AppearanceCivilResponseMapper
                                     .INSTANCE.toGetAppearanceCivilResponse(
-                                    this.pcssApi.searchFileAppearanceGet(
+                                    this.pcssCivilApi.civilSearchFileAppearanceGet(
                                             getAppearanceCivilRequest.getGetAppearanceCivilRequest().getFutureYN().value(),
                                             getAppearanceCivilRequest.getGetAppearanceCivilRequest().getHistoryYN().value(),
                                             getAppearanceCivilRequest.getGetAppearanceCivilRequest().getPhysicalFileId())));
@@ -154,7 +155,7 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
                     .setGetAppearanceCivilPartyResponse(
                             AppearanceCivilPartyMapper
                                     .INSTANCE.toGetAppearanceCivilPartyResponse(
-                                    this.pcssApi.searchFilePartyGet(getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getAppearanceId())));
+                                    this.pcssCivilApi.civilSearchFilePartyGet(getAppearanceCivilPartyRequest.getGetAppearanceCivilPartyRequest().getAppearanceId())));
 
             if (response2.getGetAppearanceCivilPartyResponse().getResponseCd() == "0")
                 logger.info("successfully retrieved getAppearanceCivilParty [{}]",

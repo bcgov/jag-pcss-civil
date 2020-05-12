@@ -6,6 +6,7 @@ import ca.bc.gov.courts.xmlschema.pcss.common._1_0.AppearanceStatusType;
 import ca.bc.gov.courts.xmlschema.pcss.common._1_0.YesNoType;
 import ca.bc.gov.open.pcss.civil.ApprDetail;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssApi;
+import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFileAppearanceData;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFileAppearanceResponse;
@@ -57,7 +58,7 @@ public class EndpointGetAppearanceCivilTest {
     private PcssCivilEndpoint sut;
 
     @Mock
-    private PcssApi pcssApiMock;
+    public PcssCivilApi pcssCivilApiMock;
 
     @BeforeAll
     public void setUp() throws ApiException {
@@ -65,14 +66,14 @@ public class EndpointGetAppearanceCivilTest {
         MockitoAnnotations.initMocks(this);
 
         SearchFileAppearanceResponse fakeResponse = getFakeSearchFileAppearanceResponse(1);
-        Mockito.when(pcssApiMock.searchFileAppearanceGet(Mockito.eq("Y"), Mockito.eq("N"), Mockito.eq(CASE_1))).thenReturn(fakeResponse);
+        Mockito.when(pcssCivilApiMock.civilSearchFileAppearanceGet(Mockito.eq("Y"), Mockito.eq("N"), Mockito.eq(CASE_1))).thenReturn(fakeResponse);
 
         SearchFileAppearanceResponse fakeMultiResponse = getFakeSearchFileAppearanceResponse(10);
-        Mockito.when(pcssApiMock.searchFileAppearanceGet(Mockito.eq("Y"), Mockito.eq("N"), Mockito.eq(CASE_2))).thenReturn(fakeMultiResponse);
+        Mockito.when(pcssCivilApiMock.civilSearchFileAppearanceGet(Mockito.eq("Y"), Mockito.eq("N"), Mockito.eq(CASE_2))).thenReturn(fakeMultiResponse);
 
-        Mockito.when(pcssApiMock.searchFileAppearanceGet(Mockito.eq("Y"), Mockito.eq("N"), Mockito.eq(CASE_3))).thenThrow(new ApiException(400, null, null, RESPONSE_BODY));
+        Mockito.when(pcssCivilApiMock.civilSearchFileAppearanceGet(Mockito.eq("Y"), Mockito.eq("N"), Mockito.eq(CASE_3))).thenThrow(new ApiException(400, null, null, RESPONSE_BODY));
 
-        sut = new PcssCivilEndpoint(pcssApiMock);
+        sut = new PcssCivilEndpoint(pcssCivilApiMock);
 
     }
 

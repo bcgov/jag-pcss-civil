@@ -5,6 +5,7 @@ import ca.bc.gov.courts.xml.ns.pcss.civil.v1.GetAppearanceCivilPartyResponse2;
 import ca.bc.gov.open.pcss.civil.GetAppearanceCivilPartyResponse;
 import ca.bc.gov.open.pcss.civil.Party;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssApi;
+import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.PartyData;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.PartyResults;
@@ -37,18 +38,18 @@ public class EndpointGetAppearanceCivilPartyTest {
     private PcssCivilEndpoint sut;
 
     @Mock
-    public PcssApi pcssApiMock;
+    public PcssCivilApi pcssCivilApiMock;
 
     @BeforeAll
     public void setUp() throws ApiException {
 
         MockitoAnnotations.initMocks(this);
 
-        Mockito.when(pcssApiMock.searchFilePartyGet(Mockito.eq(CASE_1))).thenReturn(fakeSearchFilePartyResponse());
+        Mockito.when(pcssCivilApiMock.civilSearchFilePartyGet((Mockito.eq(CASE_1)))).thenReturn(fakeSearchFilePartyResponse());
 
-        Mockito.when(pcssApiMock.searchFilePartyGet(Mockito.eq(CASE_2))).thenThrow(new ApiException(500, "internal server error", null, RESPONSE_BODY));
+        Mockito.when(pcssCivilApiMock.civilSearchFilePartyGet(Mockito.eq(CASE_2))).thenThrow(new ApiException(500, "internal server error", null, RESPONSE_BODY));
 
-        sut = new PcssCivilEndpoint(pcssApiMock);
+        sut = new PcssCivilEndpoint(pcssCivilApiMock);
 
     }
 
