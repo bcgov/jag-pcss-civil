@@ -76,7 +76,7 @@ paths:
           type: string
           description: Implicit parameter  
           pattern: '^[^/]+$'      
-  'civil/file-content/hearing-restrictions/':
+  '/civil/file-content/hearing-restrictions/':
     get:
       tags:
       - PCSS-CIVIL
@@ -91,12 +91,12 @@ paths:
               data:
                 $ref: '#/definitions/fileContentHearingRestrictionResponse'
       parameters:
-        - name: physical_file_id
-          in: query
-          type: string
-          description: implicit  
-          pattern: '^[^/]+$'      
-  'civil/search-file/party':
+      - name: physical_file_id
+        in: query
+        type: string
+        description: implicit
+        pattern: '^[^/]+$'
+  '/civil/search-file/party':
     get:
       tags:
       - PCSS-CIVIL
@@ -115,7 +115,7 @@ paths:
         type: string
         description: implicit
         pattern: '^[^/]+$'
-  'civil/search-file/appearance-method/':
+  '/civil/search-file/appearance-method/':
     get:
       tags:
       - PCSS-CIVIL
@@ -128,12 +128,12 @@ paths:
           schema:
             $ref: '#/definitions/searchFileAppearanceMethodResponse'
       parameters:
-        - name: appearance_id
-          in: query
-          type: string
-          description: implicit
-          pattern: '^[^/]+$'
-  'civil/search-file/appearance-document/':
+      - name: appearance_id
+        in: query
+        type: string
+        description: implicit
+        pattern: '^[^/]+$'
+  '/civil/search-file/appearance-document/':
     get:
       tags:
       - PCSS-CIVIL
@@ -146,12 +146,12 @@ paths:
           schema:
             $ref: '#/definitions/searchFileAppearanceDocumentResponse'
       parameters:
-        - name: appearance_id
-          in: query
-          type: string
-          description: implicit
-          pattern: '^[^/]+$'
-  'civil/search-file/appearance-resources/':
+      - name: appearance_id
+        in: query
+        type: string
+        description: implicit
+        pattern: '^[^/]+$'
+  '/civil/search-file/appearance-resources/':
     get:
       tags:
       - PCSS-CIVIL
@@ -164,38 +164,35 @@ paths:
           schema:
             $ref: '#/definitions/searchFileAppearanceResourcesResponse'
       parameters:
-        - name: appearance_id
-          in: query
-          type: string
-          description: implicit
-          pattern: '^[^/]+$'
+      - name: appearance_id
+        in: query
+        type: string
+        description: implicit
+        pattern: '^[^/]+$'
   '/civil/search-file/appearance-issue/':
     get:
       tags:
       - PCSS-CIVIL
       security:
-      - basicAuth: []    
+      - basicAuth: []
       description: Get the appearance issue data
       responses:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/searchFileAppearanceIssueResponse'
+            $ref: '#/definitions/searchFileAppearanceIssueResponse'
       parameters:
-        - name: appearance_id
-          in: query
-          type: string
-          description: Implicit parameter
-          pattern: '^[^/]+$'
-        - name: civil_document_id
-          in: query
-          type: string
-          description: Implicit parameter
-          pattern: '^[^/]+$'          
-  'civil/search-file/appearance/':
+      - name: appearance_id
+        in: query
+        type: string
+        description: Implicit parameter
+        pattern: '^[^/]+$'
+      - name: civil_document_id
+        in: query
+        type: string
+        description: Implicit parameter
+        pattern: '^[^/]+$'
+  '/civil/search-file/appearance/':
     get:
       description: Get the appearance data
       tags:
@@ -226,7 +223,7 @@ paths:
       tags:
       - PCSS-CIVIL
       security:
-      - basicAuth: []      
+      - basicAuth: []
       responses:
         '200':
           description: output of the endpoint
@@ -236,26 +233,26 @@ paths:
               data:
                 $ref: '#/definitions/syncCivilApprResponse'
       parameters:
-        - name: agency_id
-          in: query
-          type: string
-          description: Implicit parameter
-          pattern: '^[^/]+$'
-        - name: party_id
-          in: query
-          type: string
-          description: Implicit parameter
-          pattern: '^[^/]+$'
-        - name: request_dtm
-          in: query
-          type: string
-          description: Implicit parameter
-          pattern: '^[^/]+$'
-        - name: up_to_dtm
-          in: query
-          type: string
-          description: Implicit parameter
-          pattern: '^[^/]+$'        
+      - name: agency_id
+        in: query
+        type: string
+        description: Implicit parameter
+        pattern: '^[^/]+$'
+      - name: party_id
+        in: query
+        type: string
+        description: Implicit parameter
+        pattern: '^[^/]+$'
+      - name: request_dtm
+        in: query
+        type: string
+        description: Implicit parameter
+        pattern: '^[^/]+$'
+      - name: up_to_dtm
+        in: query
+        type: string
+        description: Implicit parameter
+        pattern: '^[^/]+$'
   /health:
     get:
       tags:
@@ -471,7 +468,7 @@ definitions:
       fileddt:
         type: string
       documenthearingccn:
-        type: string                                 
+        type: string
   searchFileAppearanceResourcesResponse:
     type: object
     properties:
@@ -530,12 +527,12 @@ definitions:
   searchFileAppearanceIssueData:
     type: object
     properties:
-      issueNumber:
+      issuenumber:
         type: string
-      issueDsc:
+      issuedsc:
         type: string
-      issueResultCd:
-        type: string                              
+      issueresultcd:
+        type: string
   partyResults:
     type: object
     properties:
@@ -641,6 +638,6 @@ definitions:
       lvPcssCourtDivisionCd:
         type: string
       lvFileNumberTxt:
-        type: string 
+        type: string
       courtLevelCd:
-        type: string                                                                     
+        type: string

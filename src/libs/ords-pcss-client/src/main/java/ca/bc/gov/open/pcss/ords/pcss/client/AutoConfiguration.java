@@ -3,6 +3,8 @@ package ca.bc.gov.open.pcss.ords.pcss.client;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiClient;
+import ca.bc.gov.open.pcss.ords.pcss.client.civil.CivilService;
+import ca.bc.gov.open.pcss.ords.pcss.client.civil.CivilServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -40,8 +42,13 @@ public class AutoConfiguration {
     }
 
     @Bean
-    public PcssCivilApi pocsscivilApi(@Qualifier("pcssApiClient") ApiClient apiClient) {
+    public PcssCivilApi pcsscivilApi(@Qualifier("pcssApiClient") ApiClient apiClient) {
         return new PcssCivilApi(apiClient);
+    }
+
+    @Bean
+    public CivilService civilService(@Qualifier("pcsscivilApi")PcssCivilApi pcsscivilApi) {
+        return new CivilServiceImpl(pcsscivilApi);
     }
 
 }
