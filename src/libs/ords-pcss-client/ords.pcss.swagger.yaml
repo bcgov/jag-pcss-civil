@@ -118,6 +118,27 @@ paths:
           type: string
           description: Implicit parameter
           pattern: '^[^/]+$'
+  '/civil/file-content/document-issue/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []     
+      description: Get the civil file content document issue data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/civilFileContentDocumentIssueResponse'
+      parameters:
+        - name: civil_document_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
   '/civil/file-content/hearing-restrictions/':
     get:
       tags:
@@ -448,6 +469,32 @@ definitions:
       actcd:
         type: string
       actdsc:
+        type: string
+  civilFileContentDocumentIssueResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/civilFileContentDocumentIssueData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  civilFileContentDocumentIssueData:
+    type: object
+    properties:
+      issuenumber:
+        type: string
+      issuetypecd:
+        type: string
+      issuedsc:
+        type: string
+      concludedyn:
+        type: string
+      issueresultcd:
+        type: string
+      issueresultdsc:
         type: string
   searchFileAppearanceResponse:
     type: object
