@@ -35,6 +35,7 @@ paths:
           in: query
           type: string
           description: Implicit parameter
+          pattern: '^[^/]+$'
   'civil/file-content/party':
     get:
       tags:
@@ -54,6 +55,27 @@ paths:
         type: string
         description: implicit
         pattern: '^[^/]+$'
+  '/civil/file-content/document/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []    
+      description: Get the civil file content document data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/civilFileContentDocumentResponse'
+      parameters:
+        - name: physical_file_id
+          in: query
+          type: string
+          description: Implicit parameter  
+          pattern: '^[^/]+$'      
   'civil/file-content/hearing-restrictions/':
     get:
       tags:
@@ -281,7 +303,39 @@ definitions:
       trialremark:
         type: string
       commenttojudgetxt:
-        type: string                                                                                
+        type: string
+  civilFileContentDocumentResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/civilFileContentDocumentData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  civilFileContentDocumentData:
+    type: object
+    properties:
+      civildocumentid:
+        type: string  
+      fileseqnumber:
+        type: string
+      documenttypecd:
+        type: string
+      fileddt:
+        type: string
+      commenttxt:
+        type: string
+      concludedyn:
+        type: string  
+      lastappearanceid:
+        type: string 
+      lastappearnacedt:
+        type: string
+      lastappearancetm:
+        type: string                                                                                                                                                   
   searchFileAppearanceResponse:
     type: object
     properties:
