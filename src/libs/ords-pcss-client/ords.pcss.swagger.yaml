@@ -688,7 +688,7 @@ definitions:
         type: number
       response_msg:
         type: string
-  syncCivilApprData:
+  syncCivilHrstData:
     type: object
     properties:
       lvoperationmodecd:
