@@ -18,15 +18,6 @@ import java.math.BigDecimal;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CivilServiceGetCivilSearchFileAppearanceDocumentTest {
 
-
-    private static final String CASE_1 = "CASE_1";
-    private static final String CASE_2 = "CASE_2";
-    private static final String CASE_3 = "CASE_3";
-    private static final String CASE_4 = "CASE_4";
-    private static final String CASE_5 = "CASE_5";
-
-
-
     private static final String SUCCESS_RESPONSE_MSG = "success";
     private static final BigDecimal SUCCESS_RESPONSE_CD = BigDecimal.valueOf(0);
     private static final String ERROR_RESPONSE_MSG = "error";
@@ -42,7 +33,6 @@ public class CivilServiceGetCivilSearchFileAppearanceDocumentTest {
     private static final String ISSUEDSC = "Issuedsc";
     private static final String ISSUENUMBER = "Issuenumber";
     private static final String ISSUERESULTCD = "Issueresultcd";
-    public static final String RESPONSE_BODY = "response body";
 
     private CivilServiceImpl sut;
 
@@ -55,54 +45,54 @@ public class CivilServiceGetCivilSearchFileAppearanceDocumentTest {
         MockitoAnnotations.initMocks(this);
 
         Mockito.when(pcssCivilApiMock
-                .civilSearchFileAppearanceDocumentGet(Mockito.eq(CASE_4)))
-                .thenThrow(new ApiException(400, null, null, RESPONSE_BODY));
+                .civilSearchFileAppearanceDocumentGet(Mockito.eq(TestHelpers.CASE_4)))
+                .thenThrow(TestHelpers.DEFAULT_EXCEPTION);
 
         Mockito.when(pcssCivilApiMock
-                .civilSearchFileAppearanceDocumentGet(Mockito.eq(CASE_5)))
+                .civilSearchFileAppearanceDocumentGet(Mockito.eq(TestHelpers.CASE_5)))
                 .thenReturn(getFakeSearchFileAppearanceDocumentResponse(1));
 
         Mockito.when(pcssCivilApiMock
-                .civilSearchFileAppearanceIssueGet(Mockito.eq(CASE_5), Mockito.anyString()))
-                .thenThrow(new ApiException(400, null, null, RESPONSE_BODY));
+                .civilSearchFileAppearanceIssueGet(Mockito.eq(TestHelpers.CASE_5), Mockito.anyString()))
+                .thenThrow(TestHelpers.DEFAULT_EXCEPTION);
 
         sut = new CivilServiceImpl(pcssCivilApiMock);
 
     }
 
-    @DisplayName(CASE_1 + ": When api return 1 document")
+    @DisplayName(TestHelpers.CASE_1 + ": When api return 1 document")
     @Test
     public void withOneDocumentShouldReturnResult() throws ApiException {
-        testSuccess(CASE_1, 1, 1, true);
+        testSuccess(TestHelpers.CASE_1, 1, 1, true);
     }
 
-    @DisplayName(CASE_2 + ": When api return 100 document")
+    @DisplayName(TestHelpers.CASE_2 + ": When api return 100 document")
     @Test
     public void withMultipleDocumentShouldReturnResult() throws ApiException {
-        testSuccess(CASE_2, 100, 100, true);
+        testSuccess(TestHelpers.CASE_2, 100, 100, true);
     }
 
-    @DisplayName(CASE_3 + ": When api return 1 document, and error on issue")
+    @DisplayName(TestHelpers.CASE_3 + ": When api return 1 document, and error on issue")
     @Test
     public void withErrorIssueShouldReturnResult() throws ApiException {
-        testSuccess(CASE_2, 100, 100, false);
+        testSuccess(TestHelpers.CASE_2, 100, 100, false);
     }
 
-    @DisplayName(CASE_4 + ": When api error")
+    @DisplayName(TestHelpers.CASE_4 + ": When api error")
     @Test
     public void withApiExceptionShouldReturnResult() throws ApiException {
 
-        AppearanceDocumentResponse actual = sut.getCivilSearchFileAppearanceDocument(CASE_4);
+        AppearanceDocumentResponse actual = sut.getCivilSearchFileAppearanceDocument(TestHelpers.CASE_4);
 
         Assertions.assertEquals(ERROR_RESPONSE_CD, actual.getResponseCd());
-        Assertions.assertEquals(RESPONSE_BODY, actual.getResponseMsg());
+        Assertions.assertEquals(TestHelpers.RESPONSE_BODY, actual.getResponseMsg());
     }
 
-    @DisplayName(CASE_5 + ": When api return 1 document, and error on issue")
+    @DisplayName(TestHelpers.CASE_5 + ": When api return 1 document, and error on issue")
     @Test
     public void withApiExceptionShouldReturnResultWithIssue() throws ApiException {
 
-        AppearanceDocumentResponse actual = sut.getCivilSearchFileAppearanceDocument(CASE_5);
+        AppearanceDocumentResponse actual = sut.getCivilSearchFileAppearanceDocument(TestHelpers.CASE_5);
 
         Assertions.assertEquals(SUCCESS_RESPONSE_CD, actual.getResponseCd());
         Assertions.assertEquals(SUCCESS_RESPONSE_MSG, actual.getResponseMsg());

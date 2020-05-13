@@ -3,8 +3,10 @@ package ca.bc.gov.open.pcss.ords.pcss.client.civil;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFileAppearanceIssueResponse;
+import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFileAppearanceResourcesResponse;
 import ca.bc.gov.open.pcss.ords.pcss.client.civil.mappers.AppearanceDocumentResponseMapper;
 import ca.bc.gov.open.pcss.ords.pcss.client.civil.mappers.SearchFileAppearanceIssueResponseMapper;
+import ca.bc.gov.open.pcss.ords.pcss.client.civil.mappers.SearchFileAppearanceResourcesResponseMapper;
 import ca.bc.gov.open.pcss.ords.pcss.client.civil.models.AppearanceDocumentResponse;
 import org.apache.commons.lang3.StringUtils;
 
@@ -44,11 +46,24 @@ public class CivilServiceImpl implements CivilService {
     }
 
     private SearchFileAppearanceIssueResponse getFileAppearanceDocumentIssue(String appearanceId, String documentId) {
+
         try {
             return this.pcssCivilApi.civilSearchFileAppearanceIssueGet(appearanceId, documentId);
         } catch (ApiException e) {
             return SearchFileAppearanceIssueResponseMapper.INSTANCE.toSearchFileAppearanceIssueResponse(e);
         }
+
+    }
+
+
+    public SearchFileAppearanceResourcesResponse getAppearanceCivilResource(String appearanceId) {
+
+        try {
+            return this.pcssCivilApi.civilSearchFileAppearanceResourcesGet(appearanceId);
+        } catch (ApiException e) {
+            return SearchFileAppearanceResourcesResponseMapper.INSTANCE.toSearchFileAppearanceResourcesResponse(e);
+        }
+
     }
 
 }

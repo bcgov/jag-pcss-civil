@@ -6,10 +6,7 @@ import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
 import ca.bc.gov.open.pcss.ords.pcss.client.civil.CivilService;
 import ca.bc.gov.open.pcss.pcsswebservice.Keys;
-import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilApprMethodResponseMapper;
-import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilDocumentResponseMapper;
-import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilPartyMapper;
-import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilResponseMapper;
+import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,7 +104,40 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
 
     @Override
     public GetAppearanceCivilResourceResponse2 getAppearanceCivilResource(GetAppearanceCivilResourceRequest getAppearanceCivilResourceRequest) {
-        return null;
+
+        logger.debug("received new getAppearanceCivilDocument");
+
+        GetAppearanceCivilResourceResponse2 response2 = new GetAppearanceCivilResourceResponse2();
+
+
+        if (getAppearanceCivilResourceRequest.getGetAppearanceCivilResourceRequest() != null) {
+            setMDC("getAppearanceCivilDocument",
+                    getAppearanceCivilResourceRequest.getGetAppearanceCivilResourceRequest().getRequestAgencyIdentifierId(),
+                    getAppearanceCivilResourceRequest.getGetAppearanceCivilResourceRequest().getRequestPartId());
+        }
+
+        logger.debug("attempting to call ords api");
+
+        response2
+                .setGetAppearanceCivilResourceResponse(
+                        AppearanceCivilResourceResponseMapper
+                                .INSTANCE.toGetAppearanceCivilResourceResponse2(
+                                this.civilService.getAppearanceCivilResource(
+                                        getAppearanceCivilResourceRequest.getGetAppearanceCivilResourceRequest().getAppearanceId())));
+
+        if (response2.getGetAppearanceCivilResourceResponse() != null
+                && isSuccessResponse(response2.getGetAppearanceCivilResourceResponse().getResponseCd())) {
+            logger.info("successfully retrieved getGetAppearanceCivilResourceResponse [{}]",
+                    getAppearanceCivilResourceRequest.getGetAppearanceCivilResourceRequest().getAppearanceId());
+        } else {
+            logger.error("error retrieving getAppearanceCivilDocument [{}], error: [{}]",
+                    response2.getGetAppearanceCivilResourceResponse().getResponseCd(),
+                    response2.getGetAppearanceCivilResourceResponse().getResponseMessageTxt());
+        }
+
+        cleanUpMDC();
+
+        return response2;
     }
 
     @Override
@@ -145,7 +175,6 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
                     response2.getGetAppearanceCivilDocumentResponse().getResponseCd(),
                     response2.getGetAppearanceCivilDocumentResponse().getResponseMessageTxt());
         }
-
 
         cleanUpMDC();
 
