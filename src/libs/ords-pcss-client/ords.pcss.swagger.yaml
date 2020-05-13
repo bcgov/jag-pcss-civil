@@ -55,6 +55,27 @@ paths:
         type: string
         description: implicit
         pattern: '^[^/]+$'
+  '/civil/file-content/counsel/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []    
+      description: Get the civil file content counsel data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/civilFileContentCounselResponse'
+      parameters:
+        - name: pi_party_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'     
   '/civil/file-content/document/':
     get:
       tags:
@@ -337,6 +358,26 @@ definitions:
         type: string
       commenttojudgetxt:
         type: string
+  civilFileContentCounselResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/civilFileContentCounselData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  civilFileContentCounselData:
+    type: object
+    properties:
+      counselid:
+        type: string
+      fullnum:
+        type: string
+      phonenumbertxt:
+        type: string                   
   civilFileContentDocumentResponse:
     type: object
     properties:
