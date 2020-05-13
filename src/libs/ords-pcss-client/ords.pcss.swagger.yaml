@@ -35,6 +35,7 @@ paths:
           in: query
           type: string
           description: Implicit parameter
+          pattern: '^[^/]+$'
   'civil/file-content/party':
     get:
       tags:
@@ -54,6 +55,27 @@ paths:
         type: string
         description: implicit
         pattern: '^[^/]+$'
+  '/civil/file-content/document/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []    
+      description: Get the civil file content document data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/civilFileContentDocumentResponse'
+      parameters:
+        - name: physical_file_id
+          in: query
+          type: string
+          description: Implicit parameter  
+          pattern: '^[^/]+$'      
   '/civil/file-content/hearing-restrictions/':
     get:
       tags:
@@ -231,6 +253,42 @@ paths:
         type: string
         description: Implicit parameter
         pattern: '^[^/]+$'
+  '/civil/sync-civil-hrst/':
+    get:
+      description: Get the sync civil hrst data
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []      
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/syncCivilHrstResponse'
+      parameters:
+        - name: agency_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
+        - name: party_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
+        - name: request_dtm
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
+        - name: up_to_dtm
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'        
   /health:
     get:
       tags:
@@ -278,7 +336,39 @@ definitions:
       trialremark:
         type: string
       commenttojudgetxt:
-        type: string                                                                                
+        type: string
+  civilFileContentDocumentResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/civilFileContentDocumentData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  civilFileContentDocumentData:
+    type: object
+    properties:
+      civildocumentid:
+        type: string  
+      fileseqnumber:
+        type: string
+      documenttypecd:
+        type: string
+      fileddt:
+        type: string
+      commenttxt:
+        type: string
+      concludedyn:
+        type: string  
+      lastappearanceid:
+        type: string 
+      lastappearnacedt:
+        type: string
+      lastappearancetm:
+        type: string                                                                                                                                                   
   searchFileAppearanceResponse:
     type: object
     properties:
@@ -587,3 +677,37 @@ definitions:
         type: string
       courtLevelCd:
         type: string
+  syncCivilHrstResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/syncCivilHrstData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  syncCivilHrstData:
+    type: object
+    properties:
+      lvoperationmodecd:
+        type: string
+      ldtransactiondtm:
+        type: string
+      lnhearingrestrictionid:
+        type: string
+      lnadjudicatorpartid:
+        type: string
+      lvhearingrestrictioncd:
+        type: string
+      lnphysicalfileid:
+        type: string
+      lncivildocumentid:
+        type: string
+      lnhomelocationagenid:
+        type: string
+      lvfilenumbertxt:
+        type: string
+      lvsoctxt:
+        type: string                
