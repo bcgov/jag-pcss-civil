@@ -96,7 +96,28 @@ paths:
           in: query
           type: string
           description: Implicit parameter  
-          pattern: '^[^/]+$'      
+          pattern: '^[^/]+$'
+  '/civil/file-content/document-support/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []      
+      description: Get the civil file content document support data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/civilFileContentDocumentSupportResponse'
+      parameters:
+        - name: civil_document_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
   '/civil/file-content/hearing-restrictions/':
     get:
       tags:
@@ -409,7 +430,25 @@ definitions:
       lastappearnacedt:
         type: string
       lastappearancetm:
-        type: string                                                                                                                                                   
+        type: string
+  civilFileContentDocumentSupportResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/civilFileContentDocumentSupportData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  civilFileContentDocumentSupportData:
+    type: object
+    properties:
+      actcd:
+        type: string
+      actdsc:
+        type: string
   searchFileAppearanceResponse:
     type: object
     properties:
