@@ -7,13 +7,17 @@ import org.junit.jupiter.api.Assertions;
 public class TestHelpers {
 
 
+
+
     private TestHelpers() {}
 
     public static final String CASE_1 = "CASE_1";
     public static final String CASE_2 = "CASE_2";
     public static final String CASE_3 = "CASE_3";
     public static final String SUCCESS_RESPONSE_CD = String.valueOf(0);
+    public static final String ERROR_RESPONSE_CD = String.valueOf(-1);
     public static final String SUCCESS_RESPONSE_MSG = "success";
+    public static final String ERROR_RESPONSE_MSG = "error";
     public static final String RESPONSE_BODY = "body_content";
     public static final String REQUEST_AGENCY_IDENTIFIER_ID = "RequestAgencyIdentifierId";
     public static final String REQUEST_PART_ID = "RequestPartId";

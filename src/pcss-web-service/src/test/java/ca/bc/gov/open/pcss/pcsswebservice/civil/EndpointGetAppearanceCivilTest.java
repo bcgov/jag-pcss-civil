@@ -5,11 +5,11 @@ import ca.bc.gov.courts.xml.ns.pcss.civil.v1.GetAppearanceCivilResponse2;
 import ca.bc.gov.courts.xmlschema.pcss.common._1_0.AppearanceStatusType;
 import ca.bc.gov.courts.xmlschema.pcss.common._1_0.YesNoType;
 import ca.bc.gov.open.pcss.civil.ApprDetail;
-import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFileAppearanceData;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFileAppearanceResponse;
+import ca.bc.gov.open.pcss.ords.pcss.client.civil.CivilService;
 import ca.bc.gov.open.pcss.pcsswebservice.Keys;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;
@@ -60,6 +60,9 @@ public class EndpointGetAppearanceCivilTest {
     @Mock
     public PcssCivilApi pcssCivilApiMock;
 
+    @Mock
+    public CivilService civilServiceMock;
+
     @BeforeAll
     public void setUp() throws ApiException {
 
@@ -73,7 +76,7 @@ public class EndpointGetAppearanceCivilTest {
 
         Mockito.when(pcssCivilApiMock.civilSearchFileAppearanceGet(Mockito.eq("Y"), Mockito.eq("N"), Mockito.eq(CASE_3))).thenThrow(new ApiException(400, null, null, RESPONSE_BODY));
 
-        sut = new PcssCivilEndpoint(pcssCivilApiMock);
+        sut = new PcssCivilEndpoint(pcssCivilApiMock, civilServiceMock);
 
     }
 
