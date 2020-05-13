@@ -253,6 +253,42 @@ paths:
         type: string
         description: Implicit parameter
         pattern: '^[^/]+$'
+  '/civil/sync-civil-hrst/':
+    get:
+      description: Get the sync civil hrst data
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []      
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/syncCivilHrstResponse'
+      parameters:
+        - name: agency_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
+        - name: party_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
+        - name: request_dtm
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
+        - name: up_to_dtm
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'        
   /health:
     get:
       tags:
@@ -641,3 +677,37 @@ definitions:
         type: string
       courtLevelCd:
         type: string
+  syncCivilHrstResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/syncCivilHrstrData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  syncCivilApprData:
+    type: object
+    properties:
+      lvoperationmodecd:
+        type: string
+      ldtransactiondtm:
+        type: string
+      lnhearingrestrictionid:
+        type: string
+      lnadjudicatorpartid:
+        type: string
+      lvhearingrestrictioncd:
+        type: string
+      lnphysicalfileid:
+        type: string
+      lncivildocumentid:
+        type: string
+      lnhomelocationagenid:
+        type: string
+      lvfilenumbertxt:
+        type: string
+      lvsoctxt:
+        type: string                
