@@ -6,6 +6,7 @@ import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFileAppearanceMethodData;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFileAppearanceMethodResponse;
+import ca.bc.gov.open.pcss.ords.pcss.client.civil.CivilService;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -28,11 +29,13 @@ public class EndpointGetAppearanceCivilApprMethodTest {
     @Mock
     public PcssCivilApi pcssCivilApiMock;
 
+    @Mock
+    public CivilService civilServiceMock;
+
     @BeforeAll
     public void setUp() throws ApiException {
 
         MockitoAnnotations.initMocks(this);
-
 
         SearchFileAppearanceMethodResponse fakeResponse = getFakeResponse(1);
         Mockito.when(pcssCivilApiMock.civilSearchFileAppearanceMethodGet(Mockito.eq(TestHelpers.CASE_1))).thenReturn(fakeResponse);
@@ -42,7 +45,7 @@ public class EndpointGetAppearanceCivilApprMethodTest {
 
         Mockito.when(pcssCivilApiMock.civilSearchFileAppearanceMethodGet(Mockito.eq(TestHelpers.CASE_3))).thenThrow(TestHelpers.DEFAULT_EXCEPTION);
 
-        sut = new PcssCivilEndpoint(pcssCivilApiMock);
+        sut = new PcssCivilEndpoint(pcssCivilApiMock, civilServiceMock);
 
     }
 
@@ -110,6 +113,7 @@ public class EndpointGetAppearanceCivilApprMethodTest {
             Assertions.assertEquals(ROLE_TYPE_CD, actualItem.getRoleTypeCd());
 
         });
+
     }
 
     private SearchFileAppearanceMethodResponse getFakeResponse(int amount) {

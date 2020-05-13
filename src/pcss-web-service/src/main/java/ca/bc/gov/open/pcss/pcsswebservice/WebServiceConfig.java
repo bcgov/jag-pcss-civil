@@ -13,8 +13,6 @@ import org.springframework.context.annotation.Primary;
 
 import javax.xml.ws.Endpoint;
 import javax.xml.ws.soap.SOAPBinding;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Configuration
@@ -47,7 +45,7 @@ public class WebServiceConfig {
         endpoint.setBindingUri(SOAPBinding.SOAP12HTTP_BINDING);
         endpoint.publish("JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port");
 
-        endpoint.getProperties().put("schema-validation-enabled", "true");
+        //endpoint.getProperties().put("schema-validation-enabled", "true");
 
         return endpoint;
 

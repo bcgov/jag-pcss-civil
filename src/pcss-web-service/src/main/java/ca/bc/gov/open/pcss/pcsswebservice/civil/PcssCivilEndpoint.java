@@ -4,8 +4,10 @@ package ca.bc.gov.open.pcss.pcsswebservice.civil;
 import ca.bc.gov.courts.xml.ns.pcss.civil.v1.*;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
+import ca.bc.gov.open.pcss.ords.pcss.client.civil.CivilService;
 import ca.bc.gov.open.pcss.pcsswebservice.Keys;
 import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilApprMethodResponseMapper;
+import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilDocumentResponseMapper;
 import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilPartyMapper;
 import ca.bc.gov.open.pcss.pcsswebservice.civil.mappers.AppearanceCivilResponseMapper;
 import org.apache.commons.lang3.StringUtils;
@@ -25,9 +27,11 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final PcssCivilApi pcssCivilApi;
+    private final CivilService civilService;
 
-    public PcssCivilEndpoint(PcssCivilApi pcssCivilApi) {
+    public PcssCivilEndpoint(PcssCivilApi pcssCivilApi, CivilService civilService) {
         this.pcssCivilApi = pcssCivilApi;
+        this.civilService = civilService;
     }
 
     @Override
@@ -113,7 +117,39 @@ public class PcssCivilEndpoint implements PcssCivilPortType {
 
     @Override
     public GetAppearanceCivilDocumentResponse2 getAppearanceCivilDocument(GetAppearanceCivilDocumentRequest getAppearanceCivilDocumentRequest) {
-        return null;
+        logger.debug("received new getAppearanceCivilDocument");
+
+        GetAppearanceCivilDocumentResponse2 response2 = new GetAppearanceCivilDocumentResponse2();
+
+
+        if (getAppearanceCivilDocumentRequest.getGetAppearanceCivilDocumentRequest() != null) {
+            setMDC("getAppearanceCivilDocument",
+                    getAppearanceCivilDocumentRequest.getGetAppearanceCivilDocumentRequest().getRequestAgencyIdentifierId(),
+                    getAppearanceCivilDocumentRequest.getGetAppearanceCivilDocumentRequest().getRequestPartId());
+        }
+
+        logger.debug("attempting to call ords api");
+
+        response2
+                .setGetAppearanceCivilDocumentResponse(
+                        AppearanceCivilDocumentResponseMapper
+                                .INSTANCE.toGetAppearanceCivilDocumentResponse(
+                                this.civilService.getCivilSearchFileAppearanceDocument(getAppearanceCivilDocumentRequest.getGetAppearanceCivilDocumentRequest().getAppearanceId())));
+
+        if (response2.getGetAppearanceCivilDocumentResponse() != null
+                && isSuccessResponse(response2.getGetAppearanceCivilDocumentResponse().getResponseCd())) {
+            logger.info("successfully retrieved getAppearanceCivilDocument [{}]",
+                    getAppearanceCivilDocumentRequest.getGetAppearanceCivilDocumentRequest().getAppearanceId());
+        } else {
+            logger.error("error retrieving getAppearanceCivilDocument [{}], error: [{}]",
+                    response2.getGetAppearanceCivilDocumentResponse().getResponseCd(),
+                    response2.getGetAppearanceCivilDocumentResponse().getResponseMessageTxt());
+        }
+
+
+        cleanUpMDC();
+
+        return response2;
     }
 
     @Override

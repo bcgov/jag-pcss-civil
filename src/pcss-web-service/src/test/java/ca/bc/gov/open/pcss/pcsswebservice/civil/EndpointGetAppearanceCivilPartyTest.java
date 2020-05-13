@@ -4,13 +4,11 @@ import ca.bc.gov.courts.xml.ns.pcss.civil.v1.GetAppearanceCivilPartyRequest;
 import ca.bc.gov.courts.xml.ns.pcss.civil.v1.GetAppearanceCivilPartyResponse2;
 import ca.bc.gov.open.pcss.civil.GetAppearanceCivilPartyResponse;
 import ca.bc.gov.open.pcss.civil.Party;
-import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.PcssCivilApi;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.handler.ApiException;
-import ca.bc.gov.open.pcss.ords.pcss.client.api.model.PartyData;
-import ca.bc.gov.open.pcss.ords.pcss.client.api.model.PartyResults;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFilePartyData;
 import ca.bc.gov.open.pcss.ords.pcss.client.api.model.SearchFilePartyResponse;
+import ca.bc.gov.open.pcss.ords.pcss.client.civil.CivilService;
 import ca.bc.gov.open.pcss.pcsswebservice.Keys;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;
@@ -18,8 +16,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class EndpointGetAppearanceCivilPartyTest {
@@ -40,6 +36,9 @@ public class EndpointGetAppearanceCivilPartyTest {
     @Mock
     public PcssCivilApi pcssCivilApiMock;
 
+    @Mock
+    public CivilService civilServiceMock;
+
     @BeforeAll
     public void setUp() throws ApiException {
 
@@ -49,7 +48,7 @@ public class EndpointGetAppearanceCivilPartyTest {
 
         Mockito.when(pcssCivilApiMock.civilSearchFilePartyGet(Mockito.eq(CASE_2))).thenThrow(new ApiException(500, "internal server error", null, RESPONSE_BODY));
 
-        sut = new PcssCivilEndpoint(pcssCivilApiMock);
+        sut = new PcssCivilEndpoint(pcssCivilApiMock, civilServiceMock);
 
     }
 
