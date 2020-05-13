@@ -683,7 +683,7 @@ definitions:
       data:
         type: array
         items:
-          $ref: '#/definitions/syncCivilHrstrData'
+          $ref: '#/definitions/syncCivilHrstData'
       response_cd:
         type: number
       response_msg:
