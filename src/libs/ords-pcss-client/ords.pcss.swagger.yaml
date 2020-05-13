@@ -15,6 +15,26 @@ securityDefinitions:
 tags:
 - name: PCSS-CIVIL
 paths:
+  '/civil/file-content/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []    
+      description: Get the civil file content
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/civilFileContentResponse'
+      parameters:
+        - name: physical_file_id
+          in: query
+          type: string
+          description: Implicit parameter
   'civil/file-content/party':
     get:
       tags:
@@ -228,6 +248,40 @@ paths:
             type: object
             properties: {}
 definitions:
+  civilFileContentResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/civilFileContentData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  civilFileContentData:
+    type: object
+    properties:
+      physicalfileid:
+        type: string
+      filenumbertxt:
+        type: string
+      homelocationagentid:
+        type: string
+      courtlevelcd:
+        type: string
+      courtclasscd:
+        type: string
+      soctxt:
+        type: string
+      leftroledsc:
+        type: string
+      rightroledsc:
+        type: string
+      trialremark:
+        type: string
+      commenttojudgetxt:
+        type: string                                                                                
   searchFileAppearanceResponse:
     type: object
     properties:
