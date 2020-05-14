@@ -26,10 +26,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/civilFileContentResponse'
+            $ref: '#/definitions/civilFileContentResponse'
       parameters:
         - name: physical_file_id
           in: query
@@ -66,10 +63,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/civilFileContentCounselResponse'
+            $ref: '#/definitions/civilFileContentCounselResponse'
       parameters:
         - name: pi_party_id
           in: query
@@ -87,10 +81,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/civilFileContentDocumentResponse'
+            $ref: '#/definitions/civilFileContentDocumentResponse'
       parameters:
         - name: physical_file_id
           in: query
@@ -108,10 +99,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/civilFileContentDocumentSupportResponse'
+            $ref: '#/definitions/civilFileContentDocumentSupportResponse'
       parameters:
         - name: civil_document_id
           in: query
@@ -129,10 +117,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/civilFileContentDocumentIssueResponse'
+            $ref: '#/definitions/civilFileContentDocumentIssueResponse'
       parameters:
         - name: civil_document_id
           in: query
@@ -149,10 +134,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/fileContentHearingRestrictionResponse'
+            $ref: '#/definitions/fileContentHearingRestrictionResponse'
       parameters:
       - name: physical_file_id
         in: query
@@ -291,10 +273,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/syncCivilApprResponse'
+            $ref: '#/definitions/syncCivilApprResponse'
       parameters:
       - name: agency_id
         in: query
@@ -327,10 +306,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/syncCivilHrstResponse'
+            $ref: '#/definitions/syncCivilHrstResponse'
       parameters:
         - name: agency_id
           in: query
