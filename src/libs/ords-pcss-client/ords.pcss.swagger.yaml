@@ -26,10 +26,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/civilFileContentResponse'
+            $ref: '#/definitions/civilFileContentResponse'
       parameters:
         - name: physical_file_id
           in: query
@@ -66,10 +63,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/civilFileContentCounselResponse'
+            $ref: '#/definitions/civilFileContentCounselResponse'
       parameters:
         - name: pi_party_id
           in: query
@@ -87,16 +81,49 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/civilFileContentDocumentResponse'
+            $ref: '#/definitions/civilFileContentDocumentResponse'
       parameters:
         - name: physical_file_id
           in: query
           type: string
           description: Implicit parameter  
-          pattern: '^[^/]+$'      
+          pattern: '^[^/]+$'
+  '/civil/file-content/document-support/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []      
+      description: Get the civil file content document support data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/civilFileContentDocumentSupportResponse'
+      parameters:
+        - name: civil_document_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
+  '/civil/file-content/document-issue/':
+    get:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []     
+      description: Get the civil file content document issue data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/civilFileContentDocumentIssueResponse'
+      parameters:
+        - name: civil_document_id
+          in: query
+          type: string
+          description: Implicit parameter
+          pattern: '^[^/]+$'
   '/civil/file-content/hearing-restrictions/':
     get:
       tags:
@@ -107,10 +134,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/fileContentHearingRestrictionResponse'
+            $ref: '#/definitions/fileContentHearingRestrictionResponse'
       parameters:
       - name: physical_file_id
         in: query
@@ -249,10 +273,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/syncCivilApprResponse'
+            $ref: '#/definitions/syncCivilApprResponse'
       parameters:
       - name: agency_id
         in: query
@@ -285,10 +306,7 @@ paths:
         '200':
           description: output of the endpoint
           schema:
-            type: object
-            properties:
-              data:
-                $ref: '#/definitions/syncCivilHrstResponse'
+            $ref: '#/definitions/syncCivilHrstResponse'
       parameters:
         - name: agency_id
           in: query
@@ -409,7 +427,51 @@ definitions:
       lastappearnacedt:
         type: string
       lastappearancetm:
-        type: string                                                                                                                                                   
+        type: string
+  civilFileContentDocumentSupportResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/civilFileContentDocumentSupportData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  civilFileContentDocumentSupportData:
+    type: object
+    properties:
+      actcd:
+        type: string
+      actdsc:
+        type: string
+  civilFileContentDocumentIssueResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/civilFileContentDocumentIssueData'
+      response_cd:
+        type: number
+      response_msg:
+        type: string
+  civilFileContentDocumentIssueData:
+    type: object
+    properties:
+      issuenumber:
+        type: string
+      issuetypecd:
+        type: string
+      issuedsc:
+        type: string
+      concludedyn:
+        type: string
+      issueresultcd:
+        type: string
+      issueresultdsc:
+        type: string
   searchFileAppearanceResponse:
     type: object
     properties:
