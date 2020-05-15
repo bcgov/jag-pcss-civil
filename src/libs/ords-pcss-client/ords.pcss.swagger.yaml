@@ -15,7 +15,7 @@ securityDefinitions:
 tags:
 - name: PCSS-CIVIL
 paths:
-  '/civil/appearance/':
+  '/civil/appearance/appearance':
     post:
       tags:
       - PCSS-CIVIL
@@ -34,7 +34,23 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/setCivilAppearanceRequest'  
+            $ref: '#/definitions/setCivilAppearanceRequest'
+  '/civil/appearance/document':
+    post:
+      description: Set the civil appearance document data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/setCivilAppearanceDocumentResponse'
+      consumes:
+        - application/json
+      parameters:
+        - name: payload
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/setCivilAppearanceDocumentRequest'              
   '/civil/file-content/':
     get:
       tags:
@@ -403,7 +419,37 @@ definitions:
       response_cd:
         type: number
       response_msg:
-        type: string          
+        type: string
+  setCivilAppearanceDocumentRequest:
+    type: object
+    properties:
+      request_agency_id:
+        type: string
+      request_part_id:
+        type: string
+      request_dtm:
+        type: string
+      appearance_id:
+        type: string
+      civil_document_id:
+        type: string
+      appearance_reason_cd:
+        type: string
+      estimated_hh:
+        type: string
+      estimated_mi:
+        type: string
+      tril_id:
+        type: string
+      mode:
+        type: string 
+  setCivilAppearanceDocumentResponse:
+    type: object
+    properties:         
+      response_cd:
+        type: number
+      response_msg:
+        type: string                    
   civilFileContentResponse:
     type: object
     properties:
