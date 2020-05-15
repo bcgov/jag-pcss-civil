@@ -491,11 +491,11 @@ definitions:
         type: string  
   setCivilAppearancePartyResponse:
       type: object
-    properties:         
-      response_cd:
-        type: number
-      response_msg:
-        type: string                            
+      properties:         
+        response_cd:
+          type: number
+        response_msg:
+          type: string                            
   civilFileContentResponse:
     type: object
     properties:
