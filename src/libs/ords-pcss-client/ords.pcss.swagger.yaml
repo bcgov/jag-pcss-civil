@@ -37,6 +37,10 @@ paths:
             $ref: '#/definitions/setCivilAppearanceRequest'
   '/civil/appearance/document':
     post:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []      
       description: Set the civil appearance document data
       responses:
         '200':
@@ -50,7 +54,27 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/setCivilAppearanceDocumentRequest'              
+            $ref: '#/definitions/setCivilAppearanceDocumentRequest'
+  '/civil/appearance/party':
+    post:
+      tags:
+      - PCSS-CIVIL
+      security:
+      - basicAuth: []      
+      description: Set the civil appearance party data
+      responses:
+        '200':
+          description: output of the endpoint
+          schema:
+            $ref: '#/definitions/setCivilAppearancePartyResponse'
+      consumes:
+        - application/json
+      parameters:
+        - name: payload
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/setCivilAppearancePartyRequest'                          
   '/civil/file-content/':
     get:
       tags:
@@ -449,7 +473,29 @@ definitions:
       response_cd:
         type: number
       response_msg:
-        type: string                    
+        type: string
+  setCivilAppearancePartyRequest:
+    type: object
+    properties:
+      request_agency_id:
+        type: string
+      request_part_id:
+        type: string
+      request_dtm:
+        type: string
+      appearance_id:
+        type: string
+      party_id:
+        type: string
+      mode:
+        type: string  
+  setCivilAppearancePartyResponse:
+      type: object
+    properties:         
+      response_cd:
+        type: number
+      response_msg:
+        type: string                            
   civilFileContentResponse:
     type: object
     properties:
