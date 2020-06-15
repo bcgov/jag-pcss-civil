@@ -2,9 +2,6 @@
 ### Set the base image  
 FROM jboss/base-jdk:11 
 
-# file author / maintainer
-MAINTAINER "Shreyas Devalapurkar" "shreyas.devalapurkar@gov.bc.ca"
-
 # Set the JBOSS_VERSION env variable
 ENV JBOSS_VERSION 7.3.0
 ENV JBOSS_HOME /opt/jboss/jboss-eap-7.3
