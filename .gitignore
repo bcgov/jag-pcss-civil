@@ -47,3 +47,5 @@ build/
 .vscode/
 
 *.versionsBackup
+
+src/pcss-web-service/jboss-eap-7.3.0.zip
