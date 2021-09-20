@@ -133,13 +133,13 @@ public class AppearanceController {
         return out;
     }
 
-    @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "setAppearanceCivilApprMethod")
+    @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "setAppearanceMethodCivil")
     @ResponsePayload
-    public SetAppearanceMethodCivilResponse getAppearanceCivilApprMethod(
+    public SetAppearanceMethodCivilResponse setAppearanceMethodCivil(
             @RequestPayload SetAppearanceMethodCivil payload) {
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "GetAppearanceCivilApprMethod");
+                UriComponentsBuilder.fromHttpUrl(host + "setAppearanceMethodCivil");
 
         HttpEntity<com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilResponse> resp =
                 restTemplate.exchange(

@@ -25,6 +25,6 @@ services:
     environment:
       - BASIC_AUTH_USER=${BASIC_AUTH_USER}
       - BASIC_AUTH_PASS=${BASIC_AUTH_PASS}
-      - SCSS_HOST=${SCSS_HOST}
+      - PCSS_HOST=${PCSS_HOST}
     ports:
       - 8080:8080
