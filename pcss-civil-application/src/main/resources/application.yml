@@ -1,0 +1,7 @@
+security:
+  basic-auth:
+    password: ${BASIC_AUTH_PASS}
+    username: ${BASIC_AUTH_USER}
+pcss:
+  host: ${ORDS_HOST}
+  namespace: ${PCSS_NAMESPACE}

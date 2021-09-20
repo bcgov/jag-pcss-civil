@@ -1,0 +1,192 @@
+<xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"
+            xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:simpleType name="AgencyIdentifierType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="16"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="SystemIdType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="16"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="DateTimeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:length value="21"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="YesNoType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:enumeration value="Y"/>
+            <xsd:enumeration value="N"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="DateType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:length value="21"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="TimeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:length value="21"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="AppearanceReasonCivilType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="CourtRoomCdType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="6"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="AppearanceStatusType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:enumeration value="SCHD"/>
+            <xsd:enumeration value="CNCL"/>
+            <xsd:enumeration value="UNCF"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="AppearanceResultCivilType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ConcurrencyControlType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="12"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="CivilDocumentType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ParticipantRoleType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="AssetType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="SystemSeqNoType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="CivilPartyRoleType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="AssetUsageRuleType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:enumeration value="FIX"/>
+            <xsd:enumeration value="MOB"/>
+            <xsd:enumeration value="WIT"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="OperationModeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:enumeration value="ADD"/>
+            <xsd:enumeration value="DELETE"/>
+            <xsd:enumeration value="UPDATE"/>
+            <xsd:enumeration value="X-ADD"/>
+            <xsd:enumeration value="F-ADD"/>
+            <xsd:enumeration value="I-ADD"/>
+            <xsd:enumeration value="X-UPDATE"/>
+            <xsd:enumeration value="F-UPDATE"/>
+            <xsd:enumeration value="I-UPDATE"/>
+            <xsd:enumeration value="X-DELETE"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="CourtLevelType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:enumeration value="P"/>
+            <xsd:enumeration value="S"/>
+            <xsd:enumeration value="A"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="HearingRestrictionType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:enumeration value="S"/>
+            <xsd:enumeration value="D"/>
+            <xsd:enumeration value="A"/>
+            <xsd:enumeration value="G"/>
+            <xsd:enumeration value="XXX"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="OperationMode2Type">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:enumeration value="ADD"/>
+            <xsd:enumeration value="DELETE"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="CourtClassType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:enumeration value="A"/>
+            <xsd:enumeration value="Y"/>
+            <xsd:enumeration value="T"/>
+            <xsd:enumeration value="F"/>
+            <xsd:enumeration value="C"/>
+            <xsd:enumeration value="M"/>
+            <xsd:enumeration value="L"/>
+            <xsd:enumeration value="R"/>
+            <xsd:enumeration value="B"/>
+            <xsd:enumeration value="D"/>
+            <xsd:enumeration value="E"/>
+            <xsd:enumeration value="G"/>
+            <xsd:enumeration value="H"/>
+            <xsd:enumeration value="N"/>
+            <xsd:enumeration value="O"/>
+            <xsd:enumeration value="P"/>
+            <xsd:enumeration value="S"/>
+            <xsd:enumeration value="V"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="LeftRightType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:enumeration value="L"/>
+            <xsd:enumeration value="R"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ActType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="3"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="IssueType">
+        <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve"/>
+            <xsd:maxLength value="4"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
