@@ -37,10 +37,4 @@
             <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
         </jxb:bindings>
     </jxb:bindings>
-
-
-
-
-
-
 </jxb:bindings>
