@@ -281,7 +281,7 @@ public class AppearanceController {
                 new HttpEntity<>(inner, new HttpHeaders());
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "test/civil/counsel");
+                UriComponentsBuilder.fromHttpUrl(host + "civil/counsel");
 
         HttpEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilResponse> resp =
                 restTemplate.exchange(
