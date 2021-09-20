@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--Do not modify -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-50(%-5level %logger:) %msg%n</pattern>
+        </encoder>
+
+        <!-- Show debug in stdout -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+
+    <!-- Set the root level to trace. We'll filter on the appenders -->
+    <root level="INFO">
+        <!-- Http collector-->
+
+        <appender-ref ref="STDOUT"/>
+        <!--TCP 15000 collector-->
+    </root>
+
+</configuration>

@@ -1,0 +1,7 @@
+security:
+  basic-auth:
+    password: ${BASIC_AUTH_PASS}
+    username: ${BASIC_AUTH_USER}
+pcss:
+  host: http://127.0.0.1/
+  namespace: ${PCSS_NAMESPACE}

@@ -1,24 +1,8 @@
-# environment variables
-.env
-
-# nginx log folder
-nginx-log
-
-src/dpsvalidationservice/.idea/
-
-src/dpsvalidationservice/dpsvalidationservice.iml
-
-*.class
-
-src/dpsvalidationservice/target/
-
-src/target/
-
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 ### STS ###
 .apt_generated
@@ -28,6 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
+.env
 
 ### IntelliJ IDEA ###
 .idea
@@ -42,10 +27,11 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
-
-*.versionsBackup
-
-src/pcss-web-service/jboss-eap-7.3.0.zip
+/AutomatedTests/node_modules/
+/AutomatedTests/cypress/videos/
+/AutomatedTests/cypress/screenshots/

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<jxb:bindings version="1.0"
+              xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:namespace="http://jaxb2-commons.dev.java.net/namespace-prefix"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd
+    http://jaxb2-commons.dev.java.net/namespace-prefix https://raw.githubusercontent.com/Siggen/jaxb2-namespace-prefix/master/src/main/resources/prefix-namespace-schema.xsd">
+
+    <jxb:bindings schemaLocation="../xsdSchemas/pcss-secure-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="com.example.demp.wsdl.pcss.secure.one"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+    <jxb:bindings schemaLocation="../xsdSchemas/pcss-secure-2.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="com.example.demp.wsdl.pcss.secure.two"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/pcss-secure-3.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="com.example.demp.wsdl.pcss.secure.three"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+
+
+
+
+
+</jxb:bindings>
