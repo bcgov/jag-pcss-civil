@@ -280,8 +280,7 @@ public class AppearanceController {
         HttpEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
 
-        UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "civil/counsel");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "civil/counsel");
 
         HttpEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilResponse> resp =
                 restTemplate.exchange(
