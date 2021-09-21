@@ -78,7 +78,7 @@ jobs:
         run: mvn -ntp spotless:check
 
       - name: Generate Code Coverage
-        run: mvn -ntp verify site
+        run: mvn -ntp verify
 
       - name: Fix Jacoco Report Format for CC
         run: sed -e 's/<[\/]\?group[^>]*>//g' pcss-code-coverage/target/site/jacoco-aggregate/jacoco.xml > pcss-code-coverage/target/site/jacoco-aggregate/jacoco-codeclimatecompat.xml
