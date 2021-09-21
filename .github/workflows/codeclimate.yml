@@ -76,13 +76,17 @@ jobs:
         run: mvn spotless:check
 
       - name: Generate Code Coverage
-        run: mvn clean verify
+        run: mvn verify site
+
+      - name: Fix Jacoco Report Format for CC
+        run: sed -e 's/<[\/]\?group[^>]*>//g' target/site/jacoco-aggregate/jacoco.xml > target/site/jacoco-aggregate/jacoco-codeclimatecompat.xml
 
         # Formatting the Code Coverage Report
       - name: Format the coverage report
-        run: JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage ./pcss-code-coverage/target/coverage-report/coverage-report.xml -t jacoco -o ./target/site/jacoco/codeclimate.json
+        run: JACOCO_SOURCE_PATH="pcss-civil-application/src/main/java pcss-models/target/generated-sources/xjc" ./cc-test-reporter format-coverage target/site/jacoco-aggregate/jacoco-codeclimatecompat.xml --input-type jacoco -o ./target/site/jacoco/codeclimate.json
 
-        # Upload JSON for debugging purposes
+
+# Upload JSON for debugging purposes
       - name: Upload JSON for debugging purposes
         uses: actions/upload-artifact@v2
         with:
