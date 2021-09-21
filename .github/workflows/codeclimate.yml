@@ -75,10 +75,10 @@ jobs:
         if: env.GIT_BRANCH == 'refs/heads/main'
 
       - name: Check Code Style
-        run: mvn spotless:check
+        run: mvn -ntp spotless:check
 
       - name: Generate Code Coverage
-        run: mvn verify site
+        run: mvn -ntp verify site
 
       - name: Fix Jacoco Report Format for CC
         run: sed -e 's/<[\/]\?group[^>]*>//g' pcss-code-coverage/target/site/jacoco-aggregate/jacoco.xml > pcss-code-coverage/target/site/jacoco-aggregate/jacoco-codeclimatecompat.xml
