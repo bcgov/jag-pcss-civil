@@ -34,6 +34,7 @@
         <module>pcss-civil-application</module>
         <module>pcss-secure-models</module>
         <module>pcss-models</module>
+        <module>pcss-code-coverage</module>
     </modules>
 
 
@@ -96,19 +97,9 @@
                 <version>0.8.7</version>
                 <executions>
                     <execution>
-                        <id>report-aggregate</id>
-                        <phase>verify</phase>
                         <goals>
-                            <goal>report-aggregate</goal>
+                            <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <dataFileIncludes>
-                                <include>target/coverage-reports/aggregate.exec</include>
-                            </dataFileIncludes>
-                            <excludes>
-                                <exclude>**/*_.class</exclude>
-                            </excludes>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

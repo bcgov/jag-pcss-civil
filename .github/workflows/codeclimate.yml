@@ -81,11 +81,11 @@ jobs:
         run: mvn verify site
 
       - name: Fix Jacoco Report Format for CC
-        run: sed -e 's/<[\/]\?group[^>]*>//g' target/site/jacoco-aggregate/jacoco.xml > target/site/jacoco-aggregate/jacoco-codeclimatecompat.xml
+        run: sed -e 's/<[\/]\?group[^>]*>//g' pcss-code-coverage/target/site/jacoco-aggregate/jacoco.xml > pcss-code-coverage/target/site/jacoco-aggregate/jacoco-codeclimatecompat.xml
 
         # Formatting the Code Coverage Report
       - name: Format the coverage report
-        run: JACOCO_SOURCE_PATH="pcss-civil-application/src/main/java pcss-models/target/generated-sources/xjc" ./cc-test-reporter format-coverage target/site/jacoco-aggregate/jacoco-codeclimatecompat.xml --input-type jacoco -o ./target/site/jacoco/codeclimate.json
+        run: JACOCO_SOURCE_PATH="pcss-civil-application/src/main/java pcss-models/target/generated-sources/xjc" ./cc-test-reporter format-coverage pcss-code-coverage/target/site/jacoco-aggregate/jacoco-codeclimatecompat.xml --input-type jacoco -o ./target/site/jacoco/codeclimate.json
 
 
 # Upload JSON for debugging purposes
