@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class FakeTest {
 
-
     @Test
     public void test() {
         assert true;
