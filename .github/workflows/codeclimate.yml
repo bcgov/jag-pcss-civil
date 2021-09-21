@@ -72,15 +72,15 @@ jobs:
           #echo "::set-env name=GIT_BRANCH::main"
         if: env.GIT_BRANCH == 'refs/heads/main'
 
-      - name: Run Maven Test
-        run: mvn test
+      - name: Check Code Style
+        run: mvn spotless:check
 
-      - name: Run jacoco report
-        run: mvn jacoco:report
+      - name: Generate Code Coverage
+        run: mvn clean verify
 
         # Formatting the Code Coverage Report
       - name: Format the coverage report
-        run: JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage ./target/site/jacoco/jacoco.xml -t jacoco -o ./target/site/jacoco/codeclimate.json
+        run: JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage ./pcss-code-coverage/target/coverage-report/coverage-report.xml -t jacoco -o ./target/site/jacoco/codeclimate.json
 
         # Upload JSON for debugging purposes
       - name: Upload JSON for debugging purposes

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>Pcss</artifactId>
+        <groupId>ca.bc.gov.open</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>pcss-code-coverage</artifactId>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+
+        <build.directory.projecta>../pcss-civil-application/target</build.directory.projecta>
+        <build.directory.projectb>../pcss-models/target</build.directory.projectb>
+        <classes.directory.projecta>../pcss-civil-application/target/classes</classes.directory.projecta>
+        <classes.directory.projectb>../pcss-models/target/classes</classes.directory.projectb>
+        <sources.directory.projecta>../pcss-civil-application/src/main/java</sources.directory.projecta>
+        <sources.directory.projectb>../pcss-models/src/main/java</sources.directory.projectb>
+        <generated-sources.directory.projecta>../pcss-civil-application/target/generated-sources/
+        </generated-sources.directory.projecta>
+        <generated-sources.directory.projectb>../pcss-models/target/generated-sources/annotations
+        </generated-sources.directory.projectb>
+
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <!-- Execute an ant task within maven -->
+                                <echo message="Generating JaCoCo Reports"/>
+                                <taskdef name="report" classname="org.jacoco.ant.ReportTask">
+                                    <classpath path="${basedir}/target/jacoco-jars/org.jacoco.ant.jar"/>
+                                </taskdef>
+                                <mkdir dir="${basedir}/target/coverage-report"/>
+                                <report>
+                                    <executiondata>
+                                        <fileset dir="${build.directory.projecta}">
+                                            <include name="jacoco.exec"/>
+                                        </fileset>
+                                        <fileset dir="${build.directory.projectb}">
+                                            <include name="jacoco.exec"/>
+                                        </fileset>
+                                    </executiondata>
+                                    <structure name="jacoco-multi Coverage Project">
+                                        <group name="jacoco-multi">
+                                            <classfiles>
+                                                <fileset dir="${classes.directory.projecta}"/>
+                                                <fileset dir="${classes.directory.projectb}"/>
+                                            </classfiles>
+                                            <sourcefiles encoding="UTF-8">
+                                                <fileset dir="${sources.directory.projecta}"/>
+                                                <fileset dir="${sources.directory.projectb}"></fileset>
+                                            </sourcefiles>
+                                        </group>
+                                    </structure>
+                                    <html destdir="${basedir}/target/coverage-report/html"/>
+                                    <xml destfile="${basedir}/target/coverage-report/coverage-report.xml"/>
+                                    <csv destfile="${basedir}/target/coverage-report/coverage-report.csv"/>
+                                </report>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>org.jacoco.ant</artifactId>
+                        <version>0.8.7</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
