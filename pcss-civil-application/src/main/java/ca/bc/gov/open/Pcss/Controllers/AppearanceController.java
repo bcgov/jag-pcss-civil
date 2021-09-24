@@ -86,7 +86,7 @@ public class AppearanceController {
         HttpEntity<com.example.demp.wsdl.pcss.one.SetAppearanceCivilResponse> resp =
                 restTemplate.exchange(
                         builder.toUriString(),
-                        HttpMethod.GET,
+                        HttpMethod.POST,
                         body,
                         com.example.demp.wsdl.pcss.one.SetAppearanceCivilResponse.class);
         var out = new SetAppearanceCivilResponse();
@@ -122,7 +122,7 @@ public class AppearanceController {
         HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodResponse> resp =
                 restTemplate.exchange(
                         builder.toUriString(),
-                        HttpMethod.POST,
+                        HttpMethod.GET,
                         new HttpEntity<>(new HttpHeaders()),
                         com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodResponse.class);
 
@@ -180,7 +180,7 @@ public class AppearanceController {
         HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentResponse> resp =
                 restTemplate.exchange(
                         builder.toUriString(),
-                        HttpMethod.POST,
+                        HttpMethod.GET,
                         new HttpEntity<>(new HttpHeaders()),
                         com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentResponse.class);
 
@@ -216,7 +216,7 @@ public class AppearanceController {
         HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse> resp =
                 restTemplate.exchange(
                         builder.toUriString(),
-                        HttpMethod.POST,
+                        HttpMethod.GET,
                         new HttpEntity<>(new HttpHeaders()),
                         com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse.class);
 
@@ -229,7 +229,7 @@ public class AppearanceController {
 
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getAppearanceCivilResource")
     @ResponsePayload
-    public GetAppearanceCivilResourceResponse getAppearanceCivilParty(
+    public GetAppearanceCivilResourceResponse getAppearanceCivilResource(
             @RequestPayload GetAppearanceCivilResource search) {
 
         var inner =
@@ -252,7 +252,7 @@ public class AppearanceController {
         HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceResponse> resp =
                 restTemplate.exchange(
                         builder.toUriString(),
-                        HttpMethod.POST,
+                        HttpMethod.GET,
                         new HttpEntity<>(new HttpHeaders()),
                         com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceResponse.class);
 
@@ -265,7 +265,7 @@ public class AppearanceController {
 
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "setCounselDetailCivil")
     @ResponsePayload
-    public SetCounselDetailCivilResponse SetCounselDetailCivil(
+    public SetCounselDetailCivilResponse setCounselDetailCivil(
             @RequestPayload SetCounselDetailCivil payload) {
 
         var inner =
