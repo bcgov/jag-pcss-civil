@@ -78,7 +78,7 @@ public class AppearanceControllerTests {
         dt.setDocumentRecCount("A");
         dt.setSupplementalEquipmentTxt("A");
         dt.setOutOfTownJudgeTxt("A");
-
+        out.setApprDetail(Collections.singletonList(dt));
         ResponseEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
 
@@ -115,9 +115,11 @@ public class AppearanceControllerTests {
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
         AppearanceMethod am = new AppearanceMethod();
-        am.setAppearanceMethodCd("A");
+        am.setApprMethodCcn("A");
         am.setAppearanceMethodCd("A");
         am.setRoleTypeCd("A");
+
+        out.setAppearanceMethod(Collections.singletonList(am));
 
         ResponseEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodResponse>
                 responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
@@ -235,6 +237,7 @@ public class AppearanceControllerTests {
         dt2.setAppearanceCcn("A");
         dt2.setAppearanceCcn("A");
         dt2.setPcssAppearanceId("A");
+        dt2.setAppearanceId("A");
 
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
@@ -283,6 +286,7 @@ public class AppearanceControllerTests {
         doc.setFiledDt("A");
         doc.setDocumentHearingCcn("A");
         Issue is = new Issue();
+        is.setIssueDsc("A");
         is.setIssueNumber("A");
         is.setIssueResultCd("A");
         is.setIssueResultCd("A");
