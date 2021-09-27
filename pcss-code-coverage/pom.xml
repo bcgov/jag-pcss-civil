@@ -32,6 +32,14 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.7</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/Configuration/WSDLFilter*</exclude>
+                        <exclude>**/Configuration/HttpServletRequestWrapper.class</exclude>
+                        <exclude>**/PcssApplication.class</exclude>
+                        <exclude>**/ObjectFactory.class</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <id>report-aggregate</id>

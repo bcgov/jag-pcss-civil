@@ -5,7 +5,7 @@ checks:
       threshold: 1000
   method-lines:
     config:
-      threshold: 50
+      threshold: 100
 exclude_patterns:
   - "AutomatedTests/"
   - "**/*.js"
