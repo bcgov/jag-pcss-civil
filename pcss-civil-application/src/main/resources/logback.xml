@@ -13,34 +13,32 @@
         </filter>
     </appender>
 
-    <appender name="SOCKET" class="com.splunk.logging.TcpAppender">
-        <RemoteHost>${SPLUNK_TCP_HOST}</RemoteHost>
-        <Port>15000</Port>
+    <appender name="SPLUNK" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
+        <!--https://127.0.0.1:8088 for local-->
+        <url>${SPLUNK_HTTP_URL}</url>
+        <token>${SPLUNK_TOKEN}</token>
+        <index>${SPLUNK_INDEX}</index>
+        <source>pcss-civil-application</source>
+        <sourcetype>pcss-civil-logs</sourcetype>
+        <disableCertificateValidation>true</disableCertificateValidation>
+        <batch_size_count>1</batch_size_count>
+        <connectTimeout>5000</connectTimeout>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%msg</pattern>
         </layout>
     </appender>
 
-    <appender name="SPLUNK" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
-        <!--https://127.0.0.1:8088 for local-->
-        <url>${SPLUNK_HTTP_URL}</url>
-        <token>${SPLUNK_TOKEN}</token>
-        <disableCertificateValidation>true</disableCertificateValidation>
-        <batch_size_count>1</batch_size_count>
-        <connectTimeout>5000</connectTimeout>
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-50(%-5level %logger:) %msg%n</pattern>
-        </layout>
-    </appender>
+    <springProfile name="!test">
+        <root level="INFO">
+            <appender-ref ref="SPLUNK"/>
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
 
-    <!-- Set the root level to trace. We'll filter on the appenders -->
-    <root level="INFO">
-        <!-- Http collector-->
-
-        <appender-ref ref="STDOUT"/>
-        <!--TCP 15000 collector-->
-        <appender-ref ref="SOCKET"/>
-        <appender-ref ref="SPLUNK"/>
-    </root>
+    <springProfile name="test">
+        <root level="INFO">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
 
 </configuration>

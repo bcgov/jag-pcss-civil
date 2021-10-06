@@ -4,6 +4,8 @@ import static org.mockito.Mockito.when;
 
 import ca.bc.gov.open.Pcss.Controllers.HealthController;
 import com.example.demp.wsdl.pcss.three.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -22,10 +24,11 @@ public class HealthControllerTests {
     @Mock private RestTemplate restTemplate = new RestTemplate();
 
     private HealthController healthController;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    public void getPingTest() {
-        healthController = new HealthController(restTemplate);
+    public void getPingTest() throws JsonProcessingException {
+        healthController = new HealthController(restTemplate, objectMapper);
 
         var get = new GetPing();
 
@@ -47,8 +50,8 @@ public class HealthControllerTests {
     }
 
     @Test
-    public void getHealthTest() {
-        healthController = new HealthController(restTemplate);
+    public void getHealthTest() throws JsonProcessingException {
+        healthController = new HealthController(restTemplate, objectMapper);
 
         var get = new GetHealth();
 

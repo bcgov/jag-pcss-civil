@@ -112,12 +112,18 @@
                     <args>
                         <arg>-Xnamespace-prefix</arg>
                         <arg>-Xsetters</arg>
+                        <arg>-Xannotate</arg>
                     </args>
                     <plugins>
                         <plugin>
                             <groupId>org.jvnet.jaxb2_commons</groupId>
                             <artifactId>jaxb2-basics</artifactId>
                             <version>1.11.1</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics-annotate</artifactId>
+                            <version>1.1.0</version>
                         </plugin>
                     </plugins>
                     <schemaLanguage>WSDL</schemaLanguage>
