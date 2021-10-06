@@ -51,12 +51,12 @@ public class AppearanceController {
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance")
                         .queryParam(
-                                "RequestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
-                        .queryParam("RequestPartId", inner.getRequestPartId())
-                        .queryParam("RequestDtm", inner.getRequestDtm())
-                        .queryParam("PhysicalFileId", inner.getPhysicalFileId())
-                        .queryParam("FutureYN", inner.getFutureYN())
-                        .queryParam("HistoryYN", inner.getHistoryYN());
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("physicalFileId", inner.getPhysicalFileId())
+                        .queryParam("futureYN", inner.getFutureYN())
+                        .queryParam("historyYN", inner.getHistoryYN());
 
         try {
             HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResponse> resp =
@@ -262,14 +262,14 @@ public class AppearanceController {
                         .queryParam("RequestDtm", inner.getRequestDtm())
                         .queryParam("AppearanceId", inner.getAppearanceId());
 
-        HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse> resp =
-                restTemplate.exchange(
-                        builder.toUriString(),
-                        HttpMethod.GET,
-                        new HttpEntity<>(new HttpHeaders()),
-                        com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse.class);
-
         try {
+            HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse> resp =
+                    restTemplate.exchange(
+                            builder.toUriString(),
+                            HttpMethod.GET,
+                            new HttpEntity<>(new HttpHeaders()),
+                            com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse.class);
+
             var out = new GetAppearanceCivilPartyResponse();
             var one = new GetAppearanceCivilPartyResponse2();
             one.setGetAppearanceCivilPartyResponse(resp.getBody());
@@ -346,7 +346,7 @@ public class AppearanceController {
         HttpEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "civil/counsel");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "counsel");
         try {
             HttpEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilResponse> resp =
                     restTemplate.exchange(

@@ -1,6 +1,7 @@
 package ca.bc.gov.open.Pcss.Configuration;
 
 import ca.bc.gov.open.Pcss.Models.Serializers.InstantDeserializer;
+import ca.bc.gov.open.Pcss.Models.Serializers.InstantSerializer;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -62,6 +63,7 @@ public class SoapConfig extends WsConfigurerAdapter {
         objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Instant.class, new InstantDeserializer());
+        module.addSerializer(Instant.class, new InstantSerializer());
         objectMapper.registerModule(module);
         return objectMapper;
     }

@@ -12,6 +12,7 @@ import com.example.demp.wsdl.pcss.three.SetHearingRestrictionCivilRequest;
 import com.example.demp.wsdl.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -40,9 +41,9 @@ public class SyncControllerTests {
         var sca = new GetSyncCivilAppearance();
         var one = new GetSyncCivilAppearanceRequest();
         var two = new com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceRequest();
-        two.setProcessUpToDtm("A");
+        two.setProcessUpToDtm(Instant.now());
         two.setRequestAgencyIdentifierId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setRequestPartId("A");
 
         one.setGetSyncCivilAppearanceRequest(two);
@@ -51,7 +52,7 @@ public class SyncControllerTests {
         var out = new com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceResponse();
         Appearance app = new Appearance();
         app.setOperationModeCd(OperationModeType.ADD);
-        app.setTransactionDtm("A");
+        app.setTransactionDtm(Instant.now());
         app.setAppearanceId("A");
         app.setAppearanceDt("A");
         app.setAppearanceTm("A");
@@ -98,8 +99,8 @@ public class SyncControllerTests {
         var chr = new GetSyncCivilHearingRestriction();
         var one = new GetSyncCivilHearingRestrictionRequest();
         var two = new com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionRequest();
-        two.setProcessUpToDtm("A");
-        two.setRequestDtm("A");
+        two.setProcessUpToDtm(Instant.now());
+        two.setRequestDtm(Instant.now());
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         one.setGetSyncCivilHearingRestrictionRequest(two);
@@ -110,7 +111,7 @@ public class SyncControllerTests {
         out.setResponseMessageTxt("A");
         HearingRestriction r = new HearingRestriction();
         r.setOperationModeCd(OperationModeType.F_ADD);
-        r.setTransactionDtm("A");
+        r.setTransactionDtm(Instant.now());
         r.setHearingRestrictionId("A");
         r.setAdjudicatorPartId("A");
         r.setHearingRestrictionCd(HearingRestrictionType.A);
@@ -150,7 +151,7 @@ public class SyncControllerTests {
         var two = new com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setOperationModeCd(OperationModeType.I_ADD);
         two.setHearingRestrictionId("A");
         two.setAdjudicatorPartId("A");
@@ -197,7 +198,7 @@ public class SyncControllerTests {
         var two = new com.example.demp.wsdl.pcss.one.GetFileDetailCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setPhysicalFileId("A");
 
         one.setGetFileDetailCivilRequest(two);
