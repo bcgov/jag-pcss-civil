@@ -74,7 +74,7 @@ public class SyncController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS", "getSyncCivilAppearance", inner)));
             throw new ORDSException();
         }
     }
@@ -122,7 +122,9 @@ public class SyncController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS",
+                                    "getSyncCivilHearingRestriction",
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -142,7 +144,7 @@ public class SyncController {
                         : new com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "SetHearingRestrictionCivil");
+                UriComponentsBuilder.fromHttpUrl(host + "hearing-restriction");
 
         HttpEntity<com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
@@ -164,12 +166,14 @@ public class SyncController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS",
+                                    "setHearingRestrictionCivil",
+                                    inner)));
             throw new ORDSException();
         }
     }
 
-    @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "GetFileDetailCivil")
+    @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getFileDetailCivil")
     @ResponsePayload
     public GetFileDetailCivilResponse getFileDetailCivil(@RequestPayload GetFileDetailCivil search)
             throws JsonProcessingException {
@@ -183,12 +187,12 @@ public class SyncController {
                         : new com.example.demp.wsdl.pcss.one.GetFileDetailCivilRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "GetFileDetailCivil")
+                UriComponentsBuilder.fromHttpUrl(host + "file-detail")
                         .queryParam(
-                                "RequestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
-                        .queryParam("RequestPartId", inner.getRequestPartId())
-                        .queryParam("RequestDtm", inner.getRequestDtm())
-                        .queryParam("PhysicalFileId", inner.getPhysicalFileId());
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("physicalFileId", inner.getPhysicalFileId());
 
         try {
             HttpEntity<com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse> resp =
@@ -207,7 +211,7 @@ public class SyncController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS", "GetFileDetailCivil", inner)));
             throw new ORDSException();
         }
     }

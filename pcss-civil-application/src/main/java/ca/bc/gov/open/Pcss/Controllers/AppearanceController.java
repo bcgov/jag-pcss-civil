@@ -51,12 +51,12 @@ public class AppearanceController {
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance")
                         .queryParam(
-                                "RequestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
-                        .queryParam("RequestPartId", inner.getRequestPartId())
-                        .queryParam("RequestDtm", inner.getRequestDtm())
-                        .queryParam("PhysicalFileId", inner.getPhysicalFileId())
-                        .queryParam("FutureYN", inner.getFutureYN())
-                        .queryParam("HistoryYN", inner.getHistoryYN());
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("physicalFileId", inner.getPhysicalFileId())
+                        .queryParam("futureYN", inner.getFutureYN())
+                        .queryParam("historyYN", inner.getHistoryYN());
 
         try {
             HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResponse> resp =
@@ -75,7 +75,7 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS", "getAppearanceCivil", inner)));
             throw new ORDSException();
         }
     }
@@ -116,7 +116,7 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS", "setAppearanceCivil", inner)));
             throw new ORDSException();
         }
     }
@@ -136,12 +136,12 @@ public class AppearanceController {
                         : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "GetAppearanceCivilApprMethod")
+                UriComponentsBuilder.fromHttpUrl(host + "appearance/appearance-method")
                         .queryParam(
-                                "RequestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
-                        .queryParam("RequestPartId", inner.getRequestPartId())
-                        .queryParam("RequestDtm", inner.getRequestDtm())
-                        .queryParam("AppearanceId", inner.getAppearanceId());
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("appearanceId", inner.getAppearanceId());
 
         try {
             HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodResponse> resp =
@@ -161,7 +161,9 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS",
+                                    "getAppearanceCivilApprMethod",
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -190,7 +192,9 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", payload)));
+                                    "Error received from ORDS",
+                                    "setAppearanceMethodCivil",
+                                    payload)));
             throw new ORDSException();
         }
     }
@@ -210,12 +214,12 @@ public class AppearanceController {
                         : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "GetAppearanceCivilDocument")
+                UriComponentsBuilder.fromHttpUrl(host + "appearance/document")
                         .queryParam(
-                                "RequestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
-                        .queryParam("RequestPartId", inner.getRequestPartId())
-                        .queryParam("RequestDtm", inner.getRequestDtm())
-                        .queryParam("AppearanceId", inner.getAppearanceId());
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("appearanceId", inner.getAppearanceId());
 
         try {
             HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentResponse> resp =
@@ -235,7 +239,9 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS",
+                                    "getAppearanceCivilDocument",
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -255,21 +261,21 @@ public class AppearanceController {
                         : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "GetAppearanceCivilParty")
+                UriComponentsBuilder.fromHttpUrl(host + "appearance/party")
                         .queryParam(
-                                "RequestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
-                        .queryParam("RequestPartId", inner.getRequestPartId())
-                        .queryParam("RequestDtm", inner.getRequestDtm())
-                        .queryParam("AppearanceId", inner.getAppearanceId());
-
-        HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse> resp =
-                restTemplate.exchange(
-                        builder.toUriString(),
-                        HttpMethod.GET,
-                        new HttpEntity<>(new HttpHeaders()),
-                        com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse.class);
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("appearanceId", inner.getAppearanceId());
 
         try {
+            HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse> resp =
+                    restTemplate.exchange(
+                            builder.toUriString(),
+                            HttpMethod.GET,
+                            new HttpEntity<>(new HttpHeaders()),
+                            com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse.class);
+
             var out = new GetAppearanceCivilPartyResponse();
             var one = new GetAppearanceCivilPartyResponse2();
             one.setGetAppearanceCivilPartyResponse(resp.getBody());
@@ -279,7 +285,7 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS", "getAppearanceCivilParty", inner)));
             throw new ORDSException();
         }
     }
@@ -299,12 +305,12 @@ public class AppearanceController {
                         : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "GetAppearanceCivilResource")
+                UriComponentsBuilder.fromHttpUrl(host + "appearance/resource")
                         .queryParam(
-                                "RequestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
-                        .queryParam("RequestPartId", inner.getRequestPartId())
-                        .queryParam("RequestDtm", inner.getRequestDtm())
-                        .queryParam("AppearanceId", inner.getAppearanceId());
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("appearanceId", inner.getAppearanceId());
 
         try {
             HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceResponse> resp =
@@ -324,7 +330,9 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS",
+                                    "getAppearanceCivilResource",
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -346,7 +354,7 @@ public class AppearanceController {
         HttpEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "civil/counsel");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "counsel");
         try {
             HttpEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilResponse> resp =
                     restTemplate.exchange(
@@ -364,7 +372,7 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "SaveHearingResult", inner)));
+                                    "Error received from ORDS", "setCounselDetailCivil", inner)));
             throw new ORDSException();
         }
     }
