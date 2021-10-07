@@ -12,9 +12,16 @@
     <artifactId>pcss-code-coverage</artifactId>
 
     <dependencies>
+<!--        These are being detected as duplicates but they are all needed for code coverage to be generated correctly -->
         <dependency>
             <groupId>ca.bc.gov.open</groupId>
             <artifactId>pcss-models</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ca.bc.gov.open</groupId>
+            <artifactId>pcss-secure-models</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
