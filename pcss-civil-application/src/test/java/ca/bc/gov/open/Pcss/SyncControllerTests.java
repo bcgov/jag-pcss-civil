@@ -10,6 +10,8 @@ import com.example.demp.wsdl.pcss.three.GetSyncCivilAppearanceRequest;
 import com.example.demp.wsdl.pcss.three.GetSyncCivilHearingRestrictionRequest;
 import com.example.demp.wsdl.pcss.three.SetHearingRestrictionCivilRequest;
 import com.example.demp.wsdl.pcss.two.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -29,10 +31,11 @@ public class SyncControllerTests {
     private SyncController syncController;
 
     @Mock private RestTemplate restTemplate = new RestTemplate();
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    public void getSyncCivilAppearanceTest() {
-        syncController = new SyncController(restTemplate);
+    public void getSyncCivilAppearanceTest() throws JsonProcessingException {
+        syncController = new SyncController(restTemplate, objectMapper);
 
         var sca = new GetSyncCivilAppearance();
         var one = new GetSyncCivilAppearanceRequest();
@@ -89,8 +92,8 @@ public class SyncControllerTests {
     }
 
     @Test
-    public void getSyncCivilHearingRestrictionTest() {
-        syncController = new SyncController(restTemplate);
+    public void getSyncCivilHearingRestrictionTest() throws JsonProcessingException {
+        syncController = new SyncController(restTemplate, objectMapper);
 
         var chr = new GetSyncCivilHearingRestriction();
         var one = new GetSyncCivilHearingRestrictionRequest();
@@ -139,8 +142,8 @@ public class SyncControllerTests {
     }
 
     @Test
-    public void setSyncCivilHearingRestrictionTest() {
-        syncController = new SyncController(restTemplate);
+    public void setSyncCivilHearingRestrictionTest() throws JsonProcessingException {
+        syncController = new SyncController(restTemplate, objectMapper);
 
         var hrc = new SetHearingRestrictionCivil();
         var one = new SetHearingRestrictionCivilRequest();
@@ -186,8 +189,8 @@ public class SyncControllerTests {
     }
 
     @Test
-    public void getFileDetailCivilTest() {
-        syncController = new SyncController(restTemplate);
+    public void getFileDetailCivilTest() throws JsonProcessingException {
+        syncController = new SyncController(restTemplate, objectMapper);
 
         var fsc = new GetFileDetailCivil();
         var one = new GetFileDetailCivilRequest();

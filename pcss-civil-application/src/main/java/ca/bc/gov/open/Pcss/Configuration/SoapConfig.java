@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.ws.config.annotation.EnableWs;
@@ -76,10 +77,19 @@ public class SoapConfig extends WsConfigurerAdapter {
     }
 
     @Bean(name = "JusticePCSSCivil.wsProvider:pcssCivil")
-    public Wsdl11Definition Wsdl11Definition() {
+    public Wsdl11Definition wsdl11Definition() {
         SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
         wsdl11Definition.setWsdl(new ClassPathResource("xsdSchemas/JusticePCSSWSDL.wsdl"));
-
         return wsdl11Definition;
+    }
+
+    @Bean(name = "schemas")
+    public Resource[] schemaResources() {
+        Resource[] res = {
+            new ClassPathResource("xsdSchemas/pcss-1.xsd"),
+            new ClassPathResource("xsdSchemas/pcss-2.xsd"),
+            new ClassPathResource("xsdSchemas/pcss-3.xsd")
+        };
+        return res;
     }
 }

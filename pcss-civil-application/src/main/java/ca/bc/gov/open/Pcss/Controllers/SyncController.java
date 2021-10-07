@@ -1,7 +1,12 @@
 package ca.bc.gov.open.Pcss.Controllers;
 
 import ca.bc.gov.open.Pcss.Configuration.SoapConfig;
+import ca.bc.gov.open.Pcss.Exceptions.ORDSException;
+import ca.bc.gov.open.Pcss.Models.OrdsErrorLog;
 import com.example.demp.wsdl.pcss.three.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -15,21 +20,24 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
+@Slf4j
 public class SyncController {
     @Value("${pcss.host}")
     private String host = "https://127.0.0.1/";
 
     private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public SyncController(RestTemplate restTemplate) {
+    public SyncController(RestTemplate restTemplate, ObjectMapper objectMapper) {
         this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
     }
 
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getSyncCivilAppearance")
     @ResponsePayload
     public GetSyncCivilAppearanceResponse getSyncCivilAppearance(
-            @RequestPayload GetSyncCivilAppearance search) {
+            @RequestPayload GetSyncCivilAppearance search) throws JsonProcessingException {
 
         var inner =
                 search.getGetSyncCivilAppearanceRequest() != null
@@ -48,19 +56,27 @@ public class SyncController {
                         .queryParam("RequestDtm", inner.getRequestDtm())
                         .queryParam("ProcessUpToDtm", inner.getProcessUpToDtm());
 
-        HttpEntity<com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceResponse> resp =
-                restTemplate.exchange(
-                        builder.toUriString(),
-                        HttpMethod.GET,
-                        new HttpEntity<>(new HttpHeaders()),
-                        com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceResponse.class);
+        try {
+            HttpEntity<com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceResponse> resp =
+                    restTemplate.exchange(
+                            builder.toUriString(),
+                            HttpMethod.GET,
+                            new HttpEntity<>(new HttpHeaders()),
+                            com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceResponse.class);
 
-        var out = new GetSyncCivilAppearanceResponse();
-        var one = new GetSyncCivilAppearanceResponse2();
-        one.setGetSyncCivilAppearanceResponse(resp.getBody());
-        out.setGetSyncCivilAppearanceResponse(one);
+            var out = new GetSyncCivilAppearanceResponse();
+            var one = new GetSyncCivilAppearanceResponse2();
+            one.setGetSyncCivilAppearanceResponse(resp.getBody());
+            out.setGetSyncCivilAppearanceResponse(one);
 
-        return out;
+            return out;
+        } catch (Exception ex) {
+            log.error(
+                    objectMapper.writeValueAsString(
+                            new OrdsErrorLog(
+                                    "Error received from ORDS", "SaveHearingResult", inner)));
+            throw new ORDSException();
+        }
     }
 
     @PayloadRoot(
@@ -68,7 +84,7 @@ public class SyncController {
             localPart = "getSyncCivilHearingRestriction")
     @ResponsePayload
     public GetSyncCivilHearingRestrictionResponse getSyncCivilHearingRestriction(
-            @RequestPayload GetSyncCivilHearingRestriction search) {
+            @RequestPayload GetSyncCivilHearingRestriction search) throws JsonProcessingException {
 
         var inner =
                 search.getGetSyncCivilHearingRestrictionRequest() != null
@@ -88,25 +104,33 @@ public class SyncController {
                         .queryParam("RequestDtm", inner.getRequestDtm())
                         .queryParam("ProcessUpToDtm", inner.getProcessUpToDtm());
 
-        HttpEntity<com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionResponse> resp =
-                restTemplate.exchange(
-                        builder.toUriString(),
-                        HttpMethod.GET,
-                        new HttpEntity<>(new HttpHeaders()),
-                        com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionResponse
-                                .class);
+        try {
+            HttpEntity<com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionResponse> resp =
+                    restTemplate.exchange(
+                            builder.toUriString(),
+                            HttpMethod.GET,
+                            new HttpEntity<>(new HttpHeaders()),
+                            com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionResponse
+                                    .class);
 
-        var out = new GetSyncCivilHearingRestrictionResponse();
-        var one = new GetSyncCivilHearingRestrictionResponse2();
-        one.setGetSyncCivilHearingRestrictionResponse(resp.getBody());
-        out.setGetSyncCivilHearingRestrictionResponse(one);
-        return out;
+            var out = new GetSyncCivilHearingRestrictionResponse();
+            var one = new GetSyncCivilHearingRestrictionResponse2();
+            one.setGetSyncCivilHearingRestrictionResponse(resp.getBody());
+            out.setGetSyncCivilHearingRestrictionResponse(one);
+            return out;
+        } catch (Exception ex) {
+            log.error(
+                    objectMapper.writeValueAsString(
+                            new OrdsErrorLog(
+                                    "Error received from ORDS", "SaveHearingResult", inner)));
+            throw new ORDSException();
+        }
     }
 
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "setHearingRestrictionCivil")
     @ResponsePayload
     public SetHearingRestrictionCivilResponse setSyncCivilHearingRestriction(
-            @RequestPayload SetHearingRestrictionCivil search) {
+            @RequestPayload SetHearingRestrictionCivil search) throws JsonProcessingException {
 
         var inner =
                 search.getSetHearingRestrictionCivilRequest() != null
@@ -122,25 +146,33 @@ public class SyncController {
 
         HttpEntity<com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
+        try {
+            HttpEntity<com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilResponse> resp =
+                    restTemplate.exchange(
+                            builder.toUriString(),
+                            HttpMethod.POST,
+                            body,
+                            com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilResponse
+                                    .class);
 
-        HttpEntity<com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilResponse> resp =
-                restTemplate.exchange(
-                        builder.toUriString(),
-                        HttpMethod.POST,
-                        body,
-                        com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilResponse.class);
-
-        var out = new SetHearingRestrictionCivilResponse();
-        var one = new SetHearingRestrictionCivilResponse2();
-        one.setSetHearingRestrictionCivilResponse(resp.getBody());
-        out.setSetHearingRestrictionCivilResponse(one);
-        return out;
+            var out = new SetHearingRestrictionCivilResponse();
+            var one = new SetHearingRestrictionCivilResponse2();
+            one.setSetHearingRestrictionCivilResponse(resp.getBody());
+            out.setSetHearingRestrictionCivilResponse(one);
+            return out;
+        } catch (Exception ex) {
+            log.error(
+                    objectMapper.writeValueAsString(
+                            new OrdsErrorLog(
+                                    "Error received from ORDS", "SaveHearingResult", inner)));
+            throw new ORDSException();
+        }
     }
 
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "GetFileDetailCivil")
     @ResponsePayload
-    public GetFileDetailCivilResponse getFileDetailCivil(
-            @RequestPayload GetFileDetailCivil search) {
+    public GetFileDetailCivilResponse getFileDetailCivil(@RequestPayload GetFileDetailCivil search)
+            throws JsonProcessingException {
 
         var inner =
                 search.getGetFileDetailCivilRequest() != null
@@ -158,17 +190,25 @@ public class SyncController {
                         .queryParam("RequestDtm", inner.getRequestDtm())
                         .queryParam("PhysicalFileId", inner.getPhysicalFileId());
 
-        HttpEntity<com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse> resp =
-                restTemplate.exchange(
-                        builder.toUriString(),
-                        HttpMethod.GET,
-                        new HttpEntity<>(new HttpHeaders()),
-                        com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse.class);
+        try {
+            HttpEntity<com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse> resp =
+                    restTemplate.exchange(
+                            builder.toUriString(),
+                            HttpMethod.GET,
+                            new HttpEntity<>(new HttpHeaders()),
+                            com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse.class);
 
-        var out = new GetFileDetailCivilResponse();
-        var one = new GetFileDetailCivilResponse2();
-        one.setGetFileDetailCivilResponse(resp.getBody());
-        out.setGetFileDetailCivilResponse(one);
-        return out;
+            var out = new GetFileDetailCivilResponse();
+            var one = new GetFileDetailCivilResponse2();
+            one.setGetFileDetailCivilResponse(resp.getBody());
+            out.setGetFileDetailCivilResponse(one);
+            return out;
+        } catch (Exception ex) {
+            log.error(
+                    objectMapper.writeValueAsString(
+                            new OrdsErrorLog(
+                                    "Error received from ORDS", "SaveHearingResult", inner)));
+            throw new ORDSException();
+        }
     }
 }

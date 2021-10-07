@@ -14,6 +14,8 @@ import com.example.demp.wsdl.pcss.three.SetAppearanceCivilRequest;
 import com.example.demp.wsdl.pcss.three.SetAppearanceMethodCivilRequest;
 import com.example.demp.wsdl.pcss.three.SetCounselDetailCivilRequest;
 import com.example.demp.wsdl.pcss.two.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -31,12 +33,13 @@ import org.springframework.web.client.RestTemplate;
 public class AppearanceControllerTests {
 
     private AppearanceController appearanceController;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Mock private RestTemplate restTemplate = new RestTemplate();
 
     @Test
-    public void getAppearanceCivilTest() {
-        appearanceController = new AppearanceController(restTemplate);
+    public void getAppearanceCivilTest() throws JsonProcessingException {
+        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         GetAppearanceCivil ac = new GetAppearanceCivil();
         GetAppearanceCivilRequest one = new GetAppearanceCivilRequest();
@@ -98,8 +101,8 @@ public class AppearanceControllerTests {
     }
 
     @Test
-    public void getAppearanceCivilApprMethod() {
-        appearanceController = new AppearanceController(restTemplate);
+    public void getAppearanceCivilApprMethod() throws JsonProcessingException {
+        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var cam = new GetAppearanceCivilApprMethod();
         var one = new GetAppearanceCivilApprMethodRequest();
@@ -142,8 +145,8 @@ public class AppearanceControllerTests {
     }
 
     @Test
-    public void setAppearanceMethodCivilTest() {
-        appearanceController = new AppearanceController(restTemplate);
+    public void setAppearanceMethodCivilTest() throws JsonProcessingException {
+        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var sam = new SetAppearanceMethodCivil();
         var one = new SetAppearanceMethodCivilRequest();
@@ -187,8 +190,8 @@ public class AppearanceControllerTests {
     }
 
     @Test
-    public void setAppearanceCivilTest() {
-        appearanceController = new AppearanceController(restTemplate);
+    public void setAppearanceCivilTest() throws JsonProcessingException {
+        appearanceController = new AppearanceController(restTemplate, objectMapper);
         var sca = new SetAppearanceCivil();
         var one = new SetAppearanceCivilRequest();
         var two = new com.example.demp.wsdl.pcss.one.SetAppearanceCivilRequest();
@@ -262,8 +265,8 @@ public class AppearanceControllerTests {
     }
 
     @Test
-    public void getAppearanceCivilDocumentTest() {
-        appearanceController = new AppearanceController(restTemplate);
+    public void getAppearanceCivilDocumentTest() throws JsonProcessingException {
+        appearanceController = new AppearanceController(restTemplate, objectMapper);
         var cd = new GetAppearanceCivilDocument();
         var one = new GetAppearanceCivilDocumentRequest();
         var two = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentRequest();
@@ -315,8 +318,8 @@ public class AppearanceControllerTests {
     }
 
     @Test
-    public void getAppearanceCivilPartyTest() {
-        appearanceController = new AppearanceController(restTemplate);
+    public void getAppearanceCivilPartyTest() throws JsonProcessingException {
+        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var acp = new GetAppearanceCivilParty();
         var one = new GetAppearanceCivilPartyRequest();
@@ -364,8 +367,8 @@ public class AppearanceControllerTests {
     }
 
     @Test
-    public void getAppearanceCivilResourceTest() {
-        appearanceController = new AppearanceController(restTemplate);
+    public void getAppearanceCivilResourceTest() throws JsonProcessingException {
+        appearanceController = new AppearanceController(restTemplate, objectMapper);
         var cr = new GetAppearanceCivilResource();
         var one = new GetAppearanceCivilResourceRequest();
         var two = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceRequest();
@@ -419,8 +422,8 @@ public class AppearanceControllerTests {
     }
 
     @Test
-    public void setCounselDetailCivilTest() {
-        appearanceController = new AppearanceController(restTemplate);
+    public void setCounselDetailCivilTest() throws JsonProcessingException {
+        appearanceController = new AppearanceController(restTemplate, objectMapper);
         var cd = new SetCounselDetailCivil();
         var one = new SetCounselDetailCivilRequest();
         var two = new com.example.demp.wsdl.pcss.one.SetCounselDetailCivilRequest();
