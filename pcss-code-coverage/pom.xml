@@ -45,6 +45,7 @@
                         <exclude>**/Configuration/HttpServletRequestWrapper.class</exclude>
                         <exclude>**/PcssApplication.class</exclude>
                         <exclude>**/ObjectFactory.class</exclude>
+                        <exclude>**/Adapter1.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>
