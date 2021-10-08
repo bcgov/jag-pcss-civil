@@ -42,13 +42,20 @@ public class SecureEndpointController {
     public GetAppearanceCivilApprMethodSecureResponse getGetAppearanceCivilApprMethodSecureRequest(
             @RequestPayload GetAppearanceCivilApprMethodSecureRequest search)
             throws JsonProcessingException {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "health");
+
         var inner =
                 search.getGetAppearanceCivilApprMethodSecureRequest() != null
                         ? search.getGetAppearanceCivilApprMethodSecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetAppearanceCivilApprMethodSecureRequest();
-
+        UriComponentsBuilder builder =
+                UriComponentsBuilder.fromHttpUrl(host + "health")
+                        .queryParam(
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("applicationCd", inner.getApplicationCd())
+                        .queryParam("appearanceId", inner.getRequestPartId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilApprMethodResponse>
                     resp =
@@ -67,7 +74,10 @@ public class SecureEndpointController {
         } catch (Exception ex) {
             log.error(
                     objectMapper.writeValueAsString(
-                            new OrdsErrorLog("Error received from ORDS", "getHealth", inner)));
+                            new OrdsErrorLog(
+                                    "Error received from ORDS",
+                                    "getAppearanceCivilApprMethodSecure",
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -77,13 +87,20 @@ public class SecureEndpointController {
     public GetAppearanceCivilPartySecureResponse getAppearanceCivilPartySecure(
             @RequestPayload GetAppearanceCivilPartySecureRequest search)
             throws JsonProcessingException {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "health");
         var inner =
                 search.getGetAppearanceCivilPartySecureRequest() != null
                         ? search.getGetAppearanceCivilPartySecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
-                                .GetAppearanceCivilApprMethodSecureRequest();
+                                .GetAppearanceCivilPartySecureRequest();
 
+        UriComponentsBuilder builder =
+                UriComponentsBuilder.fromHttpUrl(host + "health")
+                        .queryParam(
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("applicationCd", inner.getApplicationCd())
+                        .queryParam("appearanceId", inner.getRequestPartId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse> resp =
                     restTemplate.exchange(
@@ -101,7 +118,10 @@ public class SecureEndpointController {
         } catch (Exception ex) {
             log.error(
                     objectMapper.writeValueAsString(
-                            new OrdsErrorLog("Error received from ORDS", "getHealth", inner)));
+                            new OrdsErrorLog(
+                                    "Error received from ORDS",
+                                    "getAppearanceCivilPartySecure",
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -110,13 +130,23 @@ public class SecureEndpointController {
     @ResponsePayload
     public GetAppearanceCivilSecureResponse getAppearanceCivilSecure(
             @RequestPayload GetAppearanceCivilSecure search) throws JsonProcessingException {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "health");
         var inner =
                 search.getGetAppearanceCivilSecureRequest() != null
+                                && search.getGetAppearanceCivilSecureRequest()
+                                                .getGetAppearanceCivilSecureRequest()
+                                        != null
                         ? search.getGetAppearanceCivilSecureRequest()
+                                .getGetAppearanceCivilSecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
-                                .GetAppearanceCivilApprMethodSecureRequest();
-
+                                .GetAppearanceCivilSecureRequest();
+        UriComponentsBuilder builder =
+                UriComponentsBuilder.fromHttpUrl(host + "health")
+                        .queryParam(
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("applicationCd", inner.getApplicationCd())
+                        .queryParam("appearanceId", inner.getRequestPartId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilResponse> resp =
                     restTemplate.exchange(
@@ -133,7 +163,10 @@ public class SecureEndpointController {
         } catch (Exception ex) {
             log.error(
                     objectMapper.writeValueAsString(
-                            new OrdsErrorLog("Error received from ORDS", "getHealth", inner)));
+                            new OrdsErrorLog(
+                                    "Error received from ORDS",
+                                    "getAppearanceCivilSecure",
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -142,13 +175,21 @@ public class SecureEndpointController {
     @ResponsePayload
     public GetFileDetailCivilSecureResponse getFileDetailCivilSecure(
             @RequestPayload GetFileDetailCivilSecureRequest search) throws JsonProcessingException {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "health");
+
         var inner =
                 search.getGetFileDetailCivilSecureRequest() != null
                         ? search.getGetFileDetailCivilSecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetFileDetailCivilSecureRequest();
 
+        UriComponentsBuilder builder =
+                UriComponentsBuilder.fromHttpUrl(host + "health")
+                        .queryParam(
+                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("applicationCd", inner.getApplicationCd())
+                        .queryParam("appearanceId", inner.getRequestPartId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse> resp =
                     restTemplate.exchange(
@@ -165,7 +206,10 @@ public class SecureEndpointController {
         } catch (Exception ex) {
             log.error(
                     objectMapper.writeValueAsString(
-                            new OrdsErrorLog("Error received from ORDS", "getHealth", inner)));
+                            new OrdsErrorLog(
+                                    "Error received from ORDS",
+                                    "getFileDetailCivilSecure",
+                                    inner)));
             throw new ORDSException();
         }
     }
