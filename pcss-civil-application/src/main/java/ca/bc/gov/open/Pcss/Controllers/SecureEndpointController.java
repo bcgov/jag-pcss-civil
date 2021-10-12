@@ -39,7 +39,7 @@ public class SecureEndpointController {
             namespace = SoapConfig.SOAP_NAMESPACE,
             localPart = "getAppearanceCivilApprMethodSecure")
     @ResponsePayload
-    public GetAppearanceCivilApprMethodSecureResponse getGetAppearanceCivilApprMethodSecureRequest(
+    public GetAppearanceCivilApprMethodSecureResponse getAppearanceCivilApprMethodSecureRequest(
             @RequestPayload GetAppearanceCivilApprMethodSecureRequest search)
             throws JsonProcessingException {
 

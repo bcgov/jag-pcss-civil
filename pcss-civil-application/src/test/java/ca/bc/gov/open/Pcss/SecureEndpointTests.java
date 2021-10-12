@@ -73,7 +73,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getGetAppearanceCivilApprMethodSecureRequest(req);
+        var out = endpointController.getAppearanceCivilApprMethodSecureRequest(req);
 
         assert out != null;
     }

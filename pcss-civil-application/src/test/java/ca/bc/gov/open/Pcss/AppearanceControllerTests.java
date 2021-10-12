@@ -3,6 +3,7 @@ package ca.bc.gov.open.Pcss;
 import static org.mockito.Mockito.when;
 
 import ca.bc.gov.open.Pcss.Controllers.AppearanceController;
+import ca.bc.gov.open.Pcss.Exceptions.BadDateException;
 import com.example.demp.wsdl.pcss.one.*;
 import com.example.demp.wsdl.pcss.three.*;
 import com.example.demp.wsdl.pcss.three.GetAppearanceCivilApprMethodRequest;
@@ -39,7 +40,7 @@ public class AppearanceControllerTests {
     @Mock private RestTemplate restTemplate = new RestTemplate();
 
     @Test
-    public void getAppearanceCivilTest() throws JsonProcessingException {
+    public void getAppearanceCivilTest() throws JsonProcessingException, BadDateException {
         appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         GetAppearanceCivil ac = new GetAppearanceCivil();
@@ -102,7 +103,7 @@ public class AppearanceControllerTests {
     }
 
     @Test
-    public void getAppearanceCivilApprMethod() throws JsonProcessingException {
+    public void getAppearanceCivilApprMethod() throws JsonProcessingException, BadDateException {
         appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var cam = new GetAppearanceCivilApprMethod();
@@ -146,7 +147,7 @@ public class AppearanceControllerTests {
     }
 
     @Test
-    public void setAppearanceMethodCivilTest() throws JsonProcessingException {
+    public void setAppearanceMethodCivilTest() throws JsonProcessingException, BadDateException {
         appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var sam = new SetAppearanceMethodCivil();
