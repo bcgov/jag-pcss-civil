@@ -79,9 +79,16 @@ public class SoapConfig extends WsConfigurerAdapter {
     }
 
     @Bean(name = "JusticePCSSCivil.wsProvider:pcssCivil")
-    public Wsdl11Definition wsdl11Definition() {
+    public Wsdl11Definition JusticePCSSWSDL() {
         SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
         wsdl11Definition.setWsdl(new ClassPathResource("xsdSchemas/JusticePCSSWSDL.wsdl"));
+        return wsdl11Definition;
+    }
+
+    @Bean(name = "JusticePCSSCivil.wsProvider:pcssCivilSecure")
+    public Wsdl11Definition JusticeSecurePCSSWSDL() {
+        SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
+        wsdl11Definition.setWsdl(new ClassPathResource("xsdSchemas/JusticePCSSCivilSecure.wsdl"));
         return wsdl11Definition;
     }
 
