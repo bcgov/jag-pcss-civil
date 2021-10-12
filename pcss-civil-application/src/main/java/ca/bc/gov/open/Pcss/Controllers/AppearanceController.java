@@ -1,6 +1,7 @@
 package ca.bc.gov.open.Pcss.Controllers;
 
 import ca.bc.gov.open.Pcss.Configuration.SoapConfig;
+import ca.bc.gov.open.Pcss.Exceptions.BadDateException;
 import ca.bc.gov.open.Pcss.Exceptions.ORDSException;
 import ca.bc.gov.open.Pcss.Models.OrdsErrorLog;
 import com.example.demp.wsdl.pcss.three.*;
@@ -38,7 +39,7 @@ public class AppearanceController {
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getAppearanceCivil")
     @ResponsePayload
     public GetAppearanceCivilResponse getAppearanceCivil(@RequestPayload GetAppearanceCivil search)
-            throws JsonProcessingException {
+            throws JsonProcessingException, BadDateException {
 
         var inner =
                 search.getGetAppearanceCivilRequest() != null
@@ -47,6 +48,10 @@ public class AppearanceController {
                                         != null
                         ? search.getGetAppearanceCivilRequest().getGetAppearanceCivilRequest()
                         : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilRequest();
+
+        if (inner.getRequestDtm() == null) {
+            throw new BadDateException();
+        }
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance")
@@ -124,7 +129,8 @@ public class AppearanceController {
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getAppearanceCivilApprMethod")
     @ResponsePayload
     public GetAppearanceCivilApprMethodResponse getAppearanceCivilApprMethod(
-            @RequestPayload GetAppearanceCivilApprMethod search) throws JsonProcessingException {
+            @RequestPayload GetAppearanceCivilApprMethod search)
+            throws JsonProcessingException, BadDateException {
 
         var inner =
                 search.getGetAppearanceCivilApprMethodRequest() != null
@@ -134,6 +140,10 @@ public class AppearanceController {
                         ? search.getGetAppearanceCivilApprMethodRequest()
                                 .getGetAppearanceCivilApprMethodRequest()
                         : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodRequest();
+
+        if (inner.getRequestDtm() == null) {
+            throw new BadDateException();
+        }
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance/appearance-method")
@@ -171,7 +181,24 @@ public class AppearanceController {
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "setAppearanceMethodCivil")
     @ResponsePayload
     public SetAppearanceMethodCivilResponse setAppearanceMethodCivil(
-            @RequestPayload SetAppearanceMethodCivil payload) throws JsonProcessingException {
+            @RequestPayload SetAppearanceMethodCivil payload)
+            throws JsonProcessingException, BadDateException {
+
+        var inner =
+                payload.getSetAppearanceMethodCivilRequest() != null
+                                && payload.getSetAppearanceMethodCivilRequest()
+                                                .getSetAppearanceMethodCivilRequest()
+                                        != null
+                        ? payload.getSetAppearanceMethodCivilRequest()
+                                .getSetAppearanceMethodCivilRequest()
+                        : new com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilRequest();
+
+        if (inner.getRequestDtm() == null) {
+            throw new BadDateException();
+        }
+
+        HttpEntity<com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilRequest> body =
+                new HttpEntity<>(inner, new HttpHeaders());
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "setAppearanceMethodCivil");
@@ -180,7 +207,7 @@ public class AppearanceController {
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.POST,
-                            new HttpEntity<>(new HttpHeaders()),
+                            body,
                             com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilResponse.class);
 
             var out = new SetAppearanceMethodCivilResponse();
