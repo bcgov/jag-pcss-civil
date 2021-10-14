@@ -10,6 +10,13 @@
 * Docker Compose
 * Maven
 * Java 11
+
+### Application Endpoints
+
+Local Host: http://127.0.0.1:8080
+
+Code Climate: https://codeclimate.com/github/bcgov/jag-pcss
+
 ### Required Environmental Variables
 
 BASIC_AUTH_PASS: The password for the basic authentication. This can be any value for local.
