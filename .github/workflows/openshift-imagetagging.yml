@@ -1,0 +1,112 @@
+# Used to trigger deployment to test and prod Openshift environnment by Image stream re-tagging and labelling pod
+
+name: Trigger deployment to test and prod Openshift environnment by Image stream re-tagging and labelling pod
+
+on:        
+    workflow_dispatch:
+        inputs:
+            app:
+                description: 'App Name (jag-pcss-civil)'    
+                required: true
+                default: 'jag-pcss-civil'
+            imageSourceEnv:
+                description: 'Image Source Env'     
+                required: true
+                default: 'dev'
+            imageTargetEnv:
+                description: 'Target Release Env'
+                required: true
+jobs:
+  oc-image-tagging:
+    runs-on: ubuntu-20.04
+    environment: ${{ github.event.inputs.imageTargetEnv }}
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+        
+        # Get the version number which is prefixed with the Github release branches in format release/{version}
+      - name: Get Release Version
+        run: |
+          branch=${GITHUB_REF##*/}
+          version=$(echo $branch | cut -d "/" -f2-)
+          echo "releaseVersion=$version" >> $GITHUB_ENV
+        
+        # Get Git latest short Sha# from the release branch used. This Sha# will be used in image tagging as well as DC Pod labelling.
+      - name: Get git commit short sha
+        id: sha
+        run: |
+          shortSha=$(echo $(git rev-parse --short HEAD) | cut -c1-7)
+          echo "gitsha=$shortSha" >> $GITHUB_ENV
+        
+        # Prints vital release paramters used
+      - name: Print Release Variables
+        run: |
+          echo "Release Application: ${{ github.event.inputs.app }}"
+          echo "Release Environment: ${{ github.event.inputs.imageTargetEnv }}"
+          echo "Release Version: ${{ env.releaseVersion }}"
+          echo "Release Git Sha: ${{env.gitsha}}"
+
+        #Login to Openshift using OC Tools SA and Token for image stream tagging changes
+      - name: Authenticate OC Tools SA
+        uses: redhat-actions/oc-login@v1
+        env:
+          OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_TOOLS_NAMESPACE}}
+          OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_TOOLS_DEPLOYER_NAME}}
+        with:
+          openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL}}
+          openshift_token: ${{secrets.OPENSHIFT_SA_TOOLS_DEPLOYER_TOKEN}}
+          namespace: ${{secrets.OPENSHIFT_TOOLS_NAMESPACE}}
+        
+        # Re-Tag latest dev (source) image to other env to trigger openshift deployment via DeploymentConfig
+        # It also creates a tag with release version number to use it in case of rollback.
+      - name: Retag image to release env and version.
+        env:
+          appName: ${{ github.event.inputs.app }}
+          imageSourceEnv: ${{ github.event.inputs.imageSourceEnv }}
+          imageTargetEnv: ${{ github.event.inputs.imageTargetEnv }}
+          openshiftToolsNamespace: ${{secrets.OPENSHIFT_TOOLS_NAMESPACE}}
+          openshiftIImageRegistry: ${{secrets.OPENSHIFT_INTERNAL_REPOSITORY}}
+          releaseVersion: ${{ env.releaseVersion }}
+          gitSha: ${{ env.gitsha }}
+        run: |
+          oc tag ${openshiftIImageRegistry}/${openshiftToolsNamespace}/${appName}:${imageSourceEnv} ${appName}:${imageTargetEnv}
+          oc tag ${openshiftIImageRegistry}/${openshiftToolsNamespace}/${appName}:${imageTargetEnv} ${appName}:${releaseVersion}.${gitSha}
+
+        #Login to Openshift using OC SA and Token of respective env. for Pod labelling
+      - name: Authenticate OC Env Specific SA
+        uses: redhat-actions/oc-login@v1
+        env:
+          OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.imageTargetEnv }}
+          OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME}}
+        with:
+          openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL}}
+          openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN}}
+          namespace: ${OPENSHIFT_NAMESPACE}
+        
+        # Labels the deployment config of the application with release version number to spin up the pods labelled in same version.
+    #  - name: Labelling DC to release version
+    #    env:
+    #      releaseVersion: ${{ env.releaseVersion }}
+    #      appName: ${{ github.event.inputs.app }}
+    #      openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.imageTargetEnv }}
+    #    run: |
+    #      oc patch dc ${appName} -n ${openshiftEnvNamespace} --patch '{"spec":{"template":{"metadata":{"labels":{"version":"${{ env.releaseVersion }}.${{ env.gitsha }}"}}}}}'
+
+    #  - name: Sleep for 120s
+    #    uses: juliangruber/sleep-action@v1
+    #    with:
+    #      time: 120s
+
+    #  - name: Setup Node
+    #    uses: actions/setup-node@v2
+    #    with:
+    #      node-version: '14'
+
+    #  - name: Run Integration Tests
+    #    env:
+    #      WEB_METHODS_TOKEN: ${{secrets.SCSS_DEV_BASIC_AUTH}}
+    #      WEB_METHODS_HOST: ${{secrets.WEB_METHODS_HOST}}
+    #    working-directory: ./AutomatedTests
+    #    run: |
+    #      npm install --quiet
+    #      npm test

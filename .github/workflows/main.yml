@@ -1,0 +1,131 @@
+# This is the main workflow that creates a new image and push to Openshift image stream which in turn triggers the deployment
+
+name: Main - Build Image and Push to Openshift Registry for Dev Deployment
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+        app:
+            description: 'App Name (jag-pcss-civil)'    
+            required: true
+            default: jag-pcss-civil
+        env:
+            description: 'Image Target Env'     
+            required: true
+            default: 'dev'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build-push-image:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+    environment: ${{ github.event.inputs.env }}
+    env:
+      BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
+      BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      
+      # Get the version number which is prefixed with the Github release branches in format release/{version}
+      - name: Get Release Version
+        run: |
+          branch=${GITHUB_REF##*/}
+          version=$(echo $branch | cut -d "/" -f2-)
+          echo "releaseVersion=$version" >> $GITHUB_ENV
+      
+      # Get Git latest short Sha# from the release branch used. This Sha# will be used in image tagging as well as DC Pod labelling.
+      - name: Get git commit short sha
+        id: sha
+        run: |
+          shortSha=$(echo $(git rev-parse --short HEAD) | cut -c1-7)
+          echo "gitsha=$shortSha" >> $GITHUB_ENV
+      
+      # Prints vital release paramters used
+      - name: Print Release Variables
+        run: |
+          echo "Release Application: ${{ github.event.inputs.app }}"
+          echo "Release Environment: ${{ github.event.inputs.env }}"
+          echo "Release Version: ${{ env.releaseVersion }}"
+          echo "Release Git Sha: ${{env.gitsha}}"
+
+      # Set up JDK build environment
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+        
+      # Runs build steps
+      - name: Maven Package
+        run: mvn -ntp clean package
+        
+      - name: Maven Verify
+        run: mvn -ntp clean verify
+      
+      #Login to OpenShift Container Repository
+      - name: Login to OpenShift Container Repository
+        uses: docker/login-action@v1
+        with:
+          registry: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY}}
+          username: ${{secrets.OPENSHIFT_SA_USERNAME}}
+          password: ${{secrets.OPENSHIFT_SA_PASSWORD}}
+
+      #Build and push image to OpenShift Image stream
+      - name: Build & Push Image to Openshift Image Stream
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          CONTEXT: .
+          IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY}}/${{secrets.OPENSHIFT_LICENSE_PLATE}}-tools/jag-pcss-civil:${{secrets.OPENSHIFT_ENV_TAG}}
+        run: |
+          docker build \
+            --tag ${IMAGE} \
+            ${CONTEXT}
+            docker push ${IMAGE}
+      
+      #Login to Openshift using OC SA and Token of respective env. for Pod labelling
+    #  - name: Authenticate OC Env Specific SA
+    #    uses: redhat-actions/oc-login@v1
+    #    env:
+    #      OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
+    #      OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME}}
+    #    with:
+    #      openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL}}
+    #      openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN}}
+    #      namespace: ${OPENSHIFT_NAMESPACE}
+        
+        # Labels the deployment config of the application with release version number to spin up the pods labelled in same version.
+    #  - name: Labelling DC to release version
+    #    env:
+    #      releaseVersion: ${{ env.releaseVersion }}
+    #      appName: ${{ github.event.inputs.app }}
+    #      openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
+    #    run: |
+    #      oc patch dc ${appName} -n ${openshiftEnvNamespace} --patch '{"spec":{"template":{"metadata":{"labels":{"version":"${{ env.releaseVersion }}.${{ env.gitsha }}"}}}}}'
+
+    #  - name: Sleep for 120s
+    #    uses: juliangruber/sleep-action@v1
+    #    with:
+    #      time: 120s
+
+    #  - name: Setup Node
+    #    uses: actions/setup-node@v2
+    #    with:
+    #      node-version: '14'
+
+    #  - name: Run Integration Tests
+    #    env:
+    #      WEB_METHODS_TOKEN: ${{secrets.SCSS_DEV_BASIC_AUTH}}
+    #      WEB_METHODS_HOST: ${{secrets.WEB_METHODS_HOST}}
+    #    working-directory: ./AutomatedTests
+    #    run: |
+    #      npm install --quiet
+    #      npm test
+
+
