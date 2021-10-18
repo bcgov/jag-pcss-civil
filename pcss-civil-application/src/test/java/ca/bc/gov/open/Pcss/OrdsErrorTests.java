@@ -10,10 +10,7 @@ import ca.bc.gov.open.Pcss.Controllers.SecureEndpointController;
 import ca.bc.gov.open.Pcss.Controllers.SyncController;
 import ca.bc.gov.open.Pcss.Exceptions.BadDateException;
 import ca.bc.gov.open.Pcss.Exceptions.ORDSException;
-import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilApprMethodSecureRequest;
-import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilPartySecureRequest;
-import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilSecure;
-import com.example.demp.wsdl.pcss.secure.two.GetFileDetailCivilSecureRequest;
+import com.example.demp.wsdl.pcss.secure.two.*;
 import com.example.demp.wsdl.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -156,7 +153,7 @@ public class OrdsErrorTests {
 
         try {
             secureController.getAppearanceCivilApprMethodSecureRequest(
-                    new GetAppearanceCivilApprMethodSecureRequest());
+                    new GetAppearanceCivilApprMethodSecure());
         } catch (ORDSException ex) {
             // Exception caught as expected
             assert true;
@@ -174,8 +171,7 @@ public class OrdsErrorTests {
         setUpRestTemplate();
 
         try {
-            secureController.getAppearanceCivilPartySecure(
-                    new GetAppearanceCivilPartySecureRequest());
+            secureController.getAppearanceCivilPartySecure(new GetAppearanceCivilPartySecure());
         } catch (ORDSException ex) {
             // Exception caught as expected
             assert true;
@@ -211,7 +207,7 @@ public class OrdsErrorTests {
         setUpRestTemplate();
 
         try {
-            secureController.getFileDetailCivilSecure(new GetFileDetailCivilSecureRequest());
+            secureController.getFileDetailCivilSecure(new GetFileDetailCivilSecure());
         } catch (ORDSException ex) {
             // Exception caught as expected
             assert true;
