@@ -198,8 +198,9 @@ public class SecureEndpointTests {
     public void getFileDetailCivilSecure() throws JsonProcessingException {
         endpointController = new SecureEndpointController(restTemplate, objectMapper);
 
-        var req = new GetFileDetailCivilSecureRequest();
+        var req = new GetFileDetailCivilSecure();
         var one = new com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilSecureRequest();
+        var two = new GetFileDetailCivilSecureRequest();
 
         one.setApplicationCd("A");
         one.setPhysicalFileId("A");
@@ -207,7 +208,8 @@ public class SecureEndpointTests {
         one.setRequestPartId("A");
         one.setRequestDtm(Instant.now());
 
-        req.setGetFileDetailCivilSecureRequest(one);
+        two.setGetFileDetailCivilSecureRequest(one);
+        req.setGetFileDetailCivilSecureRequest(two);
 
         var resp = new com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse();
 

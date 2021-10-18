@@ -174,22 +174,25 @@ public class SecureEndpointController {
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getFileDetailCivilSecure")
     @ResponsePayload
     public GetFileDetailCivilSecureResponse getFileDetailCivilSecure(
-            @RequestPayload GetFileDetailCivilSecureRequest search) throws JsonProcessingException {
+            @RequestPayload GetFileDetailCivilSecure search) throws JsonProcessingException {
 
         var inner =
                 search.getGetFileDetailCivilSecureRequest() != null
+                                && search.getGetFileDetailCivilSecureRequest()
+                                                .getGetFileDetailCivilSecureRequest()
+                                        != null
                         ? search.getGetFileDetailCivilSecureRequest()
+                                .getGetFileDetailCivilSecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetFileDetailCivilSecureRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
-                        .queryParam("appearanceId", inner.getRequestPartId());
+                        .queryParam("physicalFileId", inner.getPhysicalFileId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse> resp =
                     restTemplate.exchange(
