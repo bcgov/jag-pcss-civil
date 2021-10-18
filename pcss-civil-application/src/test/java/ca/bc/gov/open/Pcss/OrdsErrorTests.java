@@ -153,7 +153,7 @@ public class OrdsErrorTests {
 
         try {
             secureController.getAppearanceCivilApprMethodSecureRequest(
-                    new GetAppearanceCivilApprMethodSecureRequest());
+                    new GetAppearanceCivilApprMethodSecure());
         } catch (ORDSException ex) {
             // Exception caught as expected
             assert true;
@@ -171,8 +171,7 @@ public class OrdsErrorTests {
         setUpRestTemplate();
 
         try {
-            secureController.getAppearanceCivilPartySecure(
-                    new GetAppearanceCivilPartySecureRequest());
+            secureController.getAppearanceCivilPartySecure(new GetAppearanceCivilPartySecure());
         } catch (ORDSException ex) {
             // Exception caught as expected
             assert true;

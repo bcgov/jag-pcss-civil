@@ -20,4 +20,11 @@ public class InstantSerializer extends JsonSerializer<Instant> {
                         .format(value);
         gen.writeString(out);
     }
+
+    public static String convert(Instant value) {
+        return DateTimeFormatter.ofPattern("dd-MMM-yyyy")
+                .withZone(ZoneId.of("GMT-7"))
+                .withLocale(Locale.US)
+                .format(value);
+    }
 }

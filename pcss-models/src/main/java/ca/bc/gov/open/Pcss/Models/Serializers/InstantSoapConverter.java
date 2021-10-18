@@ -6,7 +6,9 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public final class InstantSoapConverter {
 
     private InstantSoapConverter() {}
@@ -27,12 +29,17 @@ public final class InstantSoapConverter {
                 d = sdf.parse(value);
             } catch (ParseException ex) {
                 // Date only parser
-                var sdf = new SimpleDateFormat("dd-MMM-yy", Locale.US);
-                sdf.setTimeZone(TimeZone.getTimeZone("GMT-7"));
-                d = sdf.parse(value);
+                try {
+                    var sdf = new SimpleDateFormat("dd-MMM-yy", Locale.US);
+                    sdf.setTimeZone(TimeZone.getTimeZone("GMT-7"));
+                    d = sdf.parse(value);
+                } catch (ParseException ex2) {
+                    return Instant.parse(value + "Z");
+                }
             }
             return d.toInstant();
         } catch (Exception ex) {
+            log.warn("Bad date received from soap request");
             return null;
         }
     }

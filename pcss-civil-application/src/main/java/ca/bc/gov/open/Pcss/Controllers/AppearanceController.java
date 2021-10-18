@@ -98,8 +98,7 @@ public class AppearanceController {
                         ? payload.getSetAppearanceCivilRequest().getSetAppearanceCivilRequest()
                         : new com.example.demp.wsdl.pcss.one.SetAppearanceCivilRequest();
 
-        UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "SetAppearanceCivil");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "appearance");
 
         HttpEntity<com.example.demp.wsdl.pcss.one.SetAppearanceCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
@@ -201,7 +200,7 @@ public class AppearanceController {
                 new HttpEntity<>(inner, new HttpHeaders());
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "setAppearanceMethodCivil");
+                UriComponentsBuilder.fromHttpUrl(host + "appearance/appearance-method");
         try {
             HttpEntity<com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilResponse> resp =
                     restTemplate.exchange(

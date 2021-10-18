@@ -37,7 +37,8 @@ public class SecureEndpointTests {
     @Test
     public void getGetAppearanceCivilApprMethodSecureRequestTest() throws JsonProcessingException {
         endpointController = new SecureEndpointController(restTemplate, objectMapper);
-        var req = new GetAppearanceCivilApprMethodSecureRequest();
+        var req = new GetAppearanceCivilApprMethodSecure();
+        var two = new GetAppearanceCivilApprMethodSecureRequest();
         var one =
                 new com.example.demp.wsdl.pcss.secure.one
                         .GetAppearanceCivilApprMethodSecureRequest();
@@ -46,8 +47,8 @@ public class SecureEndpointTests {
         one.setApplicationCd("A");
         one.setRequestPartId("A");
         one.setRequestAgencyIdentifierId("A");
-
-        req.setGetAppearanceCivilApprMethodSecureRequest(one);
+        two.setGetAppearanceCivilApprMethodSecureRequest(one);
+        req.setGetAppearanceCivilApprMethodSecureRequest(two);
 
         var resp = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilApprMethodResponse();
 
@@ -82,8 +83,9 @@ public class SecureEndpointTests {
     public void getAppearanceCivilPartySecure() throws JsonProcessingException {
         endpointController = new SecureEndpointController(restTemplate, objectMapper);
 
-        var req = new GetAppearanceCivilPartySecureRequest();
+        var req = new GetAppearanceCivilPartySecure();
         var one = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
+        var two = new GetAppearanceCivilPartySecureRequest();
 
         one.setAppearanceId("A");
         one.setApplicationCd("A");
@@ -91,7 +93,8 @@ public class SecureEndpointTests {
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
 
-        req.setGetAppearanceCivilPartySecureRequest(one);
+        two.setGetAppearanceCivilPartySecureRequest(one);
+        req.setGetAppearanceCivilPartySecureRequest(two);
 
         var resp = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse();
         resp.setResponseCd("A");

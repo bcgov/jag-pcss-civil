@@ -3,6 +3,7 @@ package ca.bc.gov.open.Pcss.Controllers;
 import ca.bc.gov.open.Pcss.Configuration.SoapConfig;
 import ca.bc.gov.open.Pcss.Exceptions.ORDSException;
 import ca.bc.gov.open.Pcss.Models.OrdsErrorLog;
+import ca.bc.gov.open.Pcss.Models.Serializers.InstantSerializer;
 import com.example.demp.wsdl.pcss.secure.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,22 +41,25 @@ public class SecureEndpointController {
             localPart = "getAppearanceCivilApprMethodSecure")
     @ResponsePayload
     public GetAppearanceCivilApprMethodSecureResponse getAppearanceCivilApprMethodSecureRequest(
-            @RequestPayload GetAppearanceCivilApprMethodSecureRequest search)
+            @RequestPayload GetAppearanceCivilApprMethodSecure search)
             throws JsonProcessingException {
 
         var inner =
                 search.getGetAppearanceCivilApprMethodSecureRequest() != null
+                                && search.getGetAppearanceCivilApprMethodSecureRequest()
+                                                .getGetAppearanceCivilApprMethodSecureRequest()
+                                        != null
                         ? search.getGetAppearanceCivilApprMethodSecureRequest()
+                                .getGetAppearanceCivilApprMethodSecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetAppearanceCivilApprMethodSecureRequest();
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/appearance-method")
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
                         .queryParam("applicationCd", inner.getApplicationCd())
-                        .queryParam("appearanceId", inner.getRequestPartId());
+                        .queryParam("appearanceId", inner.getAppearanceId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilApprMethodResponse>
                     resp =
@@ -85,22 +89,21 @@ public class SecureEndpointController {
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getAppearanceCivilPartySecure")
     @ResponsePayload
     public GetAppearanceCivilPartySecureResponse getAppearanceCivilPartySecure(
-            @RequestPayload GetAppearanceCivilPartySecureRequest search)
-            throws JsonProcessingException {
+            @RequestPayload GetAppearanceCivilPartySecure search) throws JsonProcessingException {
         var inner =
                 search.getGetAppearanceCivilPartySecureRequest() != null
                         ? search.getGetAppearanceCivilPartySecureRequest()
+                                .getGetAppearanceCivilPartySecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetAppearanceCivilPartySecureRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/party")
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
                         .queryParam("applicationCd", inner.getApplicationCd())
-                        .queryParam("appearanceId", inner.getRequestPartId());
+                        .queryParam("appearanceId", inner.getAppearanceId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse> resp =
                     restTemplate.exchange(
@@ -140,13 +143,14 @@ public class SecureEndpointController {
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetAppearanceCivilSecureRequest();
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance")
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
                         .queryParam("applicationCd", inner.getApplicationCd())
-                        .queryParam("appearanceId", inner.getRequestPartId());
+                        .queryParam("physicalFileId", inner.getPhysicalFileId())
+                        .queryParam("futureYN", inner.getFutureYN())
+                        .queryParam("historyYN", inner.getHistoryYN());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilResponse> resp =
                     restTemplate.exchange(
@@ -190,7 +194,7 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("physicalFileId", inner.getPhysicalFileId());
         try {
