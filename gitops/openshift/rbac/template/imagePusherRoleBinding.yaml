@@ -1,0 +1,38 @@
+# This is required for builder service account to push image to tools namespace image stream when build configs are executed.
+# Here, Nginx build config requires this role binding to push the downloaded Nginx image to tools namespace
+
+apiVersion: template.openshift.io/v1
+kind: Template
+labels:
+  template: image-pusher-role-binding
+metadata:
+  name: image-pusher-role-binding
+
+parameters:
+- name: OC_NAMESPACE
+  description: OpenShift nameplate assigned for the application
+  required: true
+
+- name: OC_ENV
+  description: Application environment
+  required: true
+
+- name: SA_NAME
+  description: ServiceAccount name
+  required: true
+
+- kind: RoleBinding
+  apiVersion: rbac.authorization.k8s.io/v1
+  metadata:
+    name: 'system: builder-image-pusher-${OC_ENV}'
+    namespace: ${OC_NAMESPACE}-tools
+  subjects:
+  - kind: ServiceAccount
+    name: ${SA_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+    apiGroup: rbac.authorization.k8s.io
+  roleRef:
+    kind: ClusterRole
+    name: system:image-pusher
+    apiGroup: rbac.authorization.k8s.io
+
