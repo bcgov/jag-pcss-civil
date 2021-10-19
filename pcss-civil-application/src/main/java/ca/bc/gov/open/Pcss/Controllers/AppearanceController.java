@@ -4,7 +4,7 @@ import ca.bc.gov.open.Pcss.Configuration.SoapConfig;
 import ca.bc.gov.open.Pcss.Exceptions.BadDateException;
 import ca.bc.gov.open.Pcss.Exceptions.ORDSException;
 import ca.bc.gov.open.Pcss.Models.OrdsErrorLog;
-import com.example.demp.wsdl.pcss.three.*;
+import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +47,7 @@ public class AppearanceController {
                                                 .getGetAppearanceCivilRequest()
                                         != null
                         ? search.getGetAppearanceCivilRequest().getGetAppearanceCivilRequest()
-                        : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilRequest();
+                        : new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
 
         if (inner.getRequestDtm() == null) {
             throw new BadDateException();
@@ -63,12 +63,12 @@ public class AppearanceController {
                         .queryParam("historyYN", inner.getHistoryYN());
 
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.one.GetAppearanceCivilResponse.class);
+                            ca.bc.gov.open.pcss.one.GetAppearanceCivilResponse.class);
 
             var out = new GetAppearanceCivilResponse();
             var one = new GetAppearanceCivilResponse2();
@@ -89,25 +89,25 @@ public class AppearanceController {
     public SetAppearanceCivilResponse setAppearanceCivil(@RequestPayload SetAppearanceCivil payload)
             throws JsonProcessingException {
 
-        com.example.demp.wsdl.pcss.one.SetAppearanceCivilRequest inner =
+        ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest inner =
                 payload.getSetAppearanceCivilRequest() != null
                                 && payload.getSetAppearanceCivilRequest()
                                                 .getSetAppearanceCivilRequest()
                                         != null
                         ? payload.getSetAppearanceCivilRequest().getSetAppearanceCivilRequest()
-                        : new com.example.demp.wsdl.pcss.one.SetAppearanceCivilRequest();
+                        : new ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest();
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "appearance");
 
-        HttpEntity<com.example.demp.wsdl.pcss.one.SetAppearanceCivilRequest> body =
+        HttpEntity<ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.SetAppearanceCivilResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.SetAppearanceCivilResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.POST,
                             body,
-                            com.example.demp.wsdl.pcss.one.SetAppearanceCivilResponse.class);
+                            ca.bc.gov.open.pcss.one.SetAppearanceCivilResponse.class);
             var out = new SetAppearanceCivilResponse();
             var one = new SetAppearanceCivilResponse2();
             one.setSetAppearanceCivilResponse(resp.getBody());
@@ -137,7 +137,7 @@ public class AppearanceController {
                                         != null
                         ? search.getGetAppearanceCivilApprMethodRequest()
                                 .getGetAppearanceCivilApprMethodRequest()
-                        : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodRequest();
+                        : new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
 
         if (inner.getRequestDtm() == null) {
             throw new BadDateException();
@@ -151,13 +151,12 @@ public class AppearanceController {
                         .queryParam("appearanceId", inner.getAppearanceId());
 
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodResponse
-                                    .class);
+                            ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodResponse.class);
 
             var out = new GetAppearanceCivilApprMethodResponse();
             var one = new GetAppearanceCivilApprMethodResponse2();
@@ -188,24 +187,24 @@ public class AppearanceController {
                                         != null
                         ? payload.getSetAppearanceMethodCivilRequest()
                                 .getSetAppearanceMethodCivilRequest()
-                        : new com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilRequest();
+                        : new ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilRequest();
 
         if (inner.getRequestDtm() == null) {
             throw new BadDateException();
         }
 
-        HttpEntity<com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilRequest> body =
+        HttpEntity<ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance/appearance-method");
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.POST,
                             body,
-                            com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilResponse.class);
+                            ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilResponse.class);
 
             var out = new SetAppearanceMethodCivilResponse();
             var one = new SetAppearanceMethodCivilResponse2();
@@ -235,7 +234,7 @@ public class AppearanceController {
                                         != null
                         ? search.getGetAppearanceCivilDocumentRequest()
                                 .getGetAppearanceCivilDocumentRequest()
-                        : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentRequest();
+                        : new ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentRequest();
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance/document")
@@ -245,13 +244,12 @@ public class AppearanceController {
                         .queryParam("appearanceId", inner.getAppearanceId());
 
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentResponse
-                                    .class);
+                            ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentResponse.class);
 
             var out = new GetAppearanceCivilDocumentResponse();
             var one = new GetAppearanceCivilDocumentResponse2();
@@ -281,7 +279,7 @@ public class AppearanceController {
                                         != null
                         ? search.getGetAppearanceCivilPartyRequest()
                                 .getGetAppearanceCivilPartyRequest()
-                        : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyRequest();
+                        : new ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyRequest();
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance/party")
@@ -291,12 +289,12 @@ public class AppearanceController {
                         .queryParam("appearanceId", inner.getAppearanceId());
 
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse.class);
+                            ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyResponse.class);
 
             var out = new GetAppearanceCivilPartyResponse();
             var one = new GetAppearanceCivilPartyResponse2();
@@ -324,7 +322,7 @@ public class AppearanceController {
                                         != null
                         ? search.getGetAppearanceCivilResourceRequest()
                                 .getGetAppearanceCivilResourceRequest()
-                        : new com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceRequest();
+                        : new ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest();
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance/resource")
@@ -334,13 +332,12 @@ public class AppearanceController {
                         .queryParam("appearanceId", inner.getAppearanceId());
 
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceResponse
-                                    .class);
+                            ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceResponse.class);
 
             var out = new GetAppearanceCivilResourceResponse();
             var one = new GetAppearanceCivilResourceResponse2();
@@ -370,19 +367,19 @@ public class AppearanceController {
                                         != null
                         ? payload.getSetCounselDetailCivilRequest()
                                 .getSetCounselDetailCivilRequest()
-                        : new com.example.demp.wsdl.pcss.one.SetCounselDetailCivilRequest();
+                        : new ca.bc.gov.open.pcss.one.SetCounselDetailCivilRequest();
 
-        HttpEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilRequest> body =
+        HttpEntity<ca.bc.gov.open.pcss.one.SetCounselDetailCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "counsel");
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.SetCounselDetailCivilResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.POST,
                             body,
-                            com.example.demp.wsdl.pcss.one.SetCounselDetailCivilResponse.class);
+                            ca.bc.gov.open.pcss.one.SetCounselDetailCivilResponse.class);
 
             var finalOut = new SetCounselDetailCivilResponse();
             var one = new SetCounselDetailCivilResponse2();

@@ -3,7 +3,7 @@ package ca.bc.gov.open.Pcss;
 import static org.mockito.Mockito.when;
 
 import ca.bc.gov.open.Pcss.Controllers.HealthController;
-import com.example.demp.wsdl.pcss.three.*;
+import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

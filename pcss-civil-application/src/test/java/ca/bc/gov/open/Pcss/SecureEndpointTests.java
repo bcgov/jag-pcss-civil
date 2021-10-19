@@ -3,13 +3,13 @@ package ca.bc.gov.open.Pcss;
 import static org.mockito.Mockito.when;
 
 import ca.bc.gov.open.Pcss.Controllers.SecureEndpointController;
-import com.example.demp.wsdl.pcss.secure.one.*;
-import com.example.demp.wsdl.pcss.secure.three.*;
-import com.example.demp.wsdl.pcss.secure.two.*;
-import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilApprMethodSecureRequest;
-import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilPartySecureRequest;
-import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilSecureRequest;
-import com.example.demp.wsdl.pcss.secure.two.GetFileDetailCivilSecureRequest;
+import ca.bc.gov.open.pcss.secure.one.*;
+import ca.bc.gov.open.pcss.secure.three.*;
+import ca.bc.gov.open.pcss.secure.two.*;
+import ca.bc.gov.open.pcss.secure.two.GetAppearanceCivilApprMethodSecureRequest;
+import ca.bc.gov.open.pcss.secure.two.GetAppearanceCivilPartySecureRequest;
+import ca.bc.gov.open.pcss.secure.two.GetAppearanceCivilSecureRequest;
+import ca.bc.gov.open.pcss.secure.two.GetFileDetailCivilSecureRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
@@ -39,9 +39,7 @@ public class SecureEndpointTests {
         endpointController = new SecureEndpointController(restTemplate, objectMapper);
         var req = new GetAppearanceCivilApprMethodSecure();
         var two = new GetAppearanceCivilApprMethodSecureRequest();
-        var one =
-                new com.example.demp.wsdl.pcss.secure.one
-                        .GetAppearanceCivilApprMethodSecureRequest();
+        var one = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodSecureRequest();
         one.setAppearanceId("A");
         one.setRequestDtm(Instant.now());
         one.setApplicationCd("A");
@@ -50,7 +48,7 @@ public class SecureEndpointTests {
         two.setGetAppearanceCivilApprMethodSecureRequest(one);
         req.setGetAppearanceCivilApprMethodSecureRequest(two);
 
-        var resp = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilApprMethodResponse();
+        var resp = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse();
 
         resp.setResponseCd("A");
         resp.setResponseMessageTxt("A");
@@ -60,7 +58,7 @@ public class SecureEndpointTests {
         am.setRoleTypeCd("A");
         resp.setAppearanceMethod(Collections.singletonList(am));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilApprMethodResponse>
+        ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse>
                 responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
         //     Set up to mock ords response
         when(restTemplate.exchange(
@@ -69,7 +67,7 @@ public class SecureEndpointTests {
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
                                 .<Class<
-                                                com.example.demp.wsdl.pcss.secure.one
+                                                ca.bc.gov.open.pcss.secure.one
                                                         .GetAppearanceCivilApprMethodResponse>>
                                         any()))
                 .thenReturn(responseEntity);
@@ -84,7 +82,7 @@ public class SecureEndpointTests {
         endpointController = new SecureEndpointController(restTemplate, objectMapper);
 
         var req = new GetAppearanceCivilPartySecure();
-        var one = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
+        var one = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
         var two = new GetAppearanceCivilPartySecureRequest();
 
         one.setAppearanceId("A");
@@ -96,7 +94,7 @@ public class SecureEndpointTests {
         two.setGetAppearanceCivilPartySecureRequest(one);
         req.setGetAppearanceCivilPartySecureRequest(two);
 
-        var resp = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse();
+        var resp = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse();
         resp.setResponseCd("A");
         resp.setResponseMessageTxt("A");
 
@@ -112,7 +110,7 @@ public class SecureEndpointTests {
 
         resp.setParty(Collections.singletonList(party));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse>
+        ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse>
                 responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
         //     Set up to mock ords response
         when(restTemplate.exchange(
@@ -121,7 +119,7 @@ public class SecureEndpointTests {
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
                                 .<Class<
-                                                com.example.demp.wsdl.pcss.secure.one
+                                                ca.bc.gov.open.pcss.secure.one
                                                         .GetAppearanceCivilPartyResponse>>
                                         any()))
                 .thenReturn(responseEntity);
@@ -137,7 +135,7 @@ public class SecureEndpointTests {
 
         var req = new GetAppearanceCivilSecure();
         var one = new GetAppearanceCivilSecureRequest();
-        var two = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilSecureRequest();
+        var two = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilSecureRequest();
         two.setApplicationCd("A");
         two.setRequestDtm(Instant.now());
         two.setRequestAgencyIdentifierId("A");
@@ -149,7 +147,7 @@ public class SecureEndpointTests {
         one.setGetAppearanceCivilSecureRequest(two);
         req.setGetAppearanceCivilSecureRequest(one);
 
-        var resp = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilResponse();
+        var resp = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse();
         resp.setResponseCd("A");
         resp.setResponseMessageTxt("A");
         resp.setFutureRecCount("A");
@@ -178,17 +176,15 @@ public class SecureEndpointTests {
 
         resp.setApprDetail(Collections.singletonList(ap));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilResponse>
-                responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
+        ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse> responseEntity =
+                new ResponseEntity<>(resp, HttpStatus.OK);
         //     Set up to mock ords response
         when(restTemplate.exchange(
                         Mockito.any(String.class),
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
-                                .<Class<
-                                                com.example.demp.wsdl.pcss.secure.one
-                                                        .GetAppearanceCivilResponse>>
+                                .<Class<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse>>
                                         any()))
                 .thenReturn(responseEntity);
 
@@ -202,7 +198,7 @@ public class SecureEndpointTests {
         endpointController = new SecureEndpointController(restTemplate, objectMapper);
 
         var req = new GetFileDetailCivilSecure();
-        var one = new com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilSecureRequest();
+        var one = new ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilSecureRequest();
         var two = new GetFileDetailCivilSecureRequest();
 
         one.setApplicationCd("A");
@@ -214,7 +210,7 @@ public class SecureEndpointTests {
         two.setGetFileDetailCivilSecureRequest(one);
         req.setGetFileDetailCivilSecureRequest(two);
 
-        var resp = new com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse();
+        var resp = new ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse();
 
         resp.setResponseCd("A");
         resp.setResponseMessageTxt("A");
@@ -284,17 +280,15 @@ public class SecureEndpointTests {
 
         doc.setIssue(Collections.singletonList(is));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse>
-                responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
+        ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse> responseEntity =
+                new ResponseEntity<>(resp, HttpStatus.OK);
         //     Set up to mock ords response
         when(restTemplate.exchange(
                         Mockito.any(String.class),
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
-                                .<Class<
-                                                com.example.demp.wsdl.pcss.secure.one
-                                                        .GetFileDetailCivilResponse>>
+                                .<Class<ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse>>
                                         any()))
                 .thenReturn(responseEntity);
 

@@ -10,8 +10,8 @@ import ca.bc.gov.open.Pcss.Controllers.SecureEndpointController;
 import ca.bc.gov.open.Pcss.Controllers.SyncController;
 import ca.bc.gov.open.Pcss.Exceptions.BadDateException;
 import ca.bc.gov.open.Pcss.Exceptions.ORDSException;
-import com.example.demp.wsdl.pcss.secure.two.*;
-import com.example.demp.wsdl.pcss.three.*;
+import ca.bc.gov.open.pcss.secure.two.*;
+import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
@@ -228,7 +228,7 @@ public class OrdsErrorTests {
             var one = new GetAppearanceCivil();
             var two = new GetAppearanceCivilRequest();
             one.setGetAppearanceCivilRequest(two);
-            var three = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilRequest();
+            var three = new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
             two.setGetAppearanceCivilRequest(three);
             three.setRequestDtm(Instant.now());
             secureController.getAppearanceCivil(one);
@@ -289,7 +289,7 @@ public class OrdsErrorTests {
         try {
             var one = new GetAppearanceCivilApprMethod();
             var two = new GetAppearanceCivilApprMethodRequest();
-            var three = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodRequest();
+            var three = new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
             three.setRequestDtm(Instant.now());
             two.setGetAppearanceCivilApprMethodRequest(three);
             one.setGetAppearanceCivilApprMethodRequest(two);
@@ -351,7 +351,7 @@ public class OrdsErrorTests {
         try {
             var one = new SetAppearanceMethodCivil();
             var two = new SetAppearanceMethodCivilRequest();
-            var three = new com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilRequest();
+            var three = new ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilRequest();
             one.setSetAppearanceMethodCivilRequest(two);
             two.setSetAppearanceMethodCivilRequest(three);
             three.setRequestDtm(Instant.now());
@@ -475,7 +475,7 @@ public class OrdsErrorTests {
         var one = new GetAppearanceCivil();
         var two = new GetAppearanceCivilRequest();
         one.setGetAppearanceCivilRequest(two);
-        var three = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilRequest();
+        var three = new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
         two.setGetAppearanceCivilRequest(three);
 
         try {

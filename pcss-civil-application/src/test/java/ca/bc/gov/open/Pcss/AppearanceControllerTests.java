@@ -4,17 +4,17 @@ import static org.mockito.Mockito.when;
 
 import ca.bc.gov.open.Pcss.Controllers.AppearanceController;
 import ca.bc.gov.open.Pcss.Exceptions.BadDateException;
-import com.example.demp.wsdl.pcss.one.*;
-import com.example.demp.wsdl.pcss.three.*;
-import com.example.demp.wsdl.pcss.three.GetAppearanceCivilApprMethodRequest;
-import com.example.demp.wsdl.pcss.three.GetAppearanceCivilDocumentRequest;
-import com.example.demp.wsdl.pcss.three.GetAppearanceCivilPartyRequest;
-import com.example.demp.wsdl.pcss.three.GetAppearanceCivilRequest;
-import com.example.demp.wsdl.pcss.three.GetAppearanceCivilResourceRequest;
-import com.example.demp.wsdl.pcss.three.SetAppearanceCivilRequest;
-import com.example.demp.wsdl.pcss.three.SetAppearanceMethodCivilRequest;
-import com.example.demp.wsdl.pcss.three.SetCounselDetailCivilRequest;
-import com.example.demp.wsdl.pcss.two.*;
+import ca.bc.gov.open.pcss.one.*;
+import ca.bc.gov.open.pcss.three.*;
+import ca.bc.gov.open.pcss.three.GetAppearanceCivilApprMethodRequest;
+import ca.bc.gov.open.pcss.three.GetAppearanceCivilDocumentRequest;
+import ca.bc.gov.open.pcss.three.GetAppearanceCivilPartyRequest;
+import ca.bc.gov.open.pcss.three.GetAppearanceCivilRequest;
+import ca.bc.gov.open.pcss.three.GetAppearanceCivilResourceRequest;
+import ca.bc.gov.open.pcss.three.SetAppearanceCivilRequest;
+import ca.bc.gov.open.pcss.three.SetAppearanceMethodCivilRequest;
+import ca.bc.gov.open.pcss.three.SetCounselDetailCivilRequest;
+import ca.bc.gov.open.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
@@ -45,7 +45,7 @@ public class AppearanceControllerTests {
 
         GetAppearanceCivil ac = new GetAppearanceCivil();
         GetAppearanceCivilRequest one = new GetAppearanceCivilRequest();
-        var two = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilRequest();
+        var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
 
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
@@ -58,7 +58,7 @@ public class AppearanceControllerTests {
 
         ac.setGetAppearanceCivilRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilResponse();
+        var out = new ca.bc.gov.open.pcss.one.GetAppearanceCivilResponse();
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
         out.setFutureRecCount("A");
@@ -84,7 +84,7 @@ public class AppearanceControllerTests {
         dt.setSupplementalEquipmentTxt("A");
         dt.setOutOfTownJudgeTxt("A");
         out.setApprDetail(Collections.singletonList(dt));
-        ResponseEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResponse> responseEntity =
+        ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
@@ -92,9 +92,7 @@ public class AppearanceControllerTests {
                         Mockito.any(String.class),
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
-                        Mockito
-                                .<Class<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResponse>>
-                                        any()))
+                        Mockito.<Class<ca.bc.gov.open.pcss.one.GetAppearanceCivilResponse>>any()))
                 .thenReturn(responseEntity);
 
         var res = appearanceController.getAppearanceCivil(ac);
@@ -108,7 +106,7 @@ public class AppearanceControllerTests {
 
         var cam = new GetAppearanceCivilApprMethod();
         var one = new GetAppearanceCivilApprMethodRequest();
-        var two = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodRequest();
+        var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         two.setRequestDtm(Instant.now());
@@ -116,7 +114,7 @@ public class AppearanceControllerTests {
         one.setGetAppearanceCivilApprMethodRequest(two);
         cam.setGetAppearanceCivilApprMethodRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodResponse();
+        var out = new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodResponse();
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
         AppearanceMethod am = new AppearanceMethod();
@@ -126,7 +124,7 @@ public class AppearanceControllerTests {
 
         out.setAppearanceMethod(Collections.singletonList(am));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodResponse>
+        ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodResponse>
                 responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
@@ -136,7 +134,7 @@ public class AppearanceControllerTests {
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
                                 .<Class<
-                                                com.example.demp.wsdl.pcss.one
+                                                ca.bc.gov.open.pcss.one
                                                         .GetAppearanceCivilApprMethodResponse>>
                                         any()))
                 .thenReturn(responseEntity);
@@ -152,7 +150,7 @@ public class AppearanceControllerTests {
 
         var sam = new SetAppearanceMethodCivil();
         var one = new SetAppearanceMethodCivilRequest();
-        var two = new com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilRequest();
+        var two = new ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         two.setRequestDtm(Instant.now());
@@ -167,12 +165,12 @@ public class AppearanceControllerTests {
         one.setSetAppearanceMethodCivilRequest(two);
         sam.setSetAppearanceMethodCivilRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilResponse();
+        var out = new ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilResponse();
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilResponse>
-                responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
+        ResponseEntity<ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilResponse> responseEntity =
+                new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
         when(restTemplate.exchange(
@@ -180,9 +178,7 @@ public class AppearanceControllerTests {
                         Mockito.eq(HttpMethod.POST),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
-                                .<Class<
-                                                com.example.demp.wsdl.pcss.one
-                                                        .SetAppearanceMethodCivilResponse>>
+                                .<Class<ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilResponse>>
                                         any()))
                 .thenReturn(responseEntity);
 
@@ -196,7 +192,7 @@ public class AppearanceControllerTests {
         appearanceController = new AppearanceController(restTemplate, objectMapper);
         var sca = new SetAppearanceCivil();
         var one = new SetAppearanceCivilRequest();
-        var two = new com.example.demp.wsdl.pcss.one.SetAppearanceCivilRequest();
+        var two = new ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest();
 
         Detail dt = new Detail();
         dt.setOperationMode(OperationModeType.ADD);
@@ -237,7 +233,7 @@ public class AppearanceControllerTests {
         one.setSetAppearanceCivilRequest(two);
         sca.setSetAppearanceCivilRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.SetAppearanceCivilResponse();
+        var out = new ca.bc.gov.open.pcss.one.SetAppearanceCivilResponse();
         var dt2 = new Detail2();
         dt2.setAppearanceCcn("A");
         dt2.setAppearanceCcn("A");
@@ -248,7 +244,7 @@ public class AppearanceControllerTests {
         out.setResponseMessageTxt("A");
         out.setDetail(Collections.singletonList(dt2));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.SetAppearanceCivilResponse> responseEntity =
+        ResponseEntity<ca.bc.gov.open.pcss.one.SetAppearanceCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
@@ -256,9 +252,7 @@ public class AppearanceControllerTests {
                         Mockito.any(String.class),
                         Mockito.eq(HttpMethod.POST),
                         Mockito.<HttpEntity<String>>any(),
-                        Mockito
-                                .<Class<com.example.demp.wsdl.pcss.one.SetAppearanceCivilResponse>>
-                                        any()))
+                        Mockito.<Class<ca.bc.gov.open.pcss.one.SetAppearanceCivilResponse>>any()))
                 .thenReturn(responseEntity);
 
         var resp = appearanceController.setAppearanceCivil(sca);
@@ -271,7 +265,7 @@ public class AppearanceControllerTests {
         appearanceController = new AppearanceController(restTemplate, objectMapper);
         var cd = new GetAppearanceCivilDocument();
         var one = new GetAppearanceCivilDocumentRequest();
-        var two = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentRequest();
+        var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setAppearanceId("A");
         two.setRequestPartId("A");
@@ -279,7 +273,7 @@ public class AppearanceControllerTests {
         one.setGetAppearanceCivilDocumentRequest(two);
         cd.setGetAppearanceCivilDocumentRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentResponse();
+        var out = new ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentResponse();
         out.setResponseCd("A");
         out.setResponseCd("A");
         Document doc = new Document();
@@ -299,8 +293,8 @@ public class AppearanceControllerTests {
         doc.setIssue(Collections.singletonList(is));
         out.setDocument(Collections.singletonList(doc));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilDocumentResponse>
-                responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
+        ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentResponse> responseEntity =
+                new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
         when(restTemplate.exchange(
@@ -308,9 +302,7 @@ public class AppearanceControllerTests {
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
-                                .<Class<
-                                                com.example.demp.wsdl.pcss.one
-                                                        .GetAppearanceCivilDocumentResponse>>
+                                .<Class<ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentResponse>>
                                         any()))
                 .thenReturn(responseEntity);
 
@@ -325,7 +317,7 @@ public class AppearanceControllerTests {
 
         var acp = new GetAppearanceCivilParty();
         var one = new GetAppearanceCivilPartyRequest();
-        var two = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyRequest();
+        var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setAppearanceId("A");
         two.setRequestPartId("A");
@@ -333,7 +325,7 @@ public class AppearanceControllerTests {
         one.setGetAppearanceCivilPartyRequest(two);
         acp.setGetAppearanceCivilPartyRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse();
+        var out = new ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyResponse();
 
         out.setResponseMessageTxt("A");
         out.setResponseCd("A");
@@ -349,8 +341,8 @@ public class AppearanceControllerTests {
 
         out.setParty(Collections.singletonList(party));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilPartyResponse>
-                responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
+        ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyResponse> responseEntity =
+                new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
         when(restTemplate.exchange(
@@ -358,9 +350,7 @@ public class AppearanceControllerTests {
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
-                                .<Class<
-                                                com.example.demp.wsdl.pcss.one
-                                                        .GetAppearanceCivilPartyResponse>>
+                                .<Class<ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyResponse>>
                                         any()))
                 .thenReturn(responseEntity);
 
@@ -373,7 +363,7 @@ public class AppearanceControllerTests {
         appearanceController = new AppearanceController(restTemplate, objectMapper);
         var cr = new GetAppearanceCivilResource();
         var one = new GetAppearanceCivilResourceRequest();
-        var two = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceRequest();
+        var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setAppearanceId("A");
         two.setRequestPartId("A");
@@ -382,7 +372,7 @@ public class AppearanceControllerTests {
         one.setGetAppearanceCivilResourceRequest(two);
         cr.setGetAppearanceCivilResourceRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceResponse();
+        var out = new ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceResponse();
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
         var res = new Resource();
@@ -403,8 +393,8 @@ public class AppearanceControllerTests {
         res.setBookingCcn("A");
         out.setResource(Collections.singletonList(res));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.GetAppearanceCivilResourceResponse>
-                responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
+        ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceResponse> responseEntity =
+                new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
         when(restTemplate.exchange(
@@ -412,9 +402,7 @@ public class AppearanceControllerTests {
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
-                                .<Class<
-                                                com.example.demp.wsdl.pcss.one
-                                                        .GetAppearanceCivilResourceResponse>>
+                                .<Class<ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceResponse>>
                                         any()))
                 .thenReturn(responseEntity);
 
@@ -428,7 +416,7 @@ public class AppearanceControllerTests {
         appearanceController = new AppearanceController(restTemplate, objectMapper);
         var cd = new SetCounselDetailCivil();
         var one = new SetCounselDetailCivilRequest();
-        var two = new com.example.demp.wsdl.pcss.one.SetCounselDetailCivilRequest();
+        var two = new ca.bc.gov.open.pcss.one.SetCounselDetailCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         two.setRequestDtm(Instant.now());
@@ -444,12 +432,12 @@ public class AppearanceControllerTests {
         one.setSetCounselDetailCivilRequest(two);
         cd.setSetCounselDetailCivilRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.SetCounselDetailCivilResponse();
+        var out = new ca.bc.gov.open.pcss.one.SetCounselDetailCivilResponse();
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.SetCounselDetailCivilResponse>
-                responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
+        ResponseEntity<ca.bc.gov.open.pcss.one.SetCounselDetailCivilResponse> responseEntity =
+                new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
         when(restTemplate.exchange(
@@ -457,9 +445,7 @@ public class AppearanceControllerTests {
                         Mockito.eq(HttpMethod.POST),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
-                                .<Class<
-                                                com.example.demp.wsdl.pcss.one
-                                                        .SetCounselDetailCivilResponse>>
+                                .<Class<ca.bc.gov.open.pcss.one.SetCounselDetailCivilResponse>>
                                         any()))
                 .thenReturn(responseEntity);
 

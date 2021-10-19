@@ -3,7 +3,7 @@ package ca.bc.gov.open.Pcss.Controllers;
 import ca.bc.gov.open.Pcss.Configuration.SoapConfig;
 import ca.bc.gov.open.Pcss.Exceptions.ORDSException;
 import ca.bc.gov.open.Pcss.Models.OrdsErrorLog;
-import com.example.demp.wsdl.pcss.three.*;
+import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +46,7 @@ public class SyncController {
                                         != null
                         ? search.getGetSyncCivilAppearanceRequest()
                                 .getGetSyncCivilAppearanceRequest()
-                        : new com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceRequest();
+                        : new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "sync/appearance")
@@ -56,12 +56,12 @@ public class SyncController {
                         .queryParam("ProcessUpToDtm", inner.getProcessUpToDtm());
 
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceResponse.class);
+                            ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse.class);
 
             var out = new GetSyncCivilAppearanceResponse();
             var one = new GetSyncCivilAppearanceResponse2();
@@ -92,8 +92,7 @@ public class SyncController {
                                         != null
                         ? search.getGetSyncCivilHearingRestrictionRequest()
                                 .getGetSyncCivilHearingRestrictionRequest()
-                        : new com.example.demp.wsdl.pcss.one
-                                .GetSyncCivilHearingRestrictionRequest();
+                        : new ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionRequest();
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "hearing-restriction")
@@ -103,13 +102,12 @@ public class SyncController {
                         .queryParam("ProcessUpToDtm", inner.getProcessUpToDtm());
 
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionResponse
-                                    .class);
+                            ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionResponse.class);
 
             var out = new GetSyncCivilHearingRestrictionResponse();
             var one = new GetSyncCivilHearingRestrictionResponse2();
@@ -139,21 +137,20 @@ public class SyncController {
                                         != null
                         ? search.getSetHearingRestrictionCivilRequest()
                                 .getSetHearingRestrictionCivilRequest()
-                        : new com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilRequest();
+                        : new ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilRequest();
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "hearing-restriction");
 
-        HttpEntity<com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilRequest> body =
+        HttpEntity<ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.POST,
                             body,
-                            com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilResponse
-                                    .class);
+                            ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilResponse.class);
 
             var out = new SetHearingRestrictionCivilResponse();
             var one = new SetHearingRestrictionCivilResponse2();
@@ -182,7 +179,7 @@ public class SyncController {
                                                 .getGetFileDetailCivilRequest()
                                         != null
                         ? search.getGetFileDetailCivilRequest().getGetFileDetailCivilRequest()
-                        : new com.example.demp.wsdl.pcss.one.GetFileDetailCivilRequest();
+                        : new ca.bc.gov.open.pcss.one.GetFileDetailCivilRequest();
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "file-detail")
@@ -192,12 +189,12 @@ public class SyncController {
                         .queryParam("physicalFileId", inner.getPhysicalFileId());
 
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.one.GetFileDetailCivilResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse.class);
+                            ca.bc.gov.open.pcss.one.GetFileDetailCivilResponse.class);
 
             var out = new GetFileDetailCivilResponse();
             var one = new GetFileDetailCivilResponse2();
