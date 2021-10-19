@@ -10,6 +10,7 @@
 * Docker Compose
 * Maven
 * Java 11
+* Lombok
 
 ### Application Endpoints
 
