@@ -1,0 +1,125 @@
+<xsd:schema targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
+            xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"
+            xmlns:tns="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"/>
+
+
+    <xsd:element name="getFileDetailCivilSecure">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getFileDetailCivilSecureRequest" nillable="true"
+                             type="tns:getFileDetailCivilSecureRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="getFileDetailCivilSecureRequest">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getFileDetailCivilSecureRequest"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getFileDetailCivilSecureResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getFileDetailCivilResponse" nillable="true" type="tns:getFileDetailCivilResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="getFileDetailCivilResponse">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getFileDetailCivilResponse"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getAppearanceCivilSecure">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getAppearanceCivilSecureRequest" nillable="true"
+                             type="tns:getAppearanceCivilSecureRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="getAppearanceCivilSecureRequest">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getAppearanceCivilSecureRequest"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getAppearanceCivilSecureResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getAppearanceCivilResponse" nillable="true" type="tns:getAppearanceCivilResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="getAppearanceCivilResponse">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getAppearanceCivilResponse"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getAppearanceCivilPartySecure">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getAppearanceCivilPartySecureRequest" nillable="true"
+                             type="tns:getAppearanceCivilPartySecureRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="getAppearanceCivilPartySecureRequest">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getAppearanceCivilPartySecureRequest"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getAppearanceCivilPartySecureResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getAppearanceCivilPartyResponse" nillable="true"
+                             type="tns:getAppearanceCivilPartyResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="getAppearanceCivilPartyResponse">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getAppearanceCivilPartyResponse"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getAppearanceCivilApprMethodSecure">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getAppearanceCivilApprMethodSecureRequest" nillable="true"
+                             type="tns:getAppearanceCivilApprMethodSecureRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="getAppearanceCivilApprMethodSecureRequest">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getAppearanceCivilApprMethodSecureRequest"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getAppearanceCivilApprMethodSecureResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getAppearanceCivilApprMethodResponse" nillable="true"
+                             type="tns:getAppearanceCivilApprMethodResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="getAppearanceCivilApprMethodResponse">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getAppearanceCivilApprMethodResponse"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+

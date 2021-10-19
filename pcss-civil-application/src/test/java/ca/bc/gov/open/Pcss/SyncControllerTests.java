@@ -3,13 +3,13 @@ package ca.bc.gov.open.Pcss;
 import static org.mockito.Mockito.when;
 
 import ca.bc.gov.open.Pcss.Controllers.SyncController;
-import com.example.demp.wsdl.pcss.one.*;
-import com.example.demp.wsdl.pcss.three.*;
-import com.example.demp.wsdl.pcss.three.GetFileDetailCivilRequest;
-import com.example.demp.wsdl.pcss.three.GetSyncCivilAppearanceRequest;
-import com.example.demp.wsdl.pcss.three.GetSyncCivilHearingRestrictionRequest;
-import com.example.demp.wsdl.pcss.three.SetHearingRestrictionCivilRequest;
-import com.example.demp.wsdl.pcss.two.*;
+import ca.bc.gov.open.pcss.one.*;
+import ca.bc.gov.open.pcss.three.*;
+import ca.bc.gov.open.pcss.three.GetFileDetailCivilRequest;
+import ca.bc.gov.open.pcss.three.GetSyncCivilAppearanceRequest;
+import ca.bc.gov.open.pcss.three.GetSyncCivilHearingRestrictionRequest;
+import ca.bc.gov.open.pcss.three.SetHearingRestrictionCivilRequest;
+import ca.bc.gov.open.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
@@ -40,7 +40,7 @@ public class SyncControllerTests {
 
         var sca = new GetSyncCivilAppearance();
         var one = new GetSyncCivilAppearanceRequest();
-        var two = new com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceRequest();
+        var two = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
         two.setProcessUpToDtm(Instant.now());
         two.setRequestAgencyIdentifierId("A");
         two.setRequestDtm(Instant.now());
@@ -49,7 +49,7 @@ public class SyncControllerTests {
         one.setGetSyncCivilAppearanceRequest(two);
         sca.setGetSyncCivilAppearanceRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceResponse();
+        var out = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse();
         Appearance app = new Appearance();
         app.setOperationModeCd(OperationModeType.ADD);
         app.setTransactionDtm(Instant.now());
@@ -72,8 +72,8 @@ public class SyncControllerTests {
         out.setAppearance(Collections.singletonList(app));
         out.setResponseCd("A");
         out.setResponseCd("A");
-        ResponseEntity<com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceResponse>
-                responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
+        ResponseEntity<ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse> responseEntity =
+                new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
         when(restTemplate.exchange(
@@ -81,9 +81,7 @@ public class SyncControllerTests {
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
-                                .<Class<
-                                                com.example.demp.wsdl.pcss.one
-                                                        .GetSyncCivilAppearanceResponse>>
+                                .<Class<ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse>>
                                         any()))
                 .thenReturn(responseEntity);
 
@@ -98,7 +96,7 @@ public class SyncControllerTests {
 
         var chr = new GetSyncCivilHearingRestriction();
         var one = new GetSyncCivilHearingRestrictionRequest();
-        var two = new com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionRequest();
+        var two = new ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionRequest();
         two.setProcessUpToDtm(Instant.now());
         two.setRequestDtm(Instant.now());
         two.setRequestAgencyIdentifierId("A");
@@ -106,7 +104,7 @@ public class SyncControllerTests {
         one.setGetSyncCivilHearingRestrictionRequest(two);
         chr.setGetSyncCivilHearingRestrictionRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionResponse();
+        var out = new ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionResponse();
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
         HearingRestriction r = new HearingRestriction();
@@ -122,7 +120,7 @@ public class SyncControllerTests {
         r.setSocTxt("A");
         out.setHearingRestriction(Collections.singletonList(r));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionResponse>
+        ResponseEntity<ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionResponse>
                 responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
@@ -132,7 +130,7 @@ public class SyncControllerTests {
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
                                 .<Class<
-                                                com.example.demp.wsdl.pcss.one
+                                                ca.bc.gov.open.pcss.one
                                                         .GetSyncCivilHearingRestrictionResponse>>
                                         any()))
                 .thenReturn(responseEntity);
@@ -148,7 +146,7 @@ public class SyncControllerTests {
 
         var hrc = new SetHearingRestrictionCivil();
         var one = new SetHearingRestrictionCivilRequest();
-        var two = new com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilRequest();
+        var two = new ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         two.setRequestDtm(Instant.now());
@@ -163,14 +161,14 @@ public class SyncControllerTests {
         one.setSetHearingRestrictionCivilRequest(two);
         hrc.setSetHearingRestrictionCivilRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilResponse();
+        var out = new ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilResponse();
         out.setHearingRestrictionCcn("A");
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
         out.setHearingRestrictionId("A");
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.SetHearingRestrictionCivilResponse>
-                responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
+        ResponseEntity<ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilResponse> responseEntity =
+                new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
         when(restTemplate.exchange(
@@ -178,9 +176,7 @@ public class SyncControllerTests {
                         Mockito.eq(HttpMethod.POST),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
-                                .<Class<
-                                                com.example.demp.wsdl.pcss.one
-                                                        .SetHearingRestrictionCivilResponse>>
+                                .<Class<ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilResponse>>
                                         any()))
                 .thenReturn(responseEntity);
 
@@ -195,7 +191,7 @@ public class SyncControllerTests {
 
         var fsc = new GetFileDetailCivil();
         var one = new GetFileDetailCivilRequest();
-        var two = new com.example.demp.wsdl.pcss.one.GetFileDetailCivilRequest();
+        var two = new ca.bc.gov.open.pcss.one.GetFileDetailCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         two.setRequestDtm(Instant.now());
@@ -204,7 +200,7 @@ public class SyncControllerTests {
         one.setGetFileDetailCivilRequest(two);
         fsc.setGetFileDetailCivilRequest(one);
 
-        var out = new com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse();
+        var out = new ca.bc.gov.open.pcss.one.GetFileDetailCivilResponse();
 
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
@@ -263,7 +259,7 @@ public class SyncControllerTests {
         out.setDocument(Collections.singletonList(doc));
         out.setParty(Collections.singletonList(party));
 
-        ResponseEntity<com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse> responseEntity =
+        ResponseEntity<ca.bc.gov.open.pcss.one.GetFileDetailCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
 
         //     Set up to mock ords response
@@ -271,9 +267,7 @@ public class SyncControllerTests {
                         Mockito.any(String.class),
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
-                        Mockito
-                                .<Class<com.example.demp.wsdl.pcss.one.GetFileDetailCivilResponse>>
-                                        any()))
+                        Mockito.<Class<ca.bc.gov.open.pcss.one.GetFileDetailCivilResponse>>any()))
                 .thenReturn(responseEntity);
 
         var resp = syncController.getFileDetailCivil(fsc);

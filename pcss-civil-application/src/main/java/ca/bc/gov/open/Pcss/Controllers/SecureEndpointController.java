@@ -4,7 +4,7 @@ import ca.bc.gov.open.Pcss.Configuration.SoapConfig;
 import ca.bc.gov.open.Pcss.Exceptions.ORDSException;
 import ca.bc.gov.open.Pcss.Models.OrdsErrorLog;
 import ca.bc.gov.open.Pcss.Models.Serializers.InstantSerializer;
-import com.example.demp.wsdl.pcss.secure.two.*;
+import ca.bc.gov.open.pcss.secure.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +51,7 @@ public class SecureEndpointController {
                                         != null
                         ? search.getGetAppearanceCivilApprMethodSecureRequest()
                                 .getGetAppearanceCivilApprMethodSecureRequest()
-                        : new com.example.demp.wsdl.pcss.secure.one
+                        : new ca.bc.gov.open.pcss.secure.one
                                 .GetAppearanceCivilApprMethodSecureRequest();
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/appearance-method")
@@ -61,14 +61,13 @@ public class SecureEndpointController {
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("appearanceId", inner.getAppearanceId());
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilApprMethodResponse>
-                    resp =
-                            restTemplate.exchange(
-                                    builder.toUriString(),
-                                    HttpMethod.GET,
-                                    new HttpEntity<>(new HttpHeaders()),
-                                    com.example.demp.wsdl.pcss.secure.one
-                                            .GetAppearanceCivilApprMethodResponse.class);
+            HttpEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse> resp =
+                    restTemplate.exchange(
+                            builder.toUriString(),
+                            HttpMethod.GET,
+                            new HttpEntity<>(new HttpHeaders()),
+                            ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse
+                                    .class);
 
             var out = new GetAppearanceCivilApprMethodSecureResponse();
             var one = new GetAppearanceCivilApprMethodResponse();
@@ -94,8 +93,7 @@ public class SecureEndpointController {
                 search.getGetAppearanceCivilPartySecureRequest() != null
                         ? search.getGetAppearanceCivilPartySecureRequest()
                                 .getGetAppearanceCivilPartySecureRequest()
-                        : new com.example.demp.wsdl.pcss.secure.one
-                                .GetAppearanceCivilPartySecureRequest();
+                        : new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/party")
@@ -105,13 +103,12 @@ public class SecureEndpointController {
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("appearanceId", inner.getAppearanceId());
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse
-                                    .class);
+                            ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse.class);
 
             var out = new GetAppearanceCivilPartySecureResponse();
             var one = new GetAppearanceCivilPartyResponse();
@@ -140,8 +137,7 @@ public class SecureEndpointController {
                                         != null
                         ? search.getGetAppearanceCivilSecureRequest()
                                 .getGetAppearanceCivilSecureRequest()
-                        : new com.example.demp.wsdl.pcss.secure.one
-                                .GetAppearanceCivilSecureRequest();
+                        : new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilSecureRequest();
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
@@ -152,12 +148,12 @@ public class SecureEndpointController {
                         .queryParam("futureYN", inner.getFutureYN())
                         .queryParam("historyYN", inner.getHistoryYN());
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilResponse.class);
+                            ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse.class);
 
             var out = new GetAppearanceCivilSecureResponse();
             var one = new GetAppearanceCivilResponse();
@@ -187,8 +183,7 @@ public class SecureEndpointController {
                                         != null
                         ? search.getGetFileDetailCivilSecureRequest()
                                 .getGetFileDetailCivilSecureRequest()
-                        : new com.example.demp.wsdl.pcss.secure.one
-                                .GetFileDetailCivilSecureRequest();
+                        : new ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilSecureRequest();
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
@@ -198,12 +193,12 @@ public class SecureEndpointController {
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("physicalFileId", inner.getPhysicalFileId());
         try {
-            HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse> resp =
+            HttpEntity<ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse> resp =
                     restTemplate.exchange(
                             builder.toUriString(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
-                            com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse.class);
+                            ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse.class);
 
             var out = new GetFileDetailCivilSecureResponse();
             var one = new GetFileDetailCivilResponse();
