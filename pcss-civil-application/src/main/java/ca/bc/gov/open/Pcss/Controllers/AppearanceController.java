@@ -55,8 +55,7 @@ public class AppearanceController {
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("physicalFileId", inner.getPhysicalFileId())
@@ -146,8 +145,7 @@ public class AppearanceController {
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance/appearance-method")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("appearanceId", inner.getAppearanceId());
@@ -241,8 +239,7 @@ public class AppearanceController {
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance/document")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("appearanceId", inner.getAppearanceId());
@@ -288,8 +285,7 @@ public class AppearanceController {
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance/party")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("appearanceId", inner.getAppearanceId());
@@ -332,8 +328,7 @@ public class AppearanceController {
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "appearance/resource")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("appearanceId", inner.getAppearanceId());
