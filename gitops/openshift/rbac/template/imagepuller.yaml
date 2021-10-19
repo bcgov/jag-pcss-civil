@@ -1,0 +1,38 @@
+# This is required for the deployment configs of all components in dev, test & prod namespace to pull the image from image streams present in the tools namespace.
+# By default the pods will be running under default service account and hence this role is assigned to deafult service account.
+
+apiVersion: template.openshift.io/v1
+kind: Template
+labels:
+  template: image-puller-role-to-default-serviceaccount
+metadata:
+  name: imagepuller-role-to-default-serviceaccount
+
+parameters:
+- name: OC_NAMESPACE
+  description: OpenShift nameplate assigned for the application
+  required: true
+
+- name: OC_ENV
+  description: Application environment
+  required: true
+
+- name: SA_NAME
+  description: ServiceAccount name
+  required: true
+  
+objects:
+- kind: RoleBinding
+  apiVersion: rbac.authorization.k8s.io/v1
+  metadata:
+    name: 'system:image-puller-${OC_NAMESPACE}-${OC_ENV}'
+    namespace: ${OC_NAMESPACE}-tools
+  subjects:
+  - kind: ServiceAccount
+    name: ${SA_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+    apiGroup: rbac.authorization.k8s.io
+  roleRef:
+    kind: ClusterRole
+    name: system:image-puller
+    apiGroup: rbac.authorization.k8s.io
