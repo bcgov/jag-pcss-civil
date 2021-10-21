@@ -73,7 +73,10 @@ public class SyncController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "getSyncCivilAppearance", inner)));
+                                    "Error received from ORDS",
+                                    "getSyncCivilAppearance",
+                                    ex.getMessage(),
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -120,6 +123,7 @@ public class SyncController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "getSyncCivilHearingRestriction",
+                                    ex.getMessage(),
                                     inner)));
             throw new ORDSException();
         }
@@ -163,6 +167,7 @@ public class SyncController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "setHearingRestrictionCivil",
+                                    ex.getMessage(),
                                     inner)));
             throw new ORDSException();
         }
@@ -205,7 +210,10 @@ public class SyncController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "GetFileDetailCivil", inner)));
+                                    "Error received from ORDS",
+                                    "GetFileDetailCivil",
+                                    ex.getMessage(),
+                                    inner)));
             throw new ORDSException();
         }
     }

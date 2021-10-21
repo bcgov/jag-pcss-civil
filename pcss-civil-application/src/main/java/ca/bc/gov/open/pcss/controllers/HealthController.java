@@ -56,7 +56,11 @@ public class HealthController {
         } catch (Exception ex) {
             log.error(
                     objectMapper.writeValueAsString(
-                            new OrdsErrorLog("Error received from ORDS", "getHealth", empty)));
+                            new OrdsErrorLog(
+                                    "Error received from ORDS",
+                                    "getHealth",
+                                    ex.getMessage(),
+                                    empty)));
             throw new ORDSException();
         }
     }
@@ -77,7 +81,11 @@ public class HealthController {
         } catch (Exception ex) {
             log.error(
                     objectMapper.writeValueAsString(
-                            new OrdsErrorLog("Error received from ORDS", "getPing", empty)));
+                            new OrdsErrorLog(
+                                    "Error received from ORDS",
+                                    "getPing",
+                                    ex.getMessage(),
+                                    empty)));
             throw new ORDSException();
         }
     }

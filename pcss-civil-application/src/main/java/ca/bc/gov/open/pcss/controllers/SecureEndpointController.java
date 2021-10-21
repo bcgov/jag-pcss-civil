@@ -80,6 +80,7 @@ public class SecureEndpointController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "getAppearanceCivilApprMethodSecure",
+                                    ex.getMessage(),
                                     inner)));
             throw new ORDSException();
         }
@@ -121,6 +122,7 @@ public class SecureEndpointController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "getAppearanceCivilPartySecure",
+                                    ex.getMessage(),
                                     inner)));
             throw new ORDSException();
         }
@@ -166,6 +168,7 @@ public class SecureEndpointController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "getAppearanceCivilSecure",
+                                    ex.getMessage(),
                                     inner)));
             throw new ORDSException();
         }
@@ -211,6 +214,7 @@ public class SecureEndpointController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "getFileDetailCivilSecure",
+                                    ex.getMessage(),
                                     inner)));
             throw new ORDSException();
         }

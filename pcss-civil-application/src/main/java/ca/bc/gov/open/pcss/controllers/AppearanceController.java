@@ -50,6 +50,13 @@ public class AppearanceController {
                         : new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
 
         if (inner.getRequestDtm() == null) {
+            log.warn(
+                    objectMapper.writeValueAsString(
+                            new OrdsErrorLog(
+                                    "Bad date format or missing date received",
+                                    "getAppearanceCivil",
+                                    "",
+                                    search)));
             throw new BadDateException();
         }
 
@@ -79,7 +86,10 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "getAppearanceCivil", inner)));
+                                    "Error received from ORDS",
+                                    "getAppearanceCivil",
+                                    ex.getMessage(),
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -119,7 +129,10 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "setAppearanceCivil", inner)));
+                                    "Error received from ORDS",
+                                    "setAppearanceCivil",
+                                    ex.getMessage(),
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -140,6 +153,13 @@ public class AppearanceController {
                         : new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
 
         if (inner.getRequestDtm() == null) {
+            log.warn(
+                    objectMapper.writeValueAsString(
+                            new OrdsErrorLog(
+                                    "Bad date format or missing date received",
+                                    "getAppearanceCivilApprMethod",
+                                    "",
+                                    search)));
             throw new BadDateException();
         }
 
@@ -169,6 +189,7 @@ public class AppearanceController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "getAppearanceCivilApprMethod",
+                                    ex.getMessage(),
                                     inner)));
             throw new ORDSException();
         }
@@ -190,6 +211,13 @@ public class AppearanceController {
                         : new ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilRequest();
 
         if (inner.getRequestDtm() == null) {
+            log.warn(
+                    objectMapper.writeValueAsString(
+                            new OrdsErrorLog(
+                                    "Bad date format or missing date received",
+                                    "setAppearanceMethodCivil",
+                                    "",
+                                    payload)));
             throw new BadDateException();
         }
 
@@ -217,6 +245,7 @@ public class AppearanceController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "setAppearanceMethodCivil",
+                                    ex.getMessage(),
                                     payload)));
             throw new ORDSException();
         }
@@ -262,6 +291,7 @@ public class AppearanceController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "getAppearanceCivilDocument",
+                                    ex.getMessage(),
                                     inner)));
             throw new ORDSException();
         }
@@ -305,7 +335,10 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "getAppearanceCivilParty", inner)));
+                                    "Error received from ORDS",
+                                    "getAppearanceCivilParty",
+                                    ex.getMessage(),
+                                    inner)));
             throw new ORDSException();
         }
     }
@@ -350,6 +383,7 @@ public class AppearanceController {
                             new OrdsErrorLog(
                                     "Error received from ORDS",
                                     "getAppearanceCivilResource",
+                                    ex.getMessage(),
                                     inner)));
             throw new ORDSException();
         }
@@ -390,7 +424,10 @@ public class AppearanceController {
             log.error(
                     objectMapper.writeValueAsString(
                             new OrdsErrorLog(
-                                    "Error received from ORDS", "setCounselDetailCivil", inner)));
+                                    "Error received from ORDS",
+                                    "setCounselDetailCivil",
+                                    ex.getMessage(),
+                                    inner)));
             throw new ORDSException();
         }
     }
