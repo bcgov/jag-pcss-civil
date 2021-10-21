@@ -1,8 +1,8 @@
-package ca.bc.gov.open.pcss.Controllers;
+package ca.bc.gov.open.pcss.controllers;
 
-import ca.bc.gov.open.pcss.Configuration.SoapConfig;
-import ca.bc.gov.open.pcss.Exceptions.ORDSException;
-import ca.bc.gov.open.pcss.Models.OrdsErrorLog;
+import ca.bc.gov.open.pcss.configuration.SoapConfig;
+import ca.bc.gov.open.pcss.exceptions.ORDSException;
+import ca.bc.gov.open.pcss.models.OrdsErrorLog;
 import ca.bc.gov.open.pcss.three.GetHealth;
 import ca.bc.gov.open.pcss.three.GetHealthResponse;
 import ca.bc.gov.open.pcss.three.GetPing;

@@ -2,7 +2,7 @@ package ca.bc.gov.open.pcss;
 
 import static org.mockito.Mockito.when;
 
-import ca.bc.gov.open.pcss.Controllers.SyncController;
+import ca.bc.gov.open.pcss.controllers.SyncController;
 import ca.bc.gov.open.pcss.one.*;
 import ca.bc.gov.open.pcss.three.*;
 import ca.bc.gov.open.pcss.three.GetFileDetailCivilRequest;

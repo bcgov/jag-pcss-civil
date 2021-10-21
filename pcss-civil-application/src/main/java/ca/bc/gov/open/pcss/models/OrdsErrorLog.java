@@ -1,4 +1,4 @@
-package ca.bc.gov.open.pcss.Models;
+package ca.bc.gov.open.pcss.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

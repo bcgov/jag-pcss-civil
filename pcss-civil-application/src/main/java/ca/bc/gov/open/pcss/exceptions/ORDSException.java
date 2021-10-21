@@ -1,4 +1,4 @@
-package ca.bc.gov.open.pcss.Exceptions;
+package ca.bc.gov.open.pcss.exceptions;
 
 import org.springframework.ws.soap.server.endpoint.annotation.FaultCode;
 import org.springframework.ws.soap.server.endpoint.annotation.SoapFault;

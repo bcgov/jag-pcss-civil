@@ -1,4 +1,4 @@
-package ca.bc.gov.open.pcss.Configuration;
+package ca.bc.gov.open.pcss.configuration;
 
 import java.io.IOException;
 import javax.servlet.*;

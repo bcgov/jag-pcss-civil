@@ -1,9 +1,9 @@
-package ca.bc.gov.open.pcss.Controllers;
+package ca.bc.gov.open.pcss.controllers;
 
-import ca.bc.gov.open.pcss.Configuration.SoapConfig;
-import ca.bc.gov.open.pcss.Exceptions.BadDateException;
-import ca.bc.gov.open.pcss.Exceptions.ORDSException;
-import ca.bc.gov.open.pcss.Models.OrdsErrorLog;
+import ca.bc.gov.open.pcss.configuration.SoapConfig;
+import ca.bc.gov.open.pcss.exceptions.BadDateException;
+import ca.bc.gov.open.pcss.exceptions.ORDSException;
+import ca.bc.gov.open.pcss.models.OrdsErrorLog;
 import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,4 +1,4 @@
-package ca.bc.gov.open.pcss.Configuration;
+package ca.bc.gov.open.pcss.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

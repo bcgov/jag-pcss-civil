@@ -2,8 +2,8 @@ package ca.bc.gov.open.pcss;
 
 import static org.mockito.Mockito.when;
 
-import ca.bc.gov.open.pcss.Controllers.AppearanceController;
-import ca.bc.gov.open.pcss.Exceptions.BadDateException;
+import ca.bc.gov.open.pcss.controllers.AppearanceController;
+import ca.bc.gov.open.pcss.exceptions.BadDateException;
 import ca.bc.gov.open.pcss.one.*;
 import ca.bc.gov.open.pcss.three.*;
 import ca.bc.gov.open.pcss.three.GetAppearanceCivilApprMethodRequest;

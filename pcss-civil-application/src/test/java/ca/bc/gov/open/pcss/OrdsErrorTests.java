@@ -4,12 +4,12 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import ca.bc.gov.open.pcss.Controllers.AppearanceController;
-import ca.bc.gov.open.pcss.Controllers.HealthController;
-import ca.bc.gov.open.pcss.Controllers.SecureEndpointController;
-import ca.bc.gov.open.pcss.Controllers.SyncController;
-import ca.bc.gov.open.pcss.Exceptions.BadDateException;
-import ca.bc.gov.open.pcss.Exceptions.ORDSException;
+import ca.bc.gov.open.pcss.controllers.AppearanceController;
+import ca.bc.gov.open.pcss.controllers.HealthController;
+import ca.bc.gov.open.pcss.controllers.SecureEndpointController;
+import ca.bc.gov.open.pcss.controllers.SyncController;
+import ca.bc.gov.open.pcss.exceptions.BadDateException;
+import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.secure.two.*;
 import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;

@@ -2,7 +2,7 @@ package ca.bc.gov.open.pcss;
 
 import static org.mockito.Mockito.when;
 
-import ca.bc.gov.open.pcss.Controllers.HealthController;
+import ca.bc.gov.open.pcss.controllers.HealthController;
 import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

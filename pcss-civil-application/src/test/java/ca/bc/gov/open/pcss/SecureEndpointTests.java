@@ -2,7 +2,7 @@ package ca.bc.gov.open.pcss;
 
 import static org.mockito.Mockito.when;
 
-import ca.bc.gov.open.pcss.Controllers.SecureEndpointController;
+import ca.bc.gov.open.pcss.controllers.SecureEndpointController;
 import ca.bc.gov.open.pcss.secure.one.*;
 import ca.bc.gov.open.pcss.secure.three.*;
 import ca.bc.gov.open.pcss.secure.two.*;

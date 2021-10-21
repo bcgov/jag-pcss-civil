@@ -1,4 +1,4 @@
-package ca.bc.gov.open.pcss.Configuration;
+package ca.bc.gov.open.pcss.configuration;
 
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
 import org.springframework.boot.actuate.trace.http.InMemoryHttpTraceRepository;
