@@ -41,8 +41,8 @@
                 <version>0.8.7</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/Configuration/WSDLFilter*</exclude>
-                        <exclude>**/Configuration/HttpServletRequestWrapper.class</exclude>
+                        <exclude>**/configuration/WSDLFilter*</exclude>
+                        <exclude>**/configuration/HttpServletRequestWrapper.class</exclude>
                         <exclude>**/PcssApplication.class</exclude>
                         <exclude>**/ObjectFactory.class</exclude>
                         <exclude>**/Adapter1.class</exclude>
