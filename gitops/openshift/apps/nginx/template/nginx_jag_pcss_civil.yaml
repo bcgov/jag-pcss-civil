@@ -39,12 +39,12 @@ parameters:
 - name: ENDPOINT1
   description: The target endpoint
   required: false
-  value: nginx
+  value: jag-pcss-civil
 
 - name: ENDPOINT2
   description: The target endpoint
   required: false
-  value: nginx
+  value: nginx-jag-pcss-civil-oldwm
 
 objects:
 
@@ -105,9 +105,9 @@ objects:
   data:
     nginx-upstream.conf: |-
       upstream splitter {
-        server jag-scss;
+        server jag-pcss-civil;
         # Tured off for now
-        # server nginx-jag-scss-oldwm;
+        # server nginx-jag-pcss-civil-oldwm;
       }
 
 - kind: ImageStream

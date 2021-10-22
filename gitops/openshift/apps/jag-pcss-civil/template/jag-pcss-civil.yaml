@@ -155,7 +155,7 @@ objects:
             name: ${COMPONENT_NAME}:${OC_ENV}
   status: {}
 
-### JAG-SCSS Service ###
+### JAG-PCSS-CIVIL Service ###
 - apiVersion: v1
   kind: Service
   metadata:
@@ -172,7 +172,7 @@ objects:
     sessionAffinity: None
     type: ClusterIP
 
-### JAG-SCSS Route ###
+### JAG-PCSS-CIVIL Route ###
 - apiVersion: route.openshift.io/v1
   kind: Route
   metadata:
