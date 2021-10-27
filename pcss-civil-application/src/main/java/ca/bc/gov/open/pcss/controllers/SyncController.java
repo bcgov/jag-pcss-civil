@@ -3,6 +3,7 @@ package ca.bc.gov.open.pcss.controllers;
 import ca.bc.gov.open.pcss.configuration.SoapConfig;
 import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.models.OrdsErrorLog;
+import ca.bc.gov.open.pcss.models.RequestSuccessLog;
 import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -68,6 +69,9 @@ public class SyncController {
             one.setGetSyncCivilAppearanceResponse(resp.getBody());
             out.setGetSyncCivilAppearanceResponse(one);
 
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "getSyncCivilAppearance")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -116,6 +120,10 @@ public class SyncController {
             var one = new GetSyncCivilHearingRestrictionResponse2();
             one.setGetSyncCivilHearingRestrictionResponse(resp.getBody());
             out.setGetSyncCivilHearingRestrictionResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog(
+                                    "Request Success", "getSyncCivilHearingRestriction")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -160,6 +168,10 @@ public class SyncController {
             var one = new SetHearingRestrictionCivilResponse2();
             one.setSetHearingRestrictionCivilResponse(resp.getBody());
             out.setSetHearingRestrictionCivilResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog(
+                                    "Request Success", "setHearingRestrictionCivil")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -205,6 +217,9 @@ public class SyncController {
             var one = new GetFileDetailCivilResponse2();
             one.setGetFileDetailCivilResponse(resp.getBody());
             out.setGetFileDetailCivilResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "GetFileDetailCivil")));
             return out;
         } catch (Exception ex) {
             log.error(
