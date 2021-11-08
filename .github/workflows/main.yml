@@ -68,16 +68,16 @@ jobs:
       - name: Maven Verify
         run: mvn -ntp clean verify
       
-      #Login to OpenShift Container Repository
-      - name: Login to OpenShift Container Repository
+      #Login to OpenShift Container Repository - Kamloops (OC PROD)
+      - name: Login to OpenShift Container Repository - Kamloops (OC PROD)
         uses: docker/login-action@v1
         with:
           registry: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY}}
           username: ${{secrets.OPENSHIFT_SA_USERNAME}}
           password: ${{secrets.OPENSHIFT_SA_PASSWORD}}
 
-      #Build and push image to OpenShift Image stream
-      - name: Build & Push Image to Openshift Image Stream
+      #Build and push image to OpenShift Image stream - Kamloops (OC PROD)
+      - name: Build & Push Image to Openshift Image Stream - Kamloops (OC PROD)
         env:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
@@ -89,25 +89,82 @@ jobs:
             ${CONTEXT}
             docker push ${IMAGE}
       
-      #Login to Openshift using OC SA and Token of respective env. for Pod labelling
-    #  - name: Authenticate OC Env Specific SA
-    #    uses: redhat-actions/oc-login@v1
-    #    env:
-    #      OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
-    #      OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME}}
-    #    with:
-    #      openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL}}
-    #      openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN}}
-    #      namespace: ${OPENSHIFT_NAMESPACE}
+      #Login to OpenShift Container Repository - Calgary (OC DR)
+      - name: Login to OpenShift Container Repository - Calgary (OC DR)
+        uses: docker/login-action@v1
+        with:
+          registry: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_DR}}
+          username: ${{secrets.OPENSHIFT_SA_USERNAME_DR}}
+          password: ${{secrets.OPENSHIFT_SA_PASSWORD_DR}}
+
+      #Build and push image to OpenShift Image stream - Calgary (OC DR)
+      - name: Build & Push Image to Openshift Image Stream - Calgary (OC DR)
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          CONTEXT: .
+          IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_DR}}/${{secrets.OPENSHIFT_LICENSE_PLATE}}-tools/jag-pcss-civil:${{secrets.OPENSHIFT_ENV_TAG}}
+        run: |
+          docker build \
+            --tag ${IMAGE} \
+            ${CONTEXT}
+            docker push ${IMAGE}
+      
+      #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Kamloops (OC PROD)
+      - name: Authenticate OC Env Specific SA - Kamloops (OC PROD)
+        uses: redhat-actions/oc-login@v1
+        env:
+          OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
+          OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME}}
+        with:
+          openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL}}
+          openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN}}
+          namespace: ${OPENSHIFT_NAMESPACE}
         
-        # Labels the deployment config of the application with release version number to spin up the pods labelled in same version.
-    #  - name: Labelling DC to release version
-    #    env:
-    #      releaseVersion: ${{ env.releaseVersion }}
-    #      appName: ${{ github.event.inputs.app }}
-    #      openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
-    #    run: |
-    #      oc patch dc ${appName} -n ${openshiftEnvNamespace} --patch '{"spec":{"template":{"metadata":{"labels":{"version":"${{ env.releaseVersion }}.${{ env.gitsha }}"}}}}}'
+        # Labels the deployment config of the application with release version number to spin up the pods labelled in same version - Kamloops (OC PROD)
+      - name: Labelling DC to release version - Kamloops (OC PROD)
+        env:
+          releaseVersion: ${{ env.releaseVersion }}
+          appName: ${{ github.event.inputs.app }}
+          openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
+        run: |
+          oc patch dc ${appName} -n ${openshiftEnvNamespace} --patch '{"spec":{"template":{"metadata":{"labels":{"version":"${{ env.releaseVersion }}.${{ env.gitsha }}"}}}}}'
+      
+      # Wait to DC rollout to get completed before proceeding next stage - Kamloops (OC PROD)
+      - name: Wait for DC rollout - Kamloops (OC PROD)
+        env:
+          appName: ${{ github.event.inputs.app }}
+          openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
+        run: |
+          oc rollout status -n ${openshiftEnvNamespace} dc/${appName} --watch
+      
+      #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Calgary (OC DR)
+      - name: Authenticate OC Env Specific SA - Calgary (OC DR)
+        uses: redhat-actions/oc-login@v1
+        env:
+          OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
+          OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME_DR}}
+        with:
+          openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL_DR}}
+          openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN_DR}}
+          namespace: ${OPENSHIFT_NAMESPACE}
+        
+        # Labels the deployment config of the application with release version number to spin up the pods labelled in same version - Calgary (OC DR)
+      - name: Labelling DC to release version - Calgary (OC DR)
+        env:
+          releaseVersion: ${{ env.releaseVersion }}
+          appName: ${{ github.event.inputs.app }}
+          openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
+        run: |
+          oc patch dc ${appName} -n ${openshiftEnvNamespace} --patch '{"spec":{"template":{"metadata":{"labels":{"version":"${{ env.releaseVersion }}.${{ env.gitsha }}"}}}}}'
+      
+      # Wait to DC rollout to get completed before proceeding next stage - Calgary (OC DR)
+      - name: Wait for DC rollout - Calgary (OC DR)
+        env:
+          appName: ${{ github.event.inputs.app }}
+          openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
+        run: |
+          oc rollout status -n ${openshiftEnvNamespace} dc/${appName} --watch
 
     #  - name: Sleep for 120s
     #    uses: juliangruber/sleep-action@v1
@@ -121,7 +178,7 @@ jobs:
 
     #  - name: Run Integration Tests
     #    env:
-    #      WEB_METHODS_TOKEN: ${{secrets.SCSS_DEV_BASIC_AUTH}}
+    #      WEB_METHODS_TOKEN: ${{secrets.PCSS_CIVIL_DEV_BASIC_AUTH}}
     #      WEB_METHODS_HOST: ${{secrets.WEB_METHODS_HOST}}
     #    working-directory: ./AutomatedTests
     #    run: |
