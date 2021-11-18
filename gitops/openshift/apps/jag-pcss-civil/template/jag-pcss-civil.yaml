@@ -26,7 +26,7 @@ parameters:
   description: The OpenShift namespace prefix
   required: false
   # Below value must be changed as per gold cluster oc nameplate
-  value: 17b24e
+  value: cd1cf7
   
 - name: OC_ENV
   description: The OpenShift environment, ie dev, test or prod

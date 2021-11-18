@@ -14,18 +14,17 @@ parameters:
 - name: APP_NAME
   description: The application name that each component is part of
   required: false
-  value: jag-pcss-civil
+  value: jag-pcss
 
 - name: COMPONENT_NAME
   description: The application name that each component is part of
   required: false
-  value: nginx-jag-pcss-civil
+  value: nginx-jag-pcss
 
 - name: OC_NAMESPACE
   description: The OpenShift namespace prefix
   required: false
-  # Below value must be changed as per gold cluster oc nameplate
-  value: 17b24e
+  value: cd1cf7
 
 - name: OC_ENV
   description: The OpenShift environment, ie dev, test or prod
@@ -44,7 +43,22 @@ parameters:
 - name: ENDPOINT2
   description: The target endpoint
   required: false
-  value: nginx-jag-pcss-civil-oldwm
+  value: jag-pcss-criminal
+
+- name: ENDPOINT3
+  description: The target endpoint
+  required: false
+  value: jag-pcss-common
+
+- name: ENDPOINT4
+  description: The target endpoint
+  required: false
+  value: nginx-jag-pcss-oldwm
+
+- name: DNS
+  description: Openshift route DNS
+  required: true
+  value: apps.silver.devops.gov.bc.ca
 
 objects:
 
@@ -107,47 +121,8 @@ objects:
       upstream splitter {
         server jag-pcss-civil;
         # Tured off for now
-        # server nginx-jag-pcss-civil-oldwm;
+        # server nginx-jag-pcss-oldwm;
       }
-
-- kind: ImageStream
-  apiVersion: v1
-  metadata:
-    name: "${COMPONENT_NAME}"
-    namespace: ${OC_NAMESPACE}-tools
-
-- kind: BuildConfig
-  apiVersion: v1
-  metadata:
-    name: "${COMPONENT_NAME}"
-    namespace: ${OC_NAMESPACE}-${OC_ENV}
-  spec:
-    source:
-      type: Git
-      git:
-        uri: "https://github.com/sclorg/nginx-ex.git"
-    strategy:
-      type: Source
-      sourceStrategy:
-        from:
-          kind: ImageStreamTag
-          namespace: openshift
-          name: 'nginx:1.16-el8'
-    output:
-      to:
-        kind: ImageStreamTag
-        name: "${COMPONENT_NAME}:latest"
-        namespace: ${OC_NAMESPACE}-tools
-     
-    triggers:
-    - type: ImageChange
-    - type: ConfigChange
-    - type: GitHub
-      github:
-        secret: ${COMPONENT_NAME}-github-webhook-secret
-    - type: Generic
-      generic:
-        secret: ${COMPONENT_NAME}-generic-webhook-secret
 
 - kind: DeploymentConfig
   apiVersion: apps.openshift.io/v1
@@ -155,7 +130,7 @@ objects:
     name: ${COMPONENT_NAME}
     namespace: ${OC_NAMESPACE}-${OC_ENV}
     annotations:
-      app.openshift.io/connects-to: ${ENDPOINT1}, ${ENDPOINT2}
+      app.openshift.io/connects-to: ${ENDPOINT1}, ${ENDPOINT2}, ${ENDPOINT3}, ${ENDPOINT4}
   spec:
     strategy:
       type: Rolling
@@ -253,7 +228,7 @@ objects:
     haproxy.router.openshift.io/balance: roundrobin
   spec:
     # Below value must be changed as per gold cluster certificate/DNS
-    host: ${COMPONENT_NAME}-${OC_NAMESPACE}-${OC_ENV}.apps.silver.devops.gov.bc.ca
+    host: ${COMPONENT_NAME}-${OC_NAMESPACE}-${OC_ENV}.${DNS}
     to:
       kind: Service
       name: ${COMPONENT_NAME}
