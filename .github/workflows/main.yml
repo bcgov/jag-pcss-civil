@@ -68,6 +68,27 @@ jobs:
       - name: Maven Verify
         run: mvn -ntp clean verify
       
+      #Login to OpenShift Container Repository - Silver
+      - name: Login to OpenShift Container Repository - Silver
+        uses: docker/login-action@v1
+        with:
+          registry: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_SILVER}}
+          username: ${{secrets.OPENSHIFT_SA_USERNAME}}
+          password: ${{secrets.OPENSHIFT_SA_PASSWORD_SILVER}}
+
+      #Build and push image to OpenShift Image stream - Silver
+      - name: Build & Push Image to Openshift Image Stream - Silver
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          CONTEXT: .
+          IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_SILVER}}/${{secrets.OPENSHIFT_TOOLS_NAMESPACE_SILVER}}/jag-pcss-civil:${{secrets.OPENSHIFT_ENV_TAG}}
+        run: |
+          docker build \
+            --tag ${IMAGE} \
+            ${CONTEXT}
+            docker push ${IMAGE}
+      
       #Login to OpenShift Container Repository - Kamloops (OC PROD)
       - name: Login to OpenShift Container Repository - Kamloops (OC PROD)
         uses: docker/login-action@v1
@@ -82,7 +103,7 @@ jobs:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
           CONTEXT: .
-          IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY}}/${{secrets.OPENSHIFT_LICENSE_PLATE}}-tools/jag-pcss-civil:${{secrets.OPENSHIFT_ENV_TAG}}
+          IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY}}/${{secrets.OPENSHIFT_TOOLS_NAMESPACE}}/jag-pcss-civil:${{secrets.OPENSHIFT_ENV_TAG}}
         run: |
           docker build \
             --tag ${IMAGE} \
@@ -94,7 +115,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_DR}}
-          username: ${{secrets.OPENSHIFT_SA_USERNAME_DR}}
+          username: ${{secrets.OPENSHIFT_SA_USERNAME}}
           password: ${{secrets.OPENSHIFT_SA_PASSWORD_DR}}
 
       #Build and push image to OpenShift Image stream - Calgary (OC DR)
@@ -103,12 +124,40 @@ jobs:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
           CONTEXT: .
-          IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_DR}}/${{secrets.OPENSHIFT_LICENSE_PLATE}}-tools/jag-pcss-civil:${{secrets.OPENSHIFT_ENV_TAG}}
+          IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_DR}}/${{secrets.OPENSHIFT_TOOLS_NAMESPACE}}/jag-pcss-civil:${{secrets.OPENSHIFT_ENV_TAG}}
         run: |
           docker build \
             --tag ${IMAGE} \
             ${CONTEXT}
             docker push ${IMAGE}
+      
+      #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Silver
+      - name: Authenticate OC Env Specific SA - Silver
+        uses: redhat-actions/oc-login@v1
+        env:
+          OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE_SILVER}}-${{ github.event.inputs.env }}
+          OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME}}
+        with:
+          openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL_SILVER}}
+          openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN_SILVER}}
+          namespace: ${OPENSHIFT_NAMESPACE}
+        
+        # Labels the deployment config of the application with release version number to spin up the pods labelled in same version - Silver
+      - name: Labelling DC to release version - Silver
+        env:
+          releaseVersion: ${{ env.releaseVersion }}
+          appName: ${{ github.event.inputs.app }}
+          openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE_SILVER}}-${{ github.event.inputs.env }}
+        run: |
+          oc patch dc ${appName} -n ${openshiftEnvNamespace} --patch '{"spec":{"template":{"metadata":{"labels":{"version":"${{ env.releaseVersion }}.${{ env.gitsha }}"}}}}}'
+      
+      # Wait to DC rollout to get completed before proceeding next stage - Silver
+      - name: Wait for DC rollout - Silver
+        env:
+          appName: ${{ github.event.inputs.app }}
+          openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE_SILVER}}-${{ github.event.inputs.env }}
+        run: |
+          oc rollout status -n ${openshiftEnvNamespace} dc/${appName} --watch
       
       #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Kamloops (OC PROD)
       - name: Authenticate OC Env Specific SA - Kamloops (OC PROD)
@@ -143,7 +192,7 @@ jobs:
         uses: redhat-actions/oc-login@v1
         env:
           OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
-          OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME_DR}}
+          OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME}}
         with:
           openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL_DR}}
           openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN_DR}}
@@ -166,10 +215,6 @@ jobs:
         run: |
           oc rollout status -n ${openshiftEnvNamespace} dc/${appName} --watch
 
-    #  - name: Sleep for 120s
-    #    uses: juliangruber/sleep-action@v1
-    #    with:
-    #      time: 120s
 
     #  - name: Setup Node
     #    uses: actions/setup-node@v2

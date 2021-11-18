@@ -14,18 +14,17 @@ parameters:
 - name: APP_NAME
   description: The application name that each component is part of
   required: false
-  value: jag-pcss-civil
+  value: jag-pcss
 
 - name: COMPONENT_NAME
   description: The application name that each component is part of
   required: false
-  value: nginx-jag-pcss-civil
+  value: nginx-jag-pcss
   
 - name: OC_NAMESPACE
   description: The OpenShift namespace prefix
   required: false
-  # Below value must be changed as per gold cluster oc nameplate
-  value: 17b24e
+  value: cd1cf7
   
 - name: OC_ENV
   description: The OpenShift environment, ie dev, test or prod
@@ -39,7 +38,7 @@ parameters:
 - name: ENDPOINT
   description: The application name that each component is part of
   required: false
-  value: nginx-jag-pcss-civil
+  value: nginx-jag-pcss
   
 objects:
 
@@ -71,45 +70,6 @@ objects:
         proxy_pass_request_headers on;
         proxy_pass https://wsgw.dev.jag.gov.bc.ca/courts/ocp/CeisScss;
       }
-
-- kind: ImageStream
-  apiVersion: v1
-  metadata:
-    name: "${COMPONENT_NAME}"
-    namespace: ${OC_NAMESPACE}-tools
-
-- kind: BuildConfig
-  apiVersion: v1
-  metadata:
-    name: "${COMPONENT_NAME}"
-    namespace: ${OC_NAMESPACE}-${OC_ENV}
-  spec:
-    source:
-      type: Git
-      git:
-        uri: "https://github.com/sclorg/nginx-ex.git"
-    strategy:
-      type: Source
-      sourceStrategy:
-        from:
-          kind: ImageStreamTag
-          namespace: openshift
-          name: 'nginx:1.16-el8'
-    output:
-      to:
-        kind: ImageStreamTag
-        name: "${COMPONENT_NAME}:latest"
-        namespace: ${OC_NAMESPACE}-tools
-     
-    triggers:
-    - type: ImageChange
-    - type: ConfigChange
-    - type: GitHub
-      github:
-        secret: ${COMPONENT_NAME}-github-webhook-secret
-    - type: Generic
-      generic:
-        secret: ${COMPONENT_NAME}-generic-webhook-secret
 
 - kind: DeploymentConfig
   apiVersion: apps.openshift.io/v1
