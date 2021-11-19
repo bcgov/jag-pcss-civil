@@ -46,6 +46,9 @@ public class SecureEndpointTests {
         one.setRequestPartId("A");
         one.setRequestAgencyIdentifierId("A");
 
+        var two = new GetAppearanceCivilApprMethodSecure();
+        two.setGetAppearanceCivilApprMethodSecureRequest(req);
+
         req.setGetAppearanceCivilApprMethodSecureRequest(one);
 
         var resp = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilApprMethodResponse();
@@ -72,7 +75,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getAppearanceCivilApprMethodSecureRequest(req);
+        var out = endpointController.getAppearanceCivilApprMethodSecureRequest(two);
 
         assert out != null;
     }
@@ -89,8 +92,9 @@ public class SecureEndpointTests {
         one.setRequestDtm("A");
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
-
+        var two = new GetAppearanceCivilPartySecure();
         req.setGetAppearanceCivilPartySecureRequest(one);
+        two.setGetAppearanceCivilPartySecureRequest(req);
 
         var resp = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse();
         resp.setResponseCd("A");
@@ -122,7 +126,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getAppearanceCivilPartySecure(req);
+        var out = endpointController.getAppearanceCivilPartySecure(two);
 
         assert out != null;
     }
@@ -206,7 +210,9 @@ public class SecureEndpointTests {
         one.setRequestPartId("A");
         one.setRequestDtm("A");
 
+        var two = new GetFileDetailCivilSecure();
         req.setGetFileDetailCivilSecureRequest(one);
+        two.setGetFileDetailCivilSecureRequest(req);
 
         var resp = new com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse();
 
@@ -292,7 +298,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getFileDetailCivilSecure(req);
+        var out = endpointController.getFileDetailCivilSecure(two);
 
         assert out != null;
     }

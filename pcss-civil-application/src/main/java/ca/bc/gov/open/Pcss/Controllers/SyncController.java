@@ -50,8 +50,7 @@ public class SyncController {
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "GetSyncCivilAppearance")
-                        .queryParam(
-                                "RequestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("RequestPartId", inner.getRequestPartId())
                         .queryParam("RequestDtm", inner.getRequestDtm())
                         .queryParam("ProcessUpToDtm", inner.getProcessUpToDtm());
@@ -98,8 +97,7 @@ public class SyncController {
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "GetSyncCivilHearingRestriction")
-                        .queryParam(
-                                "RequestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("RequestPartId", inner.getRequestPartId())
                         .queryParam("RequestDtm", inner.getRequestDtm())
                         .queryParam("ProcessUpToDtm", inner.getProcessUpToDtm());
@@ -188,8 +186,7 @@ public class SyncController {
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "file-detail")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("physicalFileId", inner.getPhysicalFileId());
