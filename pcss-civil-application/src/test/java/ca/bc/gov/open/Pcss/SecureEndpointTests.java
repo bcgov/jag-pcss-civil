@@ -12,7 +12,6 @@ import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilSecureRequest;
 import com.example.demp.wsdl.pcss.secure.two.GetFileDetailCivilSecureRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -42,7 +41,7 @@ public class SecureEndpointTests {
                 new com.example.demp.wsdl.pcss.secure.one
                         .GetAppearanceCivilApprMethodSecureRequest();
         one.setAppearanceId("A");
-        one.setRequestDtm(Instant.now());
+        one.setRequestDtm("A");
         one.setApplicationCd("A");
         one.setRequestPartId("A");
         one.setRequestAgencyIdentifierId("A");
@@ -87,7 +86,7 @@ public class SecureEndpointTests {
 
         one.setAppearanceId("A");
         one.setApplicationCd("A");
-        one.setRequestDtm(Instant.now());
+        one.setRequestDtm("A");
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
 
@@ -136,7 +135,7 @@ public class SecureEndpointTests {
         var one = new GetAppearanceCivilSecureRequest();
         var two = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilSecureRequest();
         two.setApplicationCd("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         two.setRequestAgencyIdentifierId("A");
         two.setFutureYN(YesNoType.Y);
         two.setHistoryYN(YesNoType.Y);
@@ -205,7 +204,7 @@ public class SecureEndpointTests {
         one.setPhysicalFileId("A");
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
-        one.setRequestDtm(Instant.now());
+        one.setRequestDtm("A");
 
         req.setGetFileDetailCivilSecureRequest(one);
 

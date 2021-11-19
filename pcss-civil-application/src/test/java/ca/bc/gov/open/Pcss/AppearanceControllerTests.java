@@ -17,7 +17,6 @@ import com.example.demp.wsdl.pcss.three.SetCounselDetailCivilRequest;
 import com.example.demp.wsdl.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -49,7 +48,7 @@ public class AppearanceControllerTests {
 
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         two.setPhysicalFileId("A");
         two.setFutureYN(YesNoType.Y);
         two.setHistoryYN(YesNoType.Y);
@@ -111,7 +110,7 @@ public class AppearanceControllerTests {
         var two = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         two.setAppearanceId("A");
         one.setGetAppearanceCivilApprMethodRequest(two);
         cam.setGetAppearanceCivilApprMethodRequest(one);
@@ -155,7 +154,7 @@ public class AppearanceControllerTests {
         var two = new com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         Detail3 dt = new Detail3();
         dt.setOperationModeCd(OperationModeType.ADD);
         dt.setAppearanceId("A");
@@ -229,7 +228,7 @@ public class AppearanceControllerTests {
         dt.setDocument(Collections.singletonList(doc));
 
         two.setDetail(Collections.singletonList(dt));
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         two.setRequestPartId("A");
         two.setRequestAgencyIdentifierId("A");
 
@@ -275,7 +274,7 @@ public class AppearanceControllerTests {
         two.setRequestAgencyIdentifierId("A");
         two.setAppearanceId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         one.setGetAppearanceCivilDocumentRequest(two);
         cd.setGetAppearanceCivilDocumentRequest(one);
 
@@ -329,7 +328,7 @@ public class AppearanceControllerTests {
         two.setRequestAgencyIdentifierId("A");
         two.setAppearanceId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         one.setGetAppearanceCivilPartyRequest(two);
         acp.setGetAppearanceCivilPartyRequest(one);
 
@@ -377,7 +376,7 @@ public class AppearanceControllerTests {
         two.setRequestAgencyIdentifierId("A");
         two.setAppearanceId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
 
         one.setGetAppearanceCivilResourceRequest(two);
         cr.setGetAppearanceCivilResourceRequest(one);
@@ -431,7 +430,7 @@ public class AppearanceControllerTests {
         var two = new com.example.demp.wsdl.pcss.one.SetCounselDetailCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         two.setCivilPartyId("A");
         two.setSelfRepresentedYn(YesNoType.Y);
         Detail4 dt = new Detail4();

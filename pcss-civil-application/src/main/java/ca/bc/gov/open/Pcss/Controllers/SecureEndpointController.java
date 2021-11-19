@@ -49,7 +49,7 @@ public class SecureEndpointController {
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetAppearanceCivilApprMethodSecureRequest();
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
+                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/appearance-method")
                         .queryParam(
                                 "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
@@ -94,7 +94,7 @@ public class SecureEndpointController {
                                 .GetAppearanceCivilPartySecureRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
+                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/party")
                         .queryParam(
                                 "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
@@ -140,7 +140,7 @@ public class SecureEndpointController {
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetAppearanceCivilSecureRequest();
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
+                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance")
                         .queryParam(
                                 "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
@@ -183,7 +183,7 @@ public class SecureEndpointController {
                                 .GetFileDetailCivilSecureRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
+                UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
                         .queryParam(
                                 "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
