@@ -40,22 +40,25 @@ public class SecureEndpointController {
             localPart = "getAppearanceCivilApprMethodSecure")
     @ResponsePayload
     public GetAppearanceCivilApprMethodSecureResponse getAppearanceCivilApprMethodSecureRequest(
-            @RequestPayload GetAppearanceCivilApprMethodSecureRequest search)
+            @RequestPayload GetAppearanceCivilApprMethodSecure search)
             throws JsonProcessingException {
 
         var inner =
                 search.getGetAppearanceCivilApprMethodSecureRequest() != null
+                                && search.getGetAppearanceCivilApprMethodSecureRequest()
+                                                .getGetAppearanceCivilApprMethodSecureRequest()
+                                        != null
                         ? search.getGetAppearanceCivilApprMethodSecureRequest()
+                                .getGetAppearanceCivilApprMethodSecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetAppearanceCivilApprMethodSecureRequest();
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/appearance-method")
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
-                        .queryParam("appearanceId", inner.getRequestPartId());
+                        .queryParam("appearanceId", inner.getAppearanceId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilApprMethodResponse>
                     resp =
@@ -85,22 +88,24 @@ public class SecureEndpointController {
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getAppearanceCivilPartySecure")
     @ResponsePayload
     public GetAppearanceCivilPartySecureResponse getAppearanceCivilPartySecure(
-            @RequestPayload GetAppearanceCivilPartySecureRequest search)
-            throws JsonProcessingException {
+            @RequestPayload GetAppearanceCivilPartySecure search) throws JsonProcessingException {
         var inner =
                 search.getGetAppearanceCivilPartySecureRequest() != null
+                                && search.getGetAppearanceCivilPartySecureRequest()
+                                                .getGetAppearanceCivilPartySecureRequest()
+                                        != null
                         ? search.getGetAppearanceCivilPartySecureRequest()
+                                .getGetAppearanceCivilPartySecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetAppearanceCivilPartySecureRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/party")
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
-                        .queryParam("appearanceId", inner.getRequestPartId());
+                        .queryParam("appearanceId", inner.getAppearanceId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse> resp =
                     restTemplate.exchange(
@@ -140,9 +145,8 @@ public class SecureEndpointController {
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetAppearanceCivilSecureRequest();
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance")
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
@@ -174,22 +178,26 @@ public class SecureEndpointController {
     @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getFileDetailCivilSecure")
     @ResponsePayload
     public GetFileDetailCivilSecureResponse getFileDetailCivilSecure(
-            @RequestPayload GetFileDetailCivilSecureRequest search) throws JsonProcessingException {
+            @RequestPayload GetFileDetailCivilSecure search) throws JsonProcessingException {
 
         var inner =
                 search.getGetFileDetailCivilSecureRequest() != null
+                                && search.getGetFileDetailCivilSecureRequest()
+                                                .getGetFileDetailCivilSecureRequest()
+                                        != null
                         ? search.getGetFileDetailCivilSecureRequest()
+                                .getGetFileDetailCivilSecureRequest()
                         : new com.example.demp.wsdl.pcss.secure.one
                                 .GetFileDetailCivilSecureRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "health")
-                        .queryParam(
-                                "requestAgencyIdentifierId", inner.getRequestAgencyIdentifierId())
+                UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
+                        .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
-                        .queryParam("appearanceId", inner.getRequestPartId());
+                        .queryParam("appearanceId", inner.getRequestPartId())
+                        .queryParam("physicalFileId", inner.getPhysicalFileId());
         try {
             HttpEntity<com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse> resp =
                     restTemplate.exchange(

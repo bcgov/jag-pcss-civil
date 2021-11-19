@@ -12,7 +12,6 @@ import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilSecureRequest;
 import com.example.demp.wsdl.pcss.secure.two.GetFileDetailCivilSecureRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -42,10 +41,13 @@ public class SecureEndpointTests {
                 new com.example.demp.wsdl.pcss.secure.one
                         .GetAppearanceCivilApprMethodSecureRequest();
         one.setAppearanceId("A");
-        one.setRequestDtm(Instant.now());
+        one.setRequestDtm("A");
         one.setApplicationCd("A");
         one.setRequestPartId("A");
         one.setRequestAgencyIdentifierId("A");
+
+        var two = new GetAppearanceCivilApprMethodSecure();
+        two.setGetAppearanceCivilApprMethodSecureRequest(req);
 
         req.setGetAppearanceCivilApprMethodSecureRequest(one);
 
@@ -73,7 +75,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getAppearanceCivilApprMethodSecureRequest(req);
+        var out = endpointController.getAppearanceCivilApprMethodSecureRequest(two);
 
         assert out != null;
     }
@@ -87,11 +89,12 @@ public class SecureEndpointTests {
 
         one.setAppearanceId("A");
         one.setApplicationCd("A");
-        one.setRequestDtm(Instant.now());
+        one.setRequestDtm("A");
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
-
+        var two = new GetAppearanceCivilPartySecure();
         req.setGetAppearanceCivilPartySecureRequest(one);
+        two.setGetAppearanceCivilPartySecureRequest(req);
 
         var resp = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilPartyResponse();
         resp.setResponseCd("A");
@@ -123,7 +126,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getAppearanceCivilPartySecure(req);
+        var out = endpointController.getAppearanceCivilPartySecure(two);
 
         assert out != null;
     }
@@ -136,7 +139,7 @@ public class SecureEndpointTests {
         var one = new GetAppearanceCivilSecureRequest();
         var two = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilSecureRequest();
         two.setApplicationCd("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         two.setRequestAgencyIdentifierId("A");
         two.setFutureYN(YesNoType.Y);
         two.setHistoryYN(YesNoType.Y);
@@ -205,9 +208,11 @@ public class SecureEndpointTests {
         one.setPhysicalFileId("A");
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
-        one.setRequestDtm(Instant.now());
+        one.setRequestDtm("A");
 
+        var two = new GetFileDetailCivilSecure();
         req.setGetFileDetailCivilSecureRequest(one);
+        two.setGetFileDetailCivilSecureRequest(req);
 
         var resp = new com.example.demp.wsdl.pcss.secure.one.GetFileDetailCivilResponse();
 
@@ -293,7 +298,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getFileDetailCivilSecure(req);
+        var out = endpointController.getFileDetailCivilSecure(two);
 
         assert out != null;
     }

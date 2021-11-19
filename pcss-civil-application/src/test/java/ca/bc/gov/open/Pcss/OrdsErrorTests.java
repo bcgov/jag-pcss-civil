@@ -10,14 +10,10 @@ import ca.bc.gov.open.Pcss.Controllers.SecureEndpointController;
 import ca.bc.gov.open.Pcss.Controllers.SyncController;
 import ca.bc.gov.open.Pcss.Exceptions.BadDateException;
 import ca.bc.gov.open.Pcss.Exceptions.ORDSException;
-import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilApprMethodSecureRequest;
-import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilPartySecureRequest;
-import com.example.demp.wsdl.pcss.secure.two.GetAppearanceCivilSecure;
-import com.example.demp.wsdl.pcss.secure.two.GetFileDetailCivilSecureRequest;
+import com.example.demp.wsdl.pcss.secure.two.*;
 import com.example.demp.wsdl.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.time.Instant;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -156,7 +152,7 @@ public class OrdsErrorTests {
 
         try {
             secureController.getAppearanceCivilApprMethodSecureRequest(
-                    new GetAppearanceCivilApprMethodSecureRequest());
+                    new GetAppearanceCivilApprMethodSecure());
         } catch (ORDSException ex) {
             // Exception caught as expected
             assert true;
@@ -174,8 +170,7 @@ public class OrdsErrorTests {
         setUpRestTemplate();
 
         try {
-            secureController.getAppearanceCivilPartySecure(
-                    new GetAppearanceCivilPartySecureRequest());
+            secureController.getAppearanceCivilPartySecure(new GetAppearanceCivilPartySecure());
         } catch (ORDSException ex) {
             // Exception caught as expected
             assert true;
@@ -211,7 +206,7 @@ public class OrdsErrorTests {
         setUpRestTemplate();
 
         try {
-            secureController.getFileDetailCivilSecure(new GetFileDetailCivilSecureRequest());
+            secureController.getFileDetailCivilSecure(new GetFileDetailCivilSecure());
         } catch (ORDSException ex) {
             // Exception caught as expected
             assert true;
@@ -234,7 +229,7 @@ public class OrdsErrorTests {
             one.setGetAppearanceCivilRequest(two);
             var three = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilRequest();
             two.setGetAppearanceCivilRequest(three);
-            three.setRequestDtm(Instant.now());
+            three.setRequestDtm("A");
             secureController.getAppearanceCivil(one);
         } catch (ORDSException ex) {
             // Exception caught as expected
@@ -294,7 +289,7 @@ public class OrdsErrorTests {
             var one = new GetAppearanceCivilApprMethod();
             var two = new GetAppearanceCivilApprMethodRequest();
             var three = new com.example.demp.wsdl.pcss.one.GetAppearanceCivilApprMethodRequest();
-            three.setRequestDtm(Instant.now());
+            three.setRequestDtm("A");
             two.setGetAppearanceCivilApprMethodRequest(three);
             one.setGetAppearanceCivilApprMethodRequest(two);
             secureController.getAppearanceCivilApprMethod(one);
@@ -358,7 +353,7 @@ public class OrdsErrorTests {
             var three = new com.example.demp.wsdl.pcss.one.SetAppearanceMethodCivilRequest();
             one.setSetAppearanceMethodCivilRequest(two);
             two.setSetAppearanceMethodCivilRequest(three);
-            three.setRequestDtm(Instant.now());
+            three.setRequestDtm("A");
             secureController.setAppearanceMethodCivil(one);
         } catch (ORDSException ex) {
             // Exception caught as expected
