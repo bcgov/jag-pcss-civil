@@ -3,6 +3,8 @@ package ca.bc.gov.open.pcss.controllers;
 import ca.bc.gov.open.pcss.configuration.SoapConfig;
 import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.models.OrdsErrorLog;
+import ca.bc.gov.open.pcss.models.RequestSuccessLog;
+import ca.bc.gov.open.pcss.models.serializers.InstantSerializer;
 import ca.bc.gov.open.pcss.secure.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -72,6 +74,10 @@ public class SecureEndpointController {
             var one = new GetAppearanceCivilApprMethodResponse();
             one.setGetAppearanceCivilApprMethodResponse(resp.getBody());
             out.setGetAppearanceCivilApprMethodResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog(
+                                    "Request Success", "getAppearanceCivilApprMethodSecure")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -117,6 +123,10 @@ public class SecureEndpointController {
             var one = new GetAppearanceCivilPartyResponse();
             one.setGetAppearanceCivilPartyResponse(resp.getBody());
             out.setGetAppearanceCivilPartyResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog(
+                                    "Request Success", "getAppearanceCivilPartySecure")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -163,6 +173,9 @@ public class SecureEndpointController {
             var one = new GetAppearanceCivilResponse();
             one.setGetAppearanceCivilResponse(resp.getBody());
             out.setGetAppearanceCivilResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "getAppearanceCivilSecure")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -210,6 +223,9 @@ public class SecureEndpointController {
             var one = new GetFileDetailCivilResponse();
             one.setGetFileDetailCivilResponse(resp.getBody());
             out.setGetFileDetailCivilResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "getFileDetailCivilSecure")));
             return out;
         } catch (Exception ex) {
             log.error(

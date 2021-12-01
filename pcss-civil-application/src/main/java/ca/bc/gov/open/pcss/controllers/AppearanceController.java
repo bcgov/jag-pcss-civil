@@ -4,6 +4,7 @@ import ca.bc.gov.open.pcss.configuration.SoapConfig;
 import ca.bc.gov.open.pcss.exceptions.BadDateException;
 import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.models.OrdsErrorLog;
+import ca.bc.gov.open.pcss.models.RequestSuccessLog;
 import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -81,6 +82,9 @@ public class AppearanceController {
             var one = new GetAppearanceCivilResponse2();
             one.setGetAppearanceCivilResponse(resp.getBody());
             out.setGetAppearanceCivilResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "getAppearanceCivil")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -123,6 +127,9 @@ public class AppearanceController {
             one.setSetAppearanceCivilResponse(resp.getBody());
             out.setSetAppearanceCivilResponse(one);
 
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "setAppearanceCivil")));
             return out;
 
         } catch (Exception ex) {
@@ -182,6 +189,10 @@ public class AppearanceController {
             var one = new GetAppearanceCivilApprMethodResponse2();
             one.setGetAppearanceCivilApprMethodResponse(resp.getBody());
             out.setGetAppearanceCivilApprMethodResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog(
+                                    "Request Success", "getAppearanceCivilApprMethod")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -238,6 +249,9 @@ public class AppearanceController {
             var one = new SetAppearanceMethodCivilResponse2();
             one.setSetAppearanceMethodCivilResponse(resp.getBody());
             out.setSetAppearanceMethodCivilResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "setAppearanceMethodCivil")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -284,6 +298,10 @@ public class AppearanceController {
             var one = new GetAppearanceCivilDocumentResponse2();
             one.setGetAppearanceCivilDocumentResponse(resp.getBody());
             out.setGetAppearanceCivilDocumentResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog(
+                                    "Request Success", "getAppearanceCivilDocument")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -330,6 +348,9 @@ public class AppearanceController {
             var one = new GetAppearanceCivilPartyResponse2();
             one.setGetAppearanceCivilPartyResponse(resp.getBody());
             out.setGetAppearanceCivilPartyResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "getAppearanceCivilParty")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -376,6 +397,10 @@ public class AppearanceController {
             var one = new GetAppearanceCivilResourceResponse2();
             one.setGetAppearanceCivilResourceResponse(resp.getBody());
             out.setGetAppearanceCivilResourceResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog(
+                                    "Request Success", "getAppearanceCivilResource")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -419,6 +444,9 @@ public class AppearanceController {
             var one = new SetCounselDetailCivilResponse2();
             one.setSetCounselDetailCivilResponse(resp.getBody());
             finalOut.setSetCounselDetailCivilResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "setCounselDetailCivil")));
             return finalOut;
         } catch (Exception ex) {
             log.error(
