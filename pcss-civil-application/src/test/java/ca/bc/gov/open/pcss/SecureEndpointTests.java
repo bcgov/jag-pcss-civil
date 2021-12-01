@@ -47,16 +47,11 @@ public class SecureEndpointTests {
         two.setGetAppearanceCivilApprMethodSecureRequest(one);
         req.setGetAppearanceCivilApprMethodSecureRequest(two);
 
-<<<<<<< HEAD:pcss-civil-application/src/test/java/ca/bc/gov/open/Pcss/SecureEndpointTests.java
-        var two = new GetAppearanceCivilApprMethodSecure();
-        two.setGetAppearanceCivilApprMethodSecureRequest(req);
+        two.setGetAppearanceCivilApprMethodSecureRequest(one);
 
-        req.setGetAppearanceCivilApprMethodSecureRequest(one);
+        req.setGetAppearanceCivilApprMethodSecureRequest(two);
 
-        var resp = new com.example.demp.wsdl.pcss.secure.one.GetAppearanceCivilApprMethodResponse();
-=======
         var resp = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse();
->>>>>>> origin/main:pcss-civil-application/src/test/java/ca/bc/gov/open/pcss/SecureEndpointTests.java
 
         resp.setResponseCd("A");
         resp.setResponseMessageTxt("A");
@@ -80,7 +75,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getAppearanceCivilApprMethodSecureRequest(two);
+        var out = endpointController.getAppearanceCivilApprMethodSecureRequest(req);
 
         assert out != null;
     }
@@ -98,15 +93,9 @@ public class SecureEndpointTests {
         one.setRequestDtm("A");
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
-<<<<<<< HEAD:pcss-civil-application/src/test/java/ca/bc/gov/open/Pcss/SecureEndpointTests.java
-        var two = new GetAppearanceCivilPartySecure();
-        req.setGetAppearanceCivilPartySecureRequest(one);
-        two.setGetAppearanceCivilPartySecureRequest(req);
-=======
 
-        two.setGetAppearanceCivilPartySecureRequest(one);
         req.setGetAppearanceCivilPartySecureRequest(two);
->>>>>>> origin/main:pcss-civil-application/src/test/java/ca/bc/gov/open/pcss/SecureEndpointTests.java
+        two.setGetAppearanceCivilPartySecureRequest(one);
 
         var resp = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse();
         resp.setResponseCd("A");
@@ -138,7 +127,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getAppearanceCivilPartySecure(two);
+        var out = endpointController.getAppearanceCivilPartySecure(req);
 
         assert out != null;
     }
@@ -221,14 +210,8 @@ public class SecureEndpointTests {
         one.setRequestPartId("A");
         one.setRequestDtm("A");
 
-<<<<<<< HEAD:pcss-civil-application/src/test/java/ca/bc/gov/open/Pcss/SecureEndpointTests.java
-        var two = new GetFileDetailCivilSecure();
-        req.setGetFileDetailCivilSecureRequest(one);
-        two.setGetFileDetailCivilSecureRequest(req);
-=======
         two.setGetFileDetailCivilSecureRequest(one);
         req.setGetFileDetailCivilSecureRequest(two);
->>>>>>> origin/main:pcss-civil-application/src/test/java/ca/bc/gov/open/pcss/SecureEndpointTests.java
 
         var resp = new ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse();
 
@@ -312,7 +295,7 @@ public class SecureEndpointTests {
                                         any()))
                 .thenReturn(responseEntity);
 
-        var out = endpointController.getFileDetailCivilSecure(two);
+        var out = endpointController.getFileDetailCivilSecure(req);
 
         assert out != null;
     }

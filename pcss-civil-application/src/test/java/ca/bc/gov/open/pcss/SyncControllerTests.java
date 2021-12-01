@@ -39,13 +39,9 @@ public class SyncControllerTests {
 
         var sca = new GetSyncCivilAppearance();
         var one = new GetSyncCivilAppearanceRequest();
-<<<<<<< HEAD:pcss-civil-application/src/test/java/ca/bc/gov/open/Pcss/SyncControllerTests.java
-        var two = new com.example.demp.wsdl.pcss.one.GetSyncCivilAppearanceRequest();
-        two.setProcessUpToDtm("A");
-=======
+
         var two = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
-        two.setProcessUpToDtm(Instant.now());
->>>>>>> origin/main:pcss-civil-application/src/test/java/ca/bc/gov/open/pcss/SyncControllerTests.java
+        two.setProcessUpToDtm("A");
         two.setRequestAgencyIdentifierId("A");
         two.setRequestDtm("A");
         two.setRequestPartId("A");
@@ -100,15 +96,9 @@ public class SyncControllerTests {
 
         var chr = new GetSyncCivilHearingRestriction();
         var one = new GetSyncCivilHearingRestrictionRequest();
-<<<<<<< HEAD:pcss-civil-application/src/test/java/ca/bc/gov/open/Pcss/SyncControllerTests.java
-        var two = new com.example.demp.wsdl.pcss.one.GetSyncCivilHearingRestrictionRequest();
-        two.setProcessUpToDtm("A");
-        two.setRequestDtm("A");
-=======
+
         var two = new ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionRequest();
-        two.setProcessUpToDtm(Instant.now());
-        two.setRequestDtm(Instant.now());
->>>>>>> origin/main:pcss-civil-application/src/test/java/ca/bc/gov/open/pcss/SyncControllerTests.java
+
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         one.setGetSyncCivilHearingRestrictionRequest(two);

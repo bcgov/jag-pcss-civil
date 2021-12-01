@@ -3,7 +3,6 @@ package ca.bc.gov.open.pcss.controllers;
 import ca.bc.gov.open.pcss.configuration.SoapConfig;
 import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.models.OrdsErrorLog;
-import ca.bc.gov.open.pcss.models.serializers.InstantSerializer;
 import ca.bc.gov.open.pcss.secure.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -99,7 +98,6 @@ public class SecureEndpointController {
                                 .getGetAppearanceCivilPartySecureRequest()
                         : new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
 
-
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/party")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
@@ -191,7 +189,6 @@ public class SecureEndpointController {
                         ? search.getGetFileDetailCivilSecureRequest()
                                 .getGetFileDetailCivilSecureRequest()
                         : new ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilSecureRequest();
-
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
