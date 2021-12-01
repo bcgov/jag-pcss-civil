@@ -49,11 +49,7 @@ public class SyncController {
                         : new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
 
         UriComponentsBuilder builder =
-<<<<<<< HEAD:pcss-civil-application/src/main/java/ca/bc/gov/open/Pcss/Controllers/SyncController.java
-                UriComponentsBuilder.fromHttpUrl(host + "GetSyncCivilAppearance")
-=======
                 UriComponentsBuilder.fromHttpUrl(host + "sync/appearance")
->>>>>>> origin/main:pcss-civil-application/src/main/java/ca/bc/gov/open/pcss/controllers/SyncController.java
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("RequestPartId", inner.getRequestPartId())
                         .queryParam("RequestDtm", inner.getRequestDtm())
@@ -102,11 +98,7 @@ public class SyncController {
                         : new ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionRequest();
 
         UriComponentsBuilder builder =
-<<<<<<< HEAD:pcss-civil-application/src/main/java/ca/bc/gov/open/Pcss/Controllers/SyncController.java
-                UriComponentsBuilder.fromHttpUrl(host + "GetSyncCivilHearingRestriction")
-=======
                 UriComponentsBuilder.fromHttpUrl(host + "hearing-restriction")
->>>>>>> origin/main:pcss-civil-application/src/main/java/ca/bc/gov/open/pcss/controllers/SyncController.java
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("RequestPartId", inner.getRequestPartId())
                         .queryParam("RequestDtm", inner.getRequestDtm())

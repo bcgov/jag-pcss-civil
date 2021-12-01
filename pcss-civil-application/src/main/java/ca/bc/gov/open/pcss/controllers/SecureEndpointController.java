@@ -51,17 +51,13 @@ public class SecureEndpointController {
                                         != null
                         ? search.getGetAppearanceCivilApprMethodSecureRequest()
                                 .getGetAppearanceCivilApprMethodSecureRequest()
-<<<<<<< HEAD:pcss-civil-application/src/main/java/ca/bc/gov/open/Pcss/Controllers/SecureEndpointController.java
-                        : new com.example.demp.wsdl.pcss.secure.one
-=======
                         : new ca.bc.gov.open.pcss.secure.one
->>>>>>> origin/main:pcss-civil-application/src/main/java/ca/bc/gov/open/pcss/controllers/SecureEndpointController.java
                                 .GetAppearanceCivilApprMethodSecureRequest();
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/appearance-method")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
+                        .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("appearanceId", inner.getAppearanceId());
         try {
@@ -101,18 +97,14 @@ public class SecureEndpointController {
                                         != null
                         ? search.getGetAppearanceCivilPartySecureRequest()
                                 .getGetAppearanceCivilPartySecureRequest()
-<<<<<<< HEAD:pcss-civil-application/src/main/java/ca/bc/gov/open/Pcss/Controllers/SecureEndpointController.java
-                        : new com.example.demp.wsdl.pcss.secure.one
-                                .GetAppearanceCivilPartySecureRequest();
-=======
                         : new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
->>>>>>> origin/main:pcss-civil-application/src/main/java/ca/bc/gov/open/pcss/controllers/SecureEndpointController.java
+
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/party")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
+                        .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("appearanceId", inner.getAppearanceId());
         try {
@@ -156,7 +148,7 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
+                        .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("physicalFileId", inner.getPhysicalFileId())
                         .queryParam("futureYN", inner.getFutureYN())
@@ -198,23 +190,16 @@ public class SecureEndpointController {
                                         != null
                         ? search.getGetFileDetailCivilSecureRequest()
                                 .getGetFileDetailCivilSecureRequest()
-<<<<<<< HEAD:pcss-civil-application/src/main/java/ca/bc/gov/open/Pcss/Controllers/SecureEndpointController.java
-                        : new com.example.demp.wsdl.pcss.secure.one
-                                .GetFileDetailCivilSecureRequest();
-=======
                         : new ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilSecureRequest();
->>>>>>> origin/main:pcss-civil-application/src/main/java/ca/bc/gov/open/pcss/controllers/SecureEndpointController.java
+
 
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
+                        .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
-<<<<<<< HEAD:pcss-civil-application/src/main/java/ca/bc/gov/open/Pcss/Controllers/SecureEndpointController.java
                         .queryParam("appearanceId", inner.getRequestPartId())
-=======
->>>>>>> origin/main:pcss-civil-application/src/main/java/ca/bc/gov/open/pcss/controllers/SecureEndpointController.java
                         .queryParam("physicalFileId", inner.getPhysicalFileId());
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse> resp =
