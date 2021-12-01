@@ -9,8 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ca.bc.gov.open</groupId>
-    <artifactId>Pcss-civil-application</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>pcss-civil-application</artifactId>
+    <version>1.0</version>
     <name>pcss-civil-application</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -19,11 +19,6 @@
     </properties>
 
     <repositories>
-        <repository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <url>https://repo1.maven.org/maven2/</url>
-        </repository>
         <repository>
             <id>splunk-artifactory</id>
             <name>Splunk Releases</name>
@@ -213,13 +208,13 @@
         <dependency>
             <groupId>ca.bc.gov.open</groupId>
             <artifactId>pcss-models</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>ca.bc.gov.open</groupId>
             <artifactId>pcss-secure-models</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

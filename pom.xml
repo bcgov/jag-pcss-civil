@@ -10,19 +10,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ca.bc.gov.open</groupId>
-    <artifactId>Pcss</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Pcss</name>
-    <description>Demo project for Spring Boot</description>
+    <artifactId>pcss</artifactId>
+    <version>1.0</version>
+    <name>pcss</name>
+    <description>Pcss Civil Wrapper</description>
     <properties>
         <java.version>11</java.version>
     </properties>
     <repositories>
-        <repository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <url>https://repo1.maven.org/maven2/</url>
-        </repository>
         <repository>
             <id>splunk-artifactory</id>
             <name>Splunk Releases</name>
@@ -41,14 +36,8 @@
     <dependencies>
         <dependency>
             <groupId>ca.bc.gov.open</groupId>
-            <artifactId>pcss-models</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>ca.bc.gov.open</groupId>
-            <artifactId>Pcss-civil-application</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>pcss-civil-application</artifactId>
+            <version>1.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -103,44 +92,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.7.1</version>
-            </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.7.1</version>
-                </plugin>
-                <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.2</version>
-            </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.0.0</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>index</report>
-                            <report>licenses</report>
-                            <report>dependency-info</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-        </plugins>
-    </reporting>
 
 </project>
