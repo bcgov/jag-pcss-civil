@@ -1,0 +1,205 @@
+<xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"
+            xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"
+            xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"/>
+    <xsd:element name="getFileDetailCivilSecureRequest" type="pcss:getFileDetailCivilSecureRequest"/>
+    <xsd:element name="getFileDetailCivilResponse" type="pcss:getFileDetailCivilResponse"/>
+    <xsd:element name="getAppearanceCivilSecureRequest" type="pcss:getAppearanceCivilSecureRequest"/>
+    <xsd:element name="getAppearanceCivilResponse" type="pcss:getAppearanceCivilResponse"/>
+    <xsd:element name="getAppearanceCivilPartySecureRequest" type="pcss:getAppearanceCivilPartySecureRequest"/>
+    <xsd:element name="getAppearanceCivilPartyResponse" type="pcss:getAppearanceCivilPartyResponse"/>
+    <xsd:element name="getAppearanceCivilApprMethodSecureRequest"
+                 type="pcss:getAppearanceCivilApprMethodSecureRequest"/>
+    <xsd:element name="getAppearanceCivilApprMethodResponse" type="pcss:getAppearanceCivilApprMethodResponse"/>
+    <xsd:complexType name="getFileDetailCivilSecureRequest">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+            <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+            <xsd:element form="qualified" name="ApplicationCd" type="xsd:string"/>
+            <xsd:element form="qualified" name="PhysicalFileId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getFileDetailCivilResponse">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" minOccurs="0" name="FileNumberTxt" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="HomeLocationAgenId" type="dx:AgencyIdentifierType"/>
+            <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
+            <xsd:element form="qualified" minOccurs="0" name="CourtClassCd" type="dx:CourtClassType"/>
+            <xsd:element form="qualified" minOccurs="0" name="SocTxt" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="LeftRoleDsc" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="RightRoleDsc" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="TrialRemarkTxt" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="CommentToJudgeTxt" type="xsd:string"/>
+            <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party"/>
+            <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Document" type="pcss:Document"/>
+            <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="HearingRestriction"
+                         type="pcss:HearingRestriction"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Party">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" minOccurs="0" name="LastNm" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="GivenNm" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="OrgNm" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="RoleTypeCd" type="dx:CivilPartyRoleType"/>
+            <xsd:element form="qualified" minOccurs="0" name="LeftRightCd" type="dx:LeftRightType"/>
+            <xsd:element form="qualified" minOccurs="0" name="SelfRepresentedYN" type="xsd:string"/>
+            <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Counsel" type="pcss:Counsel"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Counsel">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="CounselId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" minOccurs="0" name="FullNm" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="PhoneNumberTxt" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Document">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="CivilDocumentId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="FileSeqNo" type="xsd:string"/>
+            <xsd:element form="qualified" name="DocumentTypeCd" type="dx:CivilDocumentType"/>
+            <xsd:element form="qualified" minOccurs="0" name="FiledDt" type="dx:DateType"/>
+            <xsd:element form="qualified" minOccurs="0" name="CommentTxt" type="xsd:string"/>
+            <xsd:element form="qualified" name="ConcludedYn" type="dx:YesNoType"/>
+            <xsd:element form="qualified" minOccurs="0" name="LastAppearanceId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" minOccurs="0" name="LastAppearanceDt" type="dx:DateType"/>
+            <xsd:element form="qualified" minOccurs="0" name="LastAppearanceTm" type="dx:TimeType"/>
+            <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="DocumentSupport"
+                         type="pcss:DocumentSupport"/>
+            <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Issue" type="pcss:Issue"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DocumentSupport">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="ActCd" type="dx:ActType"/>
+            <xsd:element form="qualified" name="ActDsc" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Issue">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="IssueNumber" type="dx:SystemSeqNoType"/>
+            <xsd:element form="qualified" name="IssueTypeCd" type="dx:IssueType"/>
+            <xsd:element form="qualified" name="IssueDsc" type="xsd:string"/>
+            <xsd:element form="qualified" name="ConcludedYn" type="dx:YesNoType"/>
+            <xsd:element form="qualified" minOccurs="0" name="IssueResultCd" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="IssueResultDsc" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="HearingRestriction">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="HearingRestrictionId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="AdjPartId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="AdjFullNm" type="xsd:string"/>
+            <xsd:element form="qualified" name="HearingRestrictionTypeCd" type="dx:HearingRestrictionType"/>
+            <xsd:element form="qualified" name="ApplyToNm" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="CivilDocumentId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" minOccurs="0" name="AdjInitialsTxt" type="xsd:string"/>
+            <xsd:element form="qualified" name="HearingRestrictionCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getAppearanceCivilSecureRequest">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+            <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+            <xsd:element form="qualified" name="ApplicationCd" type="xsd:string"/>
+            <xsd:element form="qualified" name="PhysicalFileId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="FutureYN" type="dx:YesNoType"/>
+            <xsd:element form="qualified" name="HistoryYN" type="dx:YesNoType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getAppearanceCivilResponse">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            <xsd:element form="qualified" name="FutureRecCount" type="xsd:string"/>
+            <xsd:element form="qualified" name="HistoryRecCount" type="xsd:string"/>
+            <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ApprDetail"
+                         type="pcss:ApprDetail"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ApprDetail">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="HistoryYN" type="dx:YesNoType"/>
+            <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="AppearanceDt" type="dx:DateType"/>
+            <xsd:element form="qualified" name="AppearanceTm" type="dx:TimeType"/>
+            <xsd:element form="qualified" name="AppearanceReasonCd" type="dx:AppearanceReasonCivilType"/>
+            <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+            <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+            <xsd:element form="qualified" minOccurs="0" name="JudgeFullNm" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="JudgeInitials" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeHour" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeMin" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="PartOfTrialYN" type="dx:YesNoType"/>
+            <xsd:element form="qualified" minOccurs="0" name="AppearanceStatusCd" type="dx:AppearanceStatusType"/>
+            <xsd:element form="qualified" minOccurs="0" name="AppearanceResultCd"
+                         type="dx:AppearanceResultCivilType"/>
+            <xsd:element form="qualified" name="AppearanceCcn" type="dx:ConcurrencyControlType"/>
+            <xsd:element form="qualified" name="DocumentTypeCd" type="dx:CivilDocumentType"/>
+            <xsd:element form="qualified" name="DocumentRecCount" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="SupplementalEquipmentTxt" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="SecurityRestrictionTxt" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="OutOfTownJudgeTxt" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getAppearanceCivilPartySecureRequest">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+            <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+            <xsd:element form="qualified" name="ApplicationCd" type="xsd:string"/>
+            <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getAppearanceCivilPartyResponse">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Party2">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="PartyRoleTypeCd" type="dx:CivilPartyRoleType"/>
+            <xsd:element form="qualified" minOccurs="0" name="LastNm" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="GivenNm" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="OrgNm" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="CounselNm" type="xsd:string"/>
+            <xsd:element form="qualified" name="CourtParticipantId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="CourtParticipantCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getAppearanceCivilApprMethodSecureRequest">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+            <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+            <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+            <xsd:element form="qualified" name="ApplicationCd" type="xsd:string"/>
+            <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getAppearanceCivilApprMethodResponse">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+            <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+            <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="AppearanceMethod"
+                         type="pcss:AppearanceMethod"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AppearanceMethod">
+        <xsd:sequence>
+            <xsd:element form="qualified" name="RoleTypeCd" type="dx:ParticipantRoleType"/>
+            <xsd:element form="qualified" name="AppearanceMethodCd" type="dx:AssetType"/>
+            <xsd:element form="qualified" name="ApprMethodCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

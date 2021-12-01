@@ -88,7 +88,7 @@ jobs:
             --tag ${IMAGE} \
             ${CONTEXT}
             docker push ${IMAGE}
-      
+
       #Login to OpenShift Container Repository - Kamloops (OC PROD)
       - name: Login to OpenShift Container Repository - Kamloops (OC PROD)
         uses: docker/login-action@v1
@@ -109,7 +109,7 @@ jobs:
             --tag ${IMAGE} \
             ${CONTEXT}
             docker push ${IMAGE}
-      
+
       #Login to OpenShift Container Repository - Calgary (OC DR)
       - name: Login to OpenShift Container Repository - Calgary (OC DR)
         uses: docker/login-action@v1
@@ -141,7 +141,7 @@ jobs:
           openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL_SILVER}}
           openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN_SILVER}}
           namespace: ${OPENSHIFT_NAMESPACE}
-        
+
         # Labels the deployment config of the application with release version number to spin up the pods labelled in same version - Silver
       - name: Labelling DC to release version - Silver
         env:
@@ -150,7 +150,7 @@ jobs:
           openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE_SILVER}}-${{ github.event.inputs.env }}
         run: |
           oc patch dc ${appName} -n ${openshiftEnvNamespace} --patch '{"spec":{"template":{"metadata":{"labels":{"version":"${{ env.releaseVersion }}.${{ env.gitsha }}"}}}}}'
-      
+
       # Wait to DC rollout to get completed before proceeding next stage - Silver
       - name: Wait for DC rollout - Silver
         env:
@@ -158,7 +158,7 @@ jobs:
           openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE_SILVER}}-${{ github.event.inputs.env }}
         run: |
           oc rollout status -n ${openshiftEnvNamespace} dc/${appName} --watch
-      
+
       #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Kamloops (OC PROD)
       - name: Authenticate OC Env Specific SA - Kamloops (OC PROD)
         uses: redhat-actions/oc-login@v1
@@ -169,7 +169,7 @@ jobs:
           openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL}}
           openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN}}
           namespace: ${OPENSHIFT_NAMESPACE}
-        
+
         # Labels the deployment config of the application with release version number to spin up the pods labelled in same version - Kamloops (OC PROD)
       - name: Labelling DC to release version - Kamloops (OC PROD)
         env:
@@ -178,7 +178,7 @@ jobs:
           openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
         run: |
           oc patch dc ${appName} -n ${openshiftEnvNamespace} --patch '{"spec":{"template":{"metadata":{"labels":{"version":"${{ env.releaseVersion }}.${{ env.gitsha }}"}}}}}'
-      
+
       # Wait to DC rollout to get completed before proceeding next stage - Kamloops (OC PROD)
       - name: Wait for DC rollout - Kamloops (OC PROD)
         env:
@@ -186,7 +186,7 @@ jobs:
           openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
         run: |
           oc rollout status -n ${openshiftEnvNamespace} dc/${appName} --watch
-      
+
       #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Calgary (OC DR)
       - name: Authenticate OC Env Specific SA - Calgary (OC DR)
         uses: redhat-actions/oc-login@v1
@@ -197,7 +197,7 @@ jobs:
           openshift_server_url: ${{secrets.OPENSHIFT_SERVER_URL_DR}}
           openshift_token: ${{secrets.OPENSHIFT_SA_ENV_DEPLOYER_TOKEN_DR}}
           namespace: ${OPENSHIFT_NAMESPACE}
-        
+
         # Labels the deployment config of the application with release version number to spin up the pods labelled in same version - Calgary (OC DR)
       - name: Labelling DC to release version - Calgary (OC DR)
         env:
@@ -206,7 +206,7 @@ jobs:
           openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
         run: |
           oc patch dc ${appName} -n ${openshiftEnvNamespace} --patch '{"spec":{"template":{"metadata":{"labels":{"version":"${{ env.releaseVersion }}.${{ env.gitsha }}"}}}}}'
-      
+
       # Wait to DC rollout to get completed before proceeding next stage - Calgary (OC DR)
       - name: Wait for DC rollout - Calgary (OC DR)
         env:
