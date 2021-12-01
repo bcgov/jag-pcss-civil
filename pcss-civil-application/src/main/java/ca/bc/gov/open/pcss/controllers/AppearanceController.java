@@ -19,6 +19,9 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import org.springframework.ws.transport.context.TransportContext;
+import org.springframework.ws.transport.context.TransportContextHolder;
+import org.springframework.ws.transport.http.HttpServletConnection;
 
 @Endpoint
 @Slf4j
@@ -40,7 +43,7 @@ public class AppearanceController {
     @ResponsePayload
     public GetAppearanceCivilResponse getAppearanceCivil(@RequestPayload GetAppearanceCivil search)
             throws JsonProcessingException, BadDateException {
-
+        addEndpointHeader("getAppearanceCivil");
         var inner =
                 search.getGetAppearanceCivilRequest() != null
                                 && search.getGetAppearanceCivilRequest()
@@ -98,7 +101,7 @@ public class AppearanceController {
     @ResponsePayload
     public SetAppearanceCivilResponse setAppearanceCivil(@RequestPayload SetAppearanceCivil payload)
             throws JsonProcessingException {
-
+        addEndpointHeader("setAppearanceCivil");
         ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest inner =
                 payload.getSetAppearanceCivilRequest() != null
                                 && payload.getSetAppearanceCivilRequest()
@@ -142,7 +145,7 @@ public class AppearanceController {
     public GetAppearanceCivilApprMethodResponse getAppearanceCivilApprMethod(
             @RequestPayload GetAppearanceCivilApprMethod search)
             throws JsonProcessingException, BadDateException {
-
+        addEndpointHeader("getAppearanceCivilApprMethod");
         var inner =
                 search.getGetAppearanceCivilApprMethodRequest() != null
                                 && search.getGetAppearanceCivilApprMethodRequest()
@@ -200,7 +203,7 @@ public class AppearanceController {
     public SetAppearanceMethodCivilResponse setAppearanceMethodCivil(
             @RequestPayload SetAppearanceMethodCivil payload)
             throws JsonProcessingException, BadDateException {
-
+        addEndpointHeader("setAppearanceMethodCivil");
         var inner =
                 payload.getSetAppearanceMethodCivilRequest() != null
                                 && payload.getSetAppearanceMethodCivilRequest()
@@ -255,7 +258,7 @@ public class AppearanceController {
     @ResponsePayload
     public GetAppearanceCivilDocumentResponse getAppearanceCivilDocument(
             @RequestPayload GetAppearanceCivilDocument search) throws JsonProcessingException {
-
+        addEndpointHeader("getAppearanceCivilDocument");
         var inner =
                 search.getGetAppearanceCivilDocumentRequest() != null
                                 && search.getGetAppearanceCivilDocumentRequest()
@@ -301,7 +304,7 @@ public class AppearanceController {
     @ResponsePayload
     public GetAppearanceCivilPartyResponse getAppearanceCivilParty(
             @RequestPayload GetAppearanceCivilParty search) throws JsonProcessingException {
-
+        addEndpointHeader("getAppearanceCivilParty");
         var inner =
                 search.getGetAppearanceCivilPartyRequest() != null
                                 && search.getGetAppearanceCivilPartyRequest()
@@ -347,7 +350,7 @@ public class AppearanceController {
     @ResponsePayload
     public GetAppearanceCivilResourceResponse getAppearanceCivilResource(
             @RequestPayload GetAppearanceCivilResource search) throws JsonProcessingException {
-
+        addEndpointHeader("getAppearanceCivilResource");
         var inner =
                 search.getGetAppearanceCivilResourceRequest() != null
                                 && search.getGetAppearanceCivilResourceRequest()
@@ -393,7 +396,7 @@ public class AppearanceController {
     @ResponsePayload
     public SetCounselDetailCivilResponse setCounselDetailCivil(
             @RequestPayload SetCounselDetailCivil payload) throws JsonProcessingException {
-
+        addEndpointHeader("setCounselDetailCivil");
         var inner =
                 payload.getSetCounselDetailCivilRequest() != null
                                 && payload.getSetCounselDetailCivilRequest()
@@ -429,6 +432,16 @@ public class AppearanceController {
                                     ex.getMessage(),
                                     inner)));
             throw new ORDSException();
+        }
+    }
+
+    private void addEndpointHeader(String endpoint) {
+        try {
+            TransportContext context = TransportContextHolder.getTransportContext();
+            HttpServletConnection connection = (HttpServletConnection) context.getConnection();
+            connection.addResponseHeader("Endpoint", endpoint);
+        } catch (Exception ex) {
+            log.warn("Failed to add endpoint response header");
         }
     }
 }

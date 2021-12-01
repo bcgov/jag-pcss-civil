@@ -18,6 +18,9 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import org.springframework.ws.transport.context.TransportContext;
+import org.springframework.ws.transport.context.TransportContextHolder;
+import org.springframework.ws.transport.http.HttpServletConnection;
 
 @Endpoint
 @Slf4j
@@ -38,7 +41,7 @@ public class SyncController {
     @ResponsePayload
     public GetSyncCivilAppearanceResponse getSyncCivilAppearance(
             @RequestPayload GetSyncCivilAppearance search) throws JsonProcessingException {
-
+        addEndpointHeader("getSyncCivilAppearance");
         var inner =
                 search.getGetSyncCivilAppearanceRequest() != null
                                 && search.getGetSyncCivilAppearanceRequest()
@@ -87,7 +90,7 @@ public class SyncController {
     @ResponsePayload
     public GetSyncCivilHearingRestrictionResponse getSyncCivilHearingRestriction(
             @RequestPayload GetSyncCivilHearingRestriction search) throws JsonProcessingException {
-
+        addEndpointHeader("getSyncCivilHearingRestriction");
         var inner =
                 search.getGetSyncCivilHearingRestrictionRequest() != null
                                 && search.getGetSyncCivilHearingRestrictionRequest()
@@ -133,7 +136,7 @@ public class SyncController {
     @ResponsePayload
     public SetHearingRestrictionCivilResponse setSyncCivilHearingRestriction(
             @RequestPayload SetHearingRestrictionCivil search) throws JsonProcessingException {
-
+        addEndpointHeader("setHearingRestrictionCivil");
         var inner =
                 search.getSetHearingRestrictionCivilRequest() != null
                                 && search.getSetHearingRestrictionCivilRequest()
@@ -177,7 +180,7 @@ public class SyncController {
     @ResponsePayload
     public GetFileDetailCivilResponse getFileDetailCivil(@RequestPayload GetFileDetailCivil search)
             throws JsonProcessingException {
-
+        addEndpointHeader("getFileDetailCivil");
         var inner =
                 search.getGetFileDetailCivilRequest() != null
                                 && search.getGetFileDetailCivilRequest()
@@ -215,6 +218,16 @@ public class SyncController {
                                     ex.getMessage(),
                                     inner)));
             throw new ORDSException();
+        }
+    }
+
+    private void addEndpointHeader(String endpoint) {
+        try {
+            TransportContext context = TransportContextHolder.getTransportContext();
+            HttpServletConnection connection = (HttpServletConnection) context.getConnection();
+            connection.addResponseHeader("Endpoint", endpoint);
+        } catch (Exception ex) {
+            log.warn("Failed to add endpoint response header");
         }
     }
 }
