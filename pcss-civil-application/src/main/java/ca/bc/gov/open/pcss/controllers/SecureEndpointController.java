@@ -58,7 +58,7 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/appearance-method")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
+                        .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("appearanceId", inner.getAppearanceId());
         try {
@@ -97,6 +97,9 @@ public class SecureEndpointController {
             @RequestPayload GetAppearanceCivilPartySecure search) throws JsonProcessingException {
         var inner =
                 search.getGetAppearanceCivilPartySecureRequest() != null
+                                && search.getGetAppearanceCivilPartySecureRequest()
+                                                .getGetAppearanceCivilPartySecureRequest()
+                                        != null
                         ? search.getGetAppearanceCivilPartySecureRequest()
                                 .getGetAppearanceCivilPartySecureRequest()
                         : new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
@@ -105,7 +108,7 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/party")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
+                        .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("appearanceId", inner.getAppearanceId());
         try {
@@ -153,7 +156,7 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
+                        .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("physicalFileId", inner.getPhysicalFileId())
                         .queryParam("futureYN", inner.getFutureYN())
@@ -204,8 +207,9 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
+                        .queryParam("requestDtm", inner.getRequestDtm())
                         .queryParam("applicationCd", inner.getApplicationCd())
+                        .queryParam("appearanceId", inner.getRequestPartId())
                         .queryParam("physicalFileId", inner.getPhysicalFileId());
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse> resp =

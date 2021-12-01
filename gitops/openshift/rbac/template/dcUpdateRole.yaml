@@ -1,0 +1,36 @@
+# This role is created to update the deployment config of the component deployed so that patching actions like labelling can be done.
+
+apiVersion: template.openshift.io/v1
+kind: Template
+labels:
+  template: dc-update-role
+metadata:
+  name: dc-update-role
+
+parameters:
+- name: OC_NAMESPACE
+  description: OpenShift nameplate assigned for the application
+  required: true
+
+- name: OC_ENV
+  description: Application environment
+  required: true
+
+
+- kind: Role
+  apiVersion: rbac.authorization.k8s.io/v1
+  metadata:
+    name: dc-update
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+  rules:
+    - verbs:
+        - get
+        - watch
+        - list
+        - patch
+        - update
+      apiGroups:
+        - apps.openshift.io
+      resources:
+        - deploymentconfigs
+

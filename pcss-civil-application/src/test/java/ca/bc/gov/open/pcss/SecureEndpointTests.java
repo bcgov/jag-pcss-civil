@@ -12,7 +12,6 @@ import ca.bc.gov.open.pcss.secure.two.GetAppearanceCivilSecureRequest;
 import ca.bc.gov.open.pcss.secure.two.GetFileDetailCivilSecureRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -41,11 +40,15 @@ public class SecureEndpointTests {
         var two = new GetAppearanceCivilApprMethodSecureRequest();
         var one = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodSecureRequest();
         one.setAppearanceId("A");
-        one.setRequestDtm(Instant.now());
+        one.setRequestDtm("A");
         one.setApplicationCd("A");
         one.setRequestPartId("A");
         one.setRequestAgencyIdentifierId("A");
         two.setGetAppearanceCivilApprMethodSecureRequest(one);
+        req.setGetAppearanceCivilApprMethodSecureRequest(two);
+
+        two.setGetAppearanceCivilApprMethodSecureRequest(one);
+
         req.setGetAppearanceCivilApprMethodSecureRequest(two);
 
         var resp = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse();
@@ -87,12 +90,12 @@ public class SecureEndpointTests {
 
         one.setAppearanceId("A");
         one.setApplicationCd("A");
-        one.setRequestDtm(Instant.now());
+        one.setRequestDtm("A");
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
 
-        two.setGetAppearanceCivilPartySecureRequest(one);
         req.setGetAppearanceCivilPartySecureRequest(two);
+        two.setGetAppearanceCivilPartySecureRequest(one);
 
         var resp = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse();
         resp.setResponseCd("A");
@@ -137,7 +140,7 @@ public class SecureEndpointTests {
         var one = new GetAppearanceCivilSecureRequest();
         var two = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilSecureRequest();
         two.setApplicationCd("A");
-        two.setRequestDtm(Instant.now());
+        two.setRequestDtm("A");
         two.setRequestAgencyIdentifierId("A");
         two.setFutureYN(YesNoType.Y);
         two.setHistoryYN(YesNoType.Y);
@@ -205,7 +208,7 @@ public class SecureEndpointTests {
         one.setPhysicalFileId("A");
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
-        one.setRequestDtm(Instant.now());
+        one.setRequestDtm("A");
 
         two.setGetFileDetailCivilSecureRequest(one);
         req.setGetFileDetailCivilSecureRequest(two);
