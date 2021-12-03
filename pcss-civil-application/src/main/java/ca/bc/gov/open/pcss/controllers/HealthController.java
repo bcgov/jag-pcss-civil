@@ -75,7 +75,7 @@ public class HealthController {
     @ResponsePayload
     public GetPingResponse getPing(@RequestPayload GetPing empty) throws JsonProcessingException {
         addEndpointHeader("getDigitalDisplayCourtList");
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "getPing");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "ping");
         try {
             HttpEntity<GetPingResponse> resp =
                     restTemplate.exchange(
