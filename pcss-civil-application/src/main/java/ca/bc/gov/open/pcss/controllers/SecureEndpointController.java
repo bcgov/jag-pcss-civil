@@ -4,7 +4,6 @@ import ca.bc.gov.open.pcss.configuration.SoapConfig;
 import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.models.OrdsErrorLog;
 import ca.bc.gov.open.pcss.models.RequestSuccessLog;
-import ca.bc.gov.open.pcss.models.serializers.InstantSerializer;
 import ca.bc.gov.open.pcss.secure.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
