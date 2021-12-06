@@ -1,5 +1,5 @@
-import requestPayload from '../ExampleRequests/sync_xml_requests'
-import responsePayload from '../ExampleRequests/sync_xml_responses'
+import requestPayload from '../ExampleRequests/sync_xml_requests_v1'
+import responsePayload from '../ExampleRequests/sync_xml_responses_v1'
 
 describe('Secure Endpoint Controller Tests', () => {
   [
