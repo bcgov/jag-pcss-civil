@@ -72,5 +72,5 @@ export default {
   getAppearanceCivilApprMethodSecure,
   getAppearanceCivilPartySecure,
   getAppearanceCivilSecure,
-  getFileDetailCivilSecure,
+  getFileDetailCivilSecure
 }

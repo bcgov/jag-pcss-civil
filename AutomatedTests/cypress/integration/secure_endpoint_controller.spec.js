@@ -1,14 +1,14 @@
-import requestPayload from "../ExampleRequests/secure_endpoint_xml_requests"
-import responsePayload from "../ExampleRequests/secure_endpoint_xml_responses"
+import requestPayload from '../ExampleRequests/secure_endpoint_xml_requests'
+import responsePayload from '../ExampleRequests/secure_endpoint_xml_responses'
 
 describe('Secure Endpoint Controller Tests', () => {
   [
-    "getAppearanceCivilApprMethodSecure",
-    "getAppearanceCivilPartySecure",
-    "getAppearanceCivilSecure",
-    "getFileDetailCivilSecure",
-  ].forEach( item => {
-    it('Should test the ${item} method return 200 with expected body', () => {
+    'getAppearanceCivilApprMethodSecure',
+    'getAppearanceCivilPartySecure',
+    'getAppearanceCivilSecure',
+    'getFileDetailCivilSecure'
+  ].forEach(item => {
+    it(`Should test the ${item} method return 200 with expected body`, () => {
       cy.request({
         url: Cypress.env('pcss_civil_host') + 'ws/',
         body: requestPayload[item],
