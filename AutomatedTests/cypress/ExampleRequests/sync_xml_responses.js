@@ -5,5 +5,5 @@ const getFileDetailCivil = '<?xml version="1.0" encoding="utf-8" ?><env:Envelope
 export default {
   getSyncCivilAppearance,
   setHearingRestrictionCivil,
-  getFileDetailCivil
+  getFileDetailCivilq
 }
