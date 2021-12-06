@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8" ?><env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope"><env:Header/><env:Body><ser-root:getPingResponse xmlns:ser-root="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><status>success in pcss!</status></ser-root:getPingResponse></env:Body></env:Envelope>
