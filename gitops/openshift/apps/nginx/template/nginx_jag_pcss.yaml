@@ -71,15 +71,15 @@ objects:
   data:
     nginx-proxy.conf: |-
       location /nginx-health {
-        return 200 "Application is healthy";
-        access_log off;
+      return 200 "Application is healthy";
+      access_log off;
       }
 
       location = /api {
         return 302 /api/actuator/health;
       }
 
-      location /api/actuator/health {
+      location /api/civil/actuator/health {
         client_max_body_size 100m;
         proxy_read_timeout 240s;
         proxy_send_timeout 80s;
@@ -92,10 +92,10 @@ objects:
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Host $server_name;
         proxy_pass_request_headers on;
-        proxy_pass http://splitter/actuator/health;
+        proxy_pass http://splitter-civil/actuator/health;
       }
-      
-      location /api/ws {
+
+      location /api/criminal/actuator/health {
         client_max_body_size 100m;
         proxy_read_timeout 240s;
         proxy_send_timeout 80s;
@@ -108,7 +108,71 @@ objects:
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Host $server_name;
         proxy_pass_request_headers on;
-        proxy_pass http://splitter/ws;
+        proxy_pass http://splitter-criminal/actuator/health;
+      }
+
+      location /api/common/actuator/health {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-common/actuator/health;
+      }
+
+      location /api/civil {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-civil/civil;
+      }
+
+      location /api/criminal {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-criminal/criminal;
+      }
+
+      location /api/common {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-common/common;
       }
 
 - kind: ConfigMap
@@ -118,8 +182,20 @@ objects:
     namespace: ${OC_NAMESPACE}-${OC_ENV}
   data:
     nginx-upstream.conf: |-
-      upstream splitter {
+      upstream splitter-civil {
         server jag-pcss-civil;
+        # Tured off for now
+        # server nginx-jag-pcss-oldwm;
+      }
+
+      upstream splitter-criminal {
+        server jag-pcss-criminal;
+        # Tured off for now
+        # server nginx-jag-pcss-oldwm;
+      }
+
+      upstream splitter-common {
+        server jag-pcss-common;
         # Tured off for now
         # server nginx-jag-pcss-oldwm;
       }
