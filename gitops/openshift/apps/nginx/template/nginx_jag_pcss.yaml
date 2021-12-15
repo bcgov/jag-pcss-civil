@@ -1,0 +1,317 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: ${COMPONENT_NAME}
+  description: Deployment template for the ${COMPONENT_NAME}
+
+labels:
+  app: ${APP_NAME}
+  app.kubernetes.io/name: ${COMPONENT_NAME}
+  app.openshift.io/runtime: ${RUNTIME}
+
+parameters:
+
+- name: APP_NAME
+  description: The application name that each component is part of
+  required: false
+  value: jag-pcss
+
+- name: COMPONENT_NAME
+  description: The application name that each component is part of
+  required: false
+  value: nginx-jag-pcss
+
+- name: OC_NAMESPACE
+  description: The OpenShift namespace prefix
+  required: false
+  value: cd1cf7
+
+- name: OC_ENV
+  description: The OpenShift environment, ie dev, test or prod
+  required: true
+
+- name: RUNTIME
+  description: The application name that each component is part of
+  required: false
+  value: nginx
+
+- name: ENDPOINT1
+  description: The target endpoint
+  required: false
+  value: jag-pcss-civil
+
+- name: ENDPOINT2
+  description: The target endpoint
+  required: false
+  value: jag-pcss-criminal
+
+- name: ENDPOINT3
+  description: The target endpoint
+  required: false
+  value: jag-pcss-common
+
+- name: ENDPOINT4
+  description: The target endpoint
+  required: false
+  value: nginx-jag-pcss-oldwm
+
+- name: DNS
+  description: Openshift route DNS
+  required: true
+  value: apps.silver.devops.gov.bc.ca
+
+objects:
+
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: ${COMPONENT_NAME}-conf
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+
+  data:
+    nginx-proxy.conf: |-
+      location /nginx-health {
+      return 200 "Application is healthy";
+      access_log off;
+      }
+
+      location = /api {
+        return 302 /api/actuator/health;
+      }
+
+      location /api/civil/actuator/health {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-civil/actuator/health;
+      }
+
+      location /api/criminal/actuator/health {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-criminal/actuator/health;
+      }
+
+      location /api/common/actuator/health {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-common/actuator/health;
+      }
+
+      location /api/civil {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-civil/civil;
+      }
+
+      location /api/criminal {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-criminal/criminal;
+      }
+
+      location /api/common {
+        client_max_body_size 100m;
+        proxy_read_timeout 240s;
+        proxy_send_timeout 80s;
+        proxy_redirect off;
+        port_in_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_pass_request_headers on;
+        proxy_pass http://splitter-common/common;
+      }
+
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: ${COMPONENT_NAME}-upstream
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+  data:
+    nginx-upstream.conf: |-
+      upstream splitter-civil {
+        server jag-pcss-civil;
+        # Tured off for now
+        # server nginx-jag-pcss-oldwm;
+      }
+
+      upstream splitter-criminal {
+        server jag-pcss-criminal;
+        # Tured off for now
+        # server nginx-jag-pcss-oldwm;
+      }
+
+      upstream splitter-common {
+        server jag-pcss-common;
+        # Tured off for now
+        # server nginx-jag-pcss-oldwm;
+      }
+
+- kind: DeploymentConfig
+  apiVersion: apps.openshift.io/v1
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+    annotations:
+      app.openshift.io/connects-to: ${ENDPOINT1}, ${ENDPOINT2}, ${ENDPOINT3}, ${ENDPOINT4}
+  spec:
+    strategy:
+      type: Rolling
+      rollingParams:
+        updatePeriodSeconds: 1
+        intervalSeconds: 1
+        timeoutSeconds: 600
+        maxUnavailable: 25%
+        maxSurge: 25%
+      resources: {}
+      activeDeadlineSeconds: 21600
+    triggers:
+      - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - ${COMPONENT_NAME}
+          from:
+            kind: ImageStreamTag
+            namespace: ${OC_NAMESPACE}-tools
+            name: '${COMPONENT_NAME}:latest'
+      - type: ConfigChange
+    replicas: 1
+    revisionHistoryLimit: 10
+    test: false
+    selector:
+      name: ${COMPONENT_NAME}
+      deploymentconfig: ${COMPONENT_NAME}
+    template:
+      metadata:
+        labels:
+          name: ${COMPONENT_NAME}
+          deploymentconfig: ${COMPONENT_NAME}
+      spec:
+        volumes:
+          - name: ${COMPONENT_NAME}-conf
+            configMap:
+              name: ${COMPONENT_NAME}-conf
+              defaultMode: 420
+          - name: ${COMPONENT_NAME}-upstream
+            configMap:
+              name: ${COMPONENT_NAME}-upstream
+              defaultMode: 420
+        containers:
+          - name: ${COMPONENT_NAME}
+          # Below Immage url must be changed as per gold cluster image stream
+            image: >-
+              image-registry.openshift-image-registry.svc:5000/${OC_NAMESPACE}-tools/${COMPONENT_NAME}:latest
+            ports:
+              - containerPort: 8080
+                protocol: TCP
+              - containerPort: 8443
+                protocol: TCP
+            resources: {}
+            volumeMounts:
+              - name: ${COMPONENT_NAME}-conf
+                readOnly: true
+                mountPath: /opt/app-root/etc/nginx.default.d/
+              - name: ${COMPONENT_NAME}-upstream
+                readOnly: true
+                mountPath: /opt/app-root/etc/nginx.d
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            imagePullPolicy: Always
+        restartPolicy: Always
+        terminationGracePeriodSeconds: 30
+        dnsPolicy: ClusterFirst
+
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+  spec:
+    ports:
+      - name: 8080-tcp
+        protocol: TCP
+        port: 8080
+        targetPort: 8080
+    selector:
+      name: ${COMPONENT_NAME}
+      deploymentconfig: ${COMPONENT_NAME}
+    type: ClusterIP
+    sessionAffinity: None
+
+- kind: Route
+  apiVersion: route.openshift.io/v1
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+  annotations:
+    # if we do not use sticky-session, disable_cookies needs to be true
+    haproxy.router.openshift.io/disable_cookies: "true"
+    # balance algorithm
+    haproxy.router.openshift.io/balance: roundrobin
+  spec:
+    # Below value must be changed as per gold cluster certificate/DNS
+    host: ${COMPONENT_NAME}-${OC_NAMESPACE}-${OC_ENV}.${DNS}
+    to:
+      kind: Service
+      name: ${COMPONENT_NAME}
+      weight: 100
+    port:
+      targetPort: 8080-tcp
+    tls:
+      termination: edge
+      insecureEdgeTerminationPolicy: None
+    wildcardPolicy: None

@@ -1,0 +1,197 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: ${APP_NAME}
+  description: Deployment template for the JAG-PCSS-CIVIL
+  
+labels:
+  app: ${APP_NAME}
+  app.kubernetes.io/name: ${COMPONENT_NAME}
+  app.kubernetes.io/part-of: ${APP_NAME}
+  app.openshift.io/runtime: ${RUNTIME}
+  
+parameters:
+
+- name: APP_NAME
+  description: The application name that each component is part of
+  required: false
+  value: jag-pcss-civil
+
+- name: COMPONENT_NAME
+  description: The application name that each component is part of
+  required: false
+  value: jag-pcss-civil
+  
+- name: OC_NAMESPACE
+  description: The OpenShift namespace prefix
+  required: false
+  # Below value must be changed as per gold cluster oc nameplate
+  value: cd1cf7
+  
+- name: OC_ENV
+  description: The OpenShift environment, ie dev, test or prod
+  required: true
+
+- name: RUNTIME
+  description: The application name that each component is part of
+  required: false
+  value: java
+
+- name: API_NAME
+  description: The application name that each component is part of
+  required: false
+  value: jag-pcss-civil
+
+- name: DNS
+  description: The application name that each component is part of
+  required: false
+  # Below value must be changed as per gold cluster certificate/DNS
+  value: apps.silver.devops.gov.bc.ca
+  
+objects:
+
+### JAG-PCSS-CIVIL Deployment Config ###
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+      
+  spec:
+    completionDeadlineSeconds: 1200
+    replicas: 1
+    selector:
+      name: ${COMPONENT_NAME}
+    strategy:
+      type: Rolling
+      maxSurge: 50%
+      maxUnavailable: 0
+    template:
+      metadata:
+        labels:
+          name: ${COMPONENT_NAME}
+      spec:
+        containers:
+          # Below Immage url must be changed as per gold cluster image stream
+          - image: >-
+              image-registry.openshift-image-registry.svc:5000/${OC_NAMESPACE}-tools/${COMPONENT_NAME}:${OC_ENV}
+            name: ${COMPONENT_NAME} 
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 8080
+            env:
+            - name: BASIC_AUTH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-application-secrets
+                  key: BASIC_AUTH_USER
+            - name: BASIC_AUTH_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-application-secrets
+                  key: BASIC_AUTH_PASS
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-application-secrets
+                  key: SPRING_PROFILE
+            - name: SPLUNK_HTTP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-splunk-config
+                  key: SPLUNK_HTTP_URL
+            - name: SPLUNK_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-splunk-config
+                  key: SPLUNK_TOKEN
+            - name: SPLUNK_INDEX
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-splunk-config
+                  key: SPLUNK_INDEX
+            - name: ORDS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-application-secrets
+                  key: ORDS_HOST
+            resources:
+              limits:
+                cpu: 1000m
+                memory: 1000Mi
+              requests:
+                cpu: 500m
+                memory: 512Mi
+              livenessProbe:
+                httpGet:
+                  path: "/health"
+                  port: 8080
+                  scheme: HTTP
+                initialDelaySeconds: 30
+                timeoutSeconds: 60
+                periodSeconds: 10
+                successThreshold: 1
+                failureThreshold: 3
+              readinessProbe:
+                httpGet:
+                  path: "/health"
+                  port: 8080
+                  scheme: HTTP
+                initialDelaySeconds: 10
+                timeoutSeconds: 60
+                periodSeconds: 10
+                successThreshold: 1
+                failureThreshold: 3
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - ${COMPONENT_NAME}
+          from:
+            kind: ImageStreamTag
+            namespace: ${OC_NAMESPACE}-tools
+            name: ${COMPONENT_NAME}:${OC_ENV}
+  status: {}
+
+### JAG-PCSS-CIVIL Service ###
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+  spec:
+    ports:
+      - name: http
+        protocol: TCP
+        port: 80
+        targetPort: 8080
+    selector:
+      name: ${COMPONENT_NAME}
+    sessionAffinity: None
+    type: ClusterIP
+
+### JAG-PCSS-CIVIL Route ###
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+  annotations:
+    # if we do not use sticky-session, disable_cookies needs to be true
+    haproxy.router.openshift.io/disable_cookies: "true"
+    # balance algorithm
+    haproxy.router.openshift.io/balance: roundrobin
+  spec:
+    host: ${API_NAME}-${OC_NAMESPACE}-${OC_ENV}.${DNS}
+    to:
+      kind: Service
+      name: ${COMPONENT_NAME}
+      weight: 100
+    port:
+      targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: None
+  wildcardPolicy: None
