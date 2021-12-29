@@ -68,6 +68,9 @@ jobs:
       - name: Maven Verify
         run: mvn -ntp clean verify
       
+      - name: Maven Spotless Check
+        run: mvn -ntp spotless:check
+      
       #Login to OpenShift Container Repository - Silver
       - name: Login to OpenShift Container Repository - Silver
         uses: docker/login-action@v1
