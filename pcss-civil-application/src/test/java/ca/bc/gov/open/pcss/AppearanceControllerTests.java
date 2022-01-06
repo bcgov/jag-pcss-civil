@@ -18,6 +18,7 @@ import ca.bc.gov.open.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Collections;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -140,7 +141,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.getAppearanceCivilApprMethod(cam);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -183,7 +184,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.setAppearanceMethodCivil(sam);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -256,7 +257,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.setAppearanceCivil(sca);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -307,7 +308,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.getAppearanceCivilDocument(cd);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -354,7 +355,7 @@ public class AppearanceControllerTests {
                 .thenReturn(responseEntity);
 
         var resp = appearanceController.getAppearanceCivilParty(acp);
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -407,7 +408,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.getAppearanceCivilResource(cr);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -450,6 +451,6 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.setCounselDetailCivil(cd);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 }

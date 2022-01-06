@@ -6,6 +6,7 @@ import ca.bc.gov.open.pcss.controllers.HealthController;
 import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -46,7 +47,7 @@ public class HealthControllerTests {
 
         var resp = healthController.getPing(get);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -75,6 +76,6 @@ public class HealthControllerTests {
 
         var resp = healthController.getHealth(get);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 }

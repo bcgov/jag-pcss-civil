@@ -13,6 +13,7 @@ import ca.bc.gov.open.pcss.secure.two.GetFileDetailCivilSecureRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Collections;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -77,7 +78,7 @@ public class SecureEndpointTests {
 
         var out = endpointController.getAppearanceCivilApprMethodSecureRequest(req);
 
-        assert out != null;
+        Assertions.assertNotNull(out);
     }
 
     @Test
@@ -129,7 +130,7 @@ public class SecureEndpointTests {
 
         var out = endpointController.getAppearanceCivilPartySecure(req);
 
-        assert out != null;
+        Assertions.assertNotNull(out);
     }
 
     @Test
@@ -193,7 +194,7 @@ public class SecureEndpointTests {
 
         var out = endpointController.getAppearanceCivilSecure(req);
 
-        assert out != null;
+        Assertions.assertNotNull(out);
     }
 
     @Test
@@ -297,6 +298,6 @@ public class SecureEndpointTests {
 
         var out = endpointController.getFileDetailCivilSecure(req);
 
-        assert out != null;
+        Assertions.assertNotNull(out);
     }
 }
