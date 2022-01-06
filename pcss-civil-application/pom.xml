@@ -16,7 +16,7 @@
     <properties>
         <default-package>ca.bc.gov.open.pcss</default-package>
         <java.version>11</java.version>
-        <log4j.version>2.17.1</log4j.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
     <repositories>
