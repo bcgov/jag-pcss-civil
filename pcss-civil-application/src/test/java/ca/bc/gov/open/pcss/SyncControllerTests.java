@@ -13,9 +13,11 @@ import ca.bc.gov.open.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Collections;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -31,7 +33,8 @@ public class SyncControllerTests {
     private SyncController syncController;
 
     @Mock private RestTemplate restTemplate = new RestTemplate();
-    private ObjectMapper objectMapper = new ObjectMapper();
+
+    @Autowired private ObjectMapper objectMapper;
 
     @Test
     public void getSyncCivilAppearanceTest() throws JsonProcessingException {
@@ -87,7 +90,7 @@ public class SyncControllerTests {
 
         var resp = syncController.getSyncCivilAppearance(sca);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -137,7 +140,7 @@ public class SyncControllerTests {
 
         var resp = syncController.getSyncCivilHearingRestriction(chr);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -182,7 +185,7 @@ public class SyncControllerTests {
 
         var resp = syncController.setSyncCivilHearingRestriction(hrc);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -272,6 +275,6 @@ public class SyncControllerTests {
 
         var resp = syncController.getFileDetailCivil(fsc);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 }
