@@ -23,9 +23,6 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
     environment: ${{ github.event.inputs.env }}
-    env:
-      BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
-      BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -64,9 +61,6 @@ jobs:
       # Runs build steps
       - name: Maven Package
         run: mvn -ntp clean package
-        
-      - name: Maven Verify
-        run: mvn -ntp clean verify
       
       - name: Maven Spotless Check
         run: mvn -ntp spotless:check
@@ -217,17 +211,3 @@ jobs:
           openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
         run: |
           oc rollout status -n ${openshiftEnvNamespace} dc/${appName} --watch
-
-    #  - name: Setup Node
-    #    uses: actions/setup-node@v2
-    #    with:
-    #      node-version: '14'
-
-    #  - name: Run Integration Tests
-    #    env:
-    #      WEB_METHODS_TOKEN: ${{secrets.PCSS_CIVIL_DEV_BASIC_AUTH}}
-    #      WEB_METHODS_HOST: ${{secrets.WEB_METHODS_HOST}}
-    #    working-directory: ./AutomatedTests
-    #    run: |
-    #      npm install --quiet
-    #      npm test

@@ -101,6 +101,26 @@ objects:
               requests:
                 cpu: 50m
                 memory: 256Mi
+            livenessProbe:
+              httpGet:
+                path: "/actuator/health"
+                port: 8080
+                scheme: HTTP
+              initialDelaySeconds: 100
+              timeoutSeconds: 30
+              periodSeconds: 10
+              successThreshold: 1
+              failureThreshold: 3
+            readinessProbe:
+              httpGet:
+                path: "/actuator/health"
+                port: 8080
+                scheme: HTTP
+              initialDelaySeconds: 100
+              timeoutSeconds: 30
+              periodSeconds: 10
+              successThreshold: 1
+              failureThreshold: 3
     triggers:
       - type: ConfigChange
       - type: ImageChange
@@ -112,7 +132,6 @@ objects:
             kind: ImageStreamTag
             namespace: ${OC_NAMESPACE}-tools
             name: ${COMPONENT_NAME}:${OC_ENV}
-  status: {}
 
 ### JAG-PCSS-CIVIL-TESTS Service ###
 - apiVersion: v1
