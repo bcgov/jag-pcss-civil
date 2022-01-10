@@ -191,7 +191,7 @@ objects:
       weight: 100
     port:
       targetPort: http
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: None
-  wildcardPolicy: None
+    tls:
+      termination: edge
+      insecureEdgeTerminationPolicy: None
+    wildcardPolicy: None
