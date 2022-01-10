@@ -60,6 +60,7 @@ jobs:
         
       # Runs build steps
       - name: Maven Package
+        working-directory: AutomatedTest
         run: mvn -ntp clean package
       
       - name: Maven Spotless Check
@@ -78,7 +79,7 @@ jobs:
         env:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
-          CONTEXT: /AutomatedTest
+          CONTEXT: ./AutomatedTest
           IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_SILVER}}/${{secrets.OPENSHIFT_TOOLS_NAMESPACE_SILVER}}/jag-pcss-civil-tests:${{secrets.OPENSHIFT_ENV_TAG}}
         run: |
           docker build \
@@ -99,7 +100,7 @@ jobs:
         env:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
-          CONTEXT: /AutomatedTest
+          CONTEXT: ./AutomatedTest
           IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY}}/${{secrets.OPENSHIFT_TOOLS_NAMESPACE}}/jag-pcss-civil-tests:${{secrets.OPENSHIFT_ENV_TAG}}
         run: |
           docker build \
@@ -120,7 +121,7 @@ jobs:
         env:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
-          CONTEXT: /AutomatedTest
+          CONTEXT: ./AutomatedTest
           IMAGE: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_DR}}/${{secrets.OPENSHIFT_TOOLS_NAMESPACE}}/jag-pcss-civil-tests:${{secrets.OPENSHIFT_ENV_TAG}}
         run: |
           docker build \
