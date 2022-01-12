@@ -20,7 +20,7 @@ describe('Health Controller Tests', () => {
     </soap:Envelope>`
 
     cy.request({
-      url: Cypress.env('pcss_civil_host') + 'ws/',
+      url: Cypress.env('pcss_civil_host') + 'civil/',
       body: payload,
       method: 'POST',
       headers: {
@@ -41,7 +41,7 @@ describe('Health Controller Tests', () => {
     </soap:Envelope>`
 
     cy.request({
-      url: Cypress.env('pcss_civil_host') + 'ws/',
+      url: Cypress.env('pcss_civil_host') + 'civil/',
       body: payload,
       method: 'POST',
       headers: {
