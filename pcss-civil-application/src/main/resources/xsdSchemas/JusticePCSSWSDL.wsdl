@@ -1297,7 +1297,7 @@
         <wsdl:port name="JusticePCSSCivil_wsProvider_pcssCivil_Port"
                    binding="tns:JusticePCSSCivil_wsProvider_pcssCivil_Binder">
             <soap12:address
-                    location="http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port"/>
+                    location="http://reeks.bcgov:5556/civil/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

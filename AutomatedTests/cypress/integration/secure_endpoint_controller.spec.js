@@ -10,7 +10,7 @@ describe('Secure Endpoint Controller Tests', () => {
   ].forEach(item => {
     it(`Should test the ${item} method return 200 with expected body`, () => {
       cy.request({
-        url: Cypress.env('pcss_civil_host') + 'ws/',
+        url: Cypress.env('pcss_civil_host') + 'civil/',
         body: requestPayload[item],
         method: 'POST',
         headers: {
