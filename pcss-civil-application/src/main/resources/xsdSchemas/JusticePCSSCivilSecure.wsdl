@@ -550,7 +550,7 @@
     </wsdl:binding>
     <wsdl:service name="JusticePCSSCivil.wsProvider.pcssCivilSecure">
         <wsdl:port name="JusticePCSSCivil_wsProvider_pcssCivilSecure_Port" binding="tns1:JusticePCSSCivil_wsProvider_pcssCivilSecure_Binder">
-            <soap12:address location="http://reeks.bcgov:5555/civil/JusticePCSSCivil.wsProvider.pcssCivilSecure/JusticePCSSCivil_wsProvider_pcssCivilSecure_Port"/>
+            <soap12:address location="http://reeks.bcgov:5555/ws/JusticePCSSCivil.wsProvider.pcssCivilSecure/JusticePCSSCivil_wsProvider_pcssCivilSecure_Port"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
