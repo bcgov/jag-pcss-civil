@@ -30,18 +30,11 @@ public final class InstantSoapConverter {
                 d = sdf.parse(value);
             } catch (ParseException ex) {
                 try {
-                    var sdf = new SimpleDateFormat("yyyy-MM-dd hh.mm.ss.SSSSSS", Locale.US);
+                    var sdf = new SimpleDateFormat("dd-MMM-yy", Locale.US);
                     sdf.setTimeZone(TimeZone.getTimeZone("GMT-7"));
                     d = sdf.parse(value);
-                } catch (Exception ex2) {
-                    // Date only parser
-                    try {
-                        var sdf = new SimpleDateFormat("dd-MMM-yy", Locale.US);
-                        sdf.setTimeZone(TimeZone.getTimeZone("GMT-7"));
-                        d = sdf.parse(value);
-                    } catch (ParseException ex3) {
-                        return Instant.parse(value + "Z");
-                    }
+                } catch (ParseException ex2) {
+                    return Instant.parse(value + "Z");
                 }
             }
             return d.toInstant();
