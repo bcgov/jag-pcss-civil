@@ -12,6 +12,7 @@ import ca.bc.gov.open.pcss.secure.two.GetAppearanceCivilSecureRequest;
 import ca.bc.gov.open.pcss.secure.two.GetFileDetailCivilSecureRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,7 @@ public class SecureEndpointTests {
         var two = new GetAppearanceCivilApprMethodSecureRequest();
         var one = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodSecureRequest();
         one.setAppearanceId("A");
-        one.setRequestDtm("A");
+        one.setRequestDtm(Instant.now());
         one.setApplicationCd("A");
         one.setRequestPartId("A");
         one.setRequestAgencyIdentifierId("A");
@@ -91,7 +92,7 @@ public class SecureEndpointTests {
 
         one.setAppearanceId("A");
         one.setApplicationCd("A");
-        one.setRequestDtm("A");
+        one.setRequestDtm(Instant.now());
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
 
@@ -141,7 +142,7 @@ public class SecureEndpointTests {
         var one = new GetAppearanceCivilSecureRequest();
         var two = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilSecureRequest();
         two.setApplicationCd("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setRequestAgencyIdentifierId("A");
         two.setFutureYN(YesNoType.Y);
         two.setHistoryYN(YesNoType.Y);
@@ -160,7 +161,7 @@ public class SecureEndpointTests {
         ap.setHistoryYN(YesNoType.Y);
         ap.setAppearanceId("A");
         ap.setAppearanceDt("A");
-        ap.setAppearanceTm("A");
+        ap.setAppearanceTm(Instant.now());
         ap.setAppearanceReasonCd("A");
         ap.setCourtAgencyId("A");
         ap.setCourtRoomCd("A");
@@ -209,7 +210,7 @@ public class SecureEndpointTests {
         one.setPhysicalFileId("A");
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
-        one.setRequestDtm("A");
+        one.setRequestDtm(Instant.now());
 
         two.setGetFileDetailCivilSecureRequest(one);
         req.setGetFileDetailCivilSecureRequest(two);
@@ -265,7 +266,7 @@ public class SecureEndpointTests {
         doc.setConcludedYn(YesNoType.Y);
         doc.setFiledDt("A");
         doc.setLastAppearanceDt("A");
-        doc.setLastAppearanceTm("A");
+        doc.setLastAppearanceTm(Instant.now());
         doc.setLastAppearanceId("A");
 
         DocumentSupport ds = new DocumentSupport();
