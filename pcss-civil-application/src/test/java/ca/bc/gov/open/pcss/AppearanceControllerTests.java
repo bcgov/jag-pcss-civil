@@ -17,7 +17,6 @@ import ca.bc.gov.open.pcss.three.SetCounselDetailCivilRequest;
 import ca.bc.gov.open.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Assertions;
