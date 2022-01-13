@@ -24,6 +24,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Instant;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
@@ -144,7 +146,7 @@ public class OrdsErrorTests {
         one.setGetAppearanceCivilRequest(two);
         var three = new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
         two.setGetAppearanceCivilRequest(three);
-        three.setRequestDtm("A");
+        three.setRequestDtm(Instant.now());
 
         Assertions.assertThrows(
                 ORDSException.class, () -> secureController.getAppearanceCivil(one));
@@ -178,7 +180,7 @@ public class OrdsErrorTests {
         var one = new GetAppearanceCivilApprMethod();
         var two = new GetAppearanceCivilApprMethodRequest();
         var three = new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
-        three.setRequestDtm("A");
+        three.setRequestDtm(Instant.now());
         two.setGetAppearanceCivilApprMethodRequest(three);
         one.setGetAppearanceCivilApprMethodRequest(two);
 
@@ -215,7 +217,7 @@ public class OrdsErrorTests {
         var three = new ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilRequest();
         one.setSetAppearanceMethodCivilRequest(two);
         two.setSetAppearanceMethodCivilRequest(three);
-        three.setRequestDtm("A");
+        three.setRequestDtm(Instant.now());
 
         Assertions.assertThrows(
                 ORDSException.class, () -> secureController.setAppearanceMethodCivil(one));

@@ -12,6 +12,8 @@ import ca.bc.gov.open.pcss.three.SetHearingRestrictionCivilRequest;
 import ca.bc.gov.open.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -44,9 +46,9 @@ public class SyncControllerTests {
         var one = new GetSyncCivilAppearanceRequest();
 
         var two = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
-        two.setProcessUpToDtm("A");
+        two.setProcessUpToDtm(Instant.now());
         two.setRequestAgencyIdentifierId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setRequestPartId("A");
 
         one.setGetSyncCivilAppearanceRequest(two);
@@ -55,10 +57,10 @@ public class SyncControllerTests {
         var out = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse();
         Appearance app = new Appearance();
         app.setOperationModeCd(OperationModeType.ADD);
-        app.setTransactionDtm("A");
+        app.setTransactionDtm(Instant.now());
         app.setAppearanceId("A");
-        app.setAppearanceDt("A");
-        app.setAppearanceTm("A");
+        app.setAppearanceDt(Instant.now());
+        app.setAppearanceTm(Instant.now());
         app.setAppearanceReasonCd("A");
         app.setEstimatedDurationHour("A");
         app.setEstimatedDurationMin("A");
@@ -112,7 +114,7 @@ public class SyncControllerTests {
         out.setResponseMessageTxt("A");
         HearingRestriction r = new HearingRestriction();
         r.setOperationModeCd(OperationModeType.F_ADD);
-        r.setTransactionDtm("A");
+        r.setTransactionDtm(Instant.now());
         r.setHearingRestrictionId("A");
         r.setAdjudicatorPartId("A");
         r.setHearingRestrictionCd(HearingRestrictionType.A);
@@ -152,7 +154,7 @@ public class SyncControllerTests {
         var two = new ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setOperationModeCd(OperationModeType.I_ADD);
         two.setHearingRestrictionId("A");
         two.setAdjudicatorPartId("A");
@@ -197,7 +199,7 @@ public class SyncControllerTests {
         var two = new ca.bc.gov.open.pcss.one.GetFileDetailCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setPhysicalFileId("A");
 
         one.setGetFileDetailCivilRequest(two);
@@ -236,12 +238,12 @@ public class SyncControllerTests {
         doc.setCivilDocumentId("A");
         doc.setFileSeqNo("A");
         doc.setDocumentTypeCd("A");
-        doc.setFiledDt("A");
+        doc.setFiledDt(Instant.now());
         doc.setCommentTxt("A");
         doc.setConcludedYn(YesNoType.Y);
         doc.setLastAppearanceId("A");
-        doc.setLastAppearanceDt("A");
-        doc.setLastAppearanceTm("A");
+        doc.setLastAppearanceDt(Instant.now());
+        doc.setLastAppearanceTm(Instant.now());
         DocumentSupport sup = new DocumentSupport();
         sup.setActCd("A");
         sup.setActDsc("A");

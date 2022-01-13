@@ -17,6 +17,8 @@ import ca.bc.gov.open.pcss.three.SetCounselDetailCivilRequest;
 import ca.bc.gov.open.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -49,7 +51,7 @@ public class AppearanceControllerTests {
 
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setPhysicalFileId("A");
         two.setFutureYN(YesNoType.Y);
         two.setHistoryYN(YesNoType.Y);
@@ -66,8 +68,8 @@ public class AppearanceControllerTests {
         ApprDetail dt = new ApprDetail();
         dt.setHistoryYN(YesNoType.Y);
         dt.setAppearanceId("A");
-        dt.setAppearanceDt("A");
-        dt.setAppearanceTm("A");
+        dt.setAppearanceDt(Instant.now());
+        dt.setAppearanceTm(Instant.now());
         dt.setAppearanceReasonCd("A");
         dt.setCourtAgencyId("A");
         dt.setCourtRoomCd("A");
@@ -109,7 +111,7 @@ public class AppearanceControllerTests {
         var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setAppearanceId("A");
         one.setGetAppearanceCivilApprMethodRequest(two);
         cam.setGetAppearanceCivilApprMethodRequest(one);
@@ -153,7 +155,7 @@ public class AppearanceControllerTests {
         var two = new ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         Detail3 dt = new Detail3();
         dt.setOperationModeCd(OperationModeType.ADD);
         dt.setAppearanceId("A");
@@ -198,8 +200,8 @@ public class AppearanceControllerTests {
         dt.setOperationMode(OperationModeType.ADD);
         dt.setPcssAppearanceId("A");
         dt.setPhysicalFileId("A");
-        dt.setAppearanceDt("A");
-        dt.setAppearanceTm("A");
+        dt.setAppearanceDt(Instant.now());
+        dt.setAppearanceTm(Instant.now());
         dt.setCourtAgencyId("A");
         dt.setCourtRoomCd("A");
         dt.setEstimatedTimeHour("A");
@@ -225,7 +227,7 @@ public class AppearanceControllerTests {
         dt.setDocument(Collections.singletonList(doc));
 
         two.setDetail(Collections.singletonList(dt));
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setRequestPartId("A");
         two.setRequestAgencyIdentifierId("A");
 
@@ -269,7 +271,7 @@ public class AppearanceControllerTests {
         two.setRequestAgencyIdentifierId("A");
         two.setAppearanceId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         one.setGetAppearanceCivilDocumentRequest(two);
         cd.setGetAppearanceCivilDocumentRequest(one);
 
@@ -282,7 +284,7 @@ public class AppearanceControllerTests {
         doc.setDocumentTypeCd("A");
         doc.setAppearanceReasonCd("A");
         doc.setAppearanceResultCd("A");
-        doc.setFiledDt("A");
+        doc.setFiledDt(Instant.now());
         doc.setDocumentHearingCcn("A");
         Issue is = new Issue();
         is.setIssueDsc("A");
@@ -321,7 +323,7 @@ public class AppearanceControllerTests {
         two.setRequestAgencyIdentifierId("A");
         two.setAppearanceId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         one.setGetAppearanceCivilPartyRequest(two);
         acp.setGetAppearanceCivilPartyRequest(one);
 
@@ -367,7 +369,7 @@ public class AppearanceControllerTests {
         two.setRequestAgencyIdentifierId("A");
         two.setAppearanceId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
 
         one.setGetAppearanceCivilResourceRequest(two);
         cr.setGetAppearanceCivilResourceRequest(one);
@@ -386,8 +388,8 @@ public class AppearanceControllerTests {
         res.setCourtRoomCd("A");
         res.setResourceNm("A");
         res.setResourceId("A");
-        res.setBookedDt("A");
-        res.setBookedFromTm("A");
+        res.setBookedDt(Instant.now());
+        res.setBookedFromTm(Instant.now());
         res.setBookedByNm("A");
         res.setBookingCommentTxt("A");
         res.setBookingCcn("A");
@@ -419,7 +421,7 @@ public class AppearanceControllerTests {
         var two = new ca.bc.gov.open.pcss.one.SetCounselDetailCivilRequest();
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
-        two.setRequestDtm("A");
+        two.setRequestDtm(Instant.now());
         two.setCivilPartyId("A");
         two.setSelfRepresentedYn(YesNoType.Y);
         Detail4 dt = new Detail4();

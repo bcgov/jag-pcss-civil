@@ -4,7 +4,6 @@ security:
     username: ${BASIC_AUTH_USER}
 pcss:
   host: ${ORDS_HOST}
-  namespace: ${PCSS_NAMESPACE}
 management:
   trace:
     http:

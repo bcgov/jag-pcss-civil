@@ -1,11 +1,17 @@
 package ca.bc.gov.open.pcss.configuration;
 
+import ca.bc.gov.open.pcss.models.serializers.InstantDeserializer;
+import ca.bc.gov.open.pcss.models.serializers.InstantSerializer;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.soap.SOAPMessage;
+
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -56,6 +62,10 @@ public class SoapConfig extends WsConfigurerAdapter {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
+        SimpleModule module = new SimpleModule();
+        module.addDeserializer(Instant.class, new InstantDeserializer());
+        module.addSerializer(Instant.class, new InstantSerializer());
+        objectMapper.registerModule(module);
         return objectMapper;
     }
 
