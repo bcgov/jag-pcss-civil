@@ -12,7 +12,6 @@ import ca.bc.gov.open.pcss.secure.two.GetAppearanceCivilSecureRequest;
 import ca.bc.gov.open.pcss.secure.two.GetFileDetailCivilSecureRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.net.URI;
 import java.time.Instant;
 import java.util.Collections;
