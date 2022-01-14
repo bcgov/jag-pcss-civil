@@ -5,8 +5,7 @@ import org.springframework.ws.soap.server.endpoint.annotation.SoapFault;
 
 @SoapFault(
         faultCode = FaultCode.CLIENT,
-        faultStringOrReason =
-                "Unparsable date must be of form dd-MMM-yy hh.mm.ss.SSSSSS a or dd-MMM-yy")
+        faultStringOrReason = "Unparsable date must be of form yyyy-MM-dd hh:mm:ss.S")
 public class BadDateException extends Exception {
     public BadDateException() {
         super();
