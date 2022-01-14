@@ -161,7 +161,7 @@ public class SecureEndpointTests {
         ApprDetail ap = new ApprDetail();
         ap.setHistoryYN(YesNoType.Y);
         ap.setAppearanceId("A");
-        ap.setAppearanceDt("A");
+        ap.setAppearanceDt(Instant.now());
         ap.setAppearanceTm(Instant.now());
         ap.setAppearanceReasonCd("A");
         ap.setCourtAgencyId("A");
@@ -265,8 +265,8 @@ public class SecureEndpointTests {
         doc.setCommentTxt("A");
         doc.setFileSeqNo("A");
         doc.setConcludedYn(YesNoType.Y);
-        doc.setFiledDt("A");
-        doc.setLastAppearanceDt("A");
+        doc.setFiledDt(Instant.now());
+        doc.setLastAppearanceDt(Instant.now());
         doc.setLastAppearanceTm(Instant.now());
         doc.setLastAppearanceId("A");
 
