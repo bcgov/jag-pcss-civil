@@ -22,16 +22,16 @@ public class TestService {
 
     public TestService() {}
 
-    public void setAuthentication() throws IOException {
-        InputStream template = getClass().getResourceAsStream("/pcss-soapui-project-template.xml");
+    public void setAuthentication(String filename) throws IOException {
+        InputStream template = getClass().getResourceAsStream("/" + filename);
         Scanner scanner = new Scanner(template);
 
-        File project = new File("./pcss-soapui-project.xml");
+        File project = new File("./" + filename.replace("-template", ""));
         if (project.exists()) {
             project.delete();
         }
         project.createNewFile();
-        BufferedWriter writer = new BufferedWriter(new FileWriter("./pcss-soapui-project.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("./" + filename.replace("-template", "")));
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             if (line.contains("{AUTHENTICATION_USERNAME}")) {
@@ -52,8 +52,11 @@ public class TestService {
 
     private File zipAndReturnErrors() throws IOException {
         File dir = new File(".");
-        FileFilter fileFilter = new WildcardFileFilter("TestSuite_PCSS-*.txt");
+        FileFilter fileFilter = new WildcardFileFilter("*PCSS*-FAILED.txt");
         File[] files = dir.listFiles(fileFilter);
+        if(files == null || files.length == 0){
+            return null;
+        }
         FileOutputStream fos = new FileOutputStream("TestErrors.zip");
         ZipOutputStream zipOut = new ZipOutputStream(fos);
         File fOut = new File("TestErrors.zip");
@@ -78,12 +81,19 @@ public class TestService {
 
     public File runAllTests() throws IOException {
         SoapUITestCaseRunner runner = new SoapUITestCaseRunner();
-        runner.setProjectFile("pcss-soapui-project.xml");
+        runner.setProjectFile("JusticePCSSsecure-soapui-project.xml");
         try {
             runner.run();
-            return null;
+
         } catch (Exception ignored) {
-            return zipAndReturnErrors();
+
+
+        }try {
+            runner.setProjectFile("PCSSCivil-soapui-project.xml");
+            runner.run();
+        }catch (Exception Ignore){
+
         }
+        return zipAndReturnErrors();
     }
 }

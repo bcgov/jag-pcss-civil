@@ -23,7 +23,8 @@ public class TestController {
     public TestController(TestService testService) throws IOException {
 
         this.testService = testService;
-        this.testService.setAuthentication();
+        this.testService.setAuthentication("JusticePCSSsecure-soapui-project-template.xml");
+        this.testService.setAuthentication("PCSSCivil-soapui-project-template.xml");
     }
 
     @GetMapping(value = "/all")
