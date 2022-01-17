@@ -1,4 +1,4 @@
-package ca.bc.gov.open.scss.test.config;
+package ca.bc.gov.open.pcss.test.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

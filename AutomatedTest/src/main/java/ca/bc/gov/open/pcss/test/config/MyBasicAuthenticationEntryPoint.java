@@ -1,4 +1,4 @@
-package ca.bc.gov.open.scss.test.config;
+package ca.bc.gov.open.pcss.test.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;

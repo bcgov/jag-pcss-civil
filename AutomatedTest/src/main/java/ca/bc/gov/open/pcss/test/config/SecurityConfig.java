@@ -1,4 +1,4 @@
-package ca.bc.gov.open.scss.test.config;
+package ca.bc.gov.open.pcss.test.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

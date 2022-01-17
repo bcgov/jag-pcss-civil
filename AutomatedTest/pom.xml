@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <groupId>ca.bc.gov.open.scss.test</groupId>
+    <groupId>ca.bc.gov.open.pcss.test</groupId>
     <version>1.0.0</version>
     <modelVersion>4.0.0</modelVersion>
 
@@ -92,7 +92,7 @@
 
 
     <build>
-        <finalName>scss-test-runner</finalName>
+        <finalName>pcss-test-runner</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

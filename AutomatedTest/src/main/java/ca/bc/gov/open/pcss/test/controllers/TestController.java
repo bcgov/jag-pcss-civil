@@ -1,6 +1,7 @@
-package ca.bc.gov.open.scss.test.controllers;
+package ca.bc.gov.open.pcss.test.controllers;
 
-import ca.bc.gov.open.scss.test.services.TestService;
+import ca.bc.gov.open.pcss.test.services.TestService;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
