@@ -15,7 +15,8 @@ public final class InstantSoapConverter {
 
     public static String print(Instant xml) {
         String first = xml.toString();
-        return first.substring(0, first.length() - 1);
+        first = first.replace("T", " ");
+        return first.substring(0, first.length() - 1) + ".0";
     }
 
     public static Instant parse(String value) {
@@ -28,7 +29,6 @@ public final class InstantSoapConverter {
                 sdf.setTimeZone(TimeZone.getTimeZone("GMT-7"));
                 d = sdf.parse(value);
             } catch (ParseException ex) {
-                // Date only parser
                 try {
                     var sdf = new SimpleDateFormat("dd-MMM-yy", Locale.US);
                     sdf.setTimeZone(TimeZone.getTimeZone("GMT-7"));
@@ -39,7 +39,7 @@ public final class InstantSoapConverter {
             }
             return d.toInstant();
         } catch (Exception ex) {
-            log.warn("Bad date received from soap request: " + value);
+            log.warn("Bad date received from soap request");
             return null;
         }
     }

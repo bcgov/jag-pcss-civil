@@ -1,0 +1,2284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="324120c2-973f-4a18-ac6d-20ecc4ffad28" activeEnvironment="Default" name="PCSSCivil" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" resourceRoot="${projectDir}" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="a4de7ffc-268a-473f-8176-415f8e7d9220" wsaVersion="NONE" name="JusticePCSSCivil_wsProvider_pcssCivil_Binder" type="wsdl" bindingName="{http://courts.gov.bc.ca/xml/ns/pcss/civil/v1}JusticePCSSCivil_wsProvider_pcssCivil_Binder" soapVersion="1_2" anonymous="optional" definition="http://reeks.bcgov:5555/ws/JusticePCSSCivil.wsProvider:pcssCivil?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://reeks.bcgov:5555/ws/JusticePCSSCivil.wsProvider:pcssCivil?WSDL"><con:part><con:url>http://reeks.bcgov:5555/ws/JusticePCSSCivil.wsProvider:pcssCivil?WSDL</con:url><con:content><![CDATA[<wsdl:definitions name="pcssCivil" targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:tns="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:HDR1="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:HDR2="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+      <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"/>
+      <xsd:element name="getAppearanceCivilRequest" type="pcss:getAppearanceCivilRequest"/>
+      <xsd:element name="getAppearanceCivilResponse" type="pcss:getAppearanceCivilResponse"/>
+      <xsd:element name="getAppearanceCivilApprMethodRequest" type="pcss:getAppearanceCivilApprMethodRequest"/>
+      <xsd:element name="getAppearanceCivilApprMethodResponse" type="pcss:getAppearanceCivilApprMethodResponse"/>
+      <xsd:element name="getAppearanceCivilDocumentRequest" type="pcss:getAppearanceCivilDocumentRequest"/>
+      <xsd:element name="getAppearanceCivilDocumentResponse" type="pcss:getAppearanceCivilDocumentResponse"/>
+      <xsd:element name="getAppearanceCivilPartyRequest" type="pcss:getAppearanceCivilPartyRequest"/>
+      <xsd:element name="getAppearanceCivilPartyResponse" type="pcss:getAppearanceCivilPartyResponse"/>
+      <xsd:element name="getAppearanceCivilResourceRequest" type="pcss:getAppearanceCivilResourceRequest"/>
+      <xsd:element name="getAppearanceCivilResourceResponse" type="pcss:getAppearanceCivilResourceResponse"/>
+      <xsd:element name="getSyncCivilAppearanceRequest" type="pcss:getSyncCivilAppearanceRequest"/>
+      <xsd:element name="getSyncCivilAppearanceResponse" type="pcss:getSyncCivilAppearanceResponse"/>
+      <xsd:element name="getSyncCivilHearingRestrictionRequest" type="pcss:getSyncCivilHearingRestrictionRequest"/>
+      <xsd:element name="getSyncCivilHearingRestrictionResponse" type="pcss:getSyncCivilHearingRestrictionResponse"/>
+      <xsd:element name="setAppearanceCivilRequest" type="pcss:setAppearanceCivilRequest"/>
+      <xsd:element name="setAppearanceCivilResponse" type="pcss:setAppearanceCivilResponse"/>
+      <xsd:element name="setAppearanceMethodCivilRequest" type="pcss:setAppearanceMethodCivilRequest"/>
+      <xsd:element name="setAppearanceMethodCivilResponse" type="pcss:setAppearanceMethodCivilResponse"/>
+      <xsd:element name="setCounselDetailCivilRequest" type="pcss:setCounselDetailCivilRequest"/>
+      <xsd:element name="setCounselDetailCivilResponse" type="pcss:setCounselDetailCivilResponse"/>
+      <xsd:element name="setHearingRestrictionCivilRequest" type="pcss:setHearingRestrictionCivilRequest"/>
+      <xsd:element name="setHearingRestrictionCivilResponse" type="pcss:setHearingRestrictionCivilResponse"/>
+      <xsd:element name="getFileDetailCivilRequest" type="pcss:getFileDetailCivilRequest"/>
+      <xsd:element name="getFileDetailCivilResponse" type="pcss:getFileDetailCivilResponse"/>
+      <xsd:complexType name="getAppearanceCivilRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="PhysicalFileId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="FutureYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" name="HistoryYN" type="dx:YesNoType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" name="FutureRecCount" type="xsd:string"/>
+          <xsd:element form="qualified" name="HistoryRecCount" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ApprDetail" type="pcss:ApprDetail"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ApprDetail">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="HistoryYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="AppearanceDt" type="dx:DateType"/>
+          <xsd:element form="qualified" name="AppearanceTm" type="dx:TimeType"/>
+          <xsd:element form="qualified" name="AppearanceReasonCd" type="dx:AppearanceReasonCivilType"/>
+          <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="JudgeFullNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="JudgeInitials" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeHour" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeMin" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="PartOfTrialYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceStatusCd" type="dx:AppearanceStatusType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceResultCd" type="dx:AppearanceResultCivilType"/>
+          <xsd:element form="qualified" name="AppearanceCcn" type="dx:ConcurrencyControlType"/>
+          <xsd:element form="qualified" name="DocumentTypeCd" type="dx:CivilDocumentType"/>
+          <xsd:element form="qualified" name="DocumentRecCount" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="SupplementalEquipmentTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="SecurityRestrictionTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OutOfTownJudgeTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilApprMethodRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilApprMethodResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="AppearanceMethod" type="pcss:AppearanceMethod"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AppearanceMethod">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RoleTypeCd" type="dx:ParticipantRoleType"/>
+          <xsd:element form="qualified" name="AppearanceMethodCd" type="dx:AssetType"/>
+          <xsd:element form="qualified" name="ApprMethodCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilDocumentRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilDocumentResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Document" type="pcss:Document"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Document">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="DocumentId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FileSeqNo" type="dx:SystemSeqNoType"/>
+          <xsd:element form="qualified" name="DocumentTypeCd" type="dx:CivilDocumentType"/>
+          <xsd:element form="qualified" name="AppearanceReasonCd" type="dx:AppearanceReasonCivilType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceResultCd" type="dx:AppearanceResultCivilType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FiledDt" type="dx:DateType"/>
+          <xsd:element form="qualified" name="DocumentHearingCcn" type="dx:ConcurrencyControlType"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Issue" type="pcss:Issue"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Issue">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="IssueNumber" type="xsd:string"/>
+          <xsd:element form="qualified" name="IssueDsc" type="xsd:string"/>
+          <xsd:element form="qualified" name="IssueResultCd" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilPartyRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilPartyResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Party">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="PartyRoleTypeCd" type="dx:CivilPartyRoleType"/>
+          <xsd:element form="qualified" minOccurs="0" name="LastNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="GivenNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OrgNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CounselNm" type="xsd:string"/>
+          <xsd:element form="qualified" name="CourtParticipantId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="CourtParticipantCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilResourceRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilResourceResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Resource" type="pcss:Resource"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Resource">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="BookingId" type="xsd:string"/>
+          <xsd:element form="qualified" name="BookingSeqNo" type="xsd:string"/>
+          <xsd:element form="qualified" name="AssetTypeCd" type="dx:AssetType"/>
+          <xsd:element form="qualified" name="AssetUsageRuleCd" type="dx:AssetUsageRuleType"/>
+          <xsd:element form="qualified" minOccurs="0" name="BookedForRoleCd" type="xsd:string"/>
+          <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="CourtRoomCd" type="xsd:string"/>
+          <xsd:element form="qualified" name="ResourceNm" type="xsd:string"/>
+          <xsd:element form="qualified" name="ResourceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="BookedDt" type="dx:DateType"/>
+          <xsd:element form="qualified" name="BookedFromTm" type="dx:TimeType"/>
+          <xsd:element form="qualified" name="BookedToTm" type="dx:TimeType"/>
+          <xsd:element form="qualified" name="BookedByNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="BookingCommentTxt" type="xsd:string"/>
+          <xsd:element form="qualified" name="BookingCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilAppearanceRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="ProcessUpToDtm" type="dx:DateTimeType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilAppearanceResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Appearance" type="pcss:Appearance"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Appearance">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="OperationModeCd" type="dx:OperationModeType"/>
+          <xsd:element form="qualified" name="TransactionDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceDt" type="dx:DateType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceTm" type="dx:TimeType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceReasonCd" type="dx:AppearanceResultCivilType"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedDurationHour" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedDurationMin" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="AgenId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AdjournedPriorYn" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CancelledYn" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PartOfTrialYn" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="PcssCEISDivisionCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="FileNumberTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilHearingRestrictionRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="ProcessUpToDtm" type="dx:DateTimeType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilHearingRestrictionResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="HearingRestriction" type="pcss:HearingRestriction"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HearingRestriction">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="OperationModeCd" type="dx:OperationModeType"/>
+          <xsd:element form="qualified" name="TransactionDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="HearingRestrictionId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AdjudicatorPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="HearingRestrictionCd" type="dx:HearingRestrictionType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CivilDocumentId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="HomeLocationAgenId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FileNumberTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="SocTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceCivilRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Detail" type="pcss:Detail"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Detail">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="OperationMode" type="dx:OperationModeType"/>
+          <xsd:element form="qualified" name="PcssAppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="PhysicalFileId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="AppearanceDt" type="dx:DateType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceTm" type="dx:TimeType"/>
+          <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeHour" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeMin" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="SupplementalEquipmentTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="SecurityRestrictionTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OutOfTownJudgeTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceCcn" type="dx:ConcurrencyControlType"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Document" type="pcss:Document2"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Document2">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="OperationMode" type="dx:OperationModeType"/>
+          <xsd:element form="qualified" name="CivilDocumentId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceReasonCd" type="dx:AppearanceReasonCivilType"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeHour" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeMin" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Party2">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="OperationMode" type="dx:OperationModeType"/>
+          <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceCivilResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Detail" type="pcss:Detail2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Detail2">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="PcssAppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="AppearanceCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceMethodCivilRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Detail" type="pcss:Detail3"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Detail3">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="OperationModeCd" type="dx:OperationModeType"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="OldRoleTypeCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OldAppearanceMethodCd" type="dx:AssetType"/>
+          <xsd:element form="qualified" minOccurs="0" name="ApprMethodCcn" type="dx:ConcurrencyControlType"/>
+          <xsd:element form="qualified" minOccurs="0" name="NewRoleTypeCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="NewAppearanceMethodCd" type="dx:AssetType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceMethodCivilResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setCounselDetailCivilRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="CivilPartyId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="SelfRepresentedYn" type="dx:YesNoType"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Detail" type="pcss:Detail4"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Detail4">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="OperationModeCd" type="dx:OperationMode2Type"/>
+          <xsd:element form="qualified" name="CounselLastNm" type="xsd:string"/>
+          <xsd:element form="qualified" name="CounselFirstNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OfficePhoneNoTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setCounselDetailCivilResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setHearingRestrictionCivilRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="xsd:string"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="OperationModeCd" type="dx:OperationModeType"/>
+          <xsd:element form="qualified" minOccurs="0" name="HearingRestrictionId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AdjudicatorPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="HearingRestrictionCd" type="dx:HearingRestrictionType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CivilDocumentId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="HearingRestrictionCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setHearingRestrictionCivilResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="HearingRestrictionId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="HearingRestrictionCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCivilRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="PhysicalFileId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCivilResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FileNumberTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="HomeLocationAgenId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtClassCd" type="dx:CourtClassType"/>
+          <xsd:element form="qualified" minOccurs="0" name="SocTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="LeftRoleDsc" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="RightRoleDsc" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="TrialRemarkTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CommentToJudgeTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party3"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Document" type="pcss:Document3"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="HearingRestriction" type="pcss:HearingRestriction2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Party3">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="LastNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="GivenNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OrgNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="RoleTypeCd" type="dx:CivilPartyRoleType"/>
+          <xsd:element form="qualified" minOccurs="0" name="LeftRightCd" type="dx:LeftRightType"/>
+          <xsd:element form="qualified" minOccurs="0" name="SelfRepresentedYN" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Counsel" type="pcss:Counsel"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Counsel">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="CounselId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FullNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhoneNumberTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Document3">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="CivilDocumentId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="FileSeqNo" type="xsd:string"/>
+          <xsd:element form="qualified" name="DocumentTypeCd" type="dx:CivilDocumentType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FiledDt" type="dx:DateType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CommentTxt" type="xsd:string"/>
+          <xsd:element form="qualified" name="ConcludedYn" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="LastAppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="LastAppearanceDt" type="dx:DateType"/>
+          <xsd:element form="qualified" minOccurs="0" name="LastAppearanceTm" type="dx:TimeType"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="DocumentSupport" type="pcss:DocumentSupport"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Issue" type="pcss:Issue2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DocumentSupport">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ActCd" type="dx:ActType"/>
+          <xsd:element form="qualified" name="ActDsc" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Issue2">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="IssueNumber" type="dx:SystemSeqNoType"/>
+          <xsd:element form="qualified" name="IssueTypeCd" type="dx:IssueType"/>
+          <xsd:element form="qualified" name="IssueDsc" type="xsd:string"/>
+          <xsd:element form="qualified" name="ConcludedYn" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="IssueResultCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="IssueResultDsc" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HearingRestriction2">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="HearingRestrictionId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="AdjPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="AdjFullNm" type="xsd:string"/>
+          <xsd:element form="qualified" name="HearingRestrictionTypeCd" type="dx:HearingRestrictionType"/>
+          <xsd:element form="qualified" name="ApplyToNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CivilDocumentId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AdjInitialsTxt" type="xsd:string"/>
+          <xsd:element form="qualified" name="HearingRestrictionCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0">
+      <xsd:simpleType name="AgencyIdentifierType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="16"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SystemIdType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="16"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DateTimeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:length value="21"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="YesNoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="Y"/>
+          <xsd:enumeration value="N"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DateType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:length value="21"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="TimeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:length value="21"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AppearanceReasonCivilType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtRoomCdType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="6"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AppearanceStatusType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="SCHD"/>
+          <xsd:enumeration value="CNCL"/>
+          <xsd:enumeration value="UNCF"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AppearanceResultCivilType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ConcurrencyControlType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="12"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CivilDocumentType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ParticipantRoleType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AssetType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SystemSeqNoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CivilPartyRoleType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AssetUsageRuleType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="FIX"/>
+          <xsd:enumeration value="MOB"/>
+          <xsd:enumeration value="WIT"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="OperationModeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="ADD"/>
+          <xsd:enumeration value="DELETE"/>
+          <xsd:enumeration value="UPDATE"/>
+          <xsd:enumeration value="X-ADD"/>
+          <xsd:enumeration value="F-ADD"/>
+          <xsd:enumeration value="I-ADD"/>
+          <xsd:enumeration value="X-UPDATE"/>
+          <xsd:enumeration value="F-UPDATE"/>
+          <xsd:enumeration value="I-UPDATE"/>
+          <xsd:enumeration value="X-DELETE"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtLevelType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="P"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="A"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HearingRestrictionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="D"/>
+          <xsd:enumeration value="A"/>
+          <xsd:enumeration value="G"/>
+          <xsd:enumeration value="XXX"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="OperationMode2Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="ADD"/>
+          <xsd:enumeration value="DELETE"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtClassType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="A"/>
+          <xsd:enumeration value="Y"/>
+          <xsd:enumeration value="T"/>
+          <xsd:enumeration value="F"/>
+          <xsd:enumeration value="C"/>
+          <xsd:enumeration value="M"/>
+          <xsd:enumeration value="L"/>
+          <xsd:enumeration value="R"/>
+          <xsd:enumeration value="B"/>
+          <xsd:enumeration value="D"/>
+          <xsd:enumeration value="E"/>
+          <xsd:enumeration value="G"/>
+          <xsd:enumeration value="H"/>
+          <xsd:enumeration value="N"/>
+          <xsd:enumeration value="O"/>
+          <xsd:enumeration value="P"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="V"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="LeftRightType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="L"/>
+          <xsd:enumeration value="R"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ActType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="IssueType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+      <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"/>
+      <xsd:element name="getAppearanceCivil" type="tns:getAppearanceCivil"/>
+      <xsd:element name="getAppearanceCivilResponse" type="tns:getAppearanceCivilResponse"/>
+      <xsd:element name="getAppearanceCivilApprMethod" type="tns:getAppearanceCivilApprMethod"/>
+      <xsd:element name="getAppearanceCivilApprMethodResponse" type="tns:getAppearanceCivilApprMethodResponse"/>
+      <xsd:element name="getAppearanceCivilDocument" type="tns:getAppearanceCivilDocument"/>
+      <xsd:element name="getAppearanceCivilDocumentResponse" type="tns:getAppearanceCivilDocumentResponse"/>
+      <xsd:element name="getAppearanceCivilParty" type="tns:getAppearanceCivilParty"/>
+      <xsd:element name="getAppearanceCivilPartyResponse" type="tns:getAppearanceCivilPartyResponse"/>
+      <xsd:element name="getAppearanceCivilResource" type="tns:getAppearanceCivilResource"/>
+      <xsd:element name="getAppearanceCivilResourceResponse" type="tns:getAppearanceCivilResourceResponse"/>
+      <xsd:element name="getSyncCivilAppearance" type="tns:getSyncCivilAppearance"/>
+      <xsd:element name="getSyncCivilAppearanceResponse" type="tns:getSyncCivilAppearanceResponse"/>
+      <xsd:element name="getSyncCivilHearingRestriction" type="tns:getSyncCivilHearingRestriction"/>
+      <xsd:element name="getSyncCivilHearingRestrictionResponse" type="tns:getSyncCivilHearingRestrictionResponse"/>
+      <xsd:element name="setAppearanceCivil" type="tns:setAppearanceCivil"/>
+      <xsd:element name="setAppearanceCivilResponse" type="tns:setAppearanceCivilResponse"/>
+      <xsd:element name="setAppearanceMethodCivil" type="tns:setAppearanceMethodCivil"/>
+      <xsd:element name="setAppearanceMethodCivilResponse" type="tns:setAppearanceMethodCivilResponse"/>
+      <xsd:element name="setCounselDetailCivil" type="tns:setCounselDetailCivil"/>
+      <xsd:element name="setCounselDetailCivilResponse" type="tns:setCounselDetailCivilResponse"/>
+      <xsd:element name="setHearingRestrictionCivil" type="tns:setHearingRestrictionCivil"/>
+      <xsd:element name="setHearingRestrictionCivilResponse" type="tns:setHearingRestrictionCivilResponse"/>
+      <xsd:element name="getFileDetailCivil" type="tns:getFileDetailCivil"/>
+      <xsd:element name="getFileDetailCivilResponse" type="tns:getFileDetailCivilResponse"/>
+      <xsd:complexType name="getAppearanceCivil">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilRequest" nillable="true" type="tns:getAppearanceCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilResponse">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilResponse" nillable="true" type="tns:getAppearanceCivilResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilApprMethod">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilApprMethodRequest" nillable="true" type="tns:getAppearanceCivilApprMethodRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilApprMethodRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilApprMethodRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilApprMethodResponse">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilApprMethodResponse" nillable="true" type="tns:getAppearanceCivilApprMethodResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilApprMethodResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilApprMethodResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilDocument">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilDocumentRequest" nillable="true" type="tns:getAppearanceCivilDocumentRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilDocumentRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilDocumentRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilDocumentResponse">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilDocumentResponse" nillable="true" type="tns:getAppearanceCivilDocumentResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilDocumentResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilDocumentResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilParty">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilPartyRequest" nillable="true" type="tns:getAppearanceCivilPartyRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilPartyRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilPartyRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilPartyResponse">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilPartyResponse" nillable="true" type="tns:getAppearanceCivilPartyResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilPartyResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilPartyResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilResource">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilResourceRequest" nillable="true" type="tns:getAppearanceCivilResourceRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilResourceRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilResourceRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilResourceResponse">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCivilResourceResponse" nillable="true" type="tns:getAppearanceCivilResourceResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCivilResourceResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCivilResourceResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilAppearance">
+        <xsd:sequence>
+          <xsd:element name="getSyncCivilAppearanceRequest" nillable="true" type="tns:getSyncCivilAppearanceRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilAppearanceRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getSyncCivilAppearanceRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilAppearanceResponse">
+        <xsd:sequence>
+          <xsd:element name="getSyncCivilAppearanceResponse" nillable="true" type="tns:getSyncCivilAppearanceResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilAppearanceResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getSyncCivilAppearanceResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilHearingRestriction">
+        <xsd:sequence>
+          <xsd:element name="getSyncCivilHearingRestrictionRequest" nillable="true" type="tns:getSyncCivilHearingRestrictionRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilHearingRestrictionRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getSyncCivilHearingRestrictionRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilHearingRestrictionResponse">
+        <xsd:sequence>
+          <xsd:element name="getSyncCivilHearingRestrictionResponse" nillable="true" type="tns:getSyncCivilHearingRestrictionResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getSyncCivilHearingRestrictionResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getSyncCivilHearingRestrictionResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceCivil">
+        <xsd:sequence>
+          <xsd:element name="setAppearanceCivilRequest" nillable="true" type="tns:setAppearanceCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceCivilRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:setAppearanceCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceCivilResponse">
+        <xsd:sequence>
+          <xsd:element name="setAppearanceCivilResponse" nillable="true" type="tns:setAppearanceCivilResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceCivilResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:setAppearanceCivilResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceMethodCivil">
+        <xsd:sequence>
+          <xsd:element name="setAppearanceMethodCivilRequest" nillable="true" type="tns:setAppearanceMethodCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceMethodCivilRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:setAppearanceMethodCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceMethodCivilResponse">
+        <xsd:sequence>
+          <xsd:element name="setAppearanceMethodCivilResponse" nillable="true" type="tns:setAppearanceMethodCivilResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setAppearanceMethodCivilResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:setAppearanceMethodCivilResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setCounselDetailCivil">
+        <xsd:sequence>
+          <xsd:element name="setCounselDetailCivilRequest" nillable="true" type="tns:setCounselDetailCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setCounselDetailCivilRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:setCounselDetailCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setCounselDetailCivilResponse">
+        <xsd:sequence>
+          <xsd:element name="setCounselDetailCivilResponse" nillable="true" type="tns:setCounselDetailCivilResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setCounselDetailCivilResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:setCounselDetailCivilResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setHearingRestrictionCivil">
+        <xsd:sequence>
+          <xsd:element name="setHearingRestrictionCivilRequest" nillable="true" type="tns:setHearingRestrictionCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setHearingRestrictionCivilRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:setHearingRestrictionCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setHearingRestrictionCivilResponse">
+        <xsd:sequence>
+          <xsd:element name="setHearingRestrictionCivilResponse" nillable="true" type="tns:setHearingRestrictionCivilResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setHearingRestrictionCivilResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:setHearingRestrictionCivilResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCivil">
+        <xsd:sequence>
+          <xsd:element name="getFileDetailCivilRequest" nillable="true" type="tns:getFileDetailCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCivilRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getFileDetailCivilRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCivilResponse">
+        <xsd:sequence>
+          <xsd:element name="getFileDetailCivilResponse" nillable="true" type="tns:getFileDetailCivilResponse2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCivilResponse2">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getFileDetailCivilResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="pcssCivil_PortType_setAppearanceMethodCivilResponse">
+    <wsdl:part name="parameters" element="tns:setAppearanceMethodCivilResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getSyncCivilHearingRestrictionResponse">
+    <wsdl:part name="parameters" element="tns:getSyncCivilHearingRestrictionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_setAppearanceCivil">
+    <wsdl:part name="parameters" element="tns:setAppearanceCivil"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivilResourceResponse">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivilResourceResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivilResource">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivilResource"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_setAppearanceCivilResponse">
+    <wsdl:part name="parameters" element="tns:setAppearanceCivilResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivilParty">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivilParty"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_setHearingRestrictionCivilResponse">
+    <wsdl:part name="parameters" element="tns:setHearingRestrictionCivilResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivilDocumentResponse">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivilDocumentResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivilApprMethodResponse">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivilApprMethodResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_setHearingRestrictionCivil">
+    <wsdl:part name="parameters" element="tns:setHearingRestrictionCivil"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_setAppearanceMethodCivil">
+    <wsdl:part name="parameters" element="tns:setAppearanceMethodCivil"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getSyncCivilAppearanceResponse">
+    <wsdl:part name="parameters" element="tns:getSyncCivilAppearanceResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivilPartyResponse">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivilPartyResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getSyncCivilAppearance">
+    <wsdl:part name="parameters" element="tns:getSyncCivilAppearance"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivilApprMethod">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivilApprMethod"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivilDocument">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivilDocument"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getSyncCivilHearingRestriction">
+    <wsdl:part name="parameters" element="tns:getSyncCivilHearingRestriction"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivilResponse">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivilResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_setCounselDetailCivil">
+    <wsdl:part name="parameters" element="tns:setCounselDetailCivil"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getAppearanceCivil">
+    <wsdl:part name="parameters" element="tns:getAppearanceCivil"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getFileDetailCivil">
+    <wsdl:part name="parameters" element="tns:getFileDetailCivil"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_getFileDetailCivilResponse">
+    <wsdl:part name="parameters" element="tns:getFileDetailCivilResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCivil_PortType_setCounselDetailCivilResponse">
+    <wsdl:part name="parameters" element="tns:setCounselDetailCivilResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="pcssCivil_PortType">
+    <wsdl:operation name="getAppearanceCivilParty">
+      <wsdl:input message="tns:pcssCivil_PortType_getAppearanceCivilParty"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_getAppearanceCivilPartyResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setCounselDetailCivil">
+      <wsdl:input message="tns:pcssCivil_PortType_setCounselDetailCivil"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_setCounselDetailCivilResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAppearanceMethodCivil">
+      <wsdl:input message="tns:pcssCivil_PortType_setAppearanceMethodCivil"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_setAppearanceMethodCivilResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFileDetailCivil">
+      <wsdl:input message="tns:pcssCivil_PortType_getFileDetailCivil"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_getFileDetailCivilResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAppearanceCivil">
+      <wsdl:input message="tns:pcssCivil_PortType_setAppearanceCivil"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_setAppearanceCivilResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSyncCivilHearingRestriction">
+      <wsdl:input message="tns:pcssCivil_PortType_getSyncCivilHearingRestriction"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_getSyncCivilHearingRestrictionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCivil">
+      <wsdl:input message="tns:pcssCivil_PortType_getAppearanceCivil"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_getAppearanceCivilResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCivilDocument">
+      <wsdl:input message="tns:pcssCivil_PortType_getAppearanceCivilDocument"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_getAppearanceCivilDocumentResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCivilApprMethod">
+      <wsdl:input message="tns:pcssCivil_PortType_getAppearanceCivilApprMethod"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_getAppearanceCivilApprMethodResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCivilResource">
+      <wsdl:input message="tns:pcssCivil_PortType_getAppearanceCivilResource"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_getAppearanceCivilResourceResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSyncCivilAppearance">
+      <wsdl:input message="tns:pcssCivil_PortType_getSyncCivilAppearance"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_getSyncCivilAppearanceResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHearingRestrictionCivil">
+      <wsdl:input message="tns:pcssCivil_PortType_setHearingRestrictionCivil"></wsdl:input>
+      <wsdl:output message="tns:pcssCivil_PortType_setHearingRestrictionCivilResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JusticePCSSCivil_wsProvider_pcssCivil_Binder" type="tns:pcssCivil_PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAppearanceCivilParty">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivilParty" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setCounselDetailCivil">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_setCounselDetailCivil" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAppearanceMethodCivil">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_setAppearanceMethodCivil" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFileDetailCivil">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getFileDetailCivil" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAppearanceCivil">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_setAppearanceCivil" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSyncCivilHearingRestriction">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getSyncCivilHearingRestriction" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCivil">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivil" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCivilDocument">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivilDocument" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCivilApprMethod">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivilApprMethod" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCivilResource">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivilResource" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSyncCivilAppearance">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getSyncCivilAppearance" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHearingRestrictionCivil">
+      <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_setHearingRestrictionCivil" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JusticePCSSCivil.wsProvider.pcssCivil">
+    <wsdl:port name="JusticePCSSCivil_wsProvider_pcssCivil_Port" binding="tns:JusticePCSSCivil_wsProvider_pcssCivil_Binder">
+      <soap12:address location="http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint></con:endpoints><con:operation id="28c8f328-09bf-445b-85e3-1071f7e57329" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivil" name="getAppearanceCivil" bindingOperationName="getAppearanceCivil" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="eab6c6c4-b4ad-4ebd-a42e-b0ad2cd1f116" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getAppearanceCivil>\r
+         <getAppearanceCivilRequest>\r
+            <ns:getAppearanceCivilRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:PhysicalFileId>?</ns:PhysicalFileId>\r
+               <ns:FutureYN>?</ns:FutureYN>\r
+               <ns:HistoryYN>?</ns:HistoryYN>\r
+            </ns:getAppearanceCivilRequest>\r
+         </getAppearanceCivilRequest>\r
+      </v1:getAppearanceCivil>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/getAppearanceCivilRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="6cfa932e-9a43-4942-a5eb-2d43d2058b51" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivilApprMethod" name="getAppearanceCivilApprMethod" bindingOperationName="getAppearanceCivilApprMethod" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c7066165-eacd-46e5-afd1-a7b14b71fe48" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getAppearanceCivilApprMethod>\r
+         <getAppearanceCivilApprMethodRequest>\r
+            <ns:getAppearanceCivilApprMethodRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:AppearanceId>?</ns:AppearanceId>\r
+            </ns:getAppearanceCivilApprMethodRequest>\r
+         </getAppearanceCivilApprMethodRequest>\r
+      </v1:getAppearanceCivilApprMethod>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/getAppearanceCivilApprMethodRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="76f1b20e-42c6-4ab5-8174-5f1d1c8d7ccb" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivilDocument" name="getAppearanceCivilDocument" bindingOperationName="getAppearanceCivilDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7f2db49e-2b79-4462-848d-200c9694975a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getAppearanceCivilDocument>\r
+         <getAppearanceCivilDocumentRequest>\r
+            <ns:getAppearanceCivilDocumentRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:AppearanceId>?</ns:AppearanceId>\r
+            </ns:getAppearanceCivilDocumentRequest>\r
+         </getAppearanceCivilDocumentRequest>\r
+      </v1:getAppearanceCivilDocument>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/getAppearanceCivilDocumentRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8d748b2a-13ac-4ca6-b9a5-c5feb01fd7df" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivilParty" name="getAppearanceCivilParty" bindingOperationName="getAppearanceCivilParty" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e6336051-5341-485f-9181-d1d236459a9b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getAppearanceCivilParty>\r
+         <getAppearanceCivilPartyRequest>\r
+            <ns:getAppearanceCivilPartyRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:AppearanceId>?</ns:AppearanceId>\r
+            </ns:getAppearanceCivilPartyRequest>\r
+         </getAppearanceCivilPartyRequest>\r
+      </v1:getAppearanceCivilParty>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/getAppearanceCivilPartyRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="02028cbe-82b5-4b6f-8062-7766027f3461" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getAppearanceCivilResource" name="getAppearanceCivilResource" bindingOperationName="getAppearanceCivilResource" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b869186d-22c4-4f44-8b41-651ba5f9cff4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getAppearanceCivilResource>\r
+         <getAppearanceCivilResourceRequest>\r
+            <ns:getAppearanceCivilResourceRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:AppearanceId>?</ns:AppearanceId>\r
+            </ns:getAppearanceCivilResourceRequest>\r
+         </getAppearanceCivilResourceRequest>\r
+      </v1:getAppearanceCivilResource>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/getAppearanceCivilResourceRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c5d15659-c232-4327-acad-cd95f3797b8f" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getFileDetailCivil" name="getFileDetailCivil" bindingOperationName="getFileDetailCivil" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="518f6c19-7500-4bf3-8af6-89499b9b94d7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getFileDetailCivil>\r
+         <getFileDetailCivilRequest>\r
+            <ns:getFileDetailCivilRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:PhysicalFileId>?</ns:PhysicalFileId>\r
+            </ns:getFileDetailCivilRequest>\r
+         </getFileDetailCivilRequest>\r
+      </v1:getFileDetailCivil>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/getFileDetailCivilRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d144503a-4b7c-44d4-a29f-931ac9cebb77" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getSyncCivilAppearance" name="getSyncCivilAppearance" bindingOperationName="getSyncCivilAppearance" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c4895992-e5e7-4a1f-934d-f8213e01180e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getSyncCivilAppearance>\r
+         <getSyncCivilAppearanceRequest>\r
+            <ns:getSyncCivilAppearanceRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:ProcessUpToDtm>?</ns:ProcessUpToDtm>\r
+            </ns:getSyncCivilAppearanceRequest>\r
+         </getSyncCivilAppearanceRequest>\r
+      </v1:getSyncCivilAppearance>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/getSyncCivilAppearanceRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2a2144e9-2d3c-4cb7-a0d5-d11dba2b32b1" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getSyncCivilHearingRestriction" name="getSyncCivilHearingRestriction" bindingOperationName="getSyncCivilHearingRestriction" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2069832c-caea-4551-9eb0-bf429e81f755" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getSyncCivilHearingRestriction>\r
+         <getSyncCivilHearingRestrictionRequest>\r
+            <ns:getSyncCivilHearingRestrictionRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:ProcessUpToDtm>?</ns:ProcessUpToDtm>\r
+            </ns:getSyncCivilHearingRestrictionRequest>\r
+         </getSyncCivilHearingRestrictionRequest>\r
+      </v1:getSyncCivilHearingRestriction>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/getSyncCivilHearingRestrictionRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="19aed342-f47b-4143-ba0f-2e22829431b3" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_setAppearanceCivil" name="setAppearanceCivil" bindingOperationName="setAppearanceCivil" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7ecd6c47-24a4-4382-b1e8-722b7007d681" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:setAppearanceCivil>\r
+         <setAppearanceCivilRequest>\r
+            <ns:setAppearanceCivilRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <!--Zero or more repetitions:-->\r
+               <ns:Detail>\r
+                  <ns:OperationMode>?</ns:OperationMode>\r
+                  <ns:PcssAppearanceId>?</ns:PcssAppearanceId>\r
+                  <ns:PhysicalFileId>?</ns:PhysicalFileId>\r
+                  <ns:AppearanceDt>?</ns:AppearanceDt>\r
+                  <!--Optional:-->\r
+                  <ns:AppearanceTm>?</ns:AppearanceTm>\r
+                  <ns:CourtAgencyId>?</ns:CourtAgencyId>\r
+                  <ns:CourtRoomCd>?</ns:CourtRoomCd>\r
+                  <!--Optional:-->\r
+                  <ns:EstimatedTimeHour>?</ns:EstimatedTimeHour>\r
+                  <!--Optional:-->\r
+                  <ns:EstimatedTimeMin>?</ns:EstimatedTimeMin>\r
+                  <!--Optional:-->\r
+                  <ns:SupplementalEquipmentTxt>?</ns:SupplementalEquipmentTxt>\r
+                  <!--Optional:-->\r
+                  <ns:SecurityRestrictionTxt>?</ns:SecurityRestrictionTxt>\r
+                  <!--Optional:-->\r
+                  <ns:OutOfTownJudgeTxt>?</ns:OutOfTownJudgeTxt>\r
+                  <!--Optional:-->\r
+                  <ns:AppearanceId>?</ns:AppearanceId>\r
+                  <!--Optional:-->\r
+                  <ns:AppearanceCcn>?</ns:AppearanceCcn>\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Document>\r
+                     <ns:OperationMode>?</ns:OperationMode>\r
+                     <ns:CivilDocumentId>?</ns:CivilDocumentId>\r
+                     <!--Optional:-->\r
+                     <ns:AppearanceReasonCd>?</ns:AppearanceReasonCd>\r
+                     <!--Optional:-->\r
+                     <ns:EstimatedTimeHour>?</ns:EstimatedTimeHour>\r
+                     <!--Optional:-->\r
+                     <ns:EstimatedTimeMin>?</ns:EstimatedTimeMin>\r
+                  </ns:Document>\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Party>\r
+                     <ns:OperationMode>?</ns:OperationMode>\r
+                     <ns:PartyId>?</ns:PartyId>\r
+                  </ns:Party>\r
+               </ns:Detail>\r
+            </ns:setAppearanceCivilRequest>\r
+         </setAppearanceCivilRequest>\r
+      </v1:setAppearanceCivil>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/setAppearanceCivilRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="678034e4-7ee9-48a5-b978-a7617d22276a" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_setAppearanceMethodCivil" name="setAppearanceMethodCivil" bindingOperationName="setAppearanceMethodCivil" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ef81d536-d0e7-4d23-a3db-8bb9686dd2de" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:setAppearanceMethodCivil>\r
+         <setAppearanceMethodCivilRequest>\r
+            <ns:setAppearanceMethodCivilRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <!--Zero or more repetitions:-->\r
+               <ns:Detail>\r
+                  <ns:OperationModeCd>?</ns:OperationModeCd>\r
+                  <ns:AppearanceId>?</ns:AppearanceId>\r
+                  <!--Optional:-->\r
+                  <ns:OldRoleTypeCd>?</ns:OldRoleTypeCd>\r
+                  <!--Optional:-->\r
+                  <ns:OldAppearanceMethodCd>?</ns:OldAppearanceMethodCd>\r
+                  <!--Optional:-->\r
+                  <ns:ApprMethodCcn>?</ns:ApprMethodCcn>\r
+                  <!--Optional:-->\r
+                  <ns:NewRoleTypeCd>?</ns:NewRoleTypeCd>\r
+                  <!--Optional:-->\r
+                  <ns:NewAppearanceMethodCd>?</ns:NewAppearanceMethodCd>\r
+               </ns:Detail>\r
+            </ns:setAppearanceMethodCivilRequest>\r
+         </setAppearanceMethodCivilRequest>\r
+      </v1:setAppearanceMethodCivil>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/setAppearanceMethodCivilRequest"/></con:call></con:operation><con:operation id="34740e19-467b-4897-a008-803936a49ce4" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_setCounselDetailCivil" name="setCounselDetailCivil" bindingOperationName="setCounselDetailCivil" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0fbb7aec-b4ac-48ee-b8b0-8eaa93bf31d9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:setCounselDetailCivil>\r
+         <setCounselDetailCivilRequest>\r
+            <ns:setCounselDetailCivilRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:CivilPartyId>?</ns:CivilPartyId>\r
+               <ns:SelfRepresentedYn>?</ns:SelfRepresentedYn>\r
+               <!--Zero or more repetitions:-->\r
+               <ns:Detail>\r
+                  <ns:OperationModeCd>?</ns:OperationModeCd>\r
+                  <ns:CounselLastNm>?</ns:CounselLastNm>\r
+                  <ns:CounselFirstNm>?</ns:CounselFirstNm>\r
+                  <!--Optional:-->\r
+                  <ns:OfficePhoneNoTxt>?</ns:OfficePhoneNoTxt>\r
+               </ns:Detail>\r
+            </ns:setCounselDetailCivilRequest>\r
+         </setCounselDetailCivilRequest>\r
+      </v1:setCounselDetailCivil>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/setCounselDetailCivilRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b5f4e3a3-1134-44f2-929f-7062bbb8df25" isOneWay="false" action="JusticePCSSCivil_wsProvider_pcssCivil_Binder_setHearingRestrictionCivil" name="setHearingRestrictionCivil" bindingOperationName="setHearingRestrictionCivil" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="045b786a-43aa-415c-8930-e71ead47c5c6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://reeks.bcgov:5556/ws/JusticePCSSCivil.wsProvider.pcssCivil/JusticePCSSCivil_wsProvider_pcssCivil_Port</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:setHearingRestrictionCivil>\r
+         <setHearingRestrictionCivilRequest>\r
+            <ns:setHearingRestrictionCivilRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:OperationModeCd>?</ns:OperationModeCd>\r
+               <!--Optional:-->\r
+               <ns:HearingRestrictionId>?</ns:HearingRestrictionId>\r
+               <!--Optional:-->\r
+               <ns:AdjudicatorPartId>?</ns:AdjudicatorPartId>\r
+               <!--Optional:-->\r
+               <ns:HearingRestrictionCd>?</ns:HearingRestrictionCd>\r
+               <!--Optional:-->\r
+               <ns:PhysicalFileId>?</ns:PhysicalFileId>\r
+               <!--Optional:-->\r
+               <ns:CivilDocumentId>?</ns:CivilDocumentId>\r
+               <!--Optional:-->\r
+               <ns:HearingRestrictionCcn>?</ns:HearingRestrictionCcn>\r
+            </ns:setHearingRestrictionCivilRequest>\r
+         </setHearingRestrictionCivilRequest>\r
+      </v1:setHearingRestrictionCivil>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1/pcssCivil_PortType/setHearingRestrictionCivilRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="a15c9d8c-324a-4d30-a2a8-dec7e3f821db" name="PCSSCivilTestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="85806011-308d-48f4-a7aa-ab14b4e28cef" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="AutomationTestsCivil" searchProperties="true"><con:settings/><con:testStep type="groovy" name="getAppearanceCivil" id="09485ecf-2152-4b1c-b24f-97417879a556"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetAppearanceCivil = testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].testSteps["getAppearanceCivil"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].getPropertyValue("RequestDtm")
+ def PhysicalFileId=testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].getPropertyValue("PhysicalFileId")
+ def FutureYN=testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].getPropertyValue("FutureYN")
+ def HistoryYN=testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].getPropertyValue("HistoryYN")
+ 
+ def xmlAdd= new XmlHolder(GetAppearanceCivil)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivil/getAppearanceCivilRequest/ns:getAppearanceCivilRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivil/getAppearanceCivilRequest/ns:getAppearanceCivilRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivil/getAppearanceCivilRequest/ns:getAppearanceCivilRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivil/getAppearanceCivilRequest/ns:getAppearanceCivilRequest/ns:PhysicalFileId",PhysicalFileId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivil/getAppearanceCivilRequest/ns:getAppearanceCivilRequest/ns:FutureYN",FutureYN)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivil/getAppearanceCivilRequest/ns:getAppearanceCivilRequest/ns:HistoryYN",HistoryYN)
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].testSteps["getAppearanceCivil"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].testSteps["getAppearanceCivil"]
+ def contextGetAppearanceCivil = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetAppearanceCivil)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetAppearanceCivil"].testSteps["getAppearanceCivil"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:FutureRecCount")
+def GetResponse2= ABC.getNodeValue("//ns4:HistoryRecCount")
+def GetResponse3= ABC.getNodeValue("//ns4:HistoryYN")
+def GetResponse4= ABC.getNodeValue("//ns4:AppearanceId")
+def GetResponse5= ABC.getNodeValue("//ns4:AppearanceDt")
+//Party
+def GetResponse6= ABC.getNodeValue("//ns4:AppearanceTm")
+def GetResponse7= ABC.getNodeValue("//ns4:AppearanceReasonCd")
+def GetResponse8= ABC.getNodeValue("//ns4:CourtAgencyId")
+def GetResponse9= ABC.getNodeValue("//ns4:CourtRoomCd")
+def GetResponse10= ABC.getNodeValue("//ns4:JudgeFullNm")
+def GetResponse11= ABC.getNodeValue("//ns4:EstimatedTimeHour")
+def GetResponse12= ABC.getNodeValue("//ns4:EstimatedTimeMin")
+def GetResponse13= ABC.getNodeValue("//ns4:PartOfTrialYN")
+def GetResponse14= ABC.getNodeValue("//ns4:AppearanceStatusCd")
+def GetResponse15= ABC.getNodeValue("//ns4:AppearanceCcn")
+def GetResponse16= ABC.getNodeValue("//ns4:DocumentTypeCd")
+def GetResponse17= ABC.getNodeValue("//ns4:DocumentRecCount")
+def GetResponse18= ABC.getNodeValue("//ns4:SupplementalEquipmentTxt")
+def GetResponse19= ABC.getNodeValue("//ns4:SecurityRestrictionTxt")
+def GetResponse20= ABC.getNodeValue("//ns4:OutOfTownJudgeTxt")
+
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+log.info GetResponse4
+log.info GetResponse5
+log.info GetResponse6
+log.info GetResponse7
+log.info GetResponse8
+log.info GetResponse9
+log.info GetResponse10
+log.info GetResponse11
+log.info GetResponse12
+log.info GetResponse13
+log.info GetResponse14
+
+assert GetResponse=="0"
+assert GetResponse1=="0"
+assert GetResponse2.isNumber()
+assert GetResponse3=="Y"
+assert GetResponse4=="14768"
+assert GetResponse5=="2014-08-08 00:00:00.0"
+assert GetResponse6=="2021-08-08 13:30:00.0"
+assert GetResponse7=="FCC"
+assert GetResponse8=="83.0001"
+assert GetResponse9=="009"
+assert GetResponse10==","
+assert GetResponse11=="1"
+assert GetResponse12=="0"
+assert GetResponse13=="Y"
+assert GetResponse14=="SCHD"
+assert GetResponse15=="245949556911"
+assert GetResponse16=="APO"
+assert GetResponse17=="1"
+assert GetResponse18=="supplemental_equipment_txt"
+assert GetResponse19=="security_restriction_txt"
+assert GetResponse20=="out_of_town_judge_txt"
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getAppearanceCivilApprMethod" id="327715ae-d16c-4df4-a3c5-719f1ab2279b"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetAppearanceCivilApprMethod = testRunner.testCase.testSuite.testCases["GetAppearanceCivilApprMethod"].testSteps["getAppearanceCivilApprMethod"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilApprMethod"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilApprMethod"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetAppearanceCivilApprMethod"].getPropertyValue("RequestDtm")
+ def AppearanceId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilApprMethod"].getPropertyValue("AppearanceId")
+ 
+ def xmlAdd= new XmlHolder(GetAppearanceCivilApprMethod)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilApprMethod/getAppearanceCivilApprMethodRequest/ns:getAppearanceCivilApprMethodRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilApprMethod/getAppearanceCivilApprMethodRequest/ns:getAppearanceCivilApprMethodRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilApprMethod/getAppearanceCivilApprMethodRequest/ns:getAppearanceCivilApprMethodRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilApprMethod/getAppearanceCivilApprMethodRequest/ns:getAppearanceCivilApprMethodRequest/ns:AppearanceId",AppearanceId)
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetAppearanceCivilApprMethod"].testSteps["getAppearanceCivilApprMethod"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetAppearanceCivilApprMethod"].testSteps["getAppearanceCivilApprMethod"]
+ def contextGetAppearanceCivilApprMethod = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetAppearanceCivilApprMethod)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetAppearanceCivilApprMethod"].testSteps["getAppearanceCivilApprMethod"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:RoleTypeCd")
+def GetResponse2= ABC.getNodeValue("//ns4:AppearanceMethodCd")
+def GetResponse3= ABC.getNodeValue("//ns4:ApprMethodCcn")
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+
+assert GetResponse=="0"
+assert GetResponse1=="APP"
+assert GetResponse2=="TC"
+assert GetResponse3=="245669648565"
+
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getAppearanceCivilDocument" id="df2fd1c3-312c-43d1-9503-89bb892acaa0"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetAppearanceCivilDocument = testRunner.testCase.testSuite.testCases["GetAppearanceCivilDocument"].testSteps["getAppearanceCivilDocument"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilDocument"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilDocument"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetAppearanceCivilDocument"].getPropertyValue("RequestDtm")
+ def AppearanceId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilDocument"].getPropertyValue("AppearanceId")
+ 
+ def xmlAdd= new XmlHolder(GetAppearanceCivilDocument)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilDocument/getAppearanceCivilDocumentRequest/ns:getAppearanceCivilDocumentRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilDocument/getAppearanceCivilDocumentRequest/ns:getAppearanceCivilDocumentRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilDocument/getAppearanceCivilDocumentRequest/ns:getAppearanceCivilDocumentRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilDocument/getAppearanceCivilDocumentRequest/ns:getAppearanceCivilDocumentRequest/ns:AppearanceId",AppearanceId)
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetAppearanceCivilDocument"].testSteps["getAppearanceCivilDocument"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetAppearanceCivilDocument"].testSteps["getAppearanceCivilDocument"]
+ def contextGetAppearanceCivilDocument = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetAppearanceCivilDocument)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetAppearanceCivilDocument"].testSteps["getAppearanceCivilDocument"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:DocumentId")
+def GetResponse2= ABC.getNodeValue("//ns4:FileSeqNo")
+def GetResponse3= ABC.getNodeValue("//ns4:DocumentTypeCd")
+def GetResponse4= ABC.getNodeValue("//ns4:AppearanceReasonCd")
+def GetResponse5= ABC.getNodeValue("//ns4:FiledDt")
+def GetResponse6= ABC.getNodeValue("//ns4:DocumentHearingCcn")
+def GetResponse7= ABC.getNodeValue("//ns4:IssueNumber")
+def GetResponse8= ABC.getNodeValue("//ns4:IssueDsc")
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+log.info GetResponse4
+log.info GetResponse5
+log.info GetResponse6
+log.info GetResponse7
+log.info GetResponse8
+
+assert GetResponse=="0"
+assert GetResponse1=="1948"
+assert GetResponse2=="1"
+assert GetResponse3=="NCL"
+assert GetResponse4=="CNT"
+assert GetResponse5=="2004-06-01 00:00:00.0"
+assert GetResponse6=="245681339535"
+assert GetResponse7=="1"
+assert GetResponse8=="Directions to the grocery store, please."
+
+
+
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getAppearanceCivilParty" id="dda2bae3-3804-4096-bf63-c941c733bbae"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetAppearanceCivilParty = testRunner.testCase.testSuite.testCases["GetAppearanceCivilParty"].testSteps["getAppearanceCivilParty"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilParty"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilParty"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetAppearanceCivilParty"].getPropertyValue("RequestDtm")
+ def AppearanceId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilParty"].getPropertyValue("AppearanceId")
+ 
+ def xmlAdd= new XmlHolder(GetAppearanceCivilParty)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilParty/getAppearanceCivilPartyRequest/ns:getAppearanceCivilPartyRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilParty/getAppearanceCivilPartyRequest/ns:getAppearanceCivilPartyRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilParty/getAppearanceCivilPartyRequest/ns:getAppearanceCivilPartyRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilParty/getAppearanceCivilPartyRequest/ns:getAppearanceCivilPartyRequest/ns:AppearanceId",AppearanceId)
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetAppearanceCivilParty"].testSteps["getAppearanceCivilParty"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetAppearanceCivilParty"].testSteps["getAppearanceCivilParty"]
+ def contextGetAppearanceCivilParty = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetAppearanceCivilParty)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetAppearanceCivilParty"].testSteps["getAppearanceCivilParty"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:PartyId")
+def GetResponse2= ABC.getNodeValue("//ns4:PartyRoleTypeCd")
+def GetResponse3= ABC.getNodeValue("//ns4:LastNm")
+def GetResponse4= ABC.getNodeValue("//ns4:GivenNm")
+def GetResponse5= ABC.getNodeValue("//ns4:CourtParticipantId")
+def GetResponse6= ABC.getNodeValue("//ns4:CourtParticipantCcn")
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+log.info GetResponse4
+log.info GetResponse5
+log.info GetResponse6
+
+assert GetResponse=="0"
+assert GetResponse1=="2231"
+assert GetResponse2=="CLA"
+assert GetResponse3=="AARON"
+assert GetResponse4=="Lee"
+assert GetResponse5=="10573"
+assert GetResponse6=="245669648521"
+
+
+
+
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getAppearanceCivilResource" id="31f799a8-87a7-4af4-8484-2066b49465a6"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetAppearanceCivilResource = testRunner.testCase.testSuite.testCases["GetAppearanceCivilResource"].testSteps["getAppearanceCivilResource"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilResource"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilResource"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetAppearanceCivilResource"].getPropertyValue("RequestDtm")
+ def AppearanceId=testRunner.testCase.testSuite.testCases["GetAppearanceCivilResource"].getPropertyValue("AppearanceId")
+ 
+ def xmlAdd= new XmlHolder(GetAppearanceCivilResource)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilResource/getAppearanceCivilResourceRequest/ns:getAppearanceCivilResourceRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilResource/getAppearanceCivilResourceRequest/ns:getAppearanceCivilResourceRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilResource/getAppearanceCivilResourceRequest/ns:getAppearanceCivilResourceRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getAppearanceCivilResource/getAppearanceCivilResourceRequest/ns:getAppearanceCivilResourceRequest/ns:AppearanceId",AppearanceId)
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetAppearanceCivilResource"].testSteps["getAppearanceCivilResource"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetAppearanceCivilResource"].testSteps["getAppearanceCivilResource"]
+ def contextGetAppearanceCivilResource = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetAppearanceCivilResource)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetAppearanceCivilResource"].testSteps["getAppearanceCivilResource"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+
+log.info GetResponse
+
+assert GetResponse=="0"
+
+
+
+
+
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getFileDetailCivil" id="3c1364d5-7d48-4837-ba12-e5a7e57b9c52"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetFileDetailCivil = testRunner.testCase.testSuite.testCases["GetFileDetailCivil"].testSteps["getFileDetailCivil"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetFileDetailCivil"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetFileDetailCivil"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetFileDetailCivil"].getPropertyValue("RequestDtm")
+ def PhysicalFileId=testRunner.testCase.testSuite.testCases["GetFileDetailCivil"].getPropertyValue("PhysicalFileId")
+ 
+ def xmlAdd= new XmlHolder(GetFileDetailCivil)
+ xmlAdd.setNodeValue("//v1:getFileDetailCivil/getFileDetailCivilRequest/ns:getFileDetailCivilRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getFileDetailCivil/getFileDetailCivilRequest/ns:getFileDetailCivilRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getFileDetailCivil/getFileDetailCivilRequest/ns:getFileDetailCivilRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getFileDetailCivil/getFileDetailCivilRequest/ns:getFileDetailCivilRequest/ns:PhysicalFileId",PhysicalFileId)
+  def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetFileDetailCivil"].testSteps["getFileDetailCivil"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetFileDetailCivil"].testSteps["getFileDetailCivil"]
+ def contextGetFileDetailCivil = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetFileDetailCivil)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetFileDetailCivil"].testSteps["getFileDetailCivil"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:PhysicalFileId")
+def GetResponse2= ABC.getNodeValue("//ns4:FileNumberTxt")
+def GetResponse3= ABC.getNodeValue("//ns4:HomeLocationAgenId")
+def GetResponse4= ABC.getNodeValue("//ns4:CourtLevelCd")
+def GetResponse5= ABC.getNodeValue("//ns4:CourtClassCd")
+def GetResponse6= ABC.getNodeValue("//ns4:PartyId")
+def GetResponse7= ABC.getNodeValue("//ns4:LastNm")
+def GetResponse8= ABC.getNodeValue("//ns4:GivenNm")
+def GetResponse9= ABC.getNodeValue("//ns4:RoleTypeCd")
+def GetResponse10= ABC.getNodeValue("//ns4:LeftRightCd")
+def GetResponse11= ABC.getNodeValue("//ns4:SelfRepresentedYN")
+//Consel
+def GetResponse12= ABC.getNodeValue("//ns4:CounselId")
+def GetResponse13= ABC.getNodeValue("//ns4:FullNm")
+def GetResponse14= ABC.getNodeValue("//ns4:PhoneNumberTxt")
+//Doc
+def GetResponse15= ABC.getNodeValue("//ns4:CivilDocumentId")
+def GetResponse16= ABC.getNodeValue("//ns4:FileSeqNo")
+def GetResponse17= ABC.getNodeValue("//ns4:DocumentTypeCd")
+def GetResponse18= ABC.getNodeValue("//ns4:FiledDt")
+def GetResponse19= ABC.getNodeValue("//ns4:LastAppearanceId")
+def GetResponse20= ABC.getNodeValue("//ns4:LastAppearanceDt")
+def GetResponse21= ABC.getNodeValue("//ns4:LastAppearanceTm")
+//Issue
+def GetResponse22= ABC.getNodeValue("//ns4:IssueNumber")
+def GetResponse23= ABC.getNodeValue("//ns4:IssueTypeCd")
+def GetResponse24= ABC.getNodeValue("//ns4:IssueDsc")
+def GetResponse25= ABC.getNodeValue("//ns4:ConcludedYn")
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+log.info GetResponse4
+
+assert GetResponse=="0"
+assert GetResponse1=="8000005"
+assert GetResponse2=="V-9000005"
+assert GetResponse3=="1.0001"
+assert GetResponse4=="S"
+assert GetResponse5=="V"
+assert GetResponse6=="1000031"
+assert GetResponse7=="Borges"
+assert GetResponse8=="Jorge"
+assert GetResponse9=="DEF"
+assert GetResponse10=="R"
+assert GetResponse11=="N"
+//Consel
+assert GetResponse12=="13035"
+assert GetResponse13=="Hermsen, Sarah"
+assert GetResponse14=="250 555 5555"
+//Document
+assert GetResponse15=="3000005"
+assert GetResponse16=="1"
+assert GetResponse17=="WRS"
+assert GetResponse18=="2003-01-21 00:00:00.0"
+assert GetResponse19=="64"
+assert GetResponse20=="2003-04-11 00:00:00.0"
+assert GetResponse21=="2003-04-01 09:00:00.0"
+//Issue
+assert GetResponse22=="1"
+assert GetResponse23=="CUST"
+assert GetResponse24=="Custody for Caveat"
+assert GetResponse25=="N"
+
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getSyncCivilAppearance" id="2ef22f1b-609d-4f29-b201-fcb3c107823f"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetSyncCivilAppearance = testRunner.testCase.testSuite.testCases["GetSyncCivilAppearance"].testSteps["getSyncCivilAppearance"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetSyncCivilAppearance"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetSyncCivilAppearance"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetSyncCivilAppearance"].getPropertyValue("RequestDtm")
+ def ProcessUpToDtm=testRunner.testCase.testSuite.testCases["GetSyncCivilAppearance"].getPropertyValue("ProcessUpToDtm")
+ 
+ def xmlAdd= new XmlHolder(GetSyncCivilAppearance)
+ xmlAdd.setNodeValue("//v1:getSyncCivilAppearance/getSyncCivilAppearanceRequest/ns:getSyncCivilAppearanceRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getSyncCivilAppearance/getSyncCivilAppearanceRequest/ns:getSyncCivilAppearanceRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getSyncCivilAppearance/getSyncCivilAppearanceRequest/ns:getSyncCivilAppearanceRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getSyncCivilAppearance/getSyncCivilAppearanceRequest/ns:getSyncCivilAppearanceRequest/ns:ProcessUpToDtm",ProcessUpToDtm)
+  def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetSyncCivilAppearance"].testSteps["getSyncCivilAppearance"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetSyncCivilAppearance"].testSteps["getSyncCivilAppearance"]
+ def contextGetSyncCivilAppearance = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetSyncCivilAppearance)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetSyncCivilAppearance"].testSteps["getSyncCivilAppearance"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:ResponseMessageTxt")
+
+log.info GetResponse
+log.info GetResponse1
+
+assert GetResponse=="1"
+assert GetResponse1=="No change detected for any future civil appearance"
+
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getSyncHearingRestriction" id="018c1797-5a1f-4b67-b369-b92f927145ec"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetSyncHearingRestriction = testRunner.testCase.testSuite.testCases["GetSyncHearingRestriction"].testSteps["getSyncHearingRestriction"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetSyncHearingRestriction"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetSyncHearingRestriction"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetSyncHearingRestriction"].getPropertyValue("RequestDtm")
+ def ProcessUpToDtm=testRunner.testCase.testSuite.testCases["GetSyncHearingRestriction"].getPropertyValue("ProcessUpToDtm")
+ 
+ def xmlAdd= new XmlHolder(GetSyncHearingRestriction)
+ xmlAdd.setNodeValue("//v1:getSyncCivilHearingRestriction/getSyncCivilHearingRestrictionRequest/ns:getSyncCivilHearingRestrictionRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getSyncCivilHearingRestriction/getSyncCivilHearingRestrictionRequest/ns:getSyncCivilHearingRestrictionRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getSyncCivilHearingRestriction/getSyncCivilHearingRestrictionRequest/ns:getSyncCivilHearingRestrictionRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getSyncCivilHearingRestriction/getSyncCivilHearingRestrictionRequest/ns:getSyncCivilHearingRestrictionRequest/ns:ProcessUpToDtm",ProcessUpToDtm)
+  def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetSyncHearingRestriction"].testSteps["getSyncHearingRestriction"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetSyncHearingRestriction"].testSteps["getSyncHearingRestriction"]
+ def contextGetSyncHearingRestriction = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetSyncHearingRestriction)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetSyncHearingRestriction"].testSteps["getSyncHearingRestriction"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:ResponseMessageTxt")
+
+log.info GetResponse
+log.info GetResponse1
+
+assert GetResponse=="1"
+assert GetResponse1=="No change detected for any civil hearing restriction"
+
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="setAppearance" id="566843e5-1bf9-474d-81c5-e3d75e54c1ee"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def SetAppearanceCivil = testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].testSteps["setAppearance"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("RequestDtm")
+ //Details
+ def OperationMode=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("OperationMode")
+ def PcssAppearanceId=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("PcssAppearanceId")
+ def PhysicalFileId=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("PhysicalFileId")
+ def AppearanceDt=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("AppearanceDt")
+ def AppearanceTm=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("AppearanceTm")
+ def CourtAgencyId=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("CourtAgencyId")
+ def CourtRoomCd=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("CourtRoomCd")
+ def EstimatedTimeHour=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("EstimatedTimeHour")
+ def EstimatedTimeMin=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("EstimatedTimeMin")
+ def SupplementalEquipmentTxt=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("SupplementalEquipmentTxt")
+ def SecurityRestrictionTxt=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("SecurityRestrictionTxt")
+ def OutOfTownJudgeTxt=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("OutOfTownJudgeTxt")
+ //Docs
+ def OperationMode1=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("OperationMode1")
+ def CivilDocumentId=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("CivilDocumentId")
+ def AppearanceReasonCd=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("AppearanceReasonCd")
+ def EstimatedTimeHour1=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("EstimatedTimeHour1")
+ def EstimatedTimeMin1=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("EstimatedTimeMin1")
+ def PartyId=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("PartyId")
+ def AppearanceId=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("AppearanceId")
+ def AppearanceCcn=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].getPropertyValue("AppearanceCcn")
+
+ 
+ 
+ def xmlAdd= new XmlHolder(SetAppearanceCivil)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:RequestDtm",RequestDtm)
+ //Detail
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:OperationMode",OperationMode)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:PcssAppearanceId",PcssAppearanceId)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:PhysicalFileId",PhysicalFileId)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:AppearanceDt",AppearanceDt)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:AppearanceTm",AppearanceTm)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail//ns:CourtAgencyId",CourtAgencyId)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:CourtRoomCd",CourtRoomCd)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:EstimatedTimeHour",EstimatedTimeHour)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:EstimatedTimeMin",EstimatedTimeMin)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:SupplementalEquipmentTxt",SupplementalEquipmentTxt)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:SecurityRestrictionTxt",SecurityRestrictionTxt)
+ xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:OutOfTownJudgeTxt",OutOfTownJudgeTxt)
+xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:AppearanceId",AppearanceId)
+xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:AppearanceCcn",AppearanceCcn)
+ //Document
+//xmlAdd.setNodeValue("//v1:getAppearanceCivilApprMethodSecure/getAppearanceCivilApprMethodSecureRequest/ns:getAppearanceCivilApprMethodSecureRequest/ns:Detail/ns:Document/ns:OperationMode1",OperationMod1e1)
+xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:Document/ns:OperationMode",OperationMode)
+xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:Document/ns:CivilDocumentId",CivilDocumentId)
+xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:Document/ns:AppearanceReasonCd",AppearanceReasonCd)
+xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:Document/ns:EstimatedTimeHour",EstimatedTimeHour)
+xmlAdd.setNodeValue("//v1:setAppearanceCivil/setAppearanceCivilRequest/ns:setAppearanceCivilRequest/ns:Detail/ns:Document/ns:EstimatedTimeMin",EstimatedTimeMin)
+  def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].testSteps["setAppearance"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].testSteps["setAppearance"]
+ def contextSetAppearanceCivil = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextSetAppearanceCivil)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["SetAppearanceCivil"].testSteps["setAppearance"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:ResponseMessageTxt")
+
+log.info GetResponse
+log.info GetResponse1
+
+assert GetResponse=="-2"
+assert GetResponse1=="There already exists an appearance on 01-JAN-99 in Room 001"
+
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="setCounselDetailCivil" id="abae8fc0-246c-41eb-ac36-053c7e79c7ab"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def SetCounselDetailCivil = testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].testSteps["setCounselDetailCivil"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].getPropertyValue("RequestDtm")
+ def CivilPartyId=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].getPropertyValue("CivilPartyId")
+ def SelfRepresentedYn=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].getPropertyValue("SelfRepresentedYn")
+ //Zero or more repetitions
+ def OperationModeCd=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].getPropertyValue("OperationModeCd")
+ def CounselLastNm=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].getPropertyValue("CounselLastNm")
+ def CounselFirstNm=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].getPropertyValue("CounselFirstNm")
+ def OfficePhoneNoTxt=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].getPropertyValue("OfficePhoneNoTxt")
+ 
+ def xmlAdd= new XmlHolder(SetCounselDetailCivil)
+ xmlAdd.setNodeValue("//v1:setCounselDetailCivil/setCounselDetailCivilRequest/ns:setCounselDetailCivilRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:setCounselDetailCivil/setCounselDetailCivilRequest/ns:setCounselDetailCivilRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:setCounselDetailCivil/setCounselDetailCivilRequest/ns:setCounselDetailCivilRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:setCounselDetailCivil/setCounselDetailCivilRequest/ns:setCounselDetailCivilRequest/ns:CivilPartyId",CivilPartyId)
+ xmlAdd.setNodeValue("//v1:setCounselDetailCivil/setCounselDetailCivilRequest/ns:setCounselDetailCivilRequest/ns:SelfRepresentedYn",SelfRepresentedYn)
+ //Zero or more repetitions
+ xmlAdd.setNodeValue("//v1:setCounselDetailCivil/setCounselDetailCivilRequest/ns:setCounselDetailCivilRequest/ns:Detail/ns:OperationModeCd",OperationModeCd)
+ xmlAdd.setNodeValue("//v1:setCounselDetailCivil/setCounselDetailCivilRequest/ns:setCounselDetailCivilRequest/ns:Detail/ns:CounselLastNm",CounselLastNm)
+ xmlAdd.setNodeValue("//v1:setCounselDetailCivil/setCounselDetailCivilRequest/ns:setCounselDetailCivilRequest/ns:Detail/ns:CounselFirstNm",CounselFirstNm)
+ xmlAdd.setNodeValue("//v1:setCounselDetailCivil/setCounselDetailCivilRequest/ns:setCounselDetailCivilRequest/ns:Detail/ns:OfficePhoneNoTxt",OfficePhoneNoTxt)
+
+  def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].testSteps["setCounselDetailCivil"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].testSteps["setCounselDetailCivil"]
+ def contextSetCounselDetailCivil = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextSetCounselDetailCivil)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["SetCounselDetailCivil"].testSteps["setCounselDetailCivil"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:ResponseMessageTxt")
+
+log.info GetResponse
+log.info GetResponse1
+
+assert GetResponse=="1"
+assert GetResponse1=="Counsel with same name already exist"
+
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="setHerningRestrictionCivil" id="7379e807-b95a-4b2b-8539-0e43af91da09"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def SetHerningRestrictionCivil = testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].testSteps["setHerningRestrictionCivil"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("RequestDtm")
+ def OperationModeCd=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("OperationModeCd")
+ def HearingRestrictionId=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("HearingRestrictionId")
+ //Optional
+ def AdjudicatorPartId=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("AdjudicatorPartId")
+ def HearingRestrictionCd=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("HearingRestrictionCd")
+ def PhysicalFileId=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("PhysicalFileId")
+ def CivilDocumentId=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("CivilDocumentId")
+ def HearingRestrictionCcn=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].getPropertyValue("HearingRestrictionCcn")
+ 
+ def xmlAdd= new XmlHolder(SetHerningRestrictionCivil)
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:OperationModeCd",OperationModeCd)
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:HearingRestrictionId",HearingRestrictionId)
+ //Optional
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:AdjudicatorPartId",AdjudicatorPartId)
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:HearingRestrictionCd",HearingRestrictionCd)
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:PhysicalFileId",PhysicalFileId)
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:CivilDocumentId",CivilDocumentId)
+ xmlAdd.setNodeValue("//v1:setHearingRestrictionCivil/setHearingRestrictionCivilRequest/ns:setHearingRestrictionCivilRequest/ns:HearingRestrictionCcn",HearingRestrictionCcn)
+
+  def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].testSteps["setHerningRestrictionCivil"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].testSteps["setHerningRestrictionCivil"]
+ def contextSetHerningRestrictionCivil = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextSetHerningRestrictionCivil)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["SetHerningRestrictionCivil"].testSteps["setHerningRestrictionCivil"].getPropertyValue("Response")
+def ABC= new XmlHolder(getRes)
+def GetResponse= ABC.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= ABC.getNodeValue("//ns4:HearingRestrictionCcn")
+
+log.info GetResponse
+log.info GetResponse1
+
+assert GetResponse=="0"
+assert GetResponse1=="245947851966"
+
+
+
+
+
+</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ac135cdf-37d8-4a0f-a38e-60967645d93a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetAppearanceCivil" searchProperties="true"><con:settings/><con:testStep type="request" name="getAppearanceCivil" id="8b7c0ea5-82a9-4517-8d45-df243f35a2e9"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="getAppearanceCivil" id="bd7e7c2d-0a1b-47d9-a603-e6c1c853e526"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getAppearanceCivil>
+         <getAppearanceCivilRequest>
+            <ns:getAppearanceCivilRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>01-Nov-12</ns:RequestDtm>
+               <ns:PhysicalFileId>2486</ns:PhysicalFileId>
+               <ns:FutureYN>Y</ns:FutureYN>
+               <ns:HistoryYN>Y</ns:HistoryYN>
+            </ns:getAppearanceCivilRequest>
+         </getAppearanceCivilRequest>
+      </v1:getAppearanceCivil>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d6fe80a8-ff05-44be-bdcf-487d723e0d8e"/><con:assertion type="Response SLA Assertion" id="d7da8c8b-b743-4e29-a9af-6276e5da8a3e" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="a6701827-ee25-4e75-97a5-7845e17a0f92" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="4441e885-8fbb-4804-b3cd-b890481de13d" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="44491b1d-af8f-47f2-a1b7-a500627793ba" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="d0dc837f-3560-4a1d-8353-8d4f638a161a" name="Contains 1"><con:configuration><token>54</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="66402656-ad46-44f9-a089-f6927657a012" name="Contains 2"><con:configuration><token>Y</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="0bce6514-98dd-468b-acbe-d3ccf2063e81" name="Contains 3"><con:configuration><token>14768</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="276bd420-a1dc-491e-b80b-a9e166deb816" name="Contains 4"><con:configuration><token>2014-08-08 00:00:00.0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="39858836-a8bd-42af-b0a1-906539bc665e" name="Contains 5"><con:configuration><token>FCC</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="c41dc21a-d105-4f19-84dc-e6e9b1fa0597" name="Contains 6"><con:configuration><token>83.0001</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="698eb565-8708-40af-bc3f-81026b35986d" name="Contains 7"><con:configuration><token>009</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="9dd5a33f-a081-4391-adef-4d6618edfb49" name="Contains 8"><con:configuration><token>SCHD</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="dcd65740-7d3a-4b35-b3d7-f4c3bb124545" name="Contains 9"><con:configuration><token>245949556911</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="ee5d97a2-e783-42ba-8719-187b27f91e4d" name="Contains 10"><con:configuration><token>APO</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="160d2c79-cb5c-403f-8e02-198b606dd6a4" name="Contains 11"><con:configuration><token>1</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="8d09f44f-42c3-4434-9c53-d1196511bffb" name="Contains 12"><con:configuration><token>supplemental_equipment_txt</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="43bde9f6-a8e9-40d4-ad61-dc809fab5987" name="Contains 13"><con:configuration><token>security_restriction_txt</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="cdef1de3-0668-445f-ba73-1e27b9f051a6" name="Contains 14"><con:configuration><token>out_of_town_judge_txt</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>01-Nov-12</con:value></con:property><con:property><con:name>PhysicalFileId</con:name><con:value>2486</con:value></con:property><con:property><con:name>FutureYN</con:name><con:value>Y</con:value></con:property><con:property><con:name>HistoryYN</con:name><con:value>Y</con:value></con:property></con:properties></con:testCase><con:testCase id="2949d6c5-bbe9-4fdc-8798-6f881ea563d5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetAppearanceCivilApprMethod" searchProperties="true"><con:settings/><con:testStep type="request" name="getAppearanceCivilApprMethod" id="886bcba6-1b60-4f4c-a244-e916ec2a3c4d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="getAppearanceCivilApprMethod" id="7f0d9d65-4509-4c2e-ae89-28a7321867be"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getAppearanceCivilApprMethod>
+         <getAppearanceCivilApprMethodRequest>
+            <ns:getAppearanceCivilApprMethodRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>07-FEB-13</ns:RequestDtm>
+               <ns:AppearanceId>6090</ns:AppearanceId>
+            </ns:getAppearanceCivilApprMethodRequest>
+         </getAppearanceCivilApprMethodRequest>
+      </v1:getAppearanceCivilApprMethod>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="648e8b9c-08f7-4d6c-8e7d-48796f0f3f6f"/><con:assertion type="Simple Contains" id="98604914-7ba9-426e-81b2-091bdcbac5c9" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="8e04f719-68ab-41e6-895d-cceb2915798b" name="Contains 1"><con:configuration><token>APP</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="7a6b3c27-8e8f-46be-acae-80e13aa93e6a" name="Contains 2"><con:configuration><token>TC</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="93f63e82-e6ff-45b1-8e99-c803ba9c7e2e" name="Invalid HTTP Status Codes"><con:configuration><codes>500, 401, 403</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="b0f8934c-8527-4edc-aacc-2dd8641f9d5d" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>07-FEB-13</con:value></con:property><con:property><con:name>AppearanceId</con:name><con:value>6090</con:value></con:property></con:properties></con:testCase><con:testCase id="475f6e83-92d1-43d8-bc4a-4b21dd07e984" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetAppearanceCivilDocument" searchProperties="true"><con:settings/><con:testStep type="request" name="getAppearanceCivilDocument" id="bb37cb57-cc85-4257-a577-f5433e1c643c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="getAppearanceCivilDocument" id="0b1c8fa7-7013-44a3-91e9-491520731351"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+    <soap:Header/>
+    <soap:Body>
+        <v1:getAppearanceCivilDocument>
+            <getAppearanceCivilDocumentRequest>
+                <ns:getAppearanceCivilDocumentRequest>
+                    <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+                    <ns:RequestPartId>83.0001</ns:RequestPartId>
+                    <ns:RequestDtm>2021-09-14T09:26:56.6</ns:RequestDtm>
+                    <ns:AppearanceId>7093</ns:AppearanceId>
+                </ns:getAppearanceCivilDocumentRequest>
+            </getAppearanceCivilDocumentRequest>
+        </v1:getAppearanceCivilDocument>
+    </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="6eef3116-960b-46c6-8502-36d2c546e9e0"/><con:assertion type="Invalid HTTP Status Codes" id="7841aeb1-d71f-4af7-b884-2739d090cddc" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 500, 403, 404</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="bc260d4c-7cab-4965-9374-96b6c5ea8836" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="f9ea9c7b-1a60-4692-b118-8ec7987be62f" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="e99cb52b-e63a-4892-89d0-df7391aac920" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="adc311f2-c54d-4338-a618-cad49006f16f" name="Contains 1"><con:configuration><token>1948</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="42f10bf8-ace0-4b36-b570-315904b8633d" name="Contains 2"><con:configuration><token>NCL</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="641750c5-19b2-4326-a4d6-560e87991d98" name="Contains 3"><con:configuration><token>CNT</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="e760d430-6d07-445c-bd01-bad1d53d5645" name="Contains 4"><con:configuration><token>2004-06-01 00:00:00.0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="c358a05d-61fa-4329-979f-19cf142c790e" name="Contains 5"><con:configuration><token>245681339535</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="a786147d-3d5e-44c5-ac87-280d0a032c5b" name="Contains 6"><con:configuration><token>1</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="a752e424-3bb2-418b-98fa-5de5de947b76" name="Contains 7"><con:configuration><token>Directions to the grocery store, please.</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="0658d2c9-229c-4df9-bcc3-459c34b9fb6b" name="Contains 8"><con:configuration><token>2</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="fdc790a9-fcdc-4069-ad3a-aeba3495d629" name="Contains 9"><con:configuration><token>Costs are costly.</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="d80eeed6-a667-4048-b25a-451d0ec60546" name="Contains 10"><con:configuration><token>3</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="e9d64367-cb51-40e1-a3bd-a439efd93645" name="Contains 11"><con:configuration><token>Special Damages are so special, we damaged them just looking at them.</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-09-14T09:26:56.6</con:value></con:property><con:property><con:name>AppearanceId</con:name><con:value>7093</con:value></con:property></con:properties></con:testCase><con:testCase id="62f177bf-aa6b-499d-bb63-078398fe63b4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetAppearanceCivilParty" searchProperties="true"><con:settings/><con:testStep type="request" name="getAppearanceCivilParty" id="079efdfa-6209-4771-9fb7-4cf80d3e943f"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="getAppearanceCivilParty" id="8441251a-f0ba-4fee-b7d2-660f716d03dc"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getAppearanceCivilParty>
+         <getAppearanceCivilPartyRequest>
+            <ns:getAppearanceCivilPartyRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>03-Nov-2021</ns:RequestDtm>
+               <ns:AppearanceId>6090</ns:AppearanceId>
+            </ns:getAppearanceCivilPartyRequest>
+         </getAppearanceCivilPartyRequest>
+      </v1:getAppearanceCivilParty>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="ddc5e21e-b344-4665-8e51-2d908d5b68a5"/><con:assertion type="Simple Contains" id="8a771b52-21bd-4de9-bc30-670cc5255a54" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="3c2b84ee-f529-4bc6-a663-d49fb7acccd3" name="Contains 1"><con:configuration><token>2231</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f0117522-3601-4e52-a02f-e33a4472e7ca" name="Contains 2"><con:configuration><token>CLA</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="71869c9b-a9e6-4350-88ed-43b3afb64804" name="Contains 3"><con:configuration><token>AARON</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="0a50957a-9bad-426c-b7f3-2159e33bd029" name="Contains 4"><con:configuration><token>Lee</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f534fd86-7137-4095-a1db-fc732cccc6e9" name="Contains 5"><con:configuration><token>10573</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="929f7796-189d-4ba9-82d6-83ca49a83ddb" name="Contains 6"><con:configuration><token>245669648521</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="0591b9fd-acd9-488a-856a-0c4ce77cf99e" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500, 402</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="dc736bfa-e6fb-4b14-84b1-af74fa2d1c46" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>03-Nov-2021</con:value></con:property><con:property><con:name>AppearanceId</con:name><con:value>6090</con:value></con:property></con:properties></con:testCase><con:testCase id="3a428214-38d6-486d-84b5-4ca23c66d23b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetAppearanceCivilResource" searchProperties="true"><con:settings/><con:testStep type="request" name="getAppearanceCivilResource" id="76864937-9b7d-4afe-b863-0de822bba4cd"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="getAppearanceCivilResource" id="a596a2f3-8688-4228-8848-49692b87f6d9"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getAppearanceCivilResource>
+         <getAppearanceCivilResourceRequest>
+            <ns:getAppearanceCivilResourceRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>03-Nov-2021</ns:RequestDtm>
+               <ns:AppearanceId>6090</ns:AppearanceId>
+            </ns:getAppearanceCivilResourceRequest>
+         </getAppearanceCivilResourceRequest>
+      </v1:getAppearanceCivilResource>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0f8f8f08-9437-47e8-a4af-eacd138462ee"/><con:assertion type="Simple Contains" id="9124df13-6e47-4020-ac54-e8d742a40a59" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="34e6f4d6-dc73-44fe-8bc6-92216b643548" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="4f563700-ac85-4971-92b9-6996f4eb80a3" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="0be3c063-bb9b-4080-ad41-7328142a60f0" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>03-Nov-2021</con:value></con:property><con:property><con:name>AppearanceId</con:name><con:value>6090</con:value></con:property></con:properties></con:testCase><con:testCase id="9ee1629a-439a-4ac9-a5f6-1d8afd24d2ec" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetFileDetailCivil" searchProperties="true"><con:settings/><con:testStep type="request" name="getFileDetailCivil" id="5be85386-49ba-4fac-a3e8-110e7a6557dc"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="getFileDetailCivil" id="334488ea-d21f-4672-8bfe-e5acc0f1f49e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getFileDetailCivil>
+         <getFileDetailCivilRequest>
+            <ns:getFileDetailCivilRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>83.0001</ns:RequestPartId>
+               <ns:RequestDtm>2021-09-14T09:26:56.6</ns:RequestDtm>
+               <ns:PhysicalFileId>8000005</ns:PhysicalFileId>
+            </ns:getFileDetailCivilRequest>
+         </getFileDetailCivilRequest>
+      </v1:getFileDetailCivil>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="4a687d48-73f8-404a-abdd-a003a1d9981e"/><con:assertion type="Invalid HTTP Status Codes" id="ba14f742-045b-44d5-b4a7-b9fa7b7a402c" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 500, 401, 403</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="17c21615-1433-485a-b618-abde84e0fdc7" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="65193fe2-a284-4043-ac80-59ff487967f7" name="Response SLA"><con:configuration><SLA>2000</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="b8022415-9ea7-4cbd-a24c-4b6e99b92c1b" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f69e389d-0dfa-4ff1-a546-a5c364298858" name="Contains 1"><con:configuration><token>8000005</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f7597809-84ed-425c-8796-fab7cd935206" name="Contains 2"><con:configuration><token>V-9000005</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="bea58a08-efce-453a-9ed3-04e6d681b454" name="Contains 3"><con:configuration><token>1.0001</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="206d093e-cf82-47ed-836b-777ec0f269b2" name="Contains 4"><con:configuration><token>S</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="94a27e4f-37b7-4856-af4f-579cbd4bc665" name="Contains 5"><con:configuration><token>V</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="3ae4ef65-9c03-43f3-a9ce-5fd75e9d403c" name="Contains 6"><con:configuration><token>1000031</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="117441b6-f021-481b-b514-62b210ac0f50" name="Contains 7"><con:configuration><token>Borges</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="4277c11a-dd2e-43ec-8917-327130f4cf94" name="Contains 8"><con:configuration><token>Jorge</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="1a9af124-5bab-4640-8254-8fad056a8531" name="Contains 9"><con:configuration><token>DEF</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="8668997d-8541-49ee-8718-d3fd81cd89fd" name="Contains 10"><con:configuration><token>R</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="616a4550-9d50-4012-8737-4f4dc15319a8" name="Contains 11"><con:configuration><token>N</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-09-14T09:26:56.6</con:value></con:property><con:property><con:name>PhysicalFileId</con:name><con:value>8000005</con:value></con:property></con:properties></con:testCase><con:testCase id="a73515a1-2013-4dcd-9dc8-6b3a3233c9d4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetSyncCivilAppearance" searchProperties="true"><con:settings/><con:testStep type="request" name="getSyncCivilAppearance" id="dd47065f-e458-4f75-9121-b4c38d5b4ab9"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="getSyncCivilAppearance" id="43f58fac-7637-41d1-a2c2-3afafa493036"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getSyncCivilAppearance>
+         <getSyncCivilAppearanceRequest>
+            <ns:getSyncCivilAppearanceRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>83.0001</ns:RequestPartId>
+               <ns:RequestDtm>2021-09-14T09:26:56.6</ns:RequestDtm>
+               <ns:ProcessUpToDtm>2021-09-14 09:26:56.6</ns:ProcessUpToDtm>
+            </ns:getSyncCivilAppearanceRequest>
+         </getSyncCivilAppearanceRequest>
+      </v1:getSyncCivilAppearance>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="86692290-1da7-40a9-b05f-ab28a469a4ea"/><con:assertion type="Simple Contains" id="d597a029-c325-42a3-aa03-1fd30dc4b30f" name="Contains"><con:configuration><token>1</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="d592850e-cb46-4df7-aca7-da04b6afc802" name="Contains 1"><con:configuration><token>No change detected for any future civil appearance</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="967e873c-c66d-4b53-bb33-037936fe05d5" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 500, 403</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="fc566072-7e8c-4c79-b3dc-59122dbeb22b" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="8d090eb7-6728-419f-ad07-6d439babf6db" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-09-14T09:26:56.6</con:value></con:property><con:property><con:name>ProcessUpToDtm</con:name><con:value>2021-09-14 09:26:56.6</con:value></con:property></con:properties></con:testCase><con:testCase id="8dc98f4b-84e9-41f6-a379-ae33447d626a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetSyncHearingRestriction" searchProperties="true"><con:settings/><con:testStep type="request" name="getSyncHearingRestriction" id="be479de2-15d4-4523-a09d-5193290ca3cc"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="getSyncHearingRestriction" id="f966cb84-3160-47b1-8864-47e79fdde56b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getSyncCivilHearingRestriction>
+         <getSyncCivilHearingRestrictionRequest>
+            <ns:getSyncCivilHearingRestrictionRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>83.0001</ns:RequestPartId>
+               <ns:RequestDtm>2021-09-14T09:26:56.6</ns:RequestDtm>
+               <ns:ProcessUpToDtm>2021-09-14 09:26:56.6</ns:ProcessUpToDtm>
+            </ns:getSyncCivilHearingRestrictionRequest>
+         </getSyncCivilHearingRestrictionRequest>
+      </v1:getSyncCivilHearingRestriction>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="96ba1e61-3c6c-4de4-bcce-f4ca625fc2e9"/><con:assertion type="Simple Contains" id="102da9bd-72cd-4216-a751-5d438aa0f44f" name="Contains"><con:configuration><token>No change detected for any civil hearing restriction</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="99c76dbe-9df4-4202-9c30-a8dd04db81ab" name="Contains 1"><con:configuration><token>1</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="bf581bd0-8dcc-4ece-8d0b-c45f833b6d69" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 500, 403</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="eb543f40-1846-47bb-9608-25c63cabce40" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="224d3c28-a1d2-4924-ae69-72c1f490f556" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-09-14T09:26:56.6</con:value></con:property><con:property><con:name>ProcessUpToDtm</con:name><con:value>2021-09-14 09:26:56.6</con:value></con:property></con:properties></con:testCase><con:testCase id="b8fcedbb-f12b-44b5-875e-d4f8da5eedc8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SetAppearanceCivil" searchProperties="true"><con:settings/><con:testStep type="request" name="setAppearance" id="ce633055-68e8-401b-b639-7ff0324fece7"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="setAppearance" id="e9db6986-86e2-4e7d-920b-62d4c9f77b6a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:setAppearanceCivil>
+         <setAppearanceCivilRequest>
+            <ns:setAppearanceCivilRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>2021-09-14T09:26:56.6</ns:RequestDtm>
+               <!--Zero or more repetitions:-->
+               <ns:Detail>
+                  <ns:OperationMode>Update</ns:OperationMode>
+                  <ns:PcssAppearanceId>14723</ns:PcssAppearanceId>
+                  <ns:PhysicalFileId>2486</ns:PhysicalFileId>
+                  <ns:AppearanceDt>1999-01-01 01:30:00.0</ns:AppearanceDt>
+                  <!--Optional:-->
+                  <ns:AppearanceTm>1999-01-01 03:30:00.0</ns:AppearanceTm>
+                  <ns:CourtAgencyId>83.0001</ns:CourtAgencyId>
+                  <ns:CourtRoomCd>001</ns:CourtRoomCd>
+                  <!--Optional:-->
+                  <ns:EstimatedTimeHour>1</ns:EstimatedTimeHour>
+                  <!--Optional:-->
+                  <ns:EstimatedTimeMin>0</ns:EstimatedTimeMin>
+                  <!--Optional:-->
+                  <ns:SupplementalEquipmentTxt>supplemental_equipment_txt</ns:SupplementalEquipmentTxt>
+                  <!--Optional:-->
+                  <ns:SecurityRestrictionTxt>security_restriction_txt</ns:SecurityRestrictionTxt>
+                  <!--Optional:-->
+                  <ns:OutOfTownJudgeTxt>out_of_town_judge_txt</ns:OutOfTownJudgeTxt>
+                  <!--Optional:-->
+                  <ns:AppearanceId>0</ns:AppearanceId>
+                  <!--Optional:-->
+                  <ns:AppearanceCcn>0</ns:AppearanceCcn>
+                  <!--Zero or more repetitions:-->
+                  <ns:Document>
+                     <ns:OperationMode>Update</ns:OperationMode>
+                     <ns:CivilDocumentId>1855</ns:CivilDocumentId>
+                     <!--Optional:-->
+                     <ns:AppearanceReasonCd>FCC</ns:AppearanceReasonCd>
+                     <!--Optional:-->
+                     <ns:EstimatedTimeHour>1</ns:EstimatedTimeHour>
+                     <!--Optional:-->
+                     <ns:EstimatedTimeMin>0</ns:EstimatedTimeMin>
+                  </ns:Document>
+                  <!--Zero or more repetitions:-->
+                  <ns:Party>
+                     <ns:OperationMode>ADD</ns:OperationMode>
+                     <ns:PartyId>666</ns:PartyId>
+                  </ns:Party>
+               </ns:Detail>
+            </ns:setAppearanceCivilRequest>
+         </setAppearanceCivilRequest>
+      </v1:setAppearanceCivil>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="e4fde236-a0f4-4d77-a619-e98440b5122f"/><con:assertion type="Simple Contains" id="e0e964e9-3855-4c4c-8ccd-bd81c149be89" name="Contains"><con:configuration><token>-2</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="9be9839a-4c15-454b-bb4b-955c4b629c21" name="Contains 1"><con:configuration><token>There already exists an appearance on 01-JAN-99 in Room 001</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="c715cc32-43ba-4a8f-8076-e3e57f9607c2" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="40ce5386-a455-4a8b-970d-b53233b729e9" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 500, 403</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="6a3d4417-d83c-4f06-a01b-d558527324ea" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-09-14T09:26:56.6</con:value></con:property><con:property><con:name>OperationMode</con:name><con:value>Update</con:value></con:property><con:property><con:name>PcssAppearanceId</con:name><con:value>14723</con:value></con:property><con:property><con:name>PhysicalFileId</con:name><con:value>2486</con:value></con:property><con:property><con:name>AppearanceDt</con:name><con:value>1999-01-01 01:30:00.0</con:value></con:property><con:property><con:name>AppearanceTm</con:name><con:value>1999-01-01 03:30:00.0</con:value></con:property><con:property><con:name>CourtAgencyId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>CourtRoomCd</con:name><con:value>001</con:value></con:property><con:property><con:name>EstimatedTimeHour</con:name><con:value>1</con:value></con:property><con:property><con:name>EstimatedTimeMin</con:name><con:value>0</con:value></con:property><con:property><con:name>SupplementalEquipmentTxt</con:name><con:value>supplemental_equipment_txt</con:value></con:property><con:property><con:name>SecurityRestrictionTxt</con:name><con:value>security_restriction_txt</con:value></con:property><con:property><con:name>OutOfTownJudgeTxt</con:name><con:value>out_of_town_judge_txt</con:value></con:property><con:property><con:name>CivilDocumentId</con:name><con:value>1855</con:value></con:property><con:property><con:name>AppearanceReasonCd</con:name><con:value>FCC</con:value></con:property><con:property><con:name>PartyId</con:name><con:value>666</con:value></con:property><con:property><con:name>AppearanceId</con:name><con:value>0</con:value></con:property><con:property><con:name>AppearanceCcn</con:name><con:value>0</con:value></con:property></con:properties></con:testCase><con:testCase id="a3c17510-2609-4b58-8da5-f5a27d032b70" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SetCounselDetailCivil" searchProperties="true"><con:settings/><con:testStep type="request" name="setCounselDetailCivil" id="79ac3474-45e4-42bf-8a6e-2c6cab830e17"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="setCounselDetailCivil" id="58237fa0-3cdb-48d5-8f80-dda9d01433d3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:setCounselDetailCivil>
+         <setCounselDetailCivilRequest>
+            <ns:setCounselDetailCivilRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>07-FEB-13</ns:RequestDtm>
+               <ns:CivilPartyId>293</ns:CivilPartyId>
+               <ns:SelfRepresentedYn>N</ns:SelfRepresentedYn>
+               <!--Zero or more repetitions:-->
+               <ns:Detail>
+                  <ns:OperationModeCd>ADD</ns:OperationModeCd>
+                  <ns:CounselLastNm>Johnson55</ns:CounselLastNm>
+                  <ns:CounselFirstNm>Kevinoo</ns:CounselFirstNm>
+                  <!--Optional:-->
+                  <ns:OfficePhoneNoTxt>250 882 1234</ns:OfficePhoneNoTxt>
+               </ns:Detail>
+            </ns:setCounselDetailCivilRequest>
+         </setCounselDetailCivilRequest>
+      </v1:setCounselDetailCivil>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5d42ab1e-a644-41f8-8c3e-853cb65d2f72"/><con:assertion type="Simple Contains" id="8fbdd617-705d-4847-8b92-4a9fb7843782" name="Contains"><con:configuration><token>1</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="68791895-03ba-4309-9214-c9e209b46021" name="Contains 1"><con:configuration><token>Counsel with same name already exist</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="4024f496-3c8b-4221-b29b-11ec46731bb2" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 500, 403</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="f640b561-7780-4ec9-b665-735b98af8ca2" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="8799a12a-12bb-4056-a40a-acd765bd2586" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>07-FEB-13</con:value></con:property><con:property><con:name>CivilPartyId</con:name><con:value>293</con:value></con:property><con:property><con:name>SelfRepresentedYn</con:name><con:value>N</con:value></con:property><con:property><con:name>OperationModeCd</con:name><con:value>ADD</con:value></con:property><con:property><con:name>CounselLastNm</con:name><con:value>Johnson55</con:value></con:property><con:property><con:name>CounselFirstNm</con:name><con:value>Kevinoo</con:value></con:property><con:property><con:name>OfficePhoneNoTxt</con:name><con:value>250 882 1234</con:value></con:property></con:properties></con:testCase><con:testCase id="20cca5e4-7b7c-457b-9fa1-5c42ce4e25d7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SetHerningRestrictionCivil" searchProperties="true"><con:settings/><con:testStep type="request" name="setHerningRestrictionCivil" id="7525e20e-5b16-46e6-9a8c-3922c283d3f1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCivil_wsProvider_pcssCivil_Binder</con:interface><con:operation>getAppearanceCivil</con:operation><con:request name="setHerningRestrictionCivil" id="e9bc9e49-1209-46c7-9a51-10d13992db4b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:setHearingRestrictionCivil>
+         <setHearingRestrictionCivilRequest>
+            <ns:setHearingRestrictionCivilRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>2013-02-07 13:15:12.0</ns:RequestDtm>
+               <ns:OperationModeCd>UPDATE</ns:OperationModeCd>
+               <!--Optional:-->
+               <ns:HearingRestrictionId>7063</ns:HearingRestrictionId>
+               <!--Optional:-->
+               <ns:AdjudicatorPartId>12910.0026</ns:AdjudicatorPartId>
+               <!--Optional:-->
+               <ns:HearingRestrictionCd>A</ns:HearingRestrictionCd>
+               <!--Optional:-->
+               <ns:PhysicalFileId>706</ns:PhysicalFileId>
+               <!--Optional:-->
+               <ns:CivilDocumentId/>
+               <!--Optional:-->
+               <ns:HearingRestrictionCcn>111111111111</ns:HearingRestrictionCcn>
+            </ns:setHearingRestrictionCivilRequest>
+         </setHearingRestrictionCivilRequest>
+      </v1:setHearingRestrictionCivil>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="cf3f1c2a-95e7-47cd-9785-6693b1fc864c"/><con:assertion type="Simple Contains" id="0780b93c-b1d7-4b4d-908c-e2d3ddb64822" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="4d76cb8d-c952-43bb-ac07-bf07e3ac099e" name="Contains 1"><con:configuration><token>245947851966</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="f0fa8fd6-f180-412e-9166-e0437c867cdd" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="f23a7015-bfca-4b1f-bddd-243685d21fac" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="3abc333c-baf8-4561-b755-65920da2d0f3" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2013-02-07 13:15:12.0</con:value></con:property><con:property><con:name>OperationModeCd</con:name><con:value>UPDATE</con:value></con:property><con:property><con:name>HearingRestrictionId</con:name><con:value>7063</con:value></con:property><con:property><con:name>AdjudicatorPartId</con:name><con:value>12910.0026</con:value></con:property><con:property><con:name>HearingRestrictionCd</con:name><con:value>A</con:value></con:property><con:property><con:name>PhysicalFileId</con:name><con:value>706</con:value></con:property><con:property><con:name>CivilDocumentId</con:name><con:value/></con:property><con:property><con:name>HearingRestrictionCcn</con:name><con:value>111111111111</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

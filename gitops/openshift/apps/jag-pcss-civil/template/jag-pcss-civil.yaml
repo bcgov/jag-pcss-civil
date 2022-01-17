@@ -117,11 +117,11 @@ objects:
                   key: ORDS_HOST
             resources:
               limits:
-                cpu: 1000m
-                memory: 1000Mi
-              requests:
                 cpu: 500m
                 memory: 512Mi
+              requests:
+                cpu: 50m
+                memory: 256Mi
               livenessProbe:
                 httpGet:
                   path: "/actuator/health"
