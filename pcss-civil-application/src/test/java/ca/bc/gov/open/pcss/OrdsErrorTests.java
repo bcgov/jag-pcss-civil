@@ -12,6 +12,7 @@ import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.secure.two.*;
 import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.Instant;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -144,7 +145,7 @@ public class OrdsErrorTests {
         one.setGetAppearanceCivilRequest(two);
         var three = new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
         two.setGetAppearanceCivilRequest(three);
-        three.setRequestDtm("A");
+        three.setRequestDtm(Instant.now());
 
         Assertions.assertThrows(
                 ORDSException.class, () -> secureController.getAppearanceCivil(one));
@@ -178,7 +179,7 @@ public class OrdsErrorTests {
         var one = new GetAppearanceCivilApprMethod();
         var two = new GetAppearanceCivilApprMethodRequest();
         var three = new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
-        three.setRequestDtm("A");
+        three.setRequestDtm(Instant.now());
         two.setGetAppearanceCivilApprMethodRequest(three);
         one.setGetAppearanceCivilApprMethodRequest(two);
 
@@ -215,7 +216,7 @@ public class OrdsErrorTests {
         var three = new ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilRequest();
         one.setSetAppearanceMethodCivilRequest(two);
         two.setSetAppearanceMethodCivilRequest(three);
-        three.setRequestDtm("A");
+        three.setRequestDtm(Instant.now());
 
         Assertions.assertThrows(
                 ORDSException.class, () -> secureController.setAppearanceMethodCivil(one));
@@ -283,7 +284,7 @@ public class OrdsErrorTests {
     @Test
     public void securityTestFail_Then401() throws Exception {
         var response =
-                mockMvc.perform(post("/ws").contentType(MediaType.TEXT_XML))
+                mockMvc.perform(post("/civil").contentType(MediaType.TEXT_XML))
                         .andExpect(status().is4xxClientError())
                         .andReturn();
         Assertions.assertEquals(

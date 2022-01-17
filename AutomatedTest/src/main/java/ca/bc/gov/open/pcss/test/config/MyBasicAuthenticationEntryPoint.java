@@ -40,7 +40,7 @@ public class MyBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoi
 
     @Override
     public void afterPropertiesSet() {
-        setRealmName("SCSS");
+        setRealmName("PCSS");
         super.afterPropertiesSet();
     }
 }

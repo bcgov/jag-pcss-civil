@@ -4,6 +4,7 @@ import ca.bc.gov.open.pcss.configuration.SoapConfig;
 import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.models.OrdsErrorLog;
 import ca.bc.gov.open.pcss.models.RequestSuccessLog;
+import ca.bc.gov.open.pcss.models.serializers.InstantSerializer;
 import ca.bc.gov.open.pcss.secure.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -60,13 +61,13 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/appearance-method")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("appearanceId", inner.getAppearanceId());
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse> resp =
                     restTemplate.exchange(
-                            builder.toUriString(),
+                            builder.build().toUri(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
                             ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse
@@ -111,13 +112,13 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/party")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("appearanceId", inner.getAppearanceId());
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse> resp =
                     restTemplate.exchange(
-                            builder.toUriString(),
+                            builder.build().toUri(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
                             ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse.class);
@@ -160,7 +161,7 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/appearance")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("physicalFileId", inner.getPhysicalFileId())
                         .queryParam("futureYN", inner.getFutureYN())
@@ -168,7 +169,7 @@ public class SecureEndpointController {
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse> resp =
                     restTemplate.exchange(
-                            builder.toUriString(),
+                            builder.build().toUri(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
                             ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse.class);
@@ -211,14 +212,14 @@ public class SecureEndpointController {
                 UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
                         .queryParam("applicationCd", inner.getApplicationCd())
                         .queryParam("appearanceId", inner.getRequestPartId())
                         .queryParam("physicalFileId", inner.getPhysicalFileId());
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse> resp =
                     restTemplate.exchange(
-                            builder.toUriString(),
+                            builder.build().toUri(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
                             ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse.class);
