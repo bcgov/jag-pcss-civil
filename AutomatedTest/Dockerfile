@@ -4,6 +4,6 @@ WORKDIR /app
 RUN chgrp -R 0 /app && \
     chmod -R g=u /app
 
-COPY ./target/scss-test-runner.jar .
+COPY ./target/pcss-test-runner.jar .
 
 ENTRYPOINT ["java","-Xss2048k","-jar","pcss-test-runner.jar"]
