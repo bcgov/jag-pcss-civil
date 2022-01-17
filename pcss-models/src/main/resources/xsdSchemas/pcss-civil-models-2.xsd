@@ -26,13 +26,13 @@
         </xsd:restriction>
     </xsd:simpleType>
     <xsd:simpleType name="DateType">
-        <xsd:restriction base="xsd:string">
+        <xsd:restriction base="xsd:dateTime">
             <xsd:whiteSpace value="preserve"/>
             <xsd:length value="21"/>
         </xsd:restriction>
     </xsd:simpleType>
     <xsd:simpleType name="TimeType">
-        <xsd:restriction base="xsd:string">
+        <xsd:restriction base="xsd:dateTime">
             <xsd:whiteSpace value="preserve"/>
             <xsd:length value="21"/>
         </xsd:restriction>

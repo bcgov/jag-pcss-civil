@@ -1,0 +1,97 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: ${COMPONENT_NAME}
+  description: Deployment template for the ${COMPONENT_NAME}
+
+labels:
+  app.kubernetes.io/name: ${COMPONENT_NAME}
+  app.openshift.io/runtime: ${RUNTIME}
+
+parameters:
+
+- name: COMPONENT_NAME
+  description: The application name that each component is part of
+  required: false
+  value: jmeter-manager
+
+- name: OC_NAMESPACE
+  description: The OpenShift namespace prefix
+  required: false
+  # Below value must be changed as per gold cluster oc nameplate
+  value: 17b24e
+
+- name: RUNTIME
+  description: The application name that each component is part of
+  required: false
+  value: jmeter
+
+objects:
+- kind: DeploymentConfig
+  apiVersion: apps.openshift.io/v1
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-tools
+    annotations:
+      app.openshift.io/connects-to: 'jmeter-workers, influxdb'
+    labels:
+      app.kubernetes.io/part-of: jmeter
+      jmeter_mode: manager
+      run: ${COMPONENT_NAME}
+  spec:
+    strategy:
+      type: Rolling
+      rollingParams:
+        updatePeriodSeconds: 1
+        intervalSeconds: 1
+        timeoutSeconds: 600
+        maxUnavailable: 25%
+        maxSurge: 25%
+      resources: {}
+      activeDeadlineSeconds: 21600
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - ${COMPONENT_NAME}
+          from:
+            kind: ImageStreamTag
+            namespace: ${OC_NAMESPACE}-tools
+            name: jmeter-manager:5.3
+    replicas: 1
+    revisionHistoryLimit: 10
+    test: false
+    selector:
+      run: ${COMPONENT_NAME}
+    template:
+      metadata:
+        labels:
+          run: ${COMPONENT_NAME}
+      spec:
+        containers:
+          - resources: {}
+            terminationMessagePath: /dev/termination-log
+            name: ${COMPONENT_NAME}
+            command:
+              - /bin/bash
+              - '-c'
+              - '--'
+            args:
+              - while true; do sleep 30; done;
+            ports:
+              - containerPort: 60000
+                protocol: TCP
+            imagePullPolicy: Always
+            terminationMessagePolicy: File
+            # Below value must be changed as per gold cluster oc imagestream url
+            image: >-
+              image-registry.openshift-image-registry.svc:5000/${OC_NAMESPACE}-tools/jmeter-manager:5.3
+        restartPolicy: Always
+        terminationGracePeriodSeconds: 30
+        dnsPolicy: ClusterFirst
+        securityContext: {}
+        schedulerName: default-scheduler
+
+

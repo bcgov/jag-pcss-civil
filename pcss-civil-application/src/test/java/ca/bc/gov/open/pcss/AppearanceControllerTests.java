@@ -19,6 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
 import java.util.Collections;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -66,8 +67,8 @@ public class AppearanceControllerTests {
         ApprDetail dt = new ApprDetail();
         dt.setHistoryYN(YesNoType.Y);
         dt.setAppearanceId("A");
-        dt.setAppearanceDt("A");
-        dt.setAppearanceTm("A");
+        dt.setAppearanceDt(Instant.now());
+        dt.setAppearanceTm(Instant.now());
         dt.setAppearanceReasonCd("A");
         dt.setCourtAgencyId("A");
         dt.setCourtRoomCd("A");
@@ -141,7 +142,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.getAppearanceCivilApprMethod(cam);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -184,7 +185,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.setAppearanceMethodCivil(sam);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -198,8 +199,8 @@ public class AppearanceControllerTests {
         dt.setOperationMode(OperationModeType.ADD);
         dt.setPcssAppearanceId("A");
         dt.setPhysicalFileId("A");
-        dt.setAppearanceDt("A");
-        dt.setAppearanceTm("A");
+        dt.setAppearanceDt(Instant.now());
+        dt.setAppearanceTm(Instant.now());
         dt.setCourtAgencyId("A");
         dt.setCourtRoomCd("A");
         dt.setEstimatedTimeHour("A");
@@ -257,7 +258,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.setAppearanceCivil(sca);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -282,7 +283,7 @@ public class AppearanceControllerTests {
         doc.setDocumentTypeCd("A");
         doc.setAppearanceReasonCd("A");
         doc.setAppearanceResultCd("A");
-        doc.setFiledDt("A");
+        doc.setFiledDt(Instant.now());
         doc.setDocumentHearingCcn("A");
         Issue is = new Issue();
         is.setIssueDsc("A");
@@ -308,7 +309,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.getAppearanceCivilDocument(cd);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -355,7 +356,7 @@ public class AppearanceControllerTests {
                 .thenReturn(responseEntity);
 
         var resp = appearanceController.getAppearanceCivilParty(acp);
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -386,8 +387,8 @@ public class AppearanceControllerTests {
         res.setCourtRoomCd("A");
         res.setResourceNm("A");
         res.setResourceId("A");
-        res.setBookedDt("A");
-        res.setBookedFromTm("A");
+        res.setBookedDt(Instant.now());
+        res.setBookedFromTm(Instant.now());
         res.setBookedByNm("A");
         res.setBookingCommentTxt("A");
         res.setBookingCcn("A");
@@ -408,7 +409,7 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.getAppearanceCivilResource(cr);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -451,6 +452,6 @@ public class AppearanceControllerTests {
 
         var resp = appearanceController.setCounselDetailCivil(cd);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 }

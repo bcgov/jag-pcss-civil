@@ -13,6 +13,7 @@ target/
 .springBeans
 .sts4-cache
 .env
+.code-workspace
 
 ### IntelliJ IDEA ###
 .idea
@@ -36,3 +37,7 @@ build/
 /AutomatedTests/cypress/videos/
 /AutomatedTests/cypress/screenshots/
 cc-test-reporter
+/JusticePCSSsecure-soapui-project.xml
+/PCSSCivil-soapui-project.xml
+/TestErrors.zip
+/*PCSS*-FAILED.txt

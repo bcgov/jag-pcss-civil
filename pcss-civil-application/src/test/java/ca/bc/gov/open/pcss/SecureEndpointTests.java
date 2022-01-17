@@ -12,8 +12,10 @@ import ca.bc.gov.open.pcss.secure.two.GetAppearanceCivilSecureRequest;
 import ca.bc.gov.open.pcss.secure.two.GetFileDetailCivilSecureRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.net.URI;
 import java.time.Instant;
 import java.util.Collections;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -48,6 +50,10 @@ public class SecureEndpointTests {
         two.setGetAppearanceCivilApprMethodSecureRequest(one);
         req.setGetAppearanceCivilApprMethodSecureRequest(two);
 
+        two.setGetAppearanceCivilApprMethodSecureRequest(one);
+
+        req.setGetAppearanceCivilApprMethodSecureRequest(two);
+
         var resp = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse();
 
         resp.setResponseCd("A");
@@ -62,7 +68,7 @@ public class SecureEndpointTests {
                 responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
         //     Set up to mock ords response
         when(restTemplate.exchange(
-                        Mockito.any(String.class),
+                        Mockito.any(URI.class),
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
@@ -74,7 +80,7 @@ public class SecureEndpointTests {
 
         var out = endpointController.getAppearanceCivilApprMethodSecureRequest(req);
 
-        assert out != null;
+        Assertions.assertNotNull(out);
     }
 
     @Test
@@ -91,8 +97,8 @@ public class SecureEndpointTests {
         one.setRequestAgencyIdentifierId("A");
         one.setRequestPartId("A");
 
-        two.setGetAppearanceCivilPartySecureRequest(one);
         req.setGetAppearanceCivilPartySecureRequest(two);
+        two.setGetAppearanceCivilPartySecureRequest(one);
 
         var resp = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse();
         resp.setResponseCd("A");
@@ -114,7 +120,7 @@ public class SecureEndpointTests {
                 responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
         //     Set up to mock ords response
         when(restTemplate.exchange(
-                        Mockito.any(String.class),
+                        Mockito.any(URI.class),
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
@@ -126,7 +132,7 @@ public class SecureEndpointTests {
 
         var out = endpointController.getAppearanceCivilPartySecure(req);
 
-        assert out != null;
+        Assertions.assertNotNull(out);
     }
 
     @Test
@@ -155,8 +161,8 @@ public class SecureEndpointTests {
         ApprDetail ap = new ApprDetail();
         ap.setHistoryYN(YesNoType.Y);
         ap.setAppearanceId("A");
-        ap.setAppearanceDt("A");
-        ap.setAppearanceTm("A");
+        ap.setAppearanceDt(Instant.now());
+        ap.setAppearanceTm(Instant.now());
         ap.setAppearanceReasonCd("A");
         ap.setCourtAgencyId("A");
         ap.setCourtRoomCd("A");
@@ -180,7 +186,7 @@ public class SecureEndpointTests {
                 new ResponseEntity<>(resp, HttpStatus.OK);
         //     Set up to mock ords response
         when(restTemplate.exchange(
-                        Mockito.any(String.class),
+                        Mockito.any(URI.class),
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
@@ -190,7 +196,7 @@ public class SecureEndpointTests {
 
         var out = endpointController.getAppearanceCivilSecure(req);
 
-        assert out != null;
+        Assertions.assertNotNull(out);
     }
 
     @Test
@@ -259,9 +265,9 @@ public class SecureEndpointTests {
         doc.setCommentTxt("A");
         doc.setFileSeqNo("A");
         doc.setConcludedYn(YesNoType.Y);
-        doc.setFiledDt("A");
-        doc.setLastAppearanceDt("A");
-        doc.setLastAppearanceTm("A");
+        doc.setFiledDt(Instant.now());
+        doc.setLastAppearanceDt(Instant.now());
+        doc.setLastAppearanceTm(Instant.now());
         doc.setLastAppearanceId("A");
 
         DocumentSupport ds = new DocumentSupport();
@@ -284,7 +290,7 @@ public class SecureEndpointTests {
                 new ResponseEntity<>(resp, HttpStatus.OK);
         //     Set up to mock ords response
         when(restTemplate.exchange(
-                        Mockito.any(String.class),
+                        Mockito.any(URI.class),
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
@@ -294,6 +300,6 @@ public class SecureEndpointTests {
 
         var out = endpointController.getFileDetailCivilSecure(req);
 
-        assert out != null;
+        Assertions.assertNotNull(out);
     }
 }

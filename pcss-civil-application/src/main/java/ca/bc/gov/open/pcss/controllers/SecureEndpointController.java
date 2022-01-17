@@ -3,6 +3,7 @@ package ca.bc.gov.open.pcss.controllers;
 import ca.bc.gov.open.pcss.configuration.SoapConfig;
 import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.models.OrdsErrorLog;
+import ca.bc.gov.open.pcss.models.RequestSuccessLog;
 import ca.bc.gov.open.pcss.models.serializers.InstantSerializer;
 import ca.bc.gov.open.pcss.secure.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,6 +20,9 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import org.springframework.ws.transport.context.TransportContext;
+import org.springframework.ws.transport.context.TransportContextHolder;
+import org.springframework.ws.transport.http.HttpServletConnection;
 
 @Endpoint
 @Slf4j
@@ -43,7 +47,7 @@ public class SecureEndpointController {
     public GetAppearanceCivilApprMethodSecureResponse getAppearanceCivilApprMethodSecureRequest(
             @RequestPayload GetAppearanceCivilApprMethodSecure search)
             throws JsonProcessingException {
-
+        addEndpointHeader("getAppearanceCivilApprMethodSecure");
         var inner =
                 search.getGetAppearanceCivilApprMethodSecureRequest() != null
                                 && search.getGetAppearanceCivilApprMethodSecureRequest()
@@ -63,7 +67,7 @@ public class SecureEndpointController {
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse> resp =
                     restTemplate.exchange(
-                            builder.toUriString(),
+                            builder.build().toUri(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
                             ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse
@@ -73,6 +77,10 @@ public class SecureEndpointController {
             var one = new GetAppearanceCivilApprMethodResponse();
             one.setGetAppearanceCivilApprMethodResponse(resp.getBody());
             out.setGetAppearanceCivilApprMethodResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog(
+                                    "Request Success", "getAppearanceCivilApprMethodSecure")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -90,8 +98,12 @@ public class SecureEndpointController {
     @ResponsePayload
     public GetAppearanceCivilPartySecureResponse getAppearanceCivilPartySecure(
             @RequestPayload GetAppearanceCivilPartySecure search) throws JsonProcessingException {
+        addEndpointHeader("getAppearanceCivilPartySecure");
         var inner =
                 search.getGetAppearanceCivilPartySecureRequest() != null
+                                && search.getGetAppearanceCivilPartySecureRequest()
+                                                .getGetAppearanceCivilPartySecureRequest()
+                                        != null
                         ? search.getGetAppearanceCivilPartySecureRequest()
                                 .getGetAppearanceCivilPartySecureRequest()
                         : new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
@@ -106,7 +118,7 @@ public class SecureEndpointController {
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse> resp =
                     restTemplate.exchange(
-                            builder.toUriString(),
+                            builder.build().toUri(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
                             ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse.class);
@@ -115,6 +127,10 @@ public class SecureEndpointController {
             var one = new GetAppearanceCivilPartyResponse();
             one.setGetAppearanceCivilPartyResponse(resp.getBody());
             out.setGetAppearanceCivilPartyResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog(
+                                    "Request Success", "getAppearanceCivilPartySecure")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -132,6 +148,7 @@ public class SecureEndpointController {
     @ResponsePayload
     public GetAppearanceCivilSecureResponse getAppearanceCivilSecure(
             @RequestPayload GetAppearanceCivilSecure search) throws JsonProcessingException {
+        addEndpointHeader("getAppearanceCivilSecure");
         var inner =
                 search.getGetAppearanceCivilSecureRequest() != null
                                 && search.getGetAppearanceCivilSecureRequest()
@@ -152,7 +169,7 @@ public class SecureEndpointController {
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse> resp =
                     restTemplate.exchange(
-                            builder.toUriString(),
+                            builder.build().toUri(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
                             ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse.class);
@@ -161,6 +178,9 @@ public class SecureEndpointController {
             var one = new GetAppearanceCivilResponse();
             one.setGetAppearanceCivilResponse(resp.getBody());
             out.setGetAppearanceCivilResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "getAppearanceCivilSecure")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -178,7 +198,7 @@ public class SecureEndpointController {
     @ResponsePayload
     public GetFileDetailCivilSecureResponse getFileDetailCivilSecure(
             @RequestPayload GetFileDetailCivilSecure search) throws JsonProcessingException {
-
+        addEndpointHeader("getFileDetailCivilSecure");
         var inner =
                 search.getGetFileDetailCivilSecureRequest() != null
                                 && search.getGetFileDetailCivilSecureRequest()
@@ -194,11 +214,12 @@ public class SecureEndpointController {
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
                         .queryParam("applicationCd", inner.getApplicationCd())
+                        .queryParam("appearanceId", inner.getRequestPartId())
                         .queryParam("physicalFileId", inner.getPhysicalFileId());
         try {
             HttpEntity<ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse> resp =
                     restTemplate.exchange(
-                            builder.toUriString(),
+                            builder.build().toUri(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
                             ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse.class);
@@ -207,6 +228,9 @@ public class SecureEndpointController {
             var one = new GetFileDetailCivilResponse();
             one.setGetFileDetailCivilResponse(resp.getBody());
             out.setGetFileDetailCivilResponse(one);
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "getFileDetailCivilSecure")));
             return out;
         } catch (Exception ex) {
             log.error(
@@ -217,6 +241,16 @@ public class SecureEndpointController {
                                     ex.getMessage(),
                                     inner)));
             throw new ORDSException();
+        }
+    }
+
+    private void addEndpointHeader(String endpoint) {
+        try {
+            TransportContext context = TransportContextHolder.getTransportContext();
+            HttpServletConnection connection = (HttpServletConnection) context.getConnection();
+            connection.addResponseHeader("Endpoint", endpoint);
+        } catch (Exception ex) {
+            log.warn("Failed to add endpoint response header");
         }
     }
 }

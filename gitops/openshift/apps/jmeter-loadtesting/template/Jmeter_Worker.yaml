@@ -1,0 +1,115 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: ${COMPONENT_NAME}
+  description: Deployment template for the ${COMPONENT_NAME}
+
+labels:
+  app.kubernetes.io/name: ${COMPONENT_NAME}
+  app.openshift.io/runtime: ${RUNTIME}
+
+parameters:
+
+- name: COMPONENT_NAME
+  description: The application name that each component is part of
+  required: false
+  value: jmeter-workers
+
+- name: OC_NAMESPACE
+  description: The OpenShift namespace prefix
+  required: false
+  # Below value must be changed as per gold cluster oc nameplate
+  value: 17b24e
+
+- name: RUNTIME
+  description: The application name that each component is part of
+  required: false
+  value: jmeter
+
+objects:
+- kind: DeploymentConfig
+  apiVersion: apps.openshift.io/v1
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-tools
+    labels:
+      app.kubernetes.io/part-of: jmeter
+      jmeter_mode: workers
+  spec:
+    strategy:
+      type: Rolling
+      rollingParams:
+        updatePeriodSeconds: 1
+        intervalSeconds: 1
+        timeoutSeconds: 600
+        maxUnavailable: 25%
+        maxSurge: 25%
+      resources: {}
+      activeDeadlineSeconds: 21600
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - jmeter-worker
+          from:
+            kind: ImageStreamTag
+            namespace: ${OC_NAMESPACE}-tools
+            name: jmeter-worker:5.3
+    replicas: 3
+    revisionHistoryLimit: 10
+    test: false
+    selector:
+      jmeter_mode: workers
+    template:
+      metadata:
+        labels:
+          jmeter_mode: workers
+      spec:
+        containers:
+          - name: jmeter-worker
+          # Below value must be changed as per gold cluster oc imagestream url
+            image: >-
+              image-registry.openshift-image-registry.svc:5000/${OC_NAMESPACE}-tools/jmeter-worker:5.3
+            ports:
+              - containerPort: 1099
+                protocol: TCP
+              - containerPort: 50000
+                protocol: TCP
+            resources: {}
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            imagePullPolicy: IfNotPresent
+        restartPolicy: Always
+        terminationGracePeriodSeconds: 30
+        dnsPolicy: ClusterFirst
+        securityContext: {}
+        schedulerName: default-scheduler
+
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: ${COMPONENT_NAME}-svc
+    namespace: ${OC_NAMESPACE}-tools
+    labels:
+      jmeter_mode: workers
+  spec:
+    ports:
+      - name: first
+        protocol: TCP
+        port: 1099
+        targetPort: 1099
+      - name: second
+        protocol: TCP
+        port: 50000
+        targetPort: 50000
+    selector:
+      jmeter_mode: workers
+    clusterIP: None
+    clusterIPs:
+      - None
+    type: ClusterIP
+    sessionAffinity: None
+
+

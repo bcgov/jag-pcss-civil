@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pcss-code-coverage</artifactId>
+    <properties>
+        <log4j2.version>2.17.1</log4j2.version>
+    </properties>
 
     <dependencies>
 <!--        These are being detected as duplicates but they are all needed for code coverage to be generated correctly -->

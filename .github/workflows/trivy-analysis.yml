@@ -1,0 +1,61 @@
+# This workflow is used to build & scan image using trivy vulnerability scanner and upload the results to github security tab
+
+name: Build & Vulnerability Scan using Trivy Scanner
+
+on:
+  push:
+    branches: [ main, release/*]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ main, release/*]
+
+jobs:
+  build-scan-image:
+    name: Build & Scan Image
+    runs-on: ubuntu-20.04
+    env:
+      BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
+      BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      # Set up JDK build environment
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+        
+      # Runs build steps
+      - name: Maven Package
+        run: mvn -ntp clean package
+        
+      - name: Maven Verify
+        run: mvn -ntp clean verify
+
+      - name: Build an image from Dockerfile
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+        run: |
+          docker build -t jag-pcss-civil:${{ github.sha }} .
+
+      #Run Vulnerability Scan usinig Trivy scanner
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: image
+          image-ref: jag-pcss-civil:${{ github.sha }}
+          format: template
+          template: '@/contrib/sarif.tpl'
+          output: trivy-results.sarif
+          exit-code: 1
+          ignore-unfixed: true
+          severity: HIGH,CRITICAL
+
+      #Upload results to the Github security tab.
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v1
+        if: always()
+        with:
+          sarif_file: trivy-results.sarif

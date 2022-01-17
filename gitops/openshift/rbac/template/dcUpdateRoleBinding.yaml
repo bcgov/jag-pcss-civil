@@ -1,0 +1,42 @@
+# This role binding is created for deployer service account to update the deployment config of the component deployed so that patching actions like labelling can be done.
+# Here, it is used by Github actions deployment to update deployment configs with Git version & latest Sha.
+
+apiVersion: template.openshift.io/v1
+kind: Template
+labels:
+  template: dc-update-role-binding
+metadata:
+  name: dc-update-role-binding
+
+parameters:
+- name: OC_NAMESPACE
+  description: OpenShift nameplate assigned for the application
+  required: true
+
+- name: OC_ENV
+  description: Application environment
+  required: true
+
+- name: SA_NAME
+  description: ServiceAccount name
+  required: true
+
+- name: ROLE
+  description: Role requested for ServiceAccount
+  required: true
+
+objects:
+- kind: RoleBinding
+  apiVersion: rbac.authorization.k8s.io/v1
+  metadata:
+    name: dc-update-binding-deployer-${OC_ENV}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+  subjects:
+    - kind: ServiceAccount
+      name: ${SA_NAME}
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: ${ROLE}
+

@@ -14,9 +14,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
 import java.util.Collections;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -32,7 +34,8 @@ public class SyncControllerTests {
     private SyncController syncController;
 
     @Mock private RestTemplate restTemplate = new RestTemplate();
-    private ObjectMapper objectMapper = new ObjectMapper();
+
+    @Autowired private ObjectMapper objectMapper;
 
     @Test
     public void getSyncCivilAppearanceTest() throws JsonProcessingException {
@@ -40,6 +43,7 @@ public class SyncControllerTests {
 
         var sca = new GetSyncCivilAppearance();
         var one = new GetSyncCivilAppearanceRequest();
+
         var two = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
         two.setProcessUpToDtm(Instant.now());
         two.setRequestAgencyIdentifierId("A");
@@ -54,8 +58,8 @@ public class SyncControllerTests {
         app.setOperationModeCd(OperationModeType.ADD);
         app.setTransactionDtm(Instant.now());
         app.setAppearanceId("A");
-        app.setAppearanceDt("A");
-        app.setAppearanceTm("A");
+        app.setAppearanceDt(Instant.now());
+        app.setAppearanceTm(Instant.now());
         app.setAppearanceReasonCd("A");
         app.setEstimatedDurationHour("A");
         app.setEstimatedDurationMin("A");
@@ -87,7 +91,7 @@ public class SyncControllerTests {
 
         var resp = syncController.getSyncCivilAppearance(sca);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -96,9 +100,9 @@ public class SyncControllerTests {
 
         var chr = new GetSyncCivilHearingRestriction();
         var one = new GetSyncCivilHearingRestrictionRequest();
+
         var two = new ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionRequest();
-        two.setProcessUpToDtm(Instant.now());
-        two.setRequestDtm(Instant.now());
+
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         one.setGetSyncCivilHearingRestrictionRequest(two);
@@ -137,7 +141,7 @@ public class SyncControllerTests {
 
         var resp = syncController.getSyncCivilHearingRestriction(chr);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -182,7 +186,7 @@ public class SyncControllerTests {
 
         var resp = syncController.setSyncCivilHearingRestriction(hrc);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 
     @Test
@@ -233,12 +237,12 @@ public class SyncControllerTests {
         doc.setCivilDocumentId("A");
         doc.setFileSeqNo("A");
         doc.setDocumentTypeCd("A");
-        doc.setFiledDt("A");
+        doc.setFiledDt(Instant.now());
         doc.setCommentTxt("A");
         doc.setConcludedYn(YesNoType.Y);
         doc.setLastAppearanceId("A");
-        doc.setLastAppearanceDt("A");
-        doc.setLastAppearanceTm("A");
+        doc.setLastAppearanceDt(Instant.now());
+        doc.setLastAppearanceTm(Instant.now());
         DocumentSupport sup = new DocumentSupport();
         sup.setActCd("A");
         sup.setActDsc("A");
@@ -272,6 +276,6 @@ public class SyncControllerTests {
 
         var resp = syncController.getFileDetailCivil(fsc);
 
-        assert resp != null;
+        Assertions.assertNotNull(resp);
     }
 }
