@@ -55,7 +55,8 @@ objects:
   metadata:
     name: ${COMPONENT_NAME}
     namespace: ${OC_NAMESPACE}-${OC_ENV}
-      
+    annotations:
+      app.openshift.io/connects-to: 'jag-pcss-civil, jag-pcss-criminal, jag-pcss-common' 
   spec:
     completionDeadlineSeconds: 1200
     replicas: 1
