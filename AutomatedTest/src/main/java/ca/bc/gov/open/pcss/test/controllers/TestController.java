@@ -48,7 +48,8 @@ public class TestController {
             responseHeaders.add("Content-Type", "application/json");
             return new ResponseEntity<String>("{\"status\": \"All tests passed\"}", HttpStatus.OK);
         }
-    } @GetMapping(value = "/criminal")
+    }
+     @GetMapping(value = "/criminal")
     public ResponseEntity runAllCriminalTests() throws IOException {
 
         File f = testService.runAllCriminalTests();
