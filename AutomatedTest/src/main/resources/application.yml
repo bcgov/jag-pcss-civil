@@ -6,4 +6,6 @@ security:
 test:
   password: ${BASIC_AUTH_PASS}
   username: ${BASIC_AUTH_USER}
-  api-host: ${API_HOST}
+  api-host-civil: ${API_HOST_CIVIL}
+  api-host-criminal: ${API_HOST_CRIMINAL}
+  api-host-common: ${API_HOST_COMMON}
