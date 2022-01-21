@@ -49,7 +49,7 @@ public class TestController {
             return new ResponseEntity<String>("{\"status\": \"All tests passed\"}", HttpStatus.OK);
         }
     }
-     @GetMapping(value = "/criminal")
+    @GetMapping(value = "/criminal")
     public ResponseEntity runAllCriminalTests() throws IOException {
 
         File f = testService.runAllCriminalTests();
