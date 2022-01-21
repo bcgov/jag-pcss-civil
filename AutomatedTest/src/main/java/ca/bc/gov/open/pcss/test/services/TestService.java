@@ -1,8 +1,10 @@
 package ca.bc.gov.open.pcss.test.services;
 
 import com.eviware.soapui.tools.SoapUITestCaseRunner;
+
 import java.io.*;
 import java.util.Scanner;
+
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipOutputStream;
@@ -17,10 +19,17 @@ public class TestService {
     @Value("${test.password}")
     private String password;
 
-    @Value("${test.api-host}")
-    private String apiHost;
+    @Value("${test.api-host-civil}")
+    private String apiHostCivil;
 
-    public TestService() {}
+    @Value("${test.api-host-criminal}")
+    private String apiHostCriminal;
+
+    @Value("${test.api-host-common}")
+    private String apiHostCommon;
+
+    public TestService() {
+    }
 
     public void setAuthentication(String filename) throws IOException {
         InputStream template = getClass().getResourceAsStream("/" + filename);
@@ -41,7 +50,16 @@ public class TestService {
                 line = line.replaceAll("\\{AUTHENTICATION_PASSWORD}", password);
             }
             if (line.contains("{API_HOST}")) {
-                line = line.replaceAll("\\{API_HOST}", apiHost);
+
+                if(filename.contains("Civil")){
+                    line = line.replaceAll("\\{API_HOST}", apiHostCivil);
+                }
+                if(filename.contains("Criminal")){
+                    line = line.replaceAll("\\{API_HOST}", apiHostCriminal);
+                }
+                if(filename.contains("Common")){
+                    line = line.replaceAll("\\{API_HOST}", apiHostCommon);
+                }
             }
             writer.append(line + "\n");
         }
@@ -54,7 +72,7 @@ public class TestService {
         File dir = new File(".");
         FileFilter fileFilter = new WildcardFileFilter("*PCSS*-FAILED.txt");
         File[] files = dir.listFiles(fileFilter);
-        if(files == null || files.length == 0){
+        if (files == null || files.length == 0) {
             return null;
         }
         FileOutputStream fos = new FileOutputStream("TestErrors.zip");
@@ -79,7 +97,7 @@ public class TestService {
         return fOut;
     }
 
-    public File runAllTests() throws IOException {
+    public File runAllCivilTests() throws IOException {
         SoapUITestCaseRunner runner = new SoapUITestCaseRunner();
         runner.setProjectFile("JusticePCSSsecure-soapui-project.xml");
         try {
@@ -88,10 +106,27 @@ public class TestService {
         } catch (Exception ignored) {
 
 
-        }try {
+        }
+        try {
             runner.setProjectFile("PCSSCivil-soapui-project.xml");
             runner.run();
-        }catch (Exception Ignore){
+        } catch (Exception Ignore) {
+        }
+        return zipAndReturnErrors();
+    }
+
+    public File runAllCriminalTests() throws IOException {
+        SoapUITestCaseRunner runner = new SoapUITestCaseRunner();
+        try {
+            runner.setProjectFile("PCSS-CRIMINAL-soapui-project.xml");
+            runner.run();
+        } catch (Exception Ignore) {
+
+        }
+        try {
+            runner.setProjectFile("pcssCriminalSecure-soapui-project.xml");
+            runner.run();
+        } catch (Exception Ignore) {
 
         }
         return zipAndReturnErrors();
