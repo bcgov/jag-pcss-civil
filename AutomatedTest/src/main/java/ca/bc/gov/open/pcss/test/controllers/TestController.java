@@ -25,8 +25,8 @@ public class TestController {
         this.testService = testService;
         this.testService.setAuthentication("JusticePCSSCivilSecure-soapui-project-template.xml");
         this.testService.setAuthentication("PCSSCivil-soapui-project-template.xml");
-        this.testService.setAuthentication("PCSS-CRIMINAL-soapui-project.xml");
-        this.testService.setAuthentication("pcssCriminalSecure-soapui-project.xml");
+        this.testService.setAuthentication("PCSS-Criminal-soapui-project-template.xml");
+        this.testService.setAuthentication("pcssCriminalSecure-soapui-project-template.xml");
     }
 
     @GetMapping(value = "/civil")
