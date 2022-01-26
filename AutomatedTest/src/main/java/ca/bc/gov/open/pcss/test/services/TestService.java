@@ -134,13 +134,13 @@ public class TestService {
     public File runAllCommonTests() throws IOException {
         SoapUITestCaseRunner runner = new SoapUITestCaseRunner();
         try {
-            runner.setProjectFile("PCSSCommon-soapui-project-template.xml");
+            runner.setProjectFile("PCSSCommon-soapui-project.xml");
             runner.run();
         } catch (Exception Ignore) {
 
         }
         try {
-            runner.setProjectFile("PCSSCommonSecure-soapui-project-template.xml");
+            runner.setProjectFile("PCSSCommonSecure-soapui-project.xml");
             runner.run();
         } catch (Exception Ignore) {
 
