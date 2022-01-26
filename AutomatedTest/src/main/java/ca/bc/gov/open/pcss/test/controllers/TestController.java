@@ -27,6 +27,8 @@ public class TestController {
         this.testService.setAuthentication("PCSSCivil-soapui-project-template.xml");
         this.testService.setAuthentication("PCSS-Criminal-soapui-project-template.xml");
         this.testService.setAuthentication("pcssCriminalSecure-soapui-project-template.xml");
+        this.testService.setAuthentication("PCSSCommon-soapui-project-template.xml");
+        this.testService.setAuthentication("PCSSCommonSecure-soapui-project-template.xml");
     }
 
     @GetMapping(value = "/civil")
@@ -53,6 +55,27 @@ public class TestController {
     public ResponseEntity runAllCriminalTests() throws IOException {
 
         File f = testService.runAllCriminalTests();
+        if (f != null && f.exists()) {
+            InputStream inputStream = new FileInputStream(f.getAbsolutePath());
+            //      This is not great streaming would be better but small files should be ok
+            byte[] out = org.apache.commons.io.IOUtils.toByteArray(inputStream);
+
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.add("content-disposition", "attachment; filename=" + f.getName());
+            responseHeaders.add("Content-Type", "application/zip");
+            f.delete();
+            return new ResponseEntity<byte[]>(out, responseHeaders, HttpStatus.OK);
+        } else {
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.add("Content-Type", "application/json");
+            return new ResponseEntity<String>("{\"status\": \"All tests passed\"}", HttpStatus.OK);
+        }
+    }
+
+    @GetMapping(value = "/common")
+    public ResponseEntity runAllCommonTests() throws IOException {
+
+        File f = testService.runAllCommonTests();
         if (f != null && f.exists()) {
             InputStream inputStream = new FileInputStream(f.getAbsolutePath());
             //      This is not great streaming would be better but small files should be ok

@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="af9bba39-c31d-4d2b-9f1a-3fd19ba43f8b" activeEnvironment="Default" name="PCSSCommonSecure" resourceRoot="${projectDir}" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="aec7150b-5507-46e7-b4af-fa72d6e7d492" wsaVersion="NONE" name="JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder" type="wsdl" bindingName="{http://courts.gov.bc.ca/xml/ns/pcss/common/v1}JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder" soapVersion="1_2" anonymous="optional" definition="file:/C:/workspace2/jag-pcss-common/pcss-common-application/src/main/resources/xsdSchemas/pcss-common-secure.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\workspace2\jag-pcss-common\pcss-common-application\src\main\resources\xsdSchemas\pcss-common-secure.wsdl"><con:part><con:url>file:\C:\workspace2\jag-pcss-common\pcss-common-application\src\main\resources\xsdSchemas\pcss-common-secure.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="pcssCommonSecure" targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:tns="http://reeks.bcgov/JusticePCSSCommon.wsProvider:pcssCommonSecure" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:HDR1="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:HDR2="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+      <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"/>
+      <xsd:element name="getFileSearchRequest" type="pcss:getFileSearchRequest"/>
+      <xsd:element name="getFileSearchResponse" type="pcss:getFileSearchResponse"/>
+      <xsd:element name="getGetCodeValueSecureRequest" type="pcss:getGetCodeValueSecureRequest"/>
+      <xsd:element name="getCodeValuesResponse" type="pcss:getCodeValuesResponse"/>
+      <xsd:element name="getCourtCalendarDetailByDaySecureRequest" type="pcss:getCourtCalendarDetailByDaySecureRequest"/>
+      <xsd:element name="getCourtCalendarDetailByDayResponse" type="pcss:getCourtCalendarDetailByDayResponse"/>
+      <xsd:complexType name="getFileSearchRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="SearchMode" type="dx:SearchModeType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FileDivisionCd" type="dx:CourtDivisionType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FileHomeAgencyId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FileNumberTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="FilePrefixTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="FileSuffixNo" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="MdocRefTypeCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtClassCd" type="dx:CourtClassType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
+          <xsd:element form="qualified" minOccurs="0" name="NameSearchTypeCd" type="dx:NameSearchType"/>
+          <xsd:element form="qualified" minOccurs="0" name="LastNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OrgNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="GivenNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="BirthDt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" name="Permission" type="pcss:Permission"/>
+          <xsd:element form="qualified" minOccurs="0" name="SearchByCrown" type="pcss:SearchByCrown"/>
+          <xsd:element form="qualified" minOccurs="0" name="MdocJustinNoSet" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhysicalFileIdSet" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ApplicationCd" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Permission">
+        <xsd:sequence>
+          <xsd:element form="qualified" minOccurs="0" name="CourtClassCd" type="dx:CourtClassType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SearchByCrown">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="CrownPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="ActiveOnlyYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" name="FileDesignationCd" type="dx:FileComplexityType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileSearchResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="RecCount" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="FileDetail" type="pcss:FileDetail"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FileDetail">
+        <xsd:sequence>
+          <xsd:element form="qualified" minOccurs="0" name="MdocJustinNo" type="dx:JustinNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="FileHomeAgencyId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="FileNumberTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="MdocSeqNo" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="TicketSeriesTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="MdocRefTypeCd" type="xsd:string"/>
+          <xsd:element form="qualified" name="CourtLevelCd" type="dx:CourtLevelType"/>
+          <xsd:element form="qualified" name="CourtClassCd" type="dx:CourtClassType"/>
+          <xsd:element form="qualified" minOccurs="0" name="WarrantYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="InCustodyYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="NextApprDt" type="dx:DateType"/>
+          <xsd:element form="qualified" name="PcssCourtDivisionCd" type="dx:PcssCourtDivisionType"/>
+          <xsd:element form="qualified" minOccurs="0" name="SealStatusCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ApprovalCrownAgencyTypeCd" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Participant" type="pcss:Participant"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Participant">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="FullNm" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Charge" type="pcss:Charge"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Charge">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="SectionTxt" type="xsd:string"/>
+          <xsd:element form="qualified" name="SectionDscTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getGetCodeValueSecureRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="ApplicationCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="lastRetrievedDate" type="dx:DateType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCodeValuesResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" name="CeisCodeValues" type="pcss:CeisCodeValues"/>
+          <xsd:element form="qualified" name="JustinCodeValues" type="pcss:JustinCodeValues"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CeisCodeValues">
+        <xsd:sequence>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="CodeValue" type="pcss:CodeValue"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CodeValue">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="codeType" type="xsd:string"/>
+          <xsd:element form="qualified" name="code" type="xsd:string"/>
+          <xsd:element form="qualified" name="shortDesc" type="xsd:string"/>
+          <xsd:element form="qualified" name="longDesc" type="xsd:string"/>
+          <xsd:element form="qualified" name="flex" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="JustinCodeValues">
+        <xsd:sequence>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="CodeValue" type="pcss:CodeValue2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CodeValue2">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="codeType" type="xsd:string"/>
+          <xsd:element form="qualified" name="code" type="xsd:string"/>
+          <xsd:element form="qualified" name="shortDesc" type="xsd:string"/>
+          <xsd:element form="qualified" name="longDesc" type="xsd:string"/>
+          <xsd:element form="qualified" name="flex" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCourtCalendarDetailByDaySecureRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="ApplicationCd" type="xsd:string"/>
+          <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="AppearanceDt" type="dx:DateType"/>
+          <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCourtCalendarDetailByDayResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Appearance" type="pcss:Appearance"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Appearance">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="CourtDivisionCd" type="dx:CourtDivisionType"/>
+          <xsd:element form="qualified" name="CourtClassCd" type="dx:CourtClassType"/>
+          <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+          <xsd:element form="qualified" name="AppearanceDt" type="dx:DateType"/>
+          <xsd:element form="qualified" name="AppearanceTm" type="dx:TimeType"/>
+          <xsd:element form="qualified" name="AppearanceReasonCd" type="dx:AppearanceReasonCriminalType"/>
+          <xsd:element form="qualified" minOccurs="0" name="DurationHour" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="DurationMin" type="xsd:string"/>
+          <xsd:element form="qualified" name="CourtFileNumber" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="StyleOfCause" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="AdjudicatorInitials" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="AdjudicatorNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="HearingRestrictionCd" type="dx:HearingRestrictionType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CaseAgeDays" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="VideoYn" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="InCustodyYn" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="ApprId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AccusedNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="AccusedCounselNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="ProfPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="ProfSeqNo" type="dx:SystemSeqNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceStatusCd" type="dx:AppearanceStatusType"/>
+          <xsd:element form="qualified" minOccurs="0" name="RemoteVideoYn" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="HomeLocationAgenId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtlistRefNumber" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="MdocJustinNo" type="dx:JustinNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
+          <xsd:element form="qualified" minOccurs="0" name="NoteTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Party">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="PartyNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CounselNm" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:tns="http://courts.gov.bc.ca/xml/ns/pcss/common/v1">
+      <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"/>
+      <xsd:element name="getFileSearchSecure" type="tns:getFileSearchSecure"/>
+      <xsd:element name="getFileSearchSecureResponse" type="tns:getFileSearchSecureResponse"/>
+      <xsd:element name="getCodeValuesSecure" type="tns:getCodeValuesSecure"/>
+      <xsd:element name="getCodeValuesSecureResponse" type="tns:getCodeValuesSecureResponse"/>
+      <xsd:element name="getCourtCalendarDetailByDaySecure" type="tns:getCourtCalendarDetailByDaySecure"/>
+      <xsd:element name="getCourtCalendarDetailByDaySecureResponse" type="tns:getCourtCalendarDetailByDaySecureResponse"/>
+      <xsd:complexType name="getFileSearchSecure">
+        <xsd:sequence>
+          <xsd:element name="getFileSearchSecureRequest" nillable="true" type="tns:getFileSearchRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileSearchRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getFileSearchRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileSearchSecureResponse">
+        <xsd:sequence>
+          <xsd:element name="getFileSearchResponse" nillable="true" type="tns:getFileSearchResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileSearchResponse">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getFileSearchResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCodeValuesSecure">
+        <xsd:sequence>
+          <xsd:element name="getCodeValuesSecureRequest" nillable="true" type="tns:getCodeValuesSecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCodeValuesSecureRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getGetCodeValueSecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCodeValuesSecureResponse">
+        <xsd:sequence>
+          <xsd:element name="getCodeValuesResponse" nillable="true" type="tns:getCodeValuesResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCodeValuesResponse">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getCodeValuesResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCourtCalendarDetailByDaySecure">
+        <xsd:sequence>
+          <xsd:element name="getCourtCalendarDetailByDaySecureRequest" nillable="true" type="tns:getCourtCalendarDetailByDaySecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCourtCalendarDetailByDaySecureRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getCourtCalendarDetailByDaySecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCourtCalendarDetailByDaySecureResponse">
+        <xsd:sequence>
+          <xsd:element name="getCourtCalendarDetailByDayResponse" nillable="true" type="tns:getCourtCalendarDetailByDayResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getCourtCalendarDetailByDayResponse">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getCourtCalendarDetailByDayResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0">
+      <xsd:simpleType name="AgencyIdentifierType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="16"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SystemIdType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="16"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DateTimeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:length value="21"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SearchModeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="FILENO"/>
+          <xsd:enumeration value="PARTNAME"/>
+          <xsd:enumeration value="CROWN"/>
+          <xsd:enumeration value="JUSTINNO"/>
+          <xsd:enumeration value="PHYSID"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtDivisionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="R"/>
+          <xsd:enumeration value="I"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtClassType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="A"/>
+          <xsd:enumeration value="Y"/>
+          <xsd:enumeration value="T"/>
+          <xsd:enumeration value="F"/>
+          <xsd:enumeration value="C"/>
+          <xsd:enumeration value="M"/>
+          <xsd:enumeration value="L"/>
+          <xsd:enumeration value="R"/>
+          <xsd:enumeration value="B"/>
+          <xsd:enumeration value="D"/>
+          <xsd:enumeration value="E"/>
+          <xsd:enumeration value="G"/>
+          <xsd:enumeration value="H"/>
+          <xsd:enumeration value="N"/>
+          <xsd:enumeration value="O"/>
+          <xsd:enumeration value="P"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="V"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtLevelType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="P"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="A"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="NameSearchType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="E"/>
+          <xsd:enumeration value="P"/>
+          <xsd:enumeration value="S"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="YesNoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="Y"/>
+          <xsd:enumeration value="N"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="FileComplexityType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="SPC"/>
+          <xsd:enumeration value="GA"/>
+          <xsd:enumeration value="SA"/>
+          <xsd:enumeration value="ALL"/>
+          <xsd:enumeration value="SG"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="JustinNoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="12"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DateType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:length value="21"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PcssCourtDivisionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="I"/>
+          <xsd:enumeration value="R"/>
+          <xsd:enumeration value="F"/>
+          <xsd:enumeration value=" "/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtRoomCdType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="6"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="TimeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:length value="21"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AppearanceReasonCriminalType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HearingRestrictionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="D"/>
+          <xsd:enumeration value="A"/>
+          <xsd:enumeration value="G"/>
+          <xsd:enumeration value="XXX"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SystemSeqNoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="10"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AppearanceStatusType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="SCHD"/>
+          <xsd:enumeration value="CNCL"/>
+          <xsd:enumeration value="UNCF"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="pcssCommonSecure_PortType_getCodeValuesSecureResponse">
+    <wsdl:part name="parameters" element="tns1:getCodeValuesSecureResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommonSecure_PortType_getCodeValuesSecure">
+    <wsdl:part name="parameters" element="tns1:getCodeValuesSecure"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommonSecure_PortType_getCourtCalendarDetailByDaySecureResponse">
+    <wsdl:part name="parameters" element="tns1:getCourtCalendarDetailByDaySecureResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommonSecure_PortType_getFileSearchSecureResponse">
+    <wsdl:part name="parameters" element="tns1:getFileSearchSecureResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommonSecure_PortType_getCourtCalendarDetailByDaySecure">
+    <wsdl:part name="parameters" element="tns1:getCourtCalendarDetailByDaySecure"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCommonSecure_PortType_getFileSearchSecure">
+    <wsdl:part name="parameters" element="tns1:getFileSearchSecure"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="pcssCommonSecure_PortType">
+    <wsdl:operation name="getFileSearchSecure">
+      <wsdl:input message="tns1:pcssCommonSecure_PortType_getFileSearchSecure"></wsdl:input>
+      <wsdl:output message="tns1:pcssCommonSecure_PortType_getFileSearchSecureResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourtCalendarDetailByDaySecure">
+      <wsdl:input message="tns1:pcssCommonSecure_PortType_getCourtCalendarDetailByDaySecure"></wsdl:input>
+      <wsdl:output message="tns1:pcssCommonSecure_PortType_getCourtCalendarDetailByDaySecureResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCodeValuesSecure">
+      <wsdl:input message="tns1:pcssCommonSecure_PortType_getCodeValuesSecure"></wsdl:input>
+      <wsdl:output message="tns1:pcssCommonSecure_PortType_getCodeValuesSecureResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder" type="tns1:pcssCommonSecure_PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getFileSearchSecure">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder_getFileSearchSecure" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourtCalendarDetailByDaySecure">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder_getCourtCalendarDetailByDaySecure" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCodeValuesSecure">
+      <soap12:operation soapAction="JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder_getCodeValuesSecure" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JusticePCSSCommon.wsProvider.pcssCommonSecure">
+    <wsdl:port name="JusticePCSSCommon_wsProvider_pcssCommonSecure_Port" binding="tns1:JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder">
+      <soap12:address location="{API_HOST}"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>{API_HOST}</con:endpoint></con:endpoints><con:operation id="79ac1b2e-9bb0-424a-9af6-ae78cb00cc87" isOneWay="false" action="JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder_getCodeValuesSecure" name="getCodeValuesSecure" bindingOperationName="getCodeValuesSecure" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9769807f-00ce-4cf8-9857-183b553e81c9" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getCodeValuesSecure>\r
+         <getCodeValuesSecureRequest>\r
+            <ns:getGetCodeValueSecureRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:ApplicationCd>?</ns:ApplicationCd>\r
+               <!--Optional:-->\r
+               <ns:lastRetrievedDate>?</ns:lastRetrievedDate>\r
+            </ns:getGetCodeValueSecureRequest>\r
+         </getCodeValuesSecureRequest>\r
+      </v1:getCodeValuesSecure>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/common/v1/pcssCommonSecure_PortType/getCodeValuesSecureRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="592f6038-e2f5-4332-bcc6-ed48cb89bc36" isOneWay="false" action="JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder_getCourtCalendarDetailByDaySecure" name="getCourtCalendarDetailByDaySecure" bindingOperationName="getCourtCalendarDetailByDaySecure" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0997260f-e8fc-48e1-86fe-cbba7243dfea" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getCourtCalendarDetailByDaySecure>\r
+         <getCourtCalendarDetailByDaySecureRequest>\r
+            <ns:getCourtCalendarDetailByDaySecureRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:ApplicationCd>?</ns:ApplicationCd>\r
+               <ns:CourtAgencyId>?</ns:CourtAgencyId>\r
+               <ns:AppearanceDt>?</ns:AppearanceDt>\r
+               <ns:CourtRoomCd>?</ns:CourtRoomCd>\r
+            </ns:getCourtCalendarDetailByDaySecureRequest>\r
+         </getCourtCalendarDetailByDaySecureRequest>\r
+      </v1:getCourtCalendarDetailByDaySecure>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/common/v1/pcssCommonSecure_PortType/getCourtCalendarDetailByDaySecureRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="571866aa-995f-4fc1-a869-2b6329db40bf" isOneWay="false" action="JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder_getFileSearchSecure" name="getFileSearchSecure" bindingOperationName="getFileSearchSecure" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3ea92a2d-c55a-4db3-8af3-d08b768ff1e5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getFileSearchSecure>\r
+         <getFileSearchSecureRequest>\r
+            <ns:getFileSearchRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:SearchMode>?</ns:SearchMode>\r
+               <!--Optional:-->\r
+               <ns:FileDivisionCd>?</ns:FileDivisionCd>\r
+               <!--Optional:-->\r
+               <ns:FileHomeAgencyId>?</ns:FileHomeAgencyId>\r
+               <!--Optional:-->\r
+               <ns:FileNumberTxt>?</ns:FileNumberTxt>\r
+               <!--Optional:-->\r
+               <ns:FilePrefixTxt>?</ns:FilePrefixTxt>\r
+               <!--Optional:-->\r
+               <ns:FileSuffixNo>?</ns:FileSuffixNo>\r
+               <!--Optional:-->\r
+               <ns:MdocRefTypeCd>?</ns:MdocRefTypeCd>\r
+               <!--Optional:-->\r
+               <ns:CourtClassCd>?</ns:CourtClassCd>\r
+               <!--Optional:-->\r
+               <ns:CourtLevelCd>?</ns:CourtLevelCd>\r
+               <!--Optional:-->\r
+               <ns:NameSearchTypeCd>?</ns:NameSearchTypeCd>\r
+               <!--Optional:-->\r
+               <ns:LastNm>?</ns:LastNm>\r
+               <!--Optional:-->\r
+               <ns:OrgNm>?</ns:OrgNm>\r
+               <!--Optional:-->\r
+               <ns:GivenNm>?</ns:GivenNm>\r
+               <!--Optional:-->\r
+               <ns:BirthDt>?</ns:BirthDt>\r
+               <!--1 or more repetitions:-->\r
+               <ns:Permission>\r
+                  <!--Optional:-->\r
+                  <ns:CourtClassCd>?</ns:CourtClassCd>\r
+               </ns:Permission>\r
+               <!--Optional:-->\r
+               <ns:SearchByCrown>\r
+                  <ns:CrownPartId>?</ns:CrownPartId>\r
+                  <ns:ActiveOnlyYN>?</ns:ActiveOnlyYN>\r
+                  <ns:FileDesignationCd>?</ns:FileDesignationCd>\r
+               </ns:SearchByCrown>\r
+               <!--Optional:-->\r
+               <ns:MdocJustinNoSet>?</ns:MdocJustinNoSet>\r
+               <!--Optional:-->\r
+               <ns:PhysicalFileIdSet>?</ns:PhysicalFileIdSet>\r
+               <!--Optional:-->\r
+               <ns:ApplicationCd>?</ns:ApplicationCd>\r
+            </ns:getFileSearchRequest>\r
+         </getFileSearchSecureRequest>\r
+      </v1:getFileSearchSecure>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/common/v1/pcssCommonSecure_PortType/getFileSearchSecureRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="fd0d7a71-9090-4768-a9d6-fabc27ede4d3" name="PCSSCommonSecureTestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="11cb452b-c490-4f05-b381-1719c6dea2b1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="AutomatedTests" searchProperties="true"><con:settings/><con:testStep type="groovy" name="getCodeValuesSecure" id="8987e785-1490-4387-8830-3ec92d16269f"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetCodeValuesSecure = testRunner.testCase.testSuite.testCases["GetCodeValuesSecure"].testSteps["getCodeValuesSecure"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetCodeValuesSecure"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetCodeValuesSecure"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetCodeValuesSecure"].getPropertyValue("RequestDtm")
+ def ApplicationCd=testRunner.testCase.testSuite.testCases["GetCodeValuesSecure"].getPropertyValue("ApplicationCd")
+ def lastRetrievedDate=testRunner.testCase.testSuite.testCases["GetCodeValuesSecure"].getPropertyValue("lastRetrievedDate")
+ 
+ def xmlAdd= new XmlHolder(GetCodeValuesSecure)
+ xmlAdd.setNodeValue("//v1:getCodeValuesSecure/getCodeValuesSecureRequest/ns:getGetCodeValueSecureRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getCodeValuesSecure/getCodeValuesSecureRequest/ns:getGetCodeValueSecureRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getCodeValuesSecure/getCodeValuesSecureRequest/ns:getGetCodeValueSecureRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getCodeValuesSecure/getCodeValuesSecureRequest/ns:getGetCodeValueSecureRequest/ns:ApplicationCd",ApplicationCd)
+ xmlAdd.setNodeValue("//v1:getCodeValuesSecure/getCodeValuesSecureRequest/ns:getGetCodeValueSecureRequest/ns:lastRetrievedDate",lastRetrievedDate)
+ 
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetCodeValuesSecure"].testSteps["getCodeValuesSecure"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetCodeValuesSecure"].testSteps["getCodeValuesSecure"]
+ def contextGetCodeValuesSecure = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetCodeValuesSecure)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetCodeValuesSecure"].testSteps["getCodeValuesSecure"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= Response.getNodeValue("//ns4:codeType")
+def GetResponse2= Response.getNodeValue("//ns4:code")
+def GetResponse3= Response.getNodeValue("//ns4:shortDesc")
+def GetResponse4= Response.getNodeValue("//ns4:longDesc")
+def GetResponse5= Response.getNodeValue("//ns4:flex")
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+log.info GetResponse4
+log.info GetResponse5
+
+assert GetResponse=="0"
+assert GetResponse1=="ADJUDICATOR"
+assert GetResponse2=="12879.0026"
+assert GetResponse3=="Butler Mon Ami, R"
+assert GetResponse4=="988888"
+assert GetResponse5=="ADJU"
+</script></con:config></con:testStep><con:testStep type="groovy" name="getCourtCalendarDetailByDaySecure" id="6e5e3aa5-21ad-4d0d-a8d7-a6b79631a039"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetCourtCalendarDetailByDaySecure = testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].testSteps["getCourtCalendarDetailByDaySecure"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].getPropertyValue("RequestDtm")
+ def ApplicationCd=testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].getPropertyValue("ApplicationCd")
+ def CourtAgencyId=testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].getPropertyValue("CourtAgencyId")
+ def AppearanceDt=testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].getPropertyValue("AppearanceDt")
+ def CourtRoomCd=testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].getPropertyValue("CourtRoomCd")
+ 
+ def xmlAdd= new XmlHolder(GetCourtCalendarDetailByDaySecure)
+ xmlAdd.setNodeValue("//v1:getCourtCalendarDetailByDaySecure/getCourtCalendarDetailByDaySecureRequest/ns:getCourtCalendarDetailByDaySecureRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getCourtCalendarDetailByDaySecure/getCourtCalendarDetailByDaySecureRequest/ns:getCourtCalendarDetailByDaySecureRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getCourtCalendarDetailByDaySecure/getCourtCalendarDetailByDaySecureRequest/ns:getCourtCalendarDetailByDaySecureRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getCourtCalendarDetailByDaySecure/getCourtCalendarDetailByDaySecureRequest/ns:getCourtCalendarDetailByDaySecureRequest/ns:ApplicationCd",ApplicationCd)
+ xmlAdd.setNodeValue("//v1:getCourtCalendarDetailByDaySecure/getCourtCalendarDetailByDaySecureRequest/ns:getCourtCalendarDetailByDaySecureRequest/ns:CourtAgencyId",CourtAgencyId)
+ xmlAdd.setNodeValue("//v1:getCourtCalendarDetailByDaySecure/getCourtCalendarDetailByDaySecureRequest/ns:getCourtCalendarDetailByDaySecureRequest/ns:AppearanceDt",AppearanceDt)
+ xmlAdd.setNodeValue("//v1:getCourtCalendarDetailByDaySecure/getCourtCalendarDetailByDaySecureRequest/ns:getCourtCalendarDetailByDaySecureRequest/ns:CourtRoomCd",CourtRoomCd)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].testSteps["getCourtCalendarDetailByDaySecure"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].testSteps["getCourtCalendarDetailByDaySecure"]
+ def contextGetCourtCalendarDetailByDaySecure = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetCourtCalendarDetailByDaySecure)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetCourtCalendarDetailByDaySecure"].testSteps["getCourtCalendarDetailByDaySecure"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= Response.getNodeValue("//ns4:CourtDivisionCd")
+def GetResponse2= Response.getNodeValue("//ns4:CourtClassCd")
+def GetResponse3= Response.getNodeValue("//ns4:CourtRoomCd")
+def GetResponse4= Response.getNodeValue("//ns4:AppearanceDt")
+def GetResponse5= Response.getNodeValue("//ns4:AppearanceTm")
+def GetResponse6= Response.getNodeValue("//ns4:AppearanceReasonCd")
+def GetResponse7= Response.getNodeValue("//ns4:DurationHour")
+def GetResponse8= Response.getNodeValue("//ns4:DurationMin")
+def GetResponse9= Response.getNodeValue("//ns4:CourtFileNumber")
+def GetResponse10= Response.getNodeValue("//ns4:StyleOfCause")
+def GetResponse11= Response.getNodeValue("//ns4:VideoYn")
+def GetResponse12= Response.getNodeValue("//ns4:AppearanceId")
+def GetResponse13= Response.getNodeValue("//ns4:AppearanceStatusCd")
+def GetResponse14= Response.getNodeValue("//ns4:RemoteVideoYn")
+def GetResponse15= Response.getNodeValue("//ns4:HomeLocationAgenId")
+def GetResponse16= Response.getNodeValue("//ns4:CourtlistRefNumber")
+def GetResponse17= Response.getNodeValue("//ns4:PhysicalFileId")
+def GetResponse18= Response.getNodeValue("//ns4:CourtLevelCd")
+def GetResponse19= Response.getNodeValue("//ns4:PartyId")
+def GetResponse20= Response.getNodeValue("//ns4:PartyNm")
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+log.info GetResponse4
+log.info GetResponse5
+log.info GetResponse6
+log.info GetResponse7
+log.info GetResponse8
+
+log.info GetResponse10
+log.info GetResponse11
+log.info GetResponse12
+log.info GetResponse13
+log.info GetResponse14
+log.info GetResponse15
+log.info GetResponse16
+log.info GetResponse17
+log.info GetResponse18
+log.info GetResponse19
+log.info GetResponse20
+
+
+assert GetResponse=="0"
+assert GetResponse1=="I"
+assert GetResponse2=="S"
+assert GetResponse3=="001"
+assert GetResponse4=="2011-12-15 00:00:00.0"
+assert GetResponse5=="2011-12-15 10:00:00.0"
+assert GetResponse6=="FA"
+assert GetResponse7=="0"
+assert GetResponse8=="0"
+assert GetResponse9=="11172011"
+assert GetResponse10=="ROBERTS, Bob / JAMES, Jim"
+assert GetResponse11=="N"
+assert GetResponse12=="2766"
+assert GetResponse13=="CNCL"
+
+assert GetResponse15=="83.0001"
+assert GetResponse16=="1"
+assert GetResponse17=="3414"
+assert GetResponse18=="S"
+assert GetResponse19=="2934"
+assert GetResponse20=="JAMES, Jim"
+</script></con:config></con:testStep><con:testStep type="groovy" name="getFileSearchSecure" id="602f16a3-d62d-410d-951d-d96f983092af"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetFileSearchSecure = testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].testSteps["getFileSearchSecure"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("RequestDtm")
+ def SearchMode=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("SearchMode")
+ def FileDivisionCd=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("FileDivisionCd")
+ def FileHomeAgencyId=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("FileHomeAgencyId")
+ def CourtClassCd=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("CourtClassCd")
+ def CrownPartId=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("CrownPartId")
+ def ActiveOnlyYN=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("ActiveOnlyYN")
+ def FileDesignationCd=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("FileDesignationCd")
+ def ApplicationCd=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].getPropertyValue("ApplicationCd")
+
+ 
+ def xmlAdd= new XmlHolder(GetFileSearchSecure)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:SearchMode",SearchMode)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:FileDivisionCd",FileDivisionCd)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:FileHomeAgencyId",FileHomeAgencyId)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:Permission/ns:CourtClassCd",CourtClassCd)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:SearchByCrown/ns:CrownPartId",CrownPartId)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:SearchByCrown/ns:ActiveOnlyYN",ActiveOnlyYN)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:SearchByCrown/ns:FileDesignationCd",FileDesignationCd)
+ xmlAdd.setNodeValue("//v1:getFileSearchSecure/getFileSearchSecureRequest/ns:getFileSearchRequest/ns:ApplicationCd",ApplicationCd)
+
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].testSteps["getFileSearchSecure"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].testSteps["getFileSearchSecure"]
+ def contextGetFileSearchSecure = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetFileSearchSecure)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetFileSearchSecure"].testSteps["getFileSearchSecure"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= Response.getNodeValue("//ns4:RecCount")
+def GetResponse2= Response.getNodeValue("//ns4:MdocJustinNo")
+def GetResponse3= Response.getNodeValue("//ns4:PhysicalFileId")
+def GetResponse4= Response.getNodeValue("//ns4:FileHomeAgencyId")
+def GetResponse5= Response.getNodeValue("//ns4:FileNumberTxt")
+def GetResponse6= Response.getNodeValue("//ns4:MdocSeqNo")
+def GetResponse7= Response.getNodeValue("//ns4:CourtLevelCd")
+def GetResponse8= Response.getNodeValue("//ns4:CourtClassCd")
+def GetResponse9= Response.getNodeValue("//ns4:WarrantYN")
+def GetResponse10= Response.getNodeValue("//ns4:InCustodyYN")
+def GetResponse11= Response.getNodeValue("//ns4:NextApprDt")
+def GetResponse12= Response.getNodeValue("//ns4:PcssCourtDivisionCd")
+def GetResponse13= Response.getNodeValue("//ns4:ApprovalCrownAgencyTypeCd")
+
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+log.info GetResponse4
+log.info GetResponse5
+log.info GetResponse6
+log.info GetResponse7
+log.info GetResponse8
+log.info GetResponse9
+log.info GetResponse10
+log.info GetResponse11
+log.info GetResponse12
+log.info GetResponse13
+
+assert GetResponse=="0"
+assert GetResponse1=="5"
+assert GetResponse2=="36672"
+assert GetResponse3=="5355.0045"
+assert GetResponse4=="83.0001"
+assert GetResponse5=="848"
+assert GetResponse6=="1"
+assert GetResponse7=="P"
+assert GetResponse8=="A"
+assert GetResponse9=="N"
+assert GetResponse10=="N"
+assert GetResponse11=="2016-06-15 00:00:00.0"
+assert GetResponse12=="R"
+assert GetResponse13=="PRV"
+
+</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f03c908c-5d09-4350-ac0b-af511b1ee8a6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetCodeValuesSecure" searchProperties="true"><con:settings/><con:testStep type="request" name="getCodeValuesSecure" id="194fe7fa-9529-4b69-96e7-e831a460f22d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder</con:interface><con:operation>getCodeValuesSecure</con:operation><con:request name="getCodeValuesSecure" id="733d1c5d-a3b9-451c-ba39-83b92f82ba2a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://jag-pcss-common-cd1cf7-dev.apps.silver.devops.gov.bc.ca/common</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+    <soap:Header/>
+    <soap:Body>
+        <v1:getCodeValuesSecure>
+            <getCodeValuesSecureRequest>
+                <ns:getGetCodeValueSecureRequest>
+                    <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+                    <ns:RequestPartId>19014.0001</ns:RequestPartId>
+                    <ns:RequestDtm>2021-09-14 09:26:56.6</ns:RequestDtm>
+                    <ns:ApplicationCd>PCSS</ns:ApplicationCd>
+                    <!--Optional - DOES NOT SEEM OPTIONAL TO ME!:-->
+                    <ns:lastRetrievedDate>2021-09-14 09:26:56.6</ns:lastRetrievedDate>
+                </ns:getGetCodeValueSecureRequest>
+            </getCodeValuesSecureRequest>
+        </v1:getCodeValuesSecure>
+    </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="ecd8c7b3-948f-474f-8169-dbf1ac19cb31"/><con:assertion type="Valid HTTP Status Codes" id="5b6c59ad-3a18-496e-9ce0-5e229c2c5ca2" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="37ea8c94-fe55-4e2f-be41-abb9bed8bef8" name="Response SLA"><con:configuration><SLA>2000</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="e2350c4c-c4b8-4a8a-8bef-6f64aacff2c4" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 404, 500</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="07a4ec89-ab6c-481e-a9aa-63758734c7c8" name="Contains"><con:configuration><token>ADJUDICATOR</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f05dd638-fb1d-414b-9f89-3808561774b4" name="Contains 1"><con:configuration><token>Ceis2, S</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="880d845f-d696-49d5-ab24-23de571c45ee" name="Contains 2"><con:configuration><token>ceis2</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="9ebe87b5-2c66-4f26-8a16-f2e19290c4d7" name="Contains 3"><con:configuration><token>ADJU</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="6caae673-f879-40ab-aa09-9b28028866c2" name="Contains 4"><con:configuration><token>Dread, JGE</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="39ca3887-1608-4ab7-a345-eb2102de81bf" name="Contains 5"><con:configuration><token>85936.0734</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f5e60264-9a94-4517-b049-c59dfaccfe0c" name="Contains 6"><con:configuration><token>Gibson, M</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="8e6bb210-ec14-4f46-9155-dd516e8aa07b" name="Contains 7"><con:configuration><token>12345</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="c7ac8b9b-71c1-4bef-811c-d82eebacb223" name="Contains 8"><con:configuration><token>JONES, TOM</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="a3b42ab6-2fe9-4c03-b3e6-c28df9eeb4d9" name="Contains 9"><con:configuration><token>233532</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-09-14 09:26:56.6</con:value></con:property><con:property><con:name>ApplicationCd</con:name><con:value>PCSS</con:value></con:property><con:property><con:name>lastRetrievedDate</con:name><con:value>2021-09-14 09:26:56.6</con:value></con:property></con:properties></con:testCase><con:testCase id="0ec9dbe0-e52e-4175-9166-71947c625688" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetCourtCalendarDetailByDaySecure" searchProperties="true"><con:settings/><con:testStep type="request" name="getCourtCalendarDetailByDaySecure" id="da4176e8-2220-4e38-a54c-7d728ecc107d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder</con:interface><con:operation>getCodeValuesSecure</con:operation><con:request name="getCourtCalendarDetailByDaySecure" id="ca0f4575-4451-4eb8-a6cb-e01a75de92cc"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://jag-pcss-common-cd1cf7-dev.apps.silver.devops.gov.bc.ca/common</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+    <soap:Header/>
+    <soap:Body>
+        <v1:getCourtCalendarDetailByDaySecure>
+            <getCourtCalendarDetailByDaySecureRequest>
+                <ns:getCourtCalendarDetailByDaySecureRequest>
+                    <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+                    <ns:RequestPartId>19014.0001</ns:RequestPartId>
+                    <ns:RequestDtm>2021-09-14 01:00:00.0</ns:RequestDtm>
+                    <ns:ApplicationCd>PCSS</ns:ApplicationCd>
+                    <ns:CourtAgencyId>83.0001</ns:CourtAgencyId>
+                    <ns:AppearanceDt>2011-12-15 23:15:20.0</ns:AppearanceDt>
+                    <ns:CourtRoomCd>001</ns:CourtRoomCd>
+                </ns:getCourtCalendarDetailByDaySecureRequest>
+            </getCourtCalendarDetailByDaySecureRequest>
+        </v1:getCourtCalendarDetailByDaySecure>
+    </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b0731489-9d8a-4c19-9a03-f1f8900edc25"/><con:assertion type="Valid HTTP Status Codes" id="4573daa4-3fb9-4cbc-8e4a-8bf51a97d756" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="108e2555-89fd-4eff-a79f-f2a7c8cf5198" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 404, 500</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="c7733e73-0e1c-49ff-b08d-8366b0037db4" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="edccab4a-253c-4753-8912-c23b223ee256" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="17eb2261-5cf3-47d0-9281-fc366166157f" name="Contains 1"><con:configuration><token>I</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="9ecc2268-1158-4a0d-bd47-1588c8c5af74" name="Contains 2"><con:configuration><token>S</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="3e95df5e-d2a8-4822-9ad5-5f3b556d17ca" name="Contains 3"><con:configuration><token>001</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="fe7ebd39-3e37-4317-aa71-93e462971f41" name="Contains 4"><con:configuration><token>2011-12-15 00:00:00.0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="b4b1d770-230c-49d2-b74f-54dbc315f6c2" name="Contains 5"><con:configuration><token>FA</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f9505682-4bf4-4872-b4f1-591493bfc66e" name="Contains 6"><con:configuration><token>ROBERTS, Bob / JAMES, Jim</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="ae320beb-b088-4e06-9ad8-6e9e765a8cfa" name="Contains 7"><con:configuration><token>2766</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="28a18a6d-634e-48fc-9e96-a483f7541f1f" name="Contains 8"><con:configuration><token>N</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="91cb82cf-86f7-4ec9-892e-bb1be7deb356" name="Contains 9"><con:configuration><token>5131.0042</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="b279a572-1772-42c3-8f39-276c309ecfd5" name="Contains 10"><con:configuration><token>P</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="0dcf287a-705f-41d7-ba3a-a1bf256bd757" name="Contains 11"><con:configuration><token>John Joseph Jonesman</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="2ccd8e6e-086d-4f9f-8292-03d63c5bd470" name="Contains 12"><con:configuration><token>SCHD</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="fae4ccf2-7b2a-4876-84c3-9f0165898a9d" name="Contains 13"><con:configuration><token>Gilbert, Roland</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="cc38205f-599c-406e-be35-21c5a4b204b1" name="Contains 14"><con:configuration><token>Butler Mon Ami, R</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="aa6e80ba-0ed7-45b8-8599-c6e7b0a52fe5" name="Contains 15"><con:configuration><token>ROBERTS, Bob</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="517a04cc-5ad5-4342-a113-0d8fca677dd4" name="Contains 16"><con:configuration><token>JAMES, Jim</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-09-14 01:00:00.0</con:value></con:property><con:property><con:name>ApplicationCd</con:name><con:value>PCSS</con:value></con:property><con:property><con:name>CourtAgencyId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>AppearanceDt</con:name><con:value>2011-12-15 23:15:20.0</con:value></con:property><con:property><con:name>CourtRoomCd</con:name><con:value>001</con:value></con:property></con:properties></con:testCase><con:testCase id="d2c1d1a6-cbf1-4726-bc56-30c8a47a0a14" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetFileSearchSecure" searchProperties="true"><con:settings/><con:testStep type="request" name="getFileSearchSecure" id="572335b3-6508-4df4-a852-b06f5e7d4a83"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCommon_wsProvider_pcssCommonSecure_Binder</con:interface><con:operation>getCodeValuesSecure</con:operation><con:request name="getFileSearchSecure" id="735fccc2-0e0d-4fd9-b97a-97e32129d77e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://jag-pcss-common-cd1cf7-dev.apps.silver.devops.gov.bc.ca/common</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/common/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+    <soap:Header/>
+    <soap:Body>
+        <v1:getFileSearchSecure>
+            <getFileSearchSecureRequest>
+                <ns:getFileSearchRequest>
+                    <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+                    <ns:RequestPartId>19014.0001</ns:RequestPartId>
+                    <ns:RequestDtm>2021-09-14 09:26:56.6</ns:RequestDtm>
+                    <ns:SearchMode>CROWN</ns:SearchMode>
+                    <!--Optional:-->
+                    <ns:FileDivisionCd>R</ns:FileDivisionCd>
+                    <!--Optional:-->
+                    <ns:FileHomeAgencyId>83.0001</ns:FileHomeAgencyId>
+                    <!--Optional:-->
+                    <ns:FileNumberTxt/>
+                    <!--Optional:-->
+                    <ns:FilePrefixTxt/>
+                    <!--Optional:-->
+                    <ns:FileSuffixNo/>
+                    <!--Optional:-->
+                    <ns:MdocRefTypeCd/>
+                    <!--Optional:-->
+                    <ns:CourtClassCd/>
+                    <!--Optional:-->
+                    <ns:CourtLevelCd/>
+                    <!--Optional:-->
+                    <ns:NameSearchTypeCd/>
+                    <!--Optional:-->
+                    <ns:LastNm/>
+                    <!--Optional:-->
+                    <ns:OrgNm/>
+                    <!--Optional:-->
+                    <ns:GivenNm/>
+                    <!--Optional:-->
+                    <ns:BirthDt/>
+                    <!--1 or more repetitions:-->
+                    <ns:Permission>
+                        <!--Optional:-->
+                        <ns:CourtClassCd>A</ns:CourtClassCd>
+                    </ns:Permission>
+                    <!--Optional:-->
+                    <ns:SearchByCrown>
+                        <ns:CrownPartId>85148.0734</ns:CrownPartId>
+                        <ns:ActiveOnlyYN>Y</ns:ActiveOnlyYN>
+                        <ns:FileDesignationCd>ALL</ns:FileDesignationCd>
+                    </ns:SearchByCrown>
+                    <!--Optional:-->
+                    <ns:MdocJustinNoSet/>
+                    <!--Optional:-->
+                    <ns:PhysicalFileIdSet/>
+                    <!--Optional:-->
+                    <ns:ApplicationCd>PCSS</ns:ApplicationCd>
+                </ns:getFileSearchRequest>
+            </getFileSearchSecureRequest>
+        </v1:getFileSearchSecure>
+    </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d9d64afb-d940-44cf-a0eb-efd9aebf118e"/><con:assertion type="Valid HTTP Status Codes" id="4c910ea7-1221-41e2-ab3d-ce7c4e492552" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="cb902ec2-0787-4964-ab75-9e1bf07639a3" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 404, 500</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="2c77264f-1239-4ec2-9e07-e35591ebc2ca" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="5a954342-e95c-44a8-bcbc-c495d6ca33d5" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="33031d6c-24b0-4463-b69a-4f017b18a7a5" name="Contains 1"><con:configuration><token>3414</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="bc1e41ab-a129-423d-aa86-515a71fc74b8" name="Contains 2"><con:configuration><token>5000</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f201b34e-8f63-4fd1-84e9-0dd0bf5deffc" name="Contains 3"><con:configuration><token>P</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="19e21f24-9416-4014-a28e-3e2f22c19df3" name="Contains 4"><con:configuration><token>A</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="6dc951ef-7165-4282-900d-52b252f7b070" name="Contains 5"><con:configuration><token>N</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="bc3c9987-8af9-4ecd-9dfc-c291412ef598" name="Contains 6"><con:configuration><token>2020-05-14 00:00:00.0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="80590a13-97f7-48cd-9e61-be37a6283edd" name="Contains 7"><con:configuration><token>PRV</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="4c392b30-cda9-4586-9a44-0582b49b3b13" name="Contains 8"><con:configuration><token>5035.0042</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="edf850ae-8c40-4cc4-ab3c-48056b9f3011" name="Contains 9"><con:configuration><token>1362.0026</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="b3f3827a-d794-45c8-b804-a7622f840b6b" name="Contains 10"><con:configuration><token>2019-04-01 00:00:00.0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="a97db912-bd44-47c7-944f-a09f347405c8" name="Contains 11"><con:configuration><token>PRV</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="bfa3e24a-7dde-4e6a-96da-508bcc4b3ec5" name="Contains 12"><con:configuration><token>R</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-09-14 09:26:56.6</con:value></con:property><con:property><con:name>SearchMode</con:name><con:value>CROWN</con:value></con:property><con:property><con:name>FileDivisionCd</con:name><con:value>R</con:value></con:property><con:property><con:name>FileHomeAgencyId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>CourtClassCd</con:name><con:value>A</con:value></con:property><con:property><con:name>CrownPartId</con:name><con:value>85148.0734</con:value></con:property><con:property><con:name>ActiveOnlyYN</con:name><con:value>Y</con:value></con:property><con:property><con:name>FileDesignationCd</con:name><con:value>ALL</con:value></con:property><con:property><con:name>ApplicationCd</con:name><con:value>PCSS</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
