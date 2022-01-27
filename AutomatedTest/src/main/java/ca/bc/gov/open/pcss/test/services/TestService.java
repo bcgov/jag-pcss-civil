@@ -131,4 +131,20 @@ public class TestService {
         }
         return zipAndReturnErrors();
     }
+    public File runAllCommonTests() throws IOException {
+        SoapUITestCaseRunner runner = new SoapUITestCaseRunner();
+        try {
+            runner.setProjectFile("PCSSCommon-soapui-project.xml");
+            runner.run();
+        } catch (Exception Ignore) {
+
+        }
+        try {
+            runner.setProjectFile("PCSSCommonSecure-soapui-project.xml");
+            runner.run();
+        } catch (Exception Ignore) {
+
+        }
+        return zipAndReturnErrors();
+    }
 }
