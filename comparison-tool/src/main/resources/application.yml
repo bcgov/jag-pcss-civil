@@ -1,0 +1,5 @@
+host:
+  password: ${BASIC_AUTH_PASS}
+  username: ${BASIC_AUTH_USER}
+  api_host: ${API_HOST}
+  wm_host: ${WM_HOST}
