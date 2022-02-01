@@ -1,22 +1,19 @@
 package ca.bc.gov.open.pcss.civil.comparison;
 
 import ca.bc.gov.open.pcss.civil.comparison.services.TestService;
-import ca.bc.gov.open.pcss.models.serializers.InstantSerializer;
 import ca.bc.gov.open.pcss.three.GetFileDetailCivil;
 import ca.bc.gov.open.pcss.three.GetFileDetailCivilRequest;
 import ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse;
+import java.time.Instant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.time.Instant;
-
 @SpringBootApplication
 public class ComparisonRunner {
-    @Autowired
-    private TestService testService;
+    @Autowired private TestService testService;
 
     public static void main(String args[]) {
         SpringApplication.run(ComparisonRunner.class, args);

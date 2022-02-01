@@ -17,7 +17,7 @@ public final class InstantSoapConverter {
 
     public static String print(Instant value) {
         String out =
-                DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")
+                DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss.0")
                         .withZone(ZoneId.of("GMT-7"))
                         .withLocale(Locale.US)
                         .format(value);
