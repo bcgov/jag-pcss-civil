@@ -1,0 +1,1484 @@
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/15.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/14.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 100
+==========================================================================================================================
+|                                                                 Property |         API Response |          WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.filedDt | 2000-01-12T07:00:00Z | 1900-01-12T07:00:00Z |
+==========================================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 592
+==========================================================================================================================
+|                                                                 Property |         API Response |          WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.filedDt | 2000-01-12T07:00:00Z | 1900-01-12T07:00:00Z |
+==========================================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 606
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1063
+ERROR: Failed to send request... org.springframework.ws.soap.client.SoapFaultClientException: An error response was received from ORDS please check that your request is of valid form
+==========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+|                                                                             Property | API Response |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/2.issueNumber |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                3 |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/2.issueTypeCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             MANT |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/2.issueDsc |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Production of documents |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/2.concludedYn |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                N |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/0.issueNumber |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                1 |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/0.issueTypeCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             CUST |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/0.issueDsc |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Solicitor ceases to act |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/0.concludedYn |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                N |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/3.issueNumber |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                4 |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/3.issueTypeCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             CUST |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/3.issueDsc |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Custody |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/3.concludedYn |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                N |
+|     getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.civilDocumentId |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              145 |
+|           getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                1 |
+|      getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.documentTypeCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              NOM |
+|             getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.filedDt |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             2003-04-16T07:00:00Z |
+|         getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.concludedYn |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                N |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.lastAppearanceId |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              998 |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.lastAppearanceDt |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             2004-09-19T07:00:00Z |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.lastAppearanceTm |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             2004-09-19T17:00:00Z |
+|     getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.civilDocumentId |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              142 |
+|           getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                2 |
+|      getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.documentTypeCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              NOM |
+|             getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.filedDt |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             2003-04-16T07:00:00Z |
+|         getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.concludedYn |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                N |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.lastAppearanceId |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              998 |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.lastAppearanceDt |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             2004-09-19T07:00:00Z |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.lastAppearanceTm |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             2004-09-19T17:00:00Z |
+|               getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.issue |           [] | [ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse/#getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/0, ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse/#getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/1, ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse/#getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/2, ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse/#getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/3] |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/1.issueNumber |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                2 |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/1.issueTypeCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ACCS |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/1.issueDsc |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Access |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2/issue/1.concludedYn |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                N |
+|                getFileDetailCivilResponse/getFileDetailCivilResponse/party/0.partyId |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               80 |
+|                 getFileDetailCivilResponse/getFileDetailCivilResponse/party/0.lastNm |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            SMITH |
+|                getFileDetailCivilResponse/getFileDetailCivilResponse/party/0.givenNm |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Lisa |
+|             getFileDetailCivilResponse/getFileDetailCivilResponse/party/0.roleTypeCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              PLA |
+|            getFileDetailCivilResponse/getFileDetailCivilResponse/party/0.leftRightCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                L |
+|      getFileDetailCivilResponse/getFileDetailCivilResponse/party/0.selfRepresentedYN |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                N |
+|     getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.civilDocumentId |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              141 |
+|           getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.fileSeqNo |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                1 |
+|      getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.documentTypeCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              WRS |
+|             getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.filedDt |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             2003-01-12T07:00:00Z |
+|         getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.concludedYn |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                N |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.lastAppearanceId |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              998 |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.lastAppearanceDt |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             2004-09-19T07:00:00Z |
+|    getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.lastAppearanceTm |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             2004-09-19T17:00:00Z |
+|                     getFileDetailCivilResponse/getFileDetailCivilResponse.responseCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                0 |
+|                 getFileDetailCivilResponse/getFileDetailCivilResponse.physicalFileId |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             1070 |
+|                  getFileDetailCivilResponse/getFileDetailCivilResponse.fileNumberTxt |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           G-113A |
+|             getFileDetailCivilResponse/getFileDetailCivilResponse.homeLocationAgenId |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          83.0001 |
+|                   getFileDetailCivilResponse/getFileDetailCivilResponse.courtLevelCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                S |
+|                   getFileDetailCivilResponse/getFileDetailCivilResponse.courtClassCd |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                G |
+|                         getFileDetailCivilResponse/getFileDetailCivilResponse.socTxt |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   SMITH, Lisa /  |
+|                    getFileDetailCivilResponse/getFileDetailCivilResponse.leftRoleDsc |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Plaintiff |
+|                   getFileDetailCivilResponse/getFileDetailCivilResponse.rightRoleDsc |         null |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Defendant |
+|                          getFileDetailCivilResponse/getFileDetailCivilResponse.party |           [] |                                                                                                                                                                                                                                                                                                                                                                                                            [ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse/#getFileDetailCivilResponse/getFileDetailCivilResponse/party/0] |
+|                       getFileDetailCivilResponse/getFileDetailCivilResponse.document |           [] |                                                                                                                                                         [ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse/#getFileDetailCivilResponse/getFileDetailCivilResponse/document/0, ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse/#getFileDetailCivilResponse/getFileDetailCivilResponse/document/1, ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse/#getFileDetailCivilResponse/getFileDetailCivilResponse/document/2] |
+==========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1070
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1201
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1204
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1205
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1207
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1208
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1223
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1241
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/44.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/15.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/30.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/46.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/23.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/16.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/31.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/24.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/17.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/40.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/36.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/19.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/18.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/22.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/21.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/35.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/41.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/34.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/20.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/29.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/42.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/26.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/45.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/25.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/43.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/39.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/32.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/33.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/37.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/38.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/28.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/27.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1283
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1299
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1305
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1312
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1440
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1442
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1451
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1454
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1455
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1456
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1457
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1458
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1463
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1474
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1475
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1476
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1498
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1506
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1507
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1509
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1510
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1511
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1513
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1597
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1599
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/77.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/78.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/81.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/79.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/95.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/88.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/89.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/85.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/90.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/75.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/73.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/84.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/82.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/80.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/76.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/83.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/87.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/92.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/93.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/86.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/71.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/91.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/94.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/74.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/72.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1612
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/27.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1614
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1616
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1619
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1631
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/15.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/14.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1632
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1730
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1733
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1807
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1824
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/19.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/18.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/17.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/16.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1888
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1976
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1977
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1978
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 1984
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2036
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/21.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2038
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2039
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2095
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2097
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2108
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2109
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2171
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2178
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2185
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2215
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/65.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/61.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/60.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/59.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/63.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/57.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/64.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/58.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/62.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2222
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/18.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2245
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2255
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2290
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2311
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/14.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/16.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/17.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/15.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2312
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2347
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2364
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2365
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/14.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/15.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2366
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/28.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/26.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/27.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/25.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2386
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2436
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2437
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2439
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/15.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/16.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/14.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2447
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2465
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/28.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/43.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/23.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/32.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/37.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/33.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/26.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/38.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/35.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/21.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/27.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/29.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/34.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/42.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/44.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/45.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/15.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/25.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/16.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/41.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/40.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/31.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/39.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/18.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/19.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/20.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/17.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/46.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/22.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/24.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/30.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/36.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2470
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2471
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2475
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2486
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2487
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2489
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/46.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2490
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2491
+============================================================================================================================
+|                                                                   Property |         API Response |          WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |                 null |                      |
+|   getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.filedDt | 1999-06-09T07:00:00Z | 2099-06-09T07:00:00Z |
+============================================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2496
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2502
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2506
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2548
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2553
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2554
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2556
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2560
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2563
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2569
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2590
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2592
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/16.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/17.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2594
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/27.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/26.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/31.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/25.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/34.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/28.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/30.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/33.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/32.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/35.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/29.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2595
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2596
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2597
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2634
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2638
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2641
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2643
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2644
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/15.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2652
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2684
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2692
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2699
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2701
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2702
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2715
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2725
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2753
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2758
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/27.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 2999
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3006
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3034
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3037
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3066
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3077
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3081
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3086
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3100
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3101
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3111
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3130
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3151
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3154
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3155
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3156
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3163
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3171
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3181
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3194
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3196
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/18.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/19.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/20.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/21.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3198
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3204
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3205
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3212
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3216
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3220
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3244
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3245
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3248
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3259
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3274
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3277
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3296
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3309
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3319
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3391
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3416
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3430
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/0.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3433
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3468
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3469
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3470
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3471
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/18.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3472
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3478
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3479
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/17.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/19.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/18.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3484
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3485
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3488
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3492
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3497
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3498
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3499
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3501
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3504
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3509
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3511
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3513
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3522
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3541
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3557
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3558
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3560
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3562
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3605
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3606
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/16.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/15.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/14.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3607
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3629
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/14.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3635
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3636
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3637
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3639
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3646
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3647
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3648
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/12.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3649
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3650
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3664
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3666
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/13.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3667
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3668
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3669
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3670
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3674
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3675
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3676
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3678
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3685
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3686
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3687
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3691
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3701
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3720
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3724
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/4.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/7.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3725
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/3.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3731
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3734
+============================================================================================================
+|                                                                    Property | API Response | WM Response |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/9.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/11.fileSeqNo |         null |             |
+|  getFileDetailCivilResponse/getFileDetailCivilResponse/document/8.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/10.fileSeqNo |         null |             |
+============================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3737
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/5.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3748
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/6.fileSeqNo |         null |             |
+===========================================================================================================
+INFO: GetFileDetailCivil with physicalFileId: 3751
+===========================================================================================================
+|                                                                   Property | API Response | WM Response |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/2.fileSeqNo |         null |             |
+| getFileDetailCivilResponse/getFileDetailCivilResponse/document/1.fileSeqNo |         null |             |
+===========================================================================================

@@ -5,7 +5,10 @@ import ca.bc.gov.open.pcss.civil.comparison.config.WebServiceSenderWithAuth;
 import ca.bc.gov.open.pcss.three.GetFileDetailCivil;
 import ca.bc.gov.open.pcss.three.GetFileDetailCivilRequest;
 import ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse;
+
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.time.Instant;
 import java.util.*;
 import java.util.stream.Stream;
@@ -53,15 +56,17 @@ public class TestService {
     private String partId = RAID;
     private Instant dtm = Instant.now();
 
-    public void runCompares() {
+    private PrintWriter fileOutput;
+    private static String outputDir = "comparison-tool/";
+
+    public void runCompares() throws IOException {
         List<Boolean> compares = new ArrayList<>();
 
         System.out.println("INFO: PCSS Civil Diff testing started");
         getFileDetailCivilCompare(compares);
     }
 
-    private void getFileDetailCivilCompare(List<Boolean> compares) {
-
+    private void getFileDetailCivilCompare(List<Boolean> compares) throws IOException {
         GetFileDetailCivil request = new GetFileDetailCivil();
         ca.bc.gov.open.pcss.one.GetFileDetailCivilRequest one =
                 new ca.bc.gov.open.pcss.one.GetFileDetailCivilRequest();
@@ -78,17 +83,30 @@ public class TestService {
         assert inputIds != null;
         Scanner scanner = new Scanner(inputIds);
 
+        fileOutput = new PrintWriter(outputDir + "GetFileDetailCivil.txt", "UTF-8");
+
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            System.out.println("\n\nINFO: GetFileDetailCivil with physicalFileId: " + line);
+
+            System.out.println("\nINFO: GetFileDetailCivil with physicalFileId: " + line);
             one.setPhysicalFileId(line);
             if (!compare(new GetFileDetailCivilResponse(), request)) {
+                fileOutput.println("INFO: GetFileDetailCivil with physicalFileId: " + line + "\n\n");
                 compares.add(false);
             }
         }
 
         System.out.println(
-                "INFO: GetFileDetailCivil Completed there are " + compares.size() + "diffs");
+                "########################################################\n"
+                + "INFO: GetFileDetailCivil Completed there are " + compares.size() + " diffs\n"
+                + "########################################################");
+
+        fileOutput.println(
+                "########################################################\n"
+                + "INFO: GetFileDetailCivil Completed there are " + compares.size() + " diffs\n"
+                + "########################################################");
+
+        fileOutput.close();
     }
 
     public <T, G> boolean compare(T response, G request) {
@@ -120,15 +138,16 @@ public class TestService {
 
         } catch (Exception e) {
             System.out.println("ERROR: Failed to send request... " + e);
+            fileOutput.println("ERROR: Failed to send request... " + e);
         }
 
         Diff diff = javers.compare(resultObjectAPI, resultObjectWM);
 
+        String responseClassName = response.getClass().getName();
         if (diff.hasChanges()) {
             printDiff(diff);
             return false;
         } else {
-            String responseClassName = response.getClass().getName();
             if (resultObjectAPI == null && resultObjectWM == null)
                 System.out.println(
                         "WARN: "
@@ -145,9 +164,12 @@ public class TestService {
         }
     }
 
-    private static void printDiff(Diff diff) {
+    private void printDiff(Diff diff) {
         int diffSize = diff.getChanges().size();
-        if (diffSize == 0) return;
+        if (diffSize == 0) {
+            return;
+        }
+
         String[] header = new String[] {"Property", "API Response", "WM Response"};
         String[][] table = new String[diffSize + 1][3];
         table[0] = header;
@@ -208,6 +230,7 @@ public class TestService {
         for (Map.Entry<Integer, Integer> e : columnLengths.entrySet()) {
             totalColumnLength += e.getValue();
         }
+        fileOutput.println("=".repeat(totalColumnLength));
         System.out.println("=".repeat(totalColumnLength));
 
         final StringBuilder formatString = new StringBuilder("");
@@ -217,8 +240,12 @@ public class TestService {
         formatString.append("|\n");
 
         Stream.iterate(0, (i -> i < table.length), (i -> ++i))
-                .forEach(a -> System.out.printf(formatString.toString(), table[a]));
+                .forEach(a -> {
+                    fileOutput.printf(formatString.toString(), table[a]);
+                    System.out.printf(formatString.toString(), table[a]);
+                });
 
+        fileOutput.println("=".repeat(totalColumnLength));
         System.out.println("=".repeat(totalColumnLength));
     }
 }
