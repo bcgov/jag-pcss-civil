@@ -18,7 +18,7 @@ public class ComparisonRunner {
     @Bean
     public CommandLineRunner CommandLineRunnerBean() {
         return (args) -> {
-            testService.runCompare();
+            testService.runCompares();
         };
     }
 }

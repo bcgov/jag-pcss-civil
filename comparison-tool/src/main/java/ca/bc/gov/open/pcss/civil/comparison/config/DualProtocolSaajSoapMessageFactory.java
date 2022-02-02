@@ -22,7 +22,6 @@ import org.springframework.ws.soap.saaj.support.SaajUtils;
 import org.springframework.ws.transport.TransportInputStream;
 import org.xml.sax.SAXParseException;
 
-@Slf4j
 public class DualProtocolSaajSoapMessageFactory implements SoapMessageFactory, InitializingBean {
     private MessageFactory messageFactory;
     private String messageFactoryProtocol;
@@ -70,15 +69,11 @@ public class DualProtocolSaajSoapMessageFactory implements SoapMessageFactory, I
                         this.messageFactoryProtocol = "SOAP 1.1 Protocol";
                     }
 
-                    if (log.isInfoEnabled()) {
-                        log.info(
-                                "Creating SAAJ 1.3 MessageFactory with "
-                                        + this.messageFactoryProtocol);
-                    }
+
 
                     this.messageFactory = MessageFactory.newInstance(this.messageFactoryProtocol);
                 } else if (SaajUtils.getSaajVersion() == 1) {
-                    log.info("Creating SAAJ 1.2 MessageFactory");
+
                     this.messageFactory = MessageFactory.newInstance();
                 } else {
                     if (SaajUtils.getSaajVersion() != 0) {
@@ -86,7 +81,6 @@ public class DualProtocolSaajSoapMessageFactory implements SoapMessageFactory, I
                                 "SaajSoapMessageFactory requires SAAJ 1.1, which was not found on the classpath");
                     }
 
-                    log.info("Creating SAAJ 1.1 MessageFactory");
                     this.messageFactory = MessageFactory.newInstance();
                 }
             } catch (NoSuchMethodError var2) {
@@ -101,12 +95,6 @@ public class DualProtocolSaajSoapMessageFactory implements SoapMessageFactory, I
             }
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug(
-                    "Using MessageFactory class ["
-                            + this.messageFactory.getClass().getName()
-                            + "]");
-        }
     }
 
     public SaajSoapMessage createWebServiceMessage() {
