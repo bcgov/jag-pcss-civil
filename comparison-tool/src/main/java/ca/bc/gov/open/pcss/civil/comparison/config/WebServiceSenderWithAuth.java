@@ -21,7 +21,6 @@ public class WebServiceSenderWithAuth extends HttpUrlConnectionMessageSender {
         String input = username + ":" + password;
         String auth = Base64Utils.encodeToString(input.getBytes());
         connection.setRequestProperty("Authorization", "Basic " + auth);
-        // connection.setRequestProperty("Content-Type", "application/soap+xml");
         super.prepareConnection(connection);
     }
 }

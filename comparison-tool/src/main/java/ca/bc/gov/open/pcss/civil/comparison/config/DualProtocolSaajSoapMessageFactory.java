@@ -43,26 +43,6 @@ public class DualProtocolSaajSoapMessageFactory implements SoapMessageFactory, I
         }
     }
 
-    public DualProtocolSaajSoapMessageFactory(MessageFactory messageFactory) {
-        this.messageFactory = messageFactory;
-    }
-
-    public MessageFactory getMessageFactory() {
-        return this.messageFactory;
-    }
-
-    public void setMessageFactory(MessageFactory messageFactory) {
-        this.messageFactory = messageFactory;
-    }
-
-    public void setMessageProperties(Map<String, ?> messageProperties) {
-        this.messageProperties = messageProperties;
-    }
-
-    public void setLangAttributeOnSoap11FaultString(boolean langAttributeOnSoap11FaultString) {
-        this.langAttributeOnSoap11FaultString = langAttributeOnSoap11FaultString;
-    }
-
     public void setSoapVersion(SoapVersion version) {
         if (SaajUtils.getSaajVersion() >= 2) {
             if (SoapVersion.SOAP_11 == version) {
@@ -145,14 +125,7 @@ public class DualProtocolSaajSoapMessageFactory implements SoapMessageFactory, I
         MimeHeaders mimeHeaders = this.parseMimeHeaders(inputStream);
         try {
             inputStream = checkForUtf8ByteOrderMark(inputStream);
-            SOAPMessage saajMessage = null;
-            //            if (mimeHeaders.getHeader(HttpHeaders.CONTENT_TYPE)[0].contains(
-            //                    MimeTypeUtils.TEXT_XML_VALUE)) {
-            //                saajMessage = messageFactory11.createMessage(mimeHeaders,
-            // inputStream);
-            //            } else {
-            saajMessage = messageFactory12.createMessage(mimeHeaders, inputStream);
-            // }
+            SOAPMessage saajMessage = messageFactory12.createMessage(mimeHeaders, inputStream);
             saajMessage.getSOAPPart().getEnvelope();
             this.postProcess(saajMessage);
             return new SaajSoapMessage(
