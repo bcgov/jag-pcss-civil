@@ -57,7 +57,7 @@ public class TestService {
     private Instant dtm = Instant.now();
 
     private PrintWriter fileOutput;
-    private static String outputDir = "comparison-tool/";
+    private static String outputDir = "comparison-tool/results/";
 
     public void runCompares() throws IOException {
         List<Boolean> compares = new ArrayList<>();
