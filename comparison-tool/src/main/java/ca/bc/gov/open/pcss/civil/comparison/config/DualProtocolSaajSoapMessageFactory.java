@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.StringTokenizer;
 import javax.xml.soap.*;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
@@ -69,8 +68,6 @@ public class DualProtocolSaajSoapMessageFactory implements SoapMessageFactory, I
                         this.messageFactoryProtocol = "SOAP 1.1 Protocol";
                     }
 
-
-
                     this.messageFactory = MessageFactory.newInstance(this.messageFactoryProtocol);
                 } else if (SaajUtils.getSaajVersion() == 1) {
 
@@ -94,7 +91,6 @@ public class DualProtocolSaajSoapMessageFactory implements SoapMessageFactory, I
                         "Could not create SAAJ MessageFactory: " + var3.getMessage(), var3);
             }
         }
-
     }
 
     public SaajSoapMessage createWebServiceMessage() {
