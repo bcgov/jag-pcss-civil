@@ -3,13 +3,11 @@ package ca.bc.gov.open.pcss.civil.comparison.services;
 import ca.bc.gov.open.pcss.civil.comparison.config.DualProtocolSaajSoapMessageFactory;
 import ca.bc.gov.open.pcss.civil.comparison.config.WebServiceSenderWithAuth;
 import ca.bc.gov.open.pcss.three.*;
-
+import ca.bc.gov.open.pcss.two.YesNoType;
 import java.io.*;
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Stream;
-
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
@@ -62,18 +60,91 @@ public class TestService {
     public void runCompares() throws IOException {
         System.out.println("INFO: PCSS Civil Diff testing started");
 
-        //getFileDetailCivilCompare();
+        // getFileDetailCivilCompare();
 
-        getSyncCivilAppearanceCompare();
+        // getSyncCivilAppearanceCompare();
 
+        getAppearanceCivilCompare();
     }
 
-    private void getSyncCivilAppearanceCompare() throws FileNotFoundException, UnsupportedEncodingException {
+    private void getAppearanceCivilCompare()
+            throws FileNotFoundException, UnsupportedEncodingException {
+        int diffCounter = 0;
+
+        GetAppearanceCivil request = new GetAppearanceCivil();
+        GetAppearanceCivilRequest two = new GetAppearanceCivilRequest();
+        ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest one =
+                new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
+        one.setRequestDtm(dtm);
+        one.setRequestAgencyIdentifierId(RAID);
+        one.setRequestPartId(partId);
+
+        two.setGetAppearanceCivilRequest(one);
+        request.setGetAppearanceCivilRequest(two);
+
+        InputStream inputIds = getClass().getResourceAsStream("/getAppearancePhysicalFileId.csv");
+        assert inputIds != null;
+        Scanner scanner = new Scanner(inputIds);
+
+        fileOutput = new PrintWriter(outputDir + "GetAppearance.txt", "UTF-8");
+
+        for (int idx = 0; scanner.hasNextLine(); idx++) {
+            String line = scanner.nextLine();
+
+            System.out.println("\nINFO: GetAppearance with physicalFileId: " + line);
+
+            switch (idx % 4) {
+                case 0:
+                    one.setFutureYN(YesNoType.Y);
+                    one.setHistoryYN(YesNoType.Y);
+                    break;
+                case 1:
+                    one.setFutureYN(YesNoType.N);
+                    one.setHistoryYN(YesNoType.Y);
+                    break;
+                case 2:
+                    one.setFutureYN(YesNoType.Y);
+                    one.setHistoryYN(YesNoType.N);
+                    break;
+                case 3:
+                    one.setFutureYN(YesNoType.N);
+                    one.setHistoryYN(YesNoType.N);
+                    break;
+            }
+
+            one.setPhysicalFileId(line);
+            if (!compare(new GetFileDetailCivilResponse(), request)) {
+                fileOutput.println("INFO: GetAppearance with physicalFileId: " + line + "\n\n");
+                ++diffCounter;
+            }
+        }
+
+        System.out.println(
+                "########################################################\n"
+                        + "INFO: GetAppearance Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        fileOutput.println(
+                "########################################################\n"
+                        + "INFO: GetAppearance Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        overallDiff += diffCounter;
+        fileOutput.close();
+    }
+
+    private void getSyncCivilAppearanceCompare()
+            throws FileNotFoundException, UnsupportedEncodingException {
         int diffCounter = 0;
 
         GetSyncCivilAppearance request = new GetSyncCivilAppearance();
         GetSyncCivilAppearanceRequest three = new GetSyncCivilAppearanceRequest();
-        ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest one = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
+        ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest one =
+                new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
         one.setRequestDtm(dtm);
         one.setRequestAgencyIdentifierId(RAID);
         one.setRequestPartId(partId);
@@ -81,10 +152,10 @@ public class TestService {
         three.setGetSyncCivilAppearanceRequest(one);
         request.setGetSyncCivilAppearanceRequest(three);
 
-//        InputStream inputIds =
-//                getClass().getResourceAsStream("/getFileDetailCivilPhysicalFileId.csv");
-//        assert inputIds != null;
-//        Scanner scanner = new Scanner(inputIds);
+        //        InputStream inputIds =
+        //                getClass().getResourceAsStream("/getFileDetailCivilPhysicalFileId.csv");
+        //        assert inputIds != null;
+        //        Scanner scanner = new Scanner(inputIds);
 
         fileOutput = new PrintWriter(outputDir + "GetSyncCivilAppearance.txt", "UTF-8");
 
@@ -96,12 +167,16 @@ public class TestService {
 
         System.out.println(
                 "########################################################\n"
-                        + "INFO: GetSyncCivilAppearance Completed there are " + diffCounter + " diffs\n"
+                        + "INFO: GetSyncCivilAppearance Completed there are "
+                        + diffCounter
+                        + " diffs\n"
                         + "########################################################");
 
         fileOutput.println(
                 "########################################################\n"
-                        + "INFO: GetSyncCivilAppearance Completed there are " + diffCounter + " diffs\n"
+                        + "INFO: GetSyncCivilAppearance Completed there are "
+                        + diffCounter
+                        + " diffs\n"
                         + "########################################################");
 
         overallDiff += diffCounter;
@@ -135,20 +210,25 @@ public class TestService {
             System.out.println("\nINFO: GetFileDetailCivil with physicalFileId: " + line);
             one.setPhysicalFileId(line);
             if (!compare(new GetFileDetailCivilResponse(), request)) {
-                fileOutput.println("INFO: GetFileDetailCivil with physicalFileId: " + line + "\n\n");
+                fileOutput.println(
+                        "INFO: GetFileDetailCivil with physicalFileId: " + line + "\n\n");
                 ++diffCounter;
             }
         }
 
         System.out.println(
                 "########################################################\n"
-                + "INFO: GetFileDetailCivil Completed there are " + diffCounter + " diffs\n"
-                + "########################################################");
+                        + "INFO: GetFileDetailCivil Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
 
         fileOutput.println(
                 "########################################################\n"
-                + "INFO: GetFileDetailCivil Completed there are " + diffCounter + " diffs\n"
-                + "########################################################");
+                        + "INFO: GetFileDetailCivil Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
 
         overallDiff += diffCounter;
         fileOutput.close();
@@ -285,10 +365,11 @@ public class TestService {
         formatString.append("|\n");
 
         Stream.iterate(0, (i -> i < table.length), (i -> ++i))
-                .forEach(a -> {
-                    fileOutput.printf(formatString.toString(), table[a]);
-                    System.out.printf(formatString.toString(), table[a]);
-                });
+                .forEach(
+                        a -> {
+                            fileOutput.printf(formatString.toString(), table[a]);
+                            System.out.printf(formatString.toString(), table[a]);
+                        });
 
         fileOutput.println("=".repeat(totalColumnLength));
         System.out.println("=".repeat(totalColumnLength));
