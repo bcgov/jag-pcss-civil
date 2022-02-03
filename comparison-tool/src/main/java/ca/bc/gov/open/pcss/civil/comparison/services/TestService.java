@@ -60,15 +60,67 @@ public class TestService {
     public void runCompares() throws IOException {
         System.out.println("INFO: PCSS Civil Diff testing started");
 
-        getFileDetailCivilCompare();
+//        getFileDetailCivilCompare();
+//
+//        getSyncCivilAppearanceCompare();
+//
+//        getAppearanceCivilCompare();
+//
+//        getAppearanceCivilApprMethodCompare();
+//
+//        getAppearanceCivilDocument();
 
-        getSyncCivilAppearanceCompare();
+        getAppearanceCivilResource();
+    }
 
-        getAppearanceCivilCompare();
+    private void getAppearanceCivilResource()
+            throws FileNotFoundException, UnsupportedEncodingException {
+        int diffCounter = 0;
 
-        getAppearanceCivilApprMethodCompare();
+        GetAppearanceCivilResource request = new GetAppearanceCivilResource();
+        GetAppearanceCivilResourceRequest three = new GetAppearanceCivilResourceRequest();
+        ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest one
+                = new ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest();
+        one.setRequestDtm(dtm);
+        one.setRequestAgencyIdentifierId(RAID);
+        one.setRequestPartId(partId);
+        three.setGetAppearanceCivilResourceRequest(one);
+        request.setGetAppearanceCivilResourceRequest(three);
 
-        getAppearanceCivilDocument();
+        InputStream inputIds =
+                getClass().getResourceAsStream("/getAppearanceCivilResourceAppearanceId.csv");
+        assert inputIds != null;
+        Scanner scanner = new Scanner(inputIds);
+
+        fileOutput = new PrintWriter(outputDir + "GetAppearanceCivilResource.txt", "UTF-8");
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+
+            System.out.println("\nINFO: GetAppearanceCivilResource with AppearanceId: " + line);
+            one.setAppearanceId(line);
+            if (!compare(new GetAppearanceCivilResourceResponse(), request)) {
+                fileOutput.println("INFO: GetAppearanceCivilResource with AppearanceId: " + line + "\n\n");
+                ++diffCounter;
+            }
+        }
+
+        System.out.println(
+                "########################################################\n"
+                        + "INFO: GetAppearanceCivilResource Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        fileOutput.println(
+                "########################################################\n"
+                        + "INFO: GetAppearanceCivilResource Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        overallDiff += diffCounter;
+        fileOutput.close();
     }
 
     private void getAppearanceCivilDocument()
