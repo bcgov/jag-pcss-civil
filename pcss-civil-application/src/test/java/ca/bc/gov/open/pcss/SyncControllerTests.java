@@ -12,7 +12,6 @@ import ca.bc.gov.open.pcss.three.SetHearingRestrictionCivilRequest;
 import ca.bc.gov.open.pcss.two.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.net.URI;
 import java.time.Instant;
 import java.util.Collections;
