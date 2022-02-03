@@ -110,9 +110,9 @@ public class SyncController {
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "hearing-restriction")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
-                        .queryParam("RequestPartId", inner.getRequestPartId())
-                        .queryParam("RequestDtm", inner.getRequestDtm())
-                        .queryParam("ProcessUpToDtm", inner.getProcessUpToDtm());
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", inner.getRequestDtm())
+                        .queryParam("processUpToDtm", inner.getProcessUpToDtm());
 
         try {
             HttpEntity<ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionResponse> resp =
