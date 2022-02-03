@@ -57,8 +57,10 @@ public class SyncController {
                 UriComponentsBuilder.fromHttpUrl(host + "sync/appearance")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
-                        .queryParam("requestDtm", InstantSerializer.convert( inner.getRequestDtm()))
-                        .queryParam("processUpToDtm", InstantSerializer.convert( inner.getProcessUpToDtm()));
+                        .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
+                        .queryParam(
+                                "processUpToDtm",
+                                InstantSerializer.convert(inner.getProcessUpToDtm()));
 
         try {
             HttpEntity<ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse> resp =
