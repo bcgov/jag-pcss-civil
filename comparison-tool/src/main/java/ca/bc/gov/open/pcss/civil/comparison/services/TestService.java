@@ -60,13 +60,13 @@ public class TestService {
     public void runCompares() throws IOException {
         System.out.println("INFO: PCSS Civil Diff testing started");
 
-         getFileDetailCivilCompare();
+        getFileDetailCivilCompare();
 
-         getSyncCivilAppearanceCompare();
+        getSyncCivilAppearanceCompare();
 
-         getAppearanceCivilCompare();
+        getAppearanceCivilCompare();
 
-         getAppearanceCivilApprMethodCompare();
+        getAppearanceCivilApprMethodCompare();
 
         getAppearanceCivilDocument();
     }
@@ -105,14 +105,14 @@ public class TestService {
 
         System.out.println(
                 "########################################################\n"
-                        + "INFO: GetFileDetailCivil Completed there are "
+                        + "INFO: GetAppearanceCivilDocument Completed there are "
                         + diffCounter
                         + " diffs\n"
                         + "########################################################");
 
         fileOutput.println(
                 "########################################################\n"
-                        + "INFO: GetFileDetailCivil Completed there are "
+                        + "INFO: GetAppearanceCivilDocument Completed there are "
                         + diffCounter
                         + " diffs\n"
                         + "########################################################");
@@ -155,14 +155,14 @@ public class TestService {
 
         System.out.println(
                 "########################################################\n"
-                        + "INFO: GetFileDetailCivil Completed there are "
+                        + "INFO: GetAppearanceCivilApprMethod Completed there are "
                         + diffCounter
                         + " diffs\n"
                         + "########################################################");
 
         fileOutput.println(
                 "########################################################\n"
-                        + "INFO: GetFileDetailCivil Completed there are "
+                        + "INFO: GetAppearanceCivilApprMethod Completed there are "
                         + diffCounter
                         + " diffs\n"
                         + "########################################################");
@@ -195,7 +195,7 @@ public class TestService {
         for (int idx = 0; scanner.hasNextLine(); idx++) {
             String line = scanner.nextLine();
 
-            System.out.println("\nINFO: GetAppearance with physicalFileId: " + line);
+            System.out.println("\nINFO: GetAppearanceCivil with physicalFileId: " + line);
 
             switch (idx % 4) {
                 case 0:
@@ -218,21 +218,21 @@ public class TestService {
 
             one.setPhysicalFileId(line);
             if (!compare(new GetAppearanceCivilResponse(), request)) {
-                fileOutput.println("INFO: GetAppearance with physicalFileId: " + line + "\n\n");
+                fileOutput.println("INFO: GetAppearanceCivil with physicalFileId: " + line + "\n\n");
                 ++diffCounter;
             }
         }
 
         System.out.println(
                 "########################################################\n"
-                        + "INFO: GetAppearance Completed there are "
+                        + "INFO: GetAppearanceCivil Completed there are "
                         + diffCounter
                         + " diffs\n"
                         + "########################################################");
 
         fileOutput.println(
                 "########################################################\n"
-                        + "INFO: GetAppearance Completed there are "
+                        + "INFO: GetAppearanceCivil Completed there are "
                         + diffCounter
                         + " diffs\n"
                         + "########################################################");
