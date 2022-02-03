@@ -130,7 +130,7 @@ public class SyncControllerTests {
 
         //     Set up to mock ords response
         when(restTemplate.exchange(
-                        Mockito.any(String.class),
+                        Mockito.any(URI.class),
                         Mockito.eq(HttpMethod.GET),
                         Mockito.<HttpEntity<String>>any(),
                         Mockito
