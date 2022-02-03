@@ -60,14 +60,15 @@ public class TestService {
 
     public void runCompares() throws IOException {
         System.out.println("INFO: PCSS Civil Diff testing started");
-
-        getFileDetailCivilCompare();
-        getSyncCivilAppearanceCompare();
-        getAppearanceCivilCompare();
-        getAppearanceCivilApprMethodCompare();
-        getAppearanceCivilDocument();
-        getAppearanceCivilResource();
-        getAppearanceCivilPartyAppearanceId();
+//
+//        getFileDetailCivilCompare();
+//        getSyncCivilAppearanceCompare();
+//        getAppearanceCivilCompare();
+//        getAppearanceCivilApprMethodCompare();
+//        getAppearanceCivilDocument();
+//        getAppearanceCivilResource();
+//        getAppearanceCivilPartyAppearanceId();
+        getSyncCivilHearingRestrictionCompare();
     }
 
     private void getAppearanceCivilPartyAppearanceId()
@@ -338,6 +339,47 @@ public class TestService {
         fileOutput.println(
                 "########################################################\n"
                         + "INFO: GetAppearanceCivil Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        overallDiff += diffCounter;
+        fileOutput.close();
+    }
+
+    private void getSyncCivilHearingRestrictionCompare()
+            throws FileNotFoundException, UnsupportedEncodingException {
+        int diffCounter = 0;
+
+        GetSyncCivilAppearance request = new GetSyncCivilAppearance();
+        GetSyncCivilAppearanceRequest three = new GetSyncCivilAppearanceRequest();
+        ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest one =
+                new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
+        one.setRequestDtm(dtm);
+        one.setRequestAgencyIdentifierId(RAID);
+        one.setRequestPartId(partId);
+        one.setProcessUpToDtm(Instant.now());
+        three.setGetSyncCivilAppearanceRequest(one);
+        request.setGetSyncCivilAppearanceRequest(three);
+
+        fileOutput = new PrintWriter(outputDir + "GetSyncCivilHearingRestriction.txt", "UTF-8");
+
+        System.out.println("\nINFO: GetSyncCivilHearingRestriction");
+        if (!compare(new GetSyncCivilAppearanceResponse(), request)) {
+            fileOutput.println("INFO: GetSyncCivilHearingRestriction\n\n");
+            ++diffCounter;
+        }
+
+        System.out.println(
+                "########################################################\n"
+                        + "INFO: GetSyncCivilHearingRestriction Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        fileOutput.println(
+                "########################################################\n"
+                        + "INFO: GetSyncCivilHearingRestriction Completed there are "
                         + diffCounter
                         + " diffs\n"
                         + "########################################################");
