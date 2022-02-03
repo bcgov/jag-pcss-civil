@@ -4,6 +4,7 @@ import ca.bc.gov.open.pcss.configuration.SoapConfig;
 import ca.bc.gov.open.pcss.exceptions.ORDSException;
 import ca.bc.gov.open.pcss.models.OrdsErrorLog;
 import ca.bc.gov.open.pcss.models.RequestSuccessLog;
+import ca.bc.gov.open.pcss.models.serializers.InstantSerializer;
 import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -55,14 +56,14 @@ public class SyncController {
         UriComponentsBuilder builder =
                 UriComponentsBuilder.fromHttpUrl(host + "sync/appearance")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
-                        .queryParam("RequestPartId", inner.getRequestPartId())
-                        .queryParam("RequestDtm", inner.getRequestDtm())
-                        .queryParam("ProcessUpToDtm", inner.getProcessUpToDtm());
+                        .queryParam("requestPartId", inner.getRequestPartId())
+                        .queryParam("requestDtm", InstantSerializer.convert( inner.getRequestDtm()))
+                        .queryParam("processUpToDtm", InstantSerializer.convert( inner.getProcessUpToDtm()));
 
         try {
             HttpEntity<ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse> resp =
                     restTemplate.exchange(
-                            builder.toUriString(),
+                            builder.build().toUri(),
                             HttpMethod.GET,
                             new HttpEntity<>(new HttpHeaders()),
                             ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse.class);
