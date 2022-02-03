@@ -64,7 +64,59 @@ public class TestService {
 
         // getSyncCivilAppearanceCompare();
 
-        getAppearanceCivilCompare();
+        // getAppearanceCivilCompare();
+
+        getAppearanceCivilApprMethodCompare();
+    }
+
+    private void getAppearanceCivilApprMethodCompare()
+            throws FileNotFoundException, UnsupportedEncodingException {
+        int diffCounter = 0;
+
+        GetAppearanceCivilApprMethod request = new GetAppearanceCivilApprMethod();
+        GetAppearanceCivilApprMethodRequest three = new GetAppearanceCivilApprMethodRequest();
+        ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest one
+                = new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
+        one.setRequestDtm(dtm);
+        one.setRequestAgencyIdentifierId(RAID);
+        one.setRequestPartId(partId);
+        three.setGetAppearanceCivilApprMethodRequest(one);
+        request.setGetAppearanceCivilApprMethodRequest(three);
+
+        InputStream inputIds =
+                getClass().getResourceAsStream("/getAppearanceCivilApprMethodAppearanceId.csv");
+        assert inputIds != null;
+        Scanner scanner = new Scanner(inputIds);
+
+        fileOutput = new PrintWriter(outputDir + "GetAppearanceCivilApprMethod.txt", "UTF-8");
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+
+            System.out.println("\nINFO: GetAppearanceCivilApprMethod with AppearanceId: " + line);
+            one.setAppearanceId(line);
+            if (!compare(new GetFileDetailCivilResponse(), request)) {
+                fileOutput.println("INFO: GetAppearanceCivilApprMethod with AppearanceId: " + line + "\n\n");
+                ++diffCounter;
+            }
+        }
+
+        System.out.println(
+                "########################################################\n"
+                        + "INFO: GetFileDetailCivil Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        fileOutput.println(
+                "########################################################\n"
+                        + "INFO: GetFileDetailCivil Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        overallDiff += diffCounter;
+        fileOutput.close();
     }
 
     private void getAppearanceCivilCompare()
