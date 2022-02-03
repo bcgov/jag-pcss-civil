@@ -10,18 +10,17 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ComparisonRunner {
-    private static ConfigurableApplicationContext ctx;
+    @Autowired private ConfigurableApplicationContext ctx;
     @Autowired private TestService testService;
 
     public static void main(String args[]) {
-        ctx = SpringApplication.run(ComparisonRunner.class, args);
+        SpringApplication.run(ComparisonRunner.class, args);
     }
 
     @Bean
     public CommandLineRunner CommandLineRunnerBean() {
         return (args) -> {
             testService.runCompares();
-
             System.exit(SpringApplication.exit(ctx, () -> 0));
         };
     }

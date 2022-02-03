@@ -60,17 +60,70 @@ public class TestService {
     public void runCompares() throws IOException {
         System.out.println("INFO: PCSS Civil Diff testing started");
 
-//        getFileDetailCivilCompare();
-//
-//        getSyncCivilAppearanceCompare();
-//
-//        getAppearanceCivilCompare();
-//
-//        getAppearanceCivilApprMethodCompare();
-//
-//        getAppearanceCivilDocument();
+        //        getFileDetailCivilCompare();
+        //
+        //        getSyncCivilAppearanceCompare();
+        //
+        //        getAppearanceCivilCompare();
+        //
+        //        getAppearanceCivilApprMethodCompare();
+        //
+        //        getAppearanceCivilDocument();
 
-        getAppearanceCivilResource();
+        // getAppearanceCivilResource();
+        getAppearanceCivilPartyAppearanceId();
+    }
+
+    private void getAppearanceCivilPartyAppearanceId()
+            throws FileNotFoundException, UnsupportedEncodingException {
+        int diffCounter = 0;
+
+        GetAppearanceCivilParty request = new GetAppearanceCivilParty();
+        GetAppearanceCivilPartyRequest two = new GetAppearanceCivilPartyRequest();
+        ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyRequest one =
+                new ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyRequest();
+        request.setGetAppearanceCivilPartyRequest(two);
+        two.setGetAppearanceCivilPartyRequest(one);
+
+        one.setRequestDtm(dtm);
+        one.setRequestAgencyIdentifierId(RAID);
+        one.setRequestPartId(partId);
+
+        InputStream inputIds =
+                getClass().getResourceAsStream("/getAppearanceCivilPartyAppearanceId.csv");
+        assert inputIds != null;
+        Scanner scanner = new Scanner(inputIds);
+
+        fileOutput = new PrintWriter(outputDir + "getAppearanceCivilParty.txt", "UTF-8");
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+
+            System.out.println("\nINFO: getAppearanceCivilParty with AppearanceId: " + line);
+            one.setAppearanceId(line);
+            if (!compare(new GetAppearanceCivilPartyResponse(), request)) {
+                fileOutput.println(
+                        "INFO: getAppearanceCivilParty with AppearanceId: " + line + "\n\n");
+                ++diffCounter;
+            }
+        }
+
+        System.out.println(
+                "########################################################\n"
+                        + "INFO: getAppearanceCivilParty Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        fileOutput.println(
+                "########################################################\n"
+                        + "INFO: getAppearanceCivilParty Completed there are "
+                        + diffCounter
+                        + " diffs\n"
+                        + "########################################################");
+
+        overallDiff += diffCounter;
+        fileOutput.close();
     }
 
     private void getAppearanceCivilResource()
@@ -79,8 +132,8 @@ public class TestService {
 
         GetAppearanceCivilResource request = new GetAppearanceCivilResource();
         GetAppearanceCivilResourceRequest three = new GetAppearanceCivilResourceRequest();
-        ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest one
-                = new ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest();
+        ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest one =
+                new ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest();
         one.setRequestDtm(dtm);
         one.setRequestAgencyIdentifierId(RAID);
         one.setRequestPartId(partId);
@@ -100,7 +153,8 @@ public class TestService {
             System.out.println("\nINFO: GetAppearanceCivilResource with AppearanceId: " + line);
             one.setAppearanceId(line);
             if (!compare(new GetAppearanceCivilResourceResponse(), request)) {
-                fileOutput.println("INFO: GetAppearanceCivilResource with AppearanceId: " + line + "\n\n");
+                fileOutput.println(
+                        "INFO: GetAppearanceCivilResource with AppearanceId: " + line + "\n\n");
                 ++diffCounter;
             }
         }
@@ -150,7 +204,8 @@ public class TestService {
             System.out.println("\nINFO: GetAppearanceCivilDocument with AppearanceId: " + line);
             one.setAppearanceId(line);
             if (!compare(new GetAppearanceCivilDocumentResponse(), request)) {
-                fileOutput.println("INFO: GetAppearanceCivilDocument with AppearanceId: " + line + "\n\n");
+                fileOutput.println(
+                        "INFO: GetAppearanceCivilDocument with AppearanceId: " + line + "\n\n");
                 ++diffCounter;
             }
         }
@@ -179,8 +234,8 @@ public class TestService {
 
         GetAppearanceCivilApprMethod request = new GetAppearanceCivilApprMethod();
         GetAppearanceCivilApprMethodRequest three = new GetAppearanceCivilApprMethodRequest();
-        ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest one
-                = new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
+        ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest one =
+                new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
         one.setRequestDtm(dtm);
         one.setRequestAgencyIdentifierId(RAID);
         one.setRequestPartId(partId);
@@ -200,7 +255,8 @@ public class TestService {
             System.out.println("\nINFO: GetAppearanceCivilApprMethod with AppearanceId: " + line);
             one.setAppearanceId(line);
             if (!compare(new GetAppearanceCivilApprMethodResponse(), request)) {
-                fileOutput.println("INFO: GetAppearanceCivilApprMethod with AppearanceId: " + line + "\n\n");
+                fileOutput.println(
+                        "INFO: GetAppearanceCivilApprMethod with AppearanceId: " + line + "\n\n");
                 ++diffCounter;
             }
         }
@@ -270,7 +326,8 @@ public class TestService {
 
             one.setPhysicalFileId(line);
             if (!compare(new GetAppearanceCivilResponse(), request)) {
-                fileOutput.println("INFO: GetAppearanceCivil with physicalFileId: " + line + "\n\n");
+                fileOutput.println(
+                        "INFO: GetAppearanceCivil with physicalFileId: " + line + "\n\n");
                 ++diffCounter;
             }
         }
