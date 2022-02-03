@@ -2,16 +2,14 @@ package ca.bc.gov.open.pcss.civil.comparison.services;
 
 import ca.bc.gov.open.pcss.civil.comparison.config.DualProtocolSaajSoapMessageFactory;
 import ca.bc.gov.open.pcss.civil.comparison.config.WebServiceSenderWithAuth;
-import ca.bc.gov.open.pcss.three.GetFileDetailCivil;
-import ca.bc.gov.open.pcss.three.GetFileDetailCivilRequest;
-import ca.bc.gov.open.pcss.three.GetFileDetailCivilResponse;
+import ca.bc.gov.open.pcss.three.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Stream;
+
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
@@ -59,20 +57,66 @@ public class TestService {
     private PrintWriter fileOutput;
     private static String outputDir = "comparison-tool/results/";
 
-    public void runCompares() throws IOException {
-        List<Boolean> compares = new ArrayList<>();
+    private int overallDiff = 0;
 
+    public void runCompares() throws IOException {
         System.out.println("INFO: PCSS Civil Diff testing started");
-        getFileDetailCivilCompare(compares);
+
+        //getFileDetailCivilCompare();
+
+        getSyncCivilAppearanceCompare();
+
     }
 
-    private void getFileDetailCivilCompare(List<Boolean> compares) throws IOException {
+    private void getSyncCivilAppearanceCompare() throws FileNotFoundException, UnsupportedEncodingException {
+        int diffCounter = 0;
+
+        GetSyncCivilAppearance request = new GetSyncCivilAppearance();
+        GetSyncCivilAppearanceRequest three = new GetSyncCivilAppearanceRequest();
+        ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest one = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
+        one.setRequestDtm(dtm);
+        one.setRequestAgencyIdentifierId(RAID);
+        one.setRequestPartId(partId);
+        one.setProcessUpToDtm(Instant.now());
+        three.setGetSyncCivilAppearanceRequest(one);
+        request.setGetSyncCivilAppearanceRequest(three);
+
+//        InputStream inputIds =
+//                getClass().getResourceAsStream("/getFileDetailCivilPhysicalFileId.csv");
+//        assert inputIds != null;
+//        Scanner scanner = new Scanner(inputIds);
+
+        fileOutput = new PrintWriter(outputDir + "GetSyncCivilAppearance.txt", "UTF-8");
+
+        System.out.println("\nINFO: GetSyncCivilAppearance");
+        if (!compare(new GetFileDetailCivilResponse(), request)) {
+            fileOutput.println("INFO: GetSyncCivilAppearance\n\n");
+            ++diffCounter;
+        }
+
+        System.out.println(
+                "########################################################\n"
+                        + "INFO: GetSyncCivilAppearance Completed there are " + diffCounter + " diffs\n"
+                        + "########################################################");
+
+        fileOutput.println(
+                "########################################################\n"
+                        + "INFO: GetSyncCivilAppearance Completed there are " + diffCounter + " diffs\n"
+                        + "########################################################");
+
+        overallDiff += diffCounter;
+        fileOutput.close();
+    }
+
+    private void getFileDetailCivilCompare() throws IOException {
+        int diffCounter = 0;
+
         GetFileDetailCivil request = new GetFileDetailCivil();
         ca.bc.gov.open.pcss.one.GetFileDetailCivilRequest one =
                 new ca.bc.gov.open.pcss.one.GetFileDetailCivilRequest();
         one.setRequestAgencyIdentifierId("83.0001");
-        one.setRequestDtm(Instant.now());
-        one.setRequestPartId("83.0001");
+        one.setRequestDtm(dtm);
+        one.setRequestPartId(partId);
 
         GetFileDetailCivilRequest three = new GetFileDetailCivilRequest();
         three.setGetFileDetailCivilRequest(one);
@@ -92,20 +136,21 @@ public class TestService {
             one.setPhysicalFileId(line);
             if (!compare(new GetFileDetailCivilResponse(), request)) {
                 fileOutput.println("INFO: GetFileDetailCivil with physicalFileId: " + line + "\n\n");
-                compares.add(false);
+                ++diffCounter;
             }
         }
 
         System.out.println(
                 "########################################################\n"
-                + "INFO: GetFileDetailCivil Completed there are " + compares.size() + " diffs\n"
+                + "INFO: GetFileDetailCivil Completed there are " + diffCounter + " diffs\n"
                 + "########################################################");
 
         fileOutput.println(
                 "########################################################\n"
-                + "INFO: GetFileDetailCivil Completed there are " + compares.size() + " diffs\n"
+                + "INFO: GetFileDetailCivil Completed there are " + diffCounter + " diffs\n"
                 + "########################################################");
 
+        overallDiff += diffCounter;
         fileOutput.close();
     }
 
