@@ -31,6 +31,7 @@
         <module>pcss-secure-models</module>
         <module>pcss-models</module>
         <module>pcss-code-coverage</module>
+        <module>comparison-tool</module>
     </modules>
 
     <build>

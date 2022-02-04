@@ -3,6 +3,8 @@ package ca.bc.gov.open.pcss.models.serializers;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -13,10 +15,13 @@ public final class InstantSoapConverter {
 
     private InstantSoapConverter() {}
 
-    public static String print(Instant xml) {
-        String first = xml.toString();
-        first = first.replace("T", " ");
-        return first.substring(0, first.length() - 1) + ".0";
+    public static String print(Instant value) {
+        String out =
+                DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss.0")
+                        .withZone(ZoneId.of("GMT-7"))
+                        .withLocale(Locale.US)
+                        .format(value);
+        return out;
     }
 
     public static Instant parse(String value) {
