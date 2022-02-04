@@ -60,14 +60,14 @@ public class TestService {
 
     public void runCompares() throws IOException {
         System.out.println("INFO: PCSS Civil Diff testing started");
-//
-//        getFileDetailCivilCompare();
-//        getSyncCivilAppearanceCompare();
-//        getAppearanceCivilCompare();
-//        getAppearanceCivilApprMethodCompare();
-//        getAppearanceCivilDocument();
-//        getAppearanceCivilResource();
-//        getAppearanceCivilPartyAppearanceId();
+
+        getFileDetailCivilCompare();
+        getSyncCivilAppearanceCompare();
+        getAppearanceCivilCompare();
+        getAppearanceCivilApprMethodCompare();
+        getAppearanceCivilDocument();
+        getAppearanceCivilResource();
+        getAppearanceCivilPartyAppearanceId();
         getSyncCivilHearingRestrictionCompare();
     }
 
