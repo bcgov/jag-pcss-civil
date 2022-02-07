@@ -14,7 +14,7 @@ public class InstantSerializer extends JsonSerializer<Instant> {
     public void serialize(Instant value, JsonGenerator gen, SerializerProvider serializers)
             throws IOException {
         String out =
-                DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                         .withZone(ZoneId.of("GMT-7"))
                         .withLocale(Locale.US)
                         .format(value);
@@ -26,7 +26,7 @@ public class InstantSerializer extends JsonSerializer<Instant> {
             return null;
         }
 
-        return DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")
+        return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                 .withZone(ZoneId.of("GMT-7"))
                 .withLocale(Locale.US)
                 .format(value);
