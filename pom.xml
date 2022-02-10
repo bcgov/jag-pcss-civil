@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.8</version>
+        <version>2.5.9</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ca.bc.gov.open</groupId>
@@ -31,6 +31,7 @@
         <module>pcss-secure-models</module>
         <module>pcss-models</module>
         <module>pcss-code-coverage</module>
+        <module>comparison-tool</module>
     </modules>
 
     <build>

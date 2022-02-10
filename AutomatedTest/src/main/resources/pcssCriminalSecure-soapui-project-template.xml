@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="5c017568-982d-44c5-ba68-f85c945ef30b" activeEnvironment="Default" name="pcssCriminalSecure" resourceRoot="${projectDir}" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="395a34a3-b5f8-4f99-abdc-bd3d092c7ef0" wsaVersion="NONE" name="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder" type="wsdl" bindingName="{http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1}JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder" soapVersion="1_2" anonymous="optional" definition="file:/C:/Users/243267/Downloads/pcssCriminalSecure%20(1).wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\243267\Downloads\pcssCriminalSecure%20(1).wsdl"><con:part><con:url>file:\C:\Users\243267\Downloads\pcssCriminalSecure%20(1).wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="pcssCriminalSecure" targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:tns="http://reeks.bcgov/JusticePCSSCriminal.wsProvider:pcssCriminalSecure" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:HDR1="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:HDR2="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+      <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"/>
+      <xsd:element name="getAppearanceCriminalApprMethodSecureRequest" type="pcss:getAppearanceCriminalApprMethodSecureRequest"/>
+      <xsd:element name="getAppearanceCriminalApprMethodResponse" type="pcss:getAppearanceCriminalApprMethodResponse"/>
+      <xsd:element name="getAppearanceCriminalCountSecureRequest" type="pcss:getAppearanceCriminalCountSecureRequest"/>
+      <xsd:element name="getAppearanceCriminalCountResponse" type="pcss:getAppearanceCriminalCountResponse"/>
+      <xsd:element name="getAppearanceCriminalSecureRequest" type="pcss:getAppearanceCriminalSecureRequest"/>
+      <xsd:element name="getAppearanceCriminalResponse" type="pcss:getAppearanceCriminalResponse"/>
+      <xsd:element name="getFileDetailCriminalRequest" type="pcss:getFileDetailCriminalRequest"/>
+      <xsd:element name="getFileDetailCriminalResponse" type="pcss:getFileDetailCriminalResponse"/>
+      <xsd:complexType name="getAppearanceCriminalApprMethodSecureRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="ApplicationCd" type="xsd:string"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalApprMethodResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="AppearanceMethod" type="pcss:AppearanceMethod"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AppearanceMethod">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="AssetUsageSeqNo" type="xsd:string"/>
+          <xsd:element form="qualified" name="RoleTypeCd" type="dx:ParticipantRoleType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceMethodCd" type="dx:AssetType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PhoneNumberTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="InstructionTxt" type="xsd:string"/>
+          <xsd:element form="qualified" name="ApprMethodCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalCountSecureRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="xsd:string"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="ApplicationCd" type="xsd:string"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalCountResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ApprCount" type="pcss:ApprCount"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ApprCount">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="PrintSeqNo" type="xsd:string"/>
+          <xsd:element form="qualified" name="StatuteSectionDsc" type="xsd:string"/>
+          <xsd:element form="qualified" name="StatuteDsc" type="xsd:string"/>
+          <xsd:element form="qualified" name="AppearanceReasonCd" type="dx:AppearanceReasonCriminalType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceResultCd" type="dx:AppearanceResultCriminalType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FindingCd" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalSecureRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="ApplicationCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="JustinNo" type="dx:JustinNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FutureYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="HistoryYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" name="FutureRecCount" type="xsd:string"/>
+          <xsd:element form="qualified" name="HistoryRecCount" type="xsd:string"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ApprDetail" type="pcss:ApprDetail"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ApprDetail">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="HistoryYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="AppearanceDt" type="dx:DateType"/>
+          <xsd:element form="qualified" name="AppearanceTm" type="dx:TimeType"/>
+          <xsd:element form="qualified" name="AppearanceReasonCd" type="dx:AppearanceReasonCriminalType"/>
+          <xsd:element form="qualified" name="CourtAgencyId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="CourtRoomCd" type="dx:CourtRoomCdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="JudgeFullNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="JudgeInitials" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CounselFullNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeHour" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="EstimatedTimeMin" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="PartOfTrialYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceStatusCd" type="dx:AppearanceStatusType"/>
+          <xsd:element form="qualified" name="PartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="ProfSeqNo" type="dx:SystemSeqNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="LastNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="GivenNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OrgNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="AppearanceResultCd" type="dx:AppearanceResultCriminalType"/>
+          <xsd:element form="qualified" name="AppearanceCcn" type="dx:ConcurrencyControlType"/>
+          <xsd:element form="qualified" minOccurs="0" name="SupplementalEquipmentTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="SecurityRestrictionTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OutOfTownJudgeTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCriminalRequest">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+          <xsd:element form="qualified" name="JustinNo" type="dx:JustinNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="ApplicationCd" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCriminalResponse">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="JustinNo" type="dx:JustinNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="FileNumberTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="HomeLocationAgenId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CourtClassCd" type="dx:CourtClassType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CurrentEstimateLenQty" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CurrentEstimateLenUnit" type="dx:AppearanceDurationType"/>
+          <xsd:element form="qualified" minOccurs="0" name="InitialEstimateLenQty" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="InitialEstimateLenUnit" type="dx:AppearanceDurationType"/>
+          <xsd:element form="qualified" minOccurs="0" name="TrialStartDt" type="dx:DateType"/>
+          <xsd:element form="qualified" minOccurs="0" name="WitnessCount" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="MdocSubCategoryDsc" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ApprovedByAgencyCd" type="dx:CrownAgencyIdentifierType"/>
+          <xsd:element form="qualified" minOccurs="0" name="ApprovedByPartNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="AssignedPartNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CrownEstimateLenQty" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CrownEstimateLenUnit" type="dx:AppearanceDurationType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CaseAgeDays" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="IndictableYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="ComplexityTypeCd" type="dx:FileComplexityType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PersonnelWitnessRecCount" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ExpertWitnessRecCount" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CivilianWitnessRecCount" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="EnforcementAgencyFileNoTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="TrialRemarkTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CommentToJudgeTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="ApprovalCrownAgencyTypeCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="MdocCcn" type="dx:ConcurrencyControlType"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="TrialRemark" type="pcss:TrialRemark"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Participant" type="pcss:Participant"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Witness" type="pcss:Witness"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="HearingRestriction" type="pcss:HearingRestriction"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="CrownFileNote" type="pcss:CrownFileNote"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Rcc" type="pcss:Rcc"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TrialRemark">
+        <xsd:sequence>
+          <xsd:element form="qualified" minOccurs="0" name="CommentTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Participant">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="PartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="ProfSeqNo" type="dx:SystemSeqNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="LastNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="GivenNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="OrgNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="WarrantYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="InCustodyYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="InterpreterYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="DetainedYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="BirthDt" type="dx:DateType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CounselRrepId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CounselPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="CounselLastNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CounselGivenNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CounselRelatedRepTypeCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="CounselEnteredDt" type="dx:DateType"/>
+          <xsd:element form="qualified" minOccurs="0" name="DesignatedCounselYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Charge" type="pcss:Charge"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Charge">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="SectionTxt" type="xsd:string"/>
+          <xsd:element form="qualified" name="SectionDscTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Witness">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="PartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="LastNm" type="xsd:string"/>
+          <xsd:element form="qualified" name="GivenNm" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="WitnessTypeCd" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="RoleTypeCd" type="dx:WitnessRoleType"/>
+          <xsd:element form="qualified" minOccurs="0" name="RequiredYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="ConfidentialYN" type="dx:YesNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PinCodeTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="AgencyId" type="dx:SystemIdType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HearingRestriction">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="HearingRestrictionId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="AdjPartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="AdjFullNm" type="xsd:string"/>
+          <xsd:element form="qualified" name="HearingRestrictionTypeCd" type="dx:HearingRestrictionType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PartId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" minOccurs="0" name="ProfSeqNo" type="dx:SystemSeqNoType"/>
+          <xsd:element form="qualified" minOccurs="0" name="PartNm" type="xsd:string"/>
+          <xsd:element form="qualified" name="AdjInitialsTxt" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="JustinNo" type="dx:JustinNoType"/>
+          <xsd:element form="qualified" name="HearingRestrictionCcn" type="dx:ConcurrencyControlType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CrownFileNote">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="FileNoteId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="NoteTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Rcc">
+        <xsd:sequence>
+          <xsd:element form="qualified" name="RccId" type="dx:SystemIdType"/>
+          <xsd:element form="qualified" name="RccAgencyId" type="dx:AgencyIdentifierType"/>
+          <xsd:element form="qualified" name="RccAgencyFileNo" type="xsd:string"/>
+          <xsd:element form="qualified" minOccurs="0" name="SynopsisTxt" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0" xmlns:tns="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1">
+      <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"/>
+      <xsd:element name="getAppearanceCriminalApprMethodSecure" type="tns:getAppearanceCriminalApprMethodSecure"/>
+      <xsd:element name="getAppearanceCriminalApprMethodSecureResponse" type="tns:getAppearanceCriminalApprMethodSecureResponse"/>
+      <xsd:element name="getAppearanceCriminalCountSecure" type="tns:getAppearanceCriminalCountSecure"/>
+      <xsd:element name="getAppearanceCriminalCountSecureResponse" type="tns:getAppearanceCriminalCountSecureResponse"/>
+      <xsd:element name="getAppearanceCriminalSecure" type="tns:getAppearanceCriminalSecure"/>
+      <xsd:element name="getAppearanceCriminalSecureResponse" type="tns:getAppearanceCriminalSecureResponse"/>
+      <xsd:element name="getFileDetailCriminalSecure" type="tns:getFileDetailCriminalSecure"/>
+      <xsd:element name="getFileDetailCriminalSecureResponse" type="tns:getFileDetailCriminalSecureResponse"/>
+      <xsd:complexType name="getAppearanceCriminalApprMethodSecure">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCriminalApprMethodSecureRequest" nillable="true" type="tns:getAppearanceCriminalApprMethodSecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalApprMethodSecureRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCriminalApprMethodSecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalApprMethodSecureResponse">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCriminalApprMethodResponse" nillable="true" type="tns:getAppearanceCriminalApprMethodResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalApprMethodResponse">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCriminalApprMethodResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalCountSecure">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCriminalCountSecureRequest" nillable="true" type="tns:getAppearanceCriminalCountSecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalCountSecureRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCriminalCountSecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalCountSecureResponse">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCriminalCountResponse" nillable="true" type="tns:getAppearanceCriminalCountResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalCountResponse">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCriminalCountResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalSecure">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCriminalSecureRequest" nillable="true" type="tns:getAppearanceCriminalSecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalSecureRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCriminalSecureRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalSecureResponse">
+        <xsd:sequence>
+          <xsd:element name="getAppearanceCriminalResponse" nillable="true" type="tns:getAppearanceCriminalResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppearanceCriminalResponse">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getAppearanceCriminalResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCriminalSecure">
+        <xsd:sequence>
+          <xsd:element name="getFileDetailCriminalSecureRequest" nillable="true" type="tns:getFileDetailCriminalRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCriminalRequest">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getFileDetailCriminalRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCriminalSecureResponse">
+        <xsd:sequence>
+          <xsd:element name="getFileDetailCriminalResponse" nillable="true" type="tns:getFileDetailCriminalResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getFileDetailCriminalResponse">
+        <xsd:sequence>
+          <xsd:element ref="pcss:getFileDetailCriminalResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0" xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0">
+      <xsd:simpleType name="AgencyIdentifierType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="16"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SystemIdType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="16"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DateTimeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:length value="21"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ParticipantRoleType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AssetType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ConcurrencyControlType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="12"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AppearanceReasonCriminalType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AppearanceResultCriminalType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="JustinNoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="12"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="YesNoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="Y"/>
+          <xsd:enumeration value="N"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DateType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:length value="21"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="TimeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:length value="21"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtRoomCdType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="6"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AppearanceStatusType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="SCHD"/>
+          <xsd:enumeration value="CNCL"/>
+          <xsd:enumeration value="UNCF"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SystemSeqNoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="10"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtLevelType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="P"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="A"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CourtClassType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="A"/>
+          <xsd:enumeration value="Y"/>
+          <xsd:enumeration value="T"/>
+          <xsd:enumeration value="F"/>
+          <xsd:enumeration value="C"/>
+          <xsd:enumeration value="M"/>
+          <xsd:enumeration value="L"/>
+          <xsd:enumeration value="R"/>
+          <xsd:enumeration value="B"/>
+          <xsd:enumeration value="D"/>
+          <xsd:enumeration value="E"/>
+          <xsd:enumeration value="G"/>
+          <xsd:enumeration value="H"/>
+          <xsd:enumeration value="N"/>
+          <xsd:enumeration value="O"/>
+          <xsd:enumeration value="P"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="V"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AppearanceDurationType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="HRS"/>
+          <xsd:enumeration value="DYS"/>
+          <xsd:enumeration value="MTH"/>
+          <xsd:enumeration value="MTHS"/>
+          <xsd:enumeration value="YRS"/>
+          <xsd:enumeration value="MIN"/>
+          <xsd:enumeration value="WKS"/>
+          <xsd:enumeration value="HR"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CrownAgencyIdentifierType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:maxLength value="15"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="FileComplexityType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="SPC"/>
+          <xsd:enumeration value="GA"/>
+          <xsd:enumeration value="SA"/>
+          <xsd:enumeration value="ALL"/>
+          <xsd:enumeration value="SG"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="WitnessRoleType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="WIT"/>
+          <xsd:enumeration value="CRN"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="HearingRestrictionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:whiteSpace value="preserve"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="D"/>
+          <xsd:enumeration value="A"/>
+          <xsd:enumeration value="G"/>
+          <xsd:enumeration value="XXX"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="pcssCriminalSecure_PortType_getAppearanceCriminalApprMethodSecure">
+    <wsdl:part name="parameters" element="tns1:getAppearanceCriminalApprMethodSecure"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCriminalSecure_PortType_getFileDetailCriminalSecure">
+    <wsdl:part name="parameters" element="tns1:getFileDetailCriminalSecure"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCriminalSecure_PortType_getAppearanceCriminalSecureResponse">
+    <wsdl:part name="parameters" element="tns1:getAppearanceCriminalSecureResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCriminalSecure_PortType_getAppearanceCriminalCountSecure">
+    <wsdl:part name="parameters" element="tns1:getAppearanceCriminalCountSecure"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCriminalSecure_PortType_getAppearanceCriminalApprMethodSecureResponse">
+    <wsdl:part name="parameters" element="tns1:getAppearanceCriminalApprMethodSecureResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCriminalSecure_PortType_getFileDetailCriminalSecureResponse">
+    <wsdl:part name="parameters" element="tns1:getFileDetailCriminalSecureResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCriminalSecure_PortType_getAppearanceCriminalCountSecureResponse">
+    <wsdl:part name="parameters" element="tns1:getAppearanceCriminalCountSecureResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pcssCriminalSecure_PortType_getAppearanceCriminalSecure">
+    <wsdl:part name="parameters" element="tns1:getAppearanceCriminalSecure"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="pcssCriminalSecure_PortType">
+    <wsdl:operation name="getAppearanceCriminalSecure">
+      <wsdl:input message="tns1:pcssCriminalSecure_PortType_getAppearanceCriminalSecure"></wsdl:input>
+      <wsdl:output message="tns1:pcssCriminalSecure_PortType_getAppearanceCriminalSecureResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCriminalCountSecure">
+      <wsdl:input message="tns1:pcssCriminalSecure_PortType_getAppearanceCriminalCountSecure"></wsdl:input>
+      <wsdl:output message="tns1:pcssCriminalSecure_PortType_getAppearanceCriminalCountSecureResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCriminalApprMethodSecure">
+      <wsdl:input message="tns1:pcssCriminalSecure_PortType_getAppearanceCriminalApprMethodSecure"></wsdl:input>
+      <wsdl:output message="tns1:pcssCriminalSecure_PortType_getAppearanceCriminalApprMethodSecureResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFileDetailCriminalSecure">
+      <wsdl:input message="tns1:pcssCriminalSecure_PortType_getFileDetailCriminalSecure"></wsdl:input>
+      <wsdl:output message="tns1:pcssCriminalSecure_PortType_getFileDetailCriminalSecureResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder" type="tns1:pcssCriminalSecure_PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAppearanceCriminalSecure">
+      <soap12:operation soapAction="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder_getAppearanceCriminalSecure" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCriminalCountSecure">
+      <soap12:operation soapAction="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder_getAppearanceCriminalCountSecure" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppearanceCriminalApprMethodSecure">
+      <soap12:operation soapAction="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder_getAppearanceCriminalApprMethodSecure" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFileDetailCriminalSecure">
+      <soap12:operation soapAction="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder_getFileDetailCriminalSecure" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JusticePCSSCriminal.wsProvider.pcssCriminalSecure">
+    <wsdl:port name="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Port" binding="tns1:JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder">
+      <soap12:address location="{API_HOST}"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>{API_HOST}</con:endpoint></con:endpoints><con:operation id="59ca390a-0ef3-4bd2-aabb-2a35a7f573d2" isOneWay="false" action="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder_getAppearanceCriminalApprMethodSecure" name="getAppearanceCriminalApprMethodSecure" bindingOperationName="getAppearanceCriminalApprMethodSecure" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="baf457f2-59fc-417f-90f6-6fcb88f2f5d2" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://jag-pcss-criminal-cd1cf7-dev.apps.silver.devops.gov.bc.ca/criminal</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getAppearanceCriminalApprMethodSecure>\r
+         <getAppearanceCriminalApprMethodSecureRequest>\r
+            <ns:getAppearanceCriminalApprMethodSecureRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:ApplicationCd>?</ns:ApplicationCd>\r
+               <ns:AppearanceId>?</ns:AppearanceId>\r
+            </ns:getAppearanceCriminalApprMethodSecureRequest>\r
+         </getAppearanceCriminalApprMethodSecureRequest>\r
+      </v1:getAppearanceCriminalApprMethodSecure>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1/pcssCriminalSecure_PortType/getAppearanceCriminalApprMethodSecureRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="86b91a40-73b2-468d-9426-e93c5933e128" isOneWay="false" action="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder_getAppearanceCriminalCountSecure" name="getAppearanceCriminalCountSecure" bindingOperationName="getAppearanceCriminalCountSecure" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ebf99d0a-ee23-48d9-9133-d9f1a914c7cc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getAppearanceCriminalCountSecure>\r
+         <getAppearanceCriminalCountSecureRequest>\r
+            <ns:getAppearanceCriminalCountSecureRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:ApplicationCd>?</ns:ApplicationCd>\r
+               <ns:AppearanceId>?</ns:AppearanceId>\r
+            </ns:getAppearanceCriminalCountSecureRequest>\r
+         </getAppearanceCriminalCountSecureRequest>\r
+      </v1:getAppearanceCriminalCountSecure>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1/pcssCriminalSecure_PortType/getAppearanceCriminalCountSecureRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="0131140b-78ac-49a1-9cea-e5a79d2b48e6" isOneWay="false" action="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder_getAppearanceCriminalSecure" name="getAppearanceCriminalSecure" bindingOperationName="getAppearanceCriminalSecure" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1151bb03-14c6-476a-a358-026b68cbd30d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getAppearanceCriminalSecure>\r
+         <getAppearanceCriminalSecureRequest>\r
+            <ns:getAppearanceCriminalSecureRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:ApplicationCd>?</ns:ApplicationCd>\r
+               <!--Optional:-->\r
+               <ns:JustinNo>?</ns:JustinNo>\r
+               <!--Optional:-->\r
+               <ns:FutureYN>?</ns:FutureYN>\r
+               <!--Optional:-->\r
+               <ns:HistoryYN>?</ns:HistoryYN>\r
+               <!--Optional:-->\r
+               <ns:AppearanceId>?</ns:AppearanceId>\r
+            </ns:getAppearanceCriminalSecureRequest>\r
+         </getAppearanceCriminalSecureRequest>\r
+      </v1:getAppearanceCriminalSecure>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1/pcssCriminalSecure_PortType/getAppearanceCriminalSecureRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="0e49e2b8-b531-4d97-9b39-24b05d345e91" isOneWay="false" action="JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder_getFileDetailCriminalSecure" name="getFileDetailCriminalSecure" bindingOperationName="getFileDetailCriminalSecure" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9786afef-6b4b-49e2-bfcf-659fd31d3c16" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <v1:getFileDetailCriminalSecure>\r
+         <getFileDetailCriminalSecureRequest>\r
+            <ns:getFileDetailCriminalRequest>\r
+               <ns:RequestAgencyIdentifierId>?</ns:RequestAgencyIdentifierId>\r
+               <ns:RequestPartId>?</ns:RequestPartId>\r
+               <ns:RequestDtm>?</ns:RequestDtm>\r
+               <ns:JustinNo>?</ns:JustinNo>\r
+               <!--Optional:-->\r
+               <ns:ApplicationCd>?</ns:ApplicationCd>\r
+            </ns:getFileDetailCriminalRequest>\r
+         </getFileDetailCriminalSecureRequest>\r
+      </v1:getFileDetailCriminalSecure>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1/pcssCriminalSecure_PortType/getFileDetailCriminalSecureRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="0f6dd99e-c6f3-47a1-8979-e3a1856b887d" name="PcssCriminalSecure_TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="57c38dc7-11cf-4512-8ae9-2b2a68bb56ce" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="AutomationTests" searchProperties="true"><con:settings/><con:testStep type="groovy" name="getAppearanceCriminalApprMethodSecure" id="f9410e5a-b4b9-4dac-91ea-586bedbb47f5"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetAppearanceCriminalApprMethodSecure = testRunner.testCase.testSuite.testCases["GetAppearanceCriminalApprMethodSecure"].testSteps["getAppearanceCriminalApprMethodSecure"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalApprMethodSecure"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalApprMethodSecure"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalApprMethodSecure"].getPropertyValue("RequestDtm")
+ def ApplicationCd=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalApprMethodSecure"].getPropertyValue("ApplicationCd")
+ def AppearanceId=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalApprMethodSecure"].getPropertyValue("AppearanceId")
+ 
+ def xmlAdd= new XmlHolder(GetAppearanceCriminalApprMethodSecure)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalApprMethodSecure/getAppearanceCriminalApprMethodSecureRequest/ns:getAppearanceCriminalApprMethodSecureRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalApprMethodSecure/getAppearanceCriminalApprMethodSecureRequest/ns:getAppearanceCriminalApprMethodSecureRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalApprMethodSecure/getAppearanceCriminalApprMethodSecureRequest/ns:getAppearanceCriminalApprMethodSecureRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalApprMethodSecure/getAppearanceCriminalApprMethodSecureRequest/ns:getAppearanceCriminalApprMethodSecureRequest/ns:ApplicationCd",ApplicationCd)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalApprMethodSecure/getAppearanceCriminalApprMethodSecureRequest/ns:getAppearanceCriminalApprMethodSecureRequest/ns:AppearanceId",AppearanceId)
+ 
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetAppearanceCriminalApprMethodSecure"].testSteps["getAppearanceCriminalApprMethodSecure"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalApprMethodSecure"].testSteps["getAppearanceCriminalApprMethodSecure"]
+ def contextGetAppearanceCriminalApprMethodSecure = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetAppearanceCriminalApprMethodSecure)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalApprMethodSecure"].testSteps["getAppearanceCriminalApprMethodSecure"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= Response.getNodeValue("//ns4:AssetUsageSeqNo")
+def GetResponse2= Response.getNodeValue("//ns4:RoleTypeCd")
+def GetResponse3= Response.getNodeValue("//ns4:AppearanceMethodCd")
+def GetResponse4= Response.getNodeValue("//ns4:ApprMethodCcn")
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+log.info GetResponse4
+
+assert GetResponse=="0"
+assert GetResponse1=="1"
+assert GetResponse2=="ACC"
+assert GetResponse3=="TC"
+assert GetResponse4.isNumber()
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getAppearanceCriminalCountSecure" id="d5a8f8e0-e6a5-48cd-9086-491b08139194"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetAppearanceCriminalCountSecure = testRunner.testCase.testSuite.testCases["GetAppearanceCriminalCountSecure"].testSteps["getAppearanceCriminalCountSecure"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalCountSecure"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalCountSecure"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalCountSecure"].getPropertyValue("RequestDtm")
+ def ApplicationCd=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalCountSecure"].getPropertyValue("ApplicationCd")
+ def AppearanceId=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalCountSecure"].getPropertyValue("AppearanceId")
+ 
+ def xmlAdd= new XmlHolder(GetAppearanceCriminalCountSecure)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalCountSecure/getAppearanceCriminalCountSecureRequest/ns:getAppearanceCriminalCountSecureRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalCountSecure/getAppearanceCriminalCountSecureRequest/ns:getAppearanceCriminalCountSecureRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalCountSecure/getAppearanceCriminalCountSecureRequest/ns:getAppearanceCriminalCountSecureRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalCountSecure/getAppearanceCriminalCountSecureRequest/ns:getAppearanceCriminalCountSecureRequest/ns:ApplicationCd",ApplicationCd)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalCountSecure/getAppearanceCriminalCountSecureRequest/ns:getAppearanceCriminalCountSecureRequest/ns:AppearanceId",AppearanceId)
+ 
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetAppearanceCriminalCountSecure"].testSteps["getAppearanceCriminalCountSecure"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalCountSecure"].testSteps["getAppearanceCriminalCountSecure"]
+ def contextGetAppearanceCriminalCountSecure = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetAppearanceCriminalCountSecure)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalCountSecure"].testSteps["getAppearanceCriminalCountSecure"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= Response.getNodeValue("//ns4:PrintSeqNo")
+def GetResponse2= Response.getNodeValue("//ns4:StatuteSectionDsc")
+def GetResponse3= Response.getNodeValue("//ns4:StatuteDsc")
+def GetResponse4= Response.getNodeValue("//ns4:AppearanceReasonCd")
+def GetResponse5= Response.getNodeValue("//ns4:AppearanceResultCd")
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+log.info GetResponse4
+log.info GetResponse5
+
+assert GetResponse=="0"
+assert GetResponse1=="1"
+assert GetResponse2=="CCC - 348(1)(a)"
+assert GetResponse3=="Breaking and entering with intent"
+assert GetResponse4=="FXD"
+assert GetResponse5=="IBD"
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getAppearanceCriminalSecure" id="917f2459-c6b7-4398-8932-660eb632777b"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetAppearanceCriminalSecure = testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].testSteps["getAppearanceCriminalSecure"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].getPropertyValue("RequestDtm")
+ def ApplicationCd=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].getPropertyValue("ApplicationCd")
+ def JustinNo=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].getPropertyValue("JustinNo")
+ def FutureYN=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].getPropertyValue("FutureYN")
+ def HistoryYN=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].getPropertyValue("HistoryYN")
+ def AppearanceId=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].getPropertyValue("AppearanceId")
+
+ 
+ def xmlAdd= new XmlHolder(GetAppearanceCriminalSecure)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalSecure/getAppearanceCriminalSecureRequest/ns:getAppearanceCriminalSecureRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalSecure/getAppearanceCriminalSecureRequest/ns:getAppearanceCriminalSecureRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalSecure/getAppearanceCriminalSecureRequest/ns:getAppearanceCriminalSecureRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalSecure/getAppearanceCriminalSecureRequest/ns:getAppearanceCriminalSecureRequest/ns:ApplicationCd",ApplicationCd)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalSecure/getAppearanceCriminalSecureRequest/ns:getAppearanceCriminalSecureRequest/ns:JustinNo",JustinNo)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalSecure/getAppearanceCriminalSecureRequest/ns:getAppearanceCriminalSecureRequest/ns:FutureYN",FutureYN)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalSecure/getAppearanceCriminalSecureRequest/ns:getAppearanceCriminalSecureRequest/ns:HistoryYN",HistoryYN)
+ xmlAdd.setNodeValue("//v1:getAppearanceCriminalSecure/getAppearanceCriminalSecureRequest/ns:getAppearanceCriminalSecureRequest/ns:AppearanceId",AppearanceId)
+ 
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].testSteps["getAppearanceCriminalSecure"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].testSteps["getAppearanceCriminalSecure"]
+ def contextGetAppearanceCriminalSecure = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetAppearanceCriminalSecure)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetAppearanceCriminalSecure"].testSteps["getAppearanceCriminalSecure"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= Response.getNodeValue("//ns4:FutureRecCount")
+def GetResponse2= Response.getNodeValue("//ns4:HistoryRecCount")
+def GetResponse3= Response.getNodeValue("//ns4:HistoryYN")
+def GetResponse4= Response.getNodeValue("//ns4:AppearanceId")
+def GetResponse5= Response.getNodeValue("//ns4:AppearanceDt")
+def GetResponse6= Response.getNodeValue("//ns4:AppearanceTm")
+def GetResponse7= Response.getNodeValue("//ns4:AppearanceReasonCd")
+def GetResponse8= Response.getNodeValue("//ns4:CourtAgencyId")
+def GetResponse9= Response.getNodeValue("//ns4:CourtRoomCd")
+def GetResponse10= Response.getNodeValue("//ns4:JudgeFullNm")
+def GetResponse11= Response.getNodeValue("//ns4:CounselFullNm")
+def GetResponse12= Response.getNodeValue("//ns4:EstimatedTimeHour")
+def GetResponse13= Response.getNodeValue("//ns4:EstimatedTimeMin")
+def GetResponse14= Response.getNodeValue("//ns4:PartOfTrialYN")
+def GetResponse15= Response.getNodeValue("//ns4:AppearanceStatusCd")
+def GetResponse16= Response.getNodeValue("//ns4:PartId")
+def GetResponse17= Response.getNodeValue("//ns4:ProfSeqNo")
+def GetResponse18= Response.getNodeValue("//ns4:LastNm")
+def GetResponse19= Response.getNodeValue("//ns4:GivenNm")
+def GetResponse20= Response.getNodeValue("//ns4:AppearanceCcn")
+def GetResponse21= Response.getNodeValue("//ns4:SupplementalEquipmentTxt")
+def GetResponse22= Response.getNodeValue("//ns4:SecurityRestrictionTxt")
+def GetResponse23= Response.getNodeValue("//ns4:OutOfTownJudgeTxt")
+
+log.info GetResponse
+log.info GetResponse1
+log.info GetResponse2
+log.info GetResponse3
+
+assert GetResponse=="0"
+assert GetResponse1=="0"
+assert GetResponse2=="1"
+assert GetResponse3=="Y"
+assert GetResponse4=="39065.0734"
+assert GetResponse5=="2014-06-27 00:00:00.0"
+assert GetResponse6=="2014-06-27 09:00:00.0"
+assert GetResponse7=="FA"
+assert GetResponse8=="8813.0001"
+assert GetResponse9=="002"
+assert GetResponse10==","
+assert GetResponse11=="CounselFullName"
+assert GetResponse12=="1"
+assert GetResponse13=="15"
+assert GetResponse14=="Y"
+assert GetResponse15=="SCHD"
+assert GetResponse16=="19621.0042"
+assert GetResponse17=="2"
+assert GetResponse18=="Young"
+assert GetResponse19=="David"
+assert GetResponse20.isNumber()
+assert GetResponse21=="abc"
+assert GetResponse22=="def"
+assert GetResponse23=="ghi"
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="getFileDetailCriminalSecure" id="b6cb9f3b-e3e4-4bdb-a153-370884f86d9a"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def GetFileDetailCriminalSecure = testRunner.testCase.testSuite.testCases["GetFileDetailCriminalSecure"].testSteps["getFileDetailCriminalSecure"].getPropertyValue("Request")
+ 
+ def RequestAgencyIdentifierId=testRunner.testCase.testSuite.testCases["GetFileDetailCriminalSecure"].getPropertyValue("RequestAgencyIdentifierId")
+ def RequestPartId=testRunner.testCase.testSuite.testCases["GetFileDetailCriminalSecure"].getPropertyValue("RequestPartId")
+ def RequestDtm=testRunner.testCase.testSuite.testCases["GetFileDetailCriminalSecure"].getPropertyValue("RequestDtm")
+ def JustinNo=testRunner.testCase.testSuite.testCases["GetFileDetailCriminalSecure"].getPropertyValue("JustinNo")
+ def ApplicationCd=testRunner.testCase.testSuite.testCases["GetFileDetailCriminalSecure"].getPropertyValue("ApplicationCd")
+
+ def xmlAdd= new XmlHolder(GetFileDetailCriminalSecure)
+ xmlAdd.setNodeValue("//v1:getFileDetailCriminalSecure/getFileDetailCriminalSecureRequest/ns:getFileDetailCriminalRequest/ns:RequestAgencyIdentifierId",RequestAgencyIdentifierId)
+ xmlAdd.setNodeValue("//v1:getFileDetailCriminalSecure/getFileDetailCriminalSecureRequest/ns:getFileDetailCriminalRequest/ns:RequestPartId",RequestPartId)
+ xmlAdd.setNodeValue("//v1:getFileDetailCriminalSecure/getFileDetailCriminalSecureRequest/ns:getFileDetailCriminalRequest/ns:RequestDtm",RequestDtm)
+ xmlAdd.setNodeValue("//v1:getFileDetailCriminalSecure/getFileDetailCriminalSecureRequest/ns:getFileDetailCriminalRequest/ns:JustinNo",JustinNo)
+ xmlAdd.setNodeValue("//v1:getFileDetailCriminalSecure/getFileDetailCriminalSecureRequest/ns:getFileDetailCriminalRequest/ns:ApplicationCd",ApplicationCd)
+ 
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["GetFileDetailCriminalSecure"].testSteps["getFileDetailCriminalSecure"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["GetFileDetailCriminalSecure"].testSteps["getFileDetailCriminalSecure"]
+ def contextGetFileDetailCriminalSecure = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetFileDetailCriminalSecure)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["GetFileDetailCriminalSecure"].testSteps["getFileDetailCriminalSecure"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//ns4:ResponseCd")
+def GetResponse1= Response.getNodeValue("//ns4:JustinNo")
+def GetResponse2= Response.getNodeValue("//ns4:FileNumberTxt")
+def GetResponse3= Response.getNodeValue("//ns4:HomeLocationAgenId")
+def GetResponse4= Response.getNodeValue("//ns4:CourtLevelCd")
+def GetResponse5= Response.getNodeValue("//ns4:CourtClassCd")
+def GetResponse6= Response.getNodeValue("//ns4:InitialEstimateLenQty")
+def GetResponse7= Response.getNodeValue("//ns4:WitnessCount")
+def GetResponse8= Response.getNodeValue("//ns4:ApprovedByAgencyCd")
+def GetResponse9= Response.getNodeValue("//ns4:AssignedPartNm")
+def GetResponse10= Response.getNodeValue("//ns4:CaseAgeDays")
+def GetResponse11= Response.getNodeValue("//ns4:IndictableYN")
+def GetResponse12= Response.getNodeValue("//ns4:PersonnelWitnessRecCount")
+def GetResponse13= Response.getNodeValue("//ns4:ExpertWitnessRecCount")
+def GetResponse14= Response.getNodeValue("//ns4:CivilianWitnessRecCount")
+def GetResponse15= Response.getNodeValue("//ns4:EnforcementAgencyFileNoTxt")
+def GetResponse16= Response.getNodeValue("//ns4:ApprovalCrownAgencyTypeCd")
+def GetResponse17= Response.getNodeValue("//ns4:MdocCcn")
+def GetResponse18= Response.getNodeValue("//ns4:PartId")
+def GetResponse19= Response.getNodeValue("//ns4:LastNm")
+def GetResponse20= Response.getNodeValue("//ns4:GivenNm")
+def GetResponse21= Response.getNodeValue("//ns4:WitnessTypeCd")
+def GetResponse22= Response.getNodeValue("//ns4:RoleTypeCd")
+def GetResponse23= Response.getNodeValue("//ns4:RequiredYN")
+def GetResponse24= Response.getNodeValue("//ns4:ConfidentialYN")
+def GetResponse25= Response.getNodeValue("//ns4:PinCodeTxt")
+def GetResponse26= Response.getNodeValue("//ns4:AgencyId")
+def GetResponse27= Response.getNodeValue("//ns4:NoteTxt")
+
+log.info GetResponse
+log.info GetResponse1
+
+assert GetResponse=="0"
+assert GetResponse1=="36278"
+assert GetResponse2=="90111-2"
+assert GetResponse3=="83.0001"
+assert GetResponse4=="P"
+assert GetResponse5=="A"
+assert GetResponse6=="0"
+assert GetResponse7=="0"
+assert GetResponse8=="C402"
+assert GetResponse9=="Ohara, Scarlett"
+assert GetResponse10=="5244"
+assert GetResponse11=="Y"
+assert GetResponse12=="0"
+assert GetResponse13=="0"
+assert GetResponse14=="0"
+assert GetResponse15=="105:90DAYA"
+assert GetResponse16=="PRV"
+assert GetResponse17=="245934146379"
+assert GetResponse18=="12876.0026"
+assert GetResponse19=="Ohara"
+assert GetResponse20=="Scarlett"
+assert GetResponse21=="TP"
+assert GetResponse22=="CRN"
+assert GetResponse23=="Y"
+assert GetResponse24=="N"
+assert GetResponse25=="99"
+assert GetResponse26=="30.0001"
+assert GetResponse27=="You do not have enough privileges to access one or more RCCs on this document."
+
+
+</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="baa26535-9cf0-4822-944d-9d936cf50914" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetAppearanceCriminalApprMethodSecure" searchProperties="true"><con:settings/><con:testStep type="request" name="getAppearanceCriminalApprMethodSecure" id="c0d5ee0c-a873-444e-9bf7-096f67f70ddb"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder</con:interface><con:operation>getAppearanceCriminalApprMethodSecure</con:operation><con:request name="getAppearanceCriminalApprMethodSecure" id="dcf8b508-4fa4-4faa-8bbc-232755f9ce5c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://jag-pcss-criminal-cd1cf7-dev.apps.silver.devops.gov.bc.ca/criminal</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getAppearanceCriminalApprMethodSecure>
+         <getAppearanceCriminalApprMethodSecureRequest>
+            <ns:getAppearanceCriminalApprMethodSecureRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>2021-11-02 00:00:00.0</ns:RequestDtm>
+               <ns:ApplicationCd>PCSS</ns:ApplicationCd>
+               <ns:AppearanceId>39065.0734</ns:AppearanceId>
+            </ns:getAppearanceCriminalApprMethodSecureRequest>
+         </getAppearanceCriminalApprMethodSecureRequest>
+      </v1:getAppearanceCriminalApprMethodSecure>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="12e2e6f0-254a-4f75-9046-05b7d4593885"/><con:assertion type="Valid HTTP Status Codes" id="c8fd3067-ad84-496c-b8a2-83b1f0fa394e" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="2728d975-e556-49a4-a728-49bbebbaaf21" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 403, 404, 500</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="b1f4be59-60c9-45d6-92cd-d2bf9bf0adc2" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="84f6f4b0-ab77-4565-828c-ede7a2eeff10" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="a63dc4fd-6cca-49f9-bc0e-4afc2ae2ed7e" name="Contains 1"><con:configuration><token>1</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="52fec452-fb81-47bc-a139-26509625389c" name="Contains 2"><con:configuration><token>ACC</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="9ab57aa1-e38c-4997-ae1b-04c0a29d6a87" name="Contains 3"><con:configuration><token>TC</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-11-02 00:00:00.0</con:value></con:property><con:property><con:name>ApplicationCd</con:name><con:value>PCSS</con:value></con:property><con:property><con:name>AppearanceId</con:name><con:value>39065.0734</con:value></con:property></con:properties></con:testCase><con:testCase id="c0fb26b7-39f3-4157-b9a9-395bc289a8f8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetAppearanceCriminalCountSecure" searchProperties="true"><con:settings/><con:testStep type="request" name="getAppearanceCriminalCountSecure" id="d40a86b7-fa3f-4c2d-9e5f-ec80d940bd44"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder</con:interface><con:operation>getAppearanceCriminalApprMethodSecure</con:operation><con:request name="getAppearanceCriminalCountSecure" id="dc834307-5f36-4ccf-be7e-5c4e5c7d4172"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://jag-pcss-criminal-cd1cf7-dev.apps.silver.devops.gov.bc.ca/criminal</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getAppearanceCriminalCountSecure>
+         <getAppearanceCriminalCountSecureRequest>
+            <ns:getAppearanceCriminalCountSecureRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>2017-11-02 00:00:00.0</ns:RequestDtm>
+               <ns:ApplicationCd>PCSS</ns:ApplicationCd>
+               <ns:AppearanceId>54157.0734</ns:AppearanceId>               
+            </ns:getAppearanceCriminalCountSecureRequest>
+         </getAppearanceCriminalCountSecureRequest>
+      </v1:getAppearanceCriminalCountSecure>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c8650530-2c79-4f3a-8bcf-2903de009888"/><con:assertion type="Valid HTTP Status Codes" id="45075ed8-fe14-4bfe-80a5-9895d45fac57" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="dcc4dec6-82fb-4bd0-9735-721fd0bcc7a8" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 403, 404, 500</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="b6269677-f288-47b9-9e93-d70689b9049f" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f3324907-a860-4be4-9e34-07c0dcfb8295" name="Contains"><con:configuration><token>CCC - 348(1)(a)</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="fb468eaf-6819-4d6f-acb8-f0d6fd1c6d3c" name="Contains 1"><con:configuration><token>Breaking and entering with intent</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="21d947e9-ac6c-4fcb-a552-bf9b1a7ada05" name="Contains 2"><con:configuration><token>FXD</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="034faada-3bd5-4fb0-a451-87ee060e759c" name="Contains 3"><con:configuration><token>IBD</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f43da120-ccc4-47d2-ad8f-fb5ce6cb5825" name="Contains 4"><con:configuration><token>CCC - 117.011</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="ca5a5022-cb82-4096-91b8-695bafcf2080" name="Contains 5"><con:configuration><token>2</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="92dbe2dc-d185-4055-9474-a49ebe929eb7" name="Contains 6"><con:configuration><token>Firearm Prohibition</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="8d1b7074-80ec-4aba-b5d4-56efbd9d8ab7" name="Contains 7"><con:configuration><token>CCC - 490(2)(a)</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="b017f99a-2160-43de-8a47-39d8a6c5ce00" name="Contains 8"><con:configuration><token>Detention of Things Seized</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="c743960d-6057-405e-841b-760d28b2e6b8" name="Contains 9"><con:configuration><token>CCC - 490(3)(a)</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="1346c55b-c353-4888-b792-500d0c782d39" name="Contains 10"><con:configuration><token>3</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f20142a2-30ba-4212-a837-4be87ff34c55" name="Contains 11"><con:configuration><token>4</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2017-11-02 00:00:00.0</con:value></con:property><con:property><con:name>ApplicationCd</con:name><con:value>PCSS</con:value></con:property><con:property><con:name>AppearanceId</con:name><con:value>54157.0734</con:value></con:property></con:properties></con:testCase><con:testCase id="423b88f8-26e5-477e-b0ac-4554cfb44043" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetAppearanceCriminalSecure" searchProperties="true"><con:settings/><con:testStep type="request" name="getAppearanceCriminalSecure" id="91c19cc7-c36d-4323-b7fb-b1aa46d48c21"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder</con:interface><con:operation>getAppearanceCriminalApprMethodSecure</con:operation><con:request name="getAppearanceCriminalSecure" id="b35d908f-4139-4b67-82ab-e52038d0cce4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://jag-pcss-criminal-cd1cf7-dev.apps.silver.devops.gov.bc.ca/criminal</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getAppearanceCriminalSecure>
+         <getAppearanceCriminalSecureRequest>
+            <ns:getAppearanceCriminalSecureRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>2021-11-11 07:04:04.1</ns:RequestDtm>
+               <ns:ApplicationCd>PCSS</ns:ApplicationCd>
+               <ns:JustinNo>3058</ns:JustinNo>
+               <ns:FutureYN>Y</ns:FutureYN>
+               <ns:HistoryYN>Y</ns:HistoryYN>
+               <ns:AppearanceId>39065.0734</ns:AppearanceId>
+            </ns:getAppearanceCriminalSecureRequest>
+         </getAppearanceCriminalSecureRequest>
+      </v1:getAppearanceCriminalSecure>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7cc047bc-0164-4607-b59b-2aa531dc866b"/><con:assertion type="Response SLA Assertion" id="00896f9f-99e3-4d08-8e34-64b1b691cc05" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="2341b577-52c1-4b16-a2a1-34bdd4c3ba3b" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="8f8fd99a-2423-4c54-9647-3bf4ad280b30" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 403, 404, 500</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="d01148c4-f82f-410b-b743-ddd08a4f8c11" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="d9af36a6-fcee-4f08-854f-3483f8a533d4" name="Contains 1"><con:configuration><token>1</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="dafec9dc-1214-4c09-a640-250e33850904" name="Contains 2"><con:configuration><token>Y</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="df22e362-0edd-4303-868d-ddceffe93ba5" name="Contains 3"><con:configuration><token>39065.0734</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="eaea34ad-157e-49cb-99a1-af3bf06cc208" name="Contains 4"><con:configuration><token>2014-06-27 00:00:00.0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-11-11 07:04:04.1</con:value></con:property><con:property><con:name>ApplicationCd</con:name><con:value>PCSS</con:value></con:property><con:property><con:name>JustinNo</con:name><con:value>3058</con:value></con:property><con:property><con:name>FutureYN</con:name><con:value>Y</con:value></con:property><con:property><con:name>HistoryYN</con:name><con:value>Y</con:value></con:property><con:property><con:name>AppearanceId</con:name><con:value>39065.0734</con:value></con:property></con:properties></con:testCase><con:testCase id="21b2bb61-e87a-4a4a-af1c-124e6559a44e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetFileDetailCriminalSecure" searchProperties="true"><con:settings/><con:testStep type="request" name="getFileDetailCriminalSecure" id="4cea15d8-5b48-48aa-a59a-49d8a6ba060b"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>JusticePCSSCriminal_wsProvider_pcssCriminalSecure_Binder</con:interface><con:operation>getAppearanceCriminalApprMethodSecure</con:operation><con:request name="getFileDetailCriminalSecure" id="db320f14-c9b6-4c4c-99a2-e5fcfce3d9ac"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://jag-pcss-criminal-cd1cf7-dev.apps.silver.devops.gov.bc.ca/criminal</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/criminal/v1" xmlns:ns="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0">
+   <soap:Header/>
+   <soap:Body>
+      <v1:getFileDetailCriminalSecure>
+         <getFileDetailCriminalSecureRequest>
+            <ns:getFileDetailCriminalRequest>
+               <ns:RequestAgencyIdentifierId>83.0001</ns:RequestAgencyIdentifierId>
+               <ns:RequestPartId>19014.0001</ns:RequestPartId>
+               <ns:RequestDtm>2021-11-02 00:00:00.0</ns:RequestDtm>
+               <ns:JustinNo>36278</ns:JustinNo>
+               <ns:ApplicationCd>PCSS</ns:ApplicationCd>
+            </ns:getFileDetailCriminalRequest>
+         </getFileDetailCriminalSecureRequest>
+      </v1:getFileDetailCriminalSecure>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="e015a779-cf97-44a6-bbb6-03d1981ac359"/><con:assertion type="Invalid HTTP Status Codes" id="918abcb0-29d8-4ca0-b53e-3ffc2d59e61f" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 403, 404, 500</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="bcee2269-1b08-4bd7-bd93-4bea4ddcebc6" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="c39cbef2-00d0-4d43-9057-0f10c8cde0d4" name="Response SLA"><con:configuration><SLA>1000</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="71777903-8bd4-46e2-9d9d-ee2e5717e971" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="7ada043b-c6fd-4993-a8e2-187a21816cf4" name="Contains 1"><con:configuration><token>36278</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="fdbdaf94-c45d-45ad-9ca4-050d996b7342" name="Contains 2"><con:configuration><token>90111-2</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="5f8a42a4-e400-45a9-8b6d-003b503103d7" name="Contains 3"><con:configuration><token>83.0001</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="65671051-6ac5-42c6-83a9-fe2319f2c44a" name="Contains 4"><con:configuration><token>P</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="1643c7ab-e826-4e9d-a10a-5ecadaef6619" name="Contains 5"><con:configuration><token>C402</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="a0aaf8e4-470e-423b-9b27-7a2ec4b9aa30" name="Contains 6"><con:configuration><token>Ohara, Scarlett</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="a3070514-791f-495c-bec9-6789cc22d08f" name="Contains 7"><con:configuration><token>105:90DAYA</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="0a6f92b6-806f-42ba-9c97-70ff7c343cc3" name="Contains 8"><con:configuration><token>CRN</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>RequestAgencyIdentifierId</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>RequestPartId</con:name><con:value>19014.0001</con:value></con:property><con:property><con:name>RequestDtm</con:name><con:value>2021-11-02 00:00:00.0</con:value></con:property><con:property><con:name>JustinNo</con:name><con:value>36278</con:value></con:property><con:property><con:name>ApplicationCd</con:name><con:value>PCSS</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

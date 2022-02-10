@@ -6,7 +6,7 @@ on:
     workflow_dispatch:
         inputs:
             app:
-                description: 'App Name (jag-pcss-civil/jag-pcss-civil-tests)'    
+                description: 'App Name (jag-pcss-civil/jag-pcss-tests)'    
                 required: true
                 default: 'jag-pcss-civil'
             imageSourceEnv:

@@ -41,3 +41,4 @@ cc-test-reporter
 /PCSSCivil-soapui-project.xml
 /TestErrors.zip
 /*PCSS*-FAILED.txt
+/comparison-tool/results/*.txt

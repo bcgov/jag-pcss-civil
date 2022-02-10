@@ -1,0 +1,196 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: ${COMPONENT_NAME}
+  description: Deployment template for the JAG-PCSS-TESTS
+  
+labels:
+  app: ${APP_NAME}
+  app.kubernetes.io/name: ${COMPONENT_NAME}
+  app.openshift.io/runtime: ${RUNTIME}
+  
+parameters:
+
+- name: APP_NAME
+  description: The application name that each component is part of
+  required: false
+  value: jag-pcss-tests
+
+- name: COMPONENT_NAME
+  description: The application name that each component is part of
+  required: false
+  value: jag-pcss-tests
+  
+- name: OC_NAMESPACE
+  description: The OpenShift namespace prefix
+  required: false
+  # Below value must be changed as per gold cluster oc nameplate
+  value: cd1cf7
+  
+- name: OC_ENV
+  description: The OpenShift environment, ie dev, test or prod
+  required: true
+
+- name: RUNTIME
+  description: The run time of the application
+  required: false
+  value: java
+
+- name: DNS
+  description: The application DNS for route url
+  required: false
+  # Below value must be changed as per gold & dr cluster certificate/DNS
+  value: apps.silver.devops.gov.bc.ca
+
+- name: AUTH_HEADER
+  description: The http Authorization header required for performing livenessProbe & readinessProbe in deployment config during container start.
+  required: true
+  value: ''
+  
+objects:
+
+### JAG-PCSS-TESTS Deployment Config ###
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+    annotations:
+      app.openshift.io/connects-to: 'jag-pcss-civil, jag-pcss-criminal, jag-pcss-common' 
+  spec:
+    completionDeadlineSeconds: 1200
+    replicas: 1
+    selector:
+      name: ${COMPONENT_NAME}
+    strategy:
+      type: Rolling
+      maxSurge: 50%
+      maxUnavailable: 0
+    template:
+      metadata:
+        labels:
+          name: ${COMPONENT_NAME}
+      spec:
+        containers:
+          - image: >-
+              image-registry.openshift-image-registry.svc:5000/${OC_NAMESPACE}-tools/${COMPONENT_NAME}:${OC_ENV}
+            name: ${COMPONENT_NAME} 
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 8080
+            env:
+            - name: BASIC_AUTH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-application-secrets
+                  key: BASIC_AUTH_USER
+            - name: BASIC_AUTH_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-application-secrets
+                  key: BASIC_AUTH_PASS
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-application-secrets
+                  key: SPRING_PROFILE
+            - name: API_HOST_CIVIL
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-civil-application-secrets
+                  key: API_HOST
+            - name: API_HOST_COMMON
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-common-application-secrets
+                  key: API_HOST
+            - name: API_HOST_CRIMINAL
+              valueFrom:
+                secretKeyRef:
+                  name: pcss-criminal-application-secrets
+                  key: API_HOST
+            resources:
+              limits:
+                cpu: 500m
+                memory: 512Mi
+              requests:
+                cpu: 50m
+                memory: 256Mi
+            livenessProbe:
+              httpGet:
+                path: "/actuator/health"
+                port: 8080
+                scheme: HTTP
+                httpHeaders:
+                - name: Authorization
+                  value: ${AUTH_HEADER}
+              initialDelaySeconds: 100
+              timeoutSeconds: 30
+              periodSeconds: 10
+              successThreshold: 1
+              failureThreshold: 3
+            readinessProbe:
+              httpGet:
+                path: "/actuator/health"
+                port: 8080
+                scheme: HTTP
+                httpHeaders:
+                - name: Authorization
+                  value: ${AUTH_HEADER}
+              initialDelaySeconds: 100
+              timeoutSeconds: 30
+              periodSeconds: 10
+              successThreshold: 1
+              failureThreshold: 3
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - ${COMPONENT_NAME}
+          from:
+            kind: ImageStreamTag
+            namespace: ${OC_NAMESPACE}-tools
+            name: ${COMPONENT_NAME}:${OC_ENV}
+
+### JAG-PCSS-TESTS Service ###
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+  spec:
+    ports:
+      - name: http
+        protocol: TCP
+        port: 80
+        targetPort: 8080
+    selector:
+      name: ${COMPONENT_NAME}
+    sessionAffinity: None
+    type: ClusterIP
+
+### JAG-PCSS-TESTS Route ###
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    name: ${COMPONENT_NAME}
+    namespace: ${OC_NAMESPACE}-${OC_ENV}
+  annotations:
+    # if we do not use sticky-session, disable_cookies needs to be true
+    haproxy.router.openshift.io/disable_cookies: "true"
+    # balance algorithm
+    haproxy.router.openshift.io/balance: roundrobin
+  spec:
+    host: ${COMPONENT_NAME}-${OC_NAMESPACE}-${OC_ENV}.${DNS}
+    to:
+      kind: Service
+      name: ${COMPONENT_NAME}
+      weight: 100
+    port:
+      targetPort: http
+    tls:
+      termination: edge
+      insecureEdgeTerminationPolicy: None
+    wildcardPolicy: None

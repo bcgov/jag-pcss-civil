@@ -14,15 +14,11 @@ public class InstantSerializer extends JsonSerializer<Instant> {
     public void serialize(Instant value, JsonGenerator gen, SerializerProvider serializers)
             throws IOException {
         String out =
-                DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                         .withZone(ZoneId.of("GMT-7"))
                         .withLocale(Locale.US)
                         .format(value);
         gen.writeString(out);
-    }
-
-    public static String convert2(Instant value) {
-        return value.toString().replace("T", " ").replace("Z", ".0");
     }
 
     public static String convert(Instant value) {
@@ -30,18 +26,7 @@ public class InstantSerializer extends JsonSerializer<Instant> {
             return null;
         }
 
-        return DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")
-                .withZone(ZoneId.of("GMT-7"))
-                .withLocale(Locale.US)
-                .format(value);
-    }
-
-    public static String convert3(Instant value) {
-        if (value == null) {
-            return null;
-        }
-
-        return DateTimeFormatter.ofPattern("dd-MMM-yy")
+        return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                 .withZone(ZoneId.of("GMT-7"))
                 .withLocale(Locale.US)
                 .format(value);
