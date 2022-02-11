@@ -44,7 +44,7 @@ public class TestController {
             responseHeaders.add("content-disposition", "attachment; filename=" + f.getName());
             responseHeaders.add("Content-Type", "application/zip");
             f.delete();
-            return new ResponseEntity<byte[]>(out, responseHeaders, HttpStatus.OK);
+            return new ResponseEntity<byte[]>(out, responseHeaders, HttpStatus.EXPECTATION_FAILED);
         } else {
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "application/json");
@@ -64,7 +64,7 @@ public class TestController {
             responseHeaders.add("content-disposition", "attachment; filename=" + f.getName());
             responseHeaders.add("Content-Type", "application/zip");
             f.delete();
-            return new ResponseEntity<byte[]>(out, responseHeaders, HttpStatus.OK);
+            return new ResponseEntity<byte[]>(out, responseHeaders, HttpStatus.EXPECTATION_FAILED);
         } else {
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "application/json");
@@ -85,7 +85,7 @@ public class TestController {
             responseHeaders.add("content-disposition", "attachment; filename=" + f.getName());
             responseHeaders.add("Content-Type", "application/zip");
             f.delete();
-            return new ResponseEntity<byte[]>(out, responseHeaders, HttpStatus.OK);
+            return new ResponseEntity<byte[]>(out, responseHeaders, HttpStatus.EXPECTATION_FAILED);
         } else {
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "application/json");
