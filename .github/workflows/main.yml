@@ -224,7 +224,12 @@ jobs:
           BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
           BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
         run: |
-          curl --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} ${TEST_STARTER_URL}
+          RET=`curl --write-out '%{content_type}' --output /dev/null --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
+          if [ $RET!="application/json" ]
+            then
+              echo "Received content_type is ${RET}, was expecting application/json"
+              exit 1
+          fi
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
