@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -48,9 +49,10 @@ public class TestController {
         } else {
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "application/json");
-            return new ResponseEntity<String>("{\"status\": \"All tests passed\"}", HttpStatus.OK);
+            return new ResponseEntity<String>("{\"status\": \"All tests passed\"}", responseHeaders, HttpStatus.OK);
         }
     }
+
     @GetMapping(value = "/criminal")
     public ResponseEntity runAllCriminalTests() throws IOException {
 
@@ -68,7 +70,7 @@ public class TestController {
         } else {
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "application/json");
-            return new ResponseEntity<String>("{\"status\": \"All tests passed\"}", HttpStatus.OK);
+            return new ResponseEntity<String>("{\"status\": \"All tests passed\"}", responseHeaders, HttpStatus.OK);
         }
     }
 
@@ -89,7 +91,7 @@ public class TestController {
         } else {
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "application/json");
-            return new ResponseEntity<String>("{\"status\": \"All tests passed\"}", HttpStatus.OK);
+            return new ResponseEntity<String>("{\"status\": \"All tests passed\"}", responseHeaders, HttpStatus.OK);
         }
     }
 
