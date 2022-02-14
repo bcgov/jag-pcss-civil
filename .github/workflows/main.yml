@@ -226,17 +226,17 @@ jobs:
         run: |
           RET=`curl --write-out '|%{content_type}' --output /dev/null --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
           IFS='|' read -ra RESULTS <<< "$RET"
-          if [ ${RESULTS[0]}=="text/html" ]
+          if [ ${RESULTS[1]}=="text/html" ]
             then
-              echo "Received content_type is ${RET}, was expecting application/json or application/zip"
+              echo "Received content_type is ${RESULTS[1]}, was expecting application/json or application/zip"
               exit 1
             else
-              if [ ${RESULTS[0]}=="application/zip" ]
+              if [ ${RESULTS[1]}=="application/zip" ]
                 then
-                  echo "Error(s) found!"
+                  echo "Failed Integration Test(s) found!"
                   exit 1
               fi
-              echo "${RESULTS[1]}"
+              echo "${RESULTS[0]}"
           fi
 
       - name: Archive production artifacts
