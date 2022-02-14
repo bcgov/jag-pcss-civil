@@ -224,11 +224,19 @@ jobs:
           BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
           BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
         run: |
-          RET=`curl --write-out '%{content_type}' --output /dev/null --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
-          if [ $RET!="application/json" ]
+          RET=`curl --write-out '|%{content_type}' --output /dev/null --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
+          IFS='|' read -ra RESULTS <<< "$RET"
+          if [ ${RESULTS[0]}=="text/html" ]
             then
-              echo "Received content_type is ${RET}, was expecting application/json"
+              echo "Received content_type is ${RET}, was expecting application/json or application/zip"
               exit 1
+            else
+              if [ ${RESULTS[0]}=="application/zip" ]
+                then
+                  echo "Error(s) found!"
+                  exit 1
+              fi
+              echo "${RESULTS[1]}"
           fi
 
       - name: Archive production artifacts
