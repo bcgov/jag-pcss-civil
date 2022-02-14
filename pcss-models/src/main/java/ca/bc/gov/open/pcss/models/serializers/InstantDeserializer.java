@@ -18,12 +18,12 @@ public class InstantDeserializer extends JsonDeserializer<Instant> {
             throws IOException {
         try {
             var sfd = new SimpleDateFormat("dd-MMM-yy hh.mm.ss.SSSSSS a", Locale.US);
-            sfd.setTimeZone(TimeZone.getTimeZone("UTC"));
+            sfd.setTimeZone(TimeZone.getTimeZone("GMT-7"));
             return sfd.parse(jsonParser.getText()).toInstant();
         } catch (ParseException e) {
             try {
                 var sfd = new SimpleDateFormat("dd-MMM-yy", Locale.US);
-                sfd.setTimeZone(TimeZone.getTimeZone("UTC"));
+                sfd.setTimeZone(TimeZone.getTimeZone("GMT-7"));
                 return sfd.parse(jsonParser.getText()).toInstant();
             } catch (ParseException e2) {
                 log.error(e2.getLocalizedMessage());
