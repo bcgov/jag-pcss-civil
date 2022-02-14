@@ -64,13 +64,13 @@ public class TestService {
         getSyncCivilAppearanceCompare();
         getAppearanceCivilCompare();
         getAppearanceCivilApprMethodCompare();
-        getAppearanceCivilDocument();
-        getAppearanceCivilResource();
-        getAppearanceCivilPartyAppearanceId();
+        getAppearanceCivilDocumentCompare();
+        getAppearanceCivilResourceCompare();
+        getAppearanceCivilPartyAppearanceIdCompare();
         getSyncCivilHearingRestrictionCompare();
     }
 
-    private void getAppearanceCivilPartyAppearanceId()
+    private void getAppearanceCivilPartyAppearanceIdCompare()
             throws FileNotFoundException, UnsupportedEncodingException {
         int diffCounter = 0;
 
@@ -122,7 +122,7 @@ public class TestService {
         fileOutput.close();
     }
 
-    private void getAppearanceCivilResource()
+    private void getAppearanceCivilResourceCompare()
             throws FileNotFoundException, UnsupportedEncodingException {
         int diffCounter = 0;
 
@@ -173,7 +173,7 @@ public class TestService {
         fileOutput.close();
     }
 
-    private void getAppearanceCivilDocument()
+    private void getAppearanceCivilDocumentCompare()
             throws FileNotFoundException, UnsupportedEncodingException {
         int diffCounter = 0;
 
