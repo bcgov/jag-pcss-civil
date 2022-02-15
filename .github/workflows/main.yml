@@ -224,17 +224,16 @@ jobs:
           BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
           BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
         run: |
-          RET=`curl --write-out '|%{content_type}' --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
-          IFS='|' read -ra RESULTS <<< "$RET"
-          if [ "${RESULTS[1]}" = "application/zip" ]; then
-            echo "Failed Integration Test(s) found!"
+          RET=`curl --write-out '%{content_type}' --output /dev/null --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
+          if [ "$RET" = "application/zip" ]; then
+            echo "Status: Failed Integration Test(s) found!"
             exit 1
           fi
-          if [ "${RESULTS[1]}" = "application/json" ]; then
-            echo "${RESULTS[0]}"
+          if [ "$RET" = "application/json" ]; then
+            echo "Status: All Tests Passed"
           fi
-          if [ "${RESULTS[1]}" != "application/zip" ] && [ "${RESULTS[1]}" != "application/json" ]; then
-            echo "Received content_type is ${RESULTS[1]}, was expecting application/json or application/zip"
+          if [ "$RET" != "application/zip" ] && [ "$RET" != "application/json" ]; then
+            echo "Received content_type is $RET, was expecting application/json or application/zip"
           fi
 
       - name: Archive production artifacts
