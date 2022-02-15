@@ -224,7 +224,7 @@ jobs:
           BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
           BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
         run: |
-          RET=`curl --write-out '|%{content_type}' --output /dev/null --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
+          RET=`curl --write-out '|%{content_type}' --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
           IFS='|' read -ra RESULTS <<< "$RET"
           if [ "${RESULTS[1]}" = "application/zip" ]; then
             echo "Failed Integration Test(s) found!"
