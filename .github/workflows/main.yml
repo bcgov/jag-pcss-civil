@@ -234,6 +234,7 @@ jobs:
           fi
           if [ "$RET" != "application/zip" ] && [ "$RET" != "application/json" ]; then
             echo "Received content_type is $RET, was expecting application/json or application/zip"
+            exit 1
           fi
 
       - name: Archive production artifacts
