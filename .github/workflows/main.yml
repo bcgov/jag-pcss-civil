@@ -224,7 +224,7 @@ jobs:
           BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
           BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
         run: |
-          RET=`curl --write-out '%{content_type}' --output /dev/null --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
+          RET=`curl --write-out '%{content_type}' --output TestErrors.zip --request GET --user ${BASIC_AUTH_USER}:${BASIC_AUTH_PASS} --url ${TEST_STARTER_URL}`
           if [ "$RET" = "application/zip" ]; then
             echo "Status: Failed Integration Test(s) found!"
             exit 1
@@ -238,8 +238,9 @@ jobs:
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
+        if: failure()
         with:
-          name: dist-without-markdown
+          name: integration-tests-report
           path: |
             TestErrors.zip
           retention-days: 5
