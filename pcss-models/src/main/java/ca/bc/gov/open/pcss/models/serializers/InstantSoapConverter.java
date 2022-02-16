@@ -30,7 +30,7 @@ public final class InstantSoapConverter {
             // Try to parse a datetime first then try date only if both fail return null
             try {
                 // Date time parser
-                var sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSSSSS", Locale.US);
+                var sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS", Locale.US);
                 sdf.setTimeZone(TimeZone.getTimeZone("GMT-7"));
                 d = sdf.parse(value);
             } catch (ParseException ex) {
