@@ -5,11 +5,8 @@ security:
 pcss:
   host: ${ORDS_HOST}
 management:
-  trace:
-    http:
-      include: TIME_TAKEN,RESPONSE_HEADERS
   endpoints:
     web:
       exposure:
-        include: httptrace,metrics,prometheus,health
+        include: metrics,prometheus,health
 
