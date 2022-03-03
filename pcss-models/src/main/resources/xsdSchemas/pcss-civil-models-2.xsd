@@ -118,7 +118,7 @@
             <xsd:enumeration value="X-ADD">
                 <xsd:annotation>
                     <xsd:appinfo>
-                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonAlias("X-ADD")
+                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonProperty("X-ADD")
                         </annox:annotate>
                     </xsd:appinfo>
                 </xsd:annotation>
@@ -126,7 +126,7 @@
             <xsd:enumeration value="F-ADD">
                 <xsd:annotation>
                     <xsd:appinfo>
-                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonAlias("F-ADD")
+                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonProperty("F-ADD")
                         </annox:annotate>
                     </xsd:appinfo>
                 </xsd:annotation>
@@ -134,7 +134,7 @@
             <xsd:enumeration value="I-ADD">
                 <xsd:annotation>
                     <xsd:appinfo>
-                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonAlias("I-ADD")
+                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonProperty("I-ADD")
                         </annox:annotate>
                     </xsd:appinfo>
                 </xsd:annotation>
@@ -142,7 +142,7 @@
             <xsd:enumeration value="X-UPDATE">
                 <xsd:annotation>
                     <xsd:appinfo>
-                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonAlias("X-UPDATE")
+                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonProperty("X-UPDATE")
                         </annox:annotate>
                     </xsd:appinfo>
                 </xsd:annotation>
@@ -150,7 +150,7 @@
             <xsd:enumeration value="F-UPDATE">
                 <xsd:annotation>
                     <xsd:appinfo>
-                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonAlias("F-UPDATE")
+                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonProperty("F-UPDATE")
                         </annox:annotate>
                     </xsd:appinfo>
                 </xsd:annotation>
@@ -158,7 +158,7 @@
             <xsd:enumeration value="I-UPDATE">
                 <xsd:annotation>
                     <xsd:appinfo>
-                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonAlias("I-UPDATE")
+                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonProperty("I-UPDATE")
                         </annox:annotate>
                     </xsd:appinfo>
                 </xsd:annotation>
@@ -166,7 +166,7 @@
             <xsd:enumeration value="X-DELETE">
                 <xsd:annotation>
                     <xsd:appinfo>
-                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonAlias("X-DELETE")
+                        <annox:annotate target="enum-constant">@com.fasterxml.jackson.annotation.JsonProperty("X-DELETE")
                         </annox:annotate>
                     </xsd:appinfo>
                 </xsd:annotation>
