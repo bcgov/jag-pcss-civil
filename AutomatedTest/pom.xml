@@ -8,10 +8,9 @@
 
     <artifactId>AutomatedTest</artifactId>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>ca.bc.gov.open</groupId>
+        <artifactId>pcss-civil</artifactId>
+        <version>1.0.0</version>
     </parent>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
