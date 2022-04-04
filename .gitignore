@@ -42,3 +42,4 @@ cc-test-reporter
 /TestErrors.zip
 /*PCSS*-FAILED.txt
 /comparison-tool/results/*.txt
+*-soapui-project.xml

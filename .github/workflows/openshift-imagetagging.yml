@@ -207,18 +207,3 @@ jobs:
           openshiftEnvNamespace: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.imageTargetEnv }}
         run: |
           oc rollout status -n ${openshiftEnvNamespace} dc/${appName} --watch
-
-
-    #  - name: Setup Node
-    #    uses: actions/setup-node@v2
-    #    with:
-    #      node-version: '14'
-
-    #  - name: Run Integration Tests
-    #    env:
-    #      WEB_METHODS_TOKEN: ${{secrets.SCSS_DEV_BASIC_AUTH}}
-    #      WEB_METHODS_HOST: ${{secrets.WEB_METHODS_HOST}}
-    #    working-directory: ./AutomatedTests
-    #    run: |
-    #      npm install --quiet
-    #      npm test

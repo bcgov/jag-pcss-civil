@@ -46,8 +46,7 @@ jobs:
         with:
           scan-type: image
           image-ref: jag-pcss-civil:${{ github.sha }}
-          format: template
-          template: '@/contrib/sarif.tpl'
+          format: sarif
           output: trivy-results.sarif
           exit-code: 1
           ignore-unfixed: true

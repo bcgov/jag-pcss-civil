@@ -178,6 +178,8 @@ objects:
     name: ${COMPONENT_NAME}
     namespace: ${OC_NAMESPACE}-${OC_ENV}
   annotations:
+    # router timeout
+    haproxy.router.openshift.io/timeout: 10m
     # if we do not use sticky-session, disable_cookies needs to be true
     haproxy.router.openshift.io/disable_cookies: "true"
     # balance algorithm

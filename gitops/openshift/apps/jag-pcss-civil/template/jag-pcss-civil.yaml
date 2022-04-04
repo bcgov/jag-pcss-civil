@@ -42,6 +42,11 @@ parameters:
   required: false
   value: jag-pcss-civil
 
+- name: AUTH_HEADER
+  description: The application name that each component is part of
+  required: false
+  value: jag-pcss-civil
+
 - name: DNS
   description: The application name that each component is part of
   required: false
@@ -122,21 +127,27 @@ objects:
               requests:
                 cpu: 50m
                 memory: 256Mi
-              livenessProbe:
-                httpGet:
-                  path: "/actuator/health"
-                  port: 8080
-                  scheme: HTTP
+            livenessProbe:
+              httpGet:
+                path: "/actuator/health"
+                port: 8080
+                scheme: HTTP
+                httpHeaders:
+                  - name: Authorization
+                    value: ${AUTH_HEADER}
                 initialDelaySeconds: 30
                 timeoutSeconds: 60
                 periodSeconds: 10
                 successThreshold: 1
                 failureThreshold: 3
-              readinessProbe:
-                httpGet:
-                  path: "/actuator/health"
-                  port: 8080
-                  scheme: HTTP
+            readinessProbe:
+              httpGet:
+                path: "/actuator/health"
+                port: 8080
+                scheme: HTTP
+                httpHeaders:
+                  - name: Authorization
+                    value: ${AUTH_HEADER}
                 initialDelaySeconds: 10
                 timeoutSeconds: 60
                 periodSeconds: 10

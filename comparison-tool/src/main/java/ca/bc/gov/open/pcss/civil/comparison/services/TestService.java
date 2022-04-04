@@ -6,7 +6,6 @@ import ca.bc.gov.open.pcss.three.*;
 import ca.bc.gov.open.pcss.two.YesNoType;
 import java.io.*;
 import java.time.Instant;
-import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.stream.Stream;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -65,13 +64,13 @@ public class TestService {
         getSyncCivilAppearanceCompare();
         getAppearanceCivilCompare();
         getAppearanceCivilApprMethodCompare();
-        getAppearanceCivilDocument();
-        getAppearanceCivilResource();
-        getAppearanceCivilPartyAppearanceId();
+        getAppearanceCivilDocumentCompare();
+        getAppearanceCivilResourceCompare();
+        getAppearanceCivilPartyAppearanceIdCompare();
         getSyncCivilHearingRestrictionCompare();
     }
 
-    private void getAppearanceCivilPartyAppearanceId()
+    private void getAppearanceCivilPartyAppearanceIdCompare()
             throws FileNotFoundException, UnsupportedEncodingException {
         int diffCounter = 0;
 
@@ -123,7 +122,7 @@ public class TestService {
         fileOutput.close();
     }
 
-    private void getAppearanceCivilResource()
+    private void getAppearanceCivilResourceCompare()
             throws FileNotFoundException, UnsupportedEncodingException {
         int diffCounter = 0;
 
@@ -174,7 +173,7 @@ public class TestService {
         fileOutput.close();
     }
 
-    private void getAppearanceCivilDocument()
+    private void getAppearanceCivilDocumentCompare()
             throws FileNotFoundException, UnsupportedEncodingException {
         int diffCounter = 0;
 
@@ -506,7 +505,7 @@ public class TestService {
         try {
             resultObjectWM = (T) webServiceTemplate.marshalSendAndReceive(wmHost, request);
             resultObjectAPI = (T) webServiceTemplate.marshalSendAndReceive(apiHost, request);
-
+            Thread.sleep(5000);
         } catch (Exception e) {
             System.out.println("ERROR: Failed to send request... " + e);
             fileOutput.println("ERROR: Failed to send request... " + e);
