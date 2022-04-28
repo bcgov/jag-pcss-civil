@@ -1,0 +1,5 @@
+replacer.full_list(0).description=authheadervalue
+replacer.full_list(0).enabled=true
+replacer.full_list(0).matchtype=REQ_HEADER
+replacer.full_list(0).matchstr=Authorization
+replacer.full_list(0).regex=false
