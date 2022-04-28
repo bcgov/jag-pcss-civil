@@ -1,0 +1,38 @@
+name: ZAP Scanner for PCSS-CIVIL APIs
+on:
+  workflow_dispatch:
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-20.04
+    name: Scan the application
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: feature/zapscanner
+      
+      - name: Update zap properties file
+        run: echo  "replacer.full_list(0).replacement=${{ secrets.BASIC_AUTH_HEADER_DEV }}" >> "$GITHUB_WORKSPACE/zapoptions.prop"
+      
+      - name: ZAP Scan - PCSS Civil API
+        uses: zaproxy/action-api-scan@v0.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          format: soap
+          docker_name: 'owasp/zap2docker-stable'
+          issue_title: 'ZAP Scan Report - PCSS Civil API'
+          target: '${{ secrets.JAG_PCSS_CIVIL_API_RouteUrl }}/ws/JusticePCSSCivil.wsProvider:pcssCivil?WSDL'
+          fail_action: true
+          cmd_options: '-c "zaprules.conf" -S -z "-configFile /zap/wrk/zapoptions.prop"'
+      
+      - name: ZAP Scan - PCSS Civil Secure API
+        uses: zaproxy/action-api-scan@v0.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          format: soap
+          docker_name: 'owasp/zap2docker-stable'
+          issue_title: 'ZAP Scan Report - PCSS Civil Secure API'
+          target: '${{ secrets.JAG_PCSS_CIVIL_API_RouteUrl }}/ws/JusticePCSSCivil.wsProvider:pcssCivilSecure?WSDL'
+          fail_action: true
+          cmd_options: '-c "zaprules.conf" -S -z "-configFile /zap/wrk/zapoptions.prop"'
