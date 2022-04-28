@@ -9,8 +9,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: feature/zapscanner
       
       - name: Update zap properties file
         run: echo  "replacer.full_list(0).replacement=${{ secrets.BASIC_AUTH_HEADER_DEV }}" >> "$GITHUB_WORKSPACE/zapoptions.prop"
