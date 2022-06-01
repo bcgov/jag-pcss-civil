@@ -4,7 +4,7 @@
     <!-- STDOUT appender -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-50(%-5level %logger:) %msg%n</pattern>
+            <pattern>%-20(%d [%thread]) %-50(%-5level %logger:) %msg%n</pattern>
         </encoder>
 
         <!-- Show debug in stdout -->
