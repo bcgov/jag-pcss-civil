@@ -4,9 +4,3 @@ security:
     username: ${BASIC_AUTH_USER}
 pcss:
   host: ${ORDS_HOST}
-management:
-  endpoints:
-    web:
-      exposure:
-        include: metrics,prometheus,health
-
