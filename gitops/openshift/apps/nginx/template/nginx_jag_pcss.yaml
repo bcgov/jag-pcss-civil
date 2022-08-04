@@ -184,20 +184,14 @@ objects:
     nginx-upstream.conf: |-
       upstream splitter-civil {
         server jag-pcss-civil;
-        # Tured off for now
-        # server nginx-jag-pcss-oldwm;
       }
 
       upstream splitter-criminal {
         server jag-pcss-criminal;
-        # Tured off for now
-        # server nginx-jag-pcss-oldwm;
       }
 
       upstream splitter-common {
         server jag-pcss-common;
-        # Tured off for now
-        # server nginx-jag-pcss-oldwm;
       }
 
 - kind: DeploymentConfig
