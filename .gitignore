@@ -43,3 +43,7 @@ cc-test-reporter
 /*PCSS*-FAILED.txt
 /comparison-tool/results/*.txt
 *-soapui-project.xml
+
+## macOS ##
+.DS_STORE
+.java_version
