@@ -1,4 +1,4 @@
-FROM openjdk:11-jre-slim
+FROM eclipse-temurin:11-jre-jammy
 
 COPY ./pcss-civil-application/target/pcss-civil-application.jar pcss-civil-application.jar
 
