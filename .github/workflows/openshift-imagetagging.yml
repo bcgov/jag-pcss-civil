@@ -22,7 +22,7 @@ jobs:
     environment: ${{ github.event.inputs.imageTargetEnv }}
     steps:
       - name: Git Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
         # Get the version number which is prefixed with the Github release branches in format release/{version}
       - name: Get Release Version
