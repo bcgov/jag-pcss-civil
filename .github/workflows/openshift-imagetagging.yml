@@ -3,24 +3,45 @@
 name: Trigger deployment to test and prod Openshift environnment by Image stream re-tagging and labelling pod
 
 on:        
-    workflow_dispatch:
-        inputs:
-            app:
-                description: 'App Name (jag-pcss-civil/jag-pcss-tests)'    
-                required: true
-                default: 'jag-pcss-civil'
-            imageSourceEnv:
-                description: 'Image Source Env'     
-                required: true
-                default: 'dev'
-            imageTargetEnv:
-                description: 'Target Release Env'
-                required: true
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'App Name (jag-pcss-civil/jag-pcss-tests)'    
+        required: true
+        default: 'jag-pcss-civil'
+      imageSourceEnv:
+        type: choice
+        description: Image Source environment
+        options:
+        - Select a Source Env Image to deploy
+        - dev
+        - test   
+        required: true
+        default: 'Select a Source Env Image to deploy'
+      imageTargetEnv:
+        type: choice
+        description: Target Release Environment
+        options:
+        - Select a Target Env to deploy the Source Image
+        - test
+        - prod    
+        required: true
+        default: 'Select a Target Env to deploy the Source Image'
 jobs:
   oc-image-tagging:
     runs-on: ubuntu-20.04
     environment: ${{ github.event.inputs.imageTargetEnv }}
     steps:
+
+      - name: Check deployment source and target values
+        if: |
+          (github.event.inputs.imageSourceEnv == 'dev' &&  github.event.inputs.imageTargetEnv == 'prod') ||
+          (github.event.inputs.imageSourceEnv == github.event.inputs.imageTargetEnv )
+        run: |
+          echo "Selected source env: ${{ github.event.inputs.imageSourceEnv }} and target env: ${{ github.event.inputs.imageTargetEnv }}"
+          echo "Please select correct source and target env. Alays deployment should happen from Dev to Test and then Test to Prod"
+          exit 1
+          
       - name: Git Checkout
         uses: actions/checkout@v3
         

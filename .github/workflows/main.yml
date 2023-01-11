@@ -7,14 +7,17 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-        app:
-            description: 'App Name (jag-pcss-civil)'    
-            required: true
-            default: jag-pcss-civil
-        env:
-            description: 'Image Target Env'     
-            required: true
-            default: 'dev'
+      app:
+        description: 'App Name (jag-pcss-civil)'    
+        required: true
+        default: jag-pcss-civil
+      env:
+        type: choice
+        description: Image Target environment
+        options: 
+        - dev    
+        required: true
+        default: 'dev'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
