@@ -5,3 +5,6 @@ security:
 pcss:
   host: http://127.0.0.1/
   namespace: ${PCSS_NAMESPACE}
+  password: ${BASIC_AUTH_PASS}
+  username: ${BASIC_AUTH_USER}
+
