@@ -10,6 +10,8 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.soap.SOAPMessage;
+import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +32,12 @@ import org.springframework.ws.wsdl.wsdl11.Wsdl11Definition;
 @Configuration
 public class SoapConfig extends WsConfigurerAdapter {
 
+    @Value("${pcss.username}")
+    private String username;
+
+    @Value("${pcss.password}")
+    private String password;
+
     public static final String SOAP_NAMESPACE = "http://courts.gov.bc.ca/xml/ns/pcss/civil/v1";
 
     @Bean
@@ -45,6 +53,16 @@ public class SoapConfig extends WsConfigurerAdapter {
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(0, createMappingJacksonHttpMessageConverter());
+        restTemplate
+                .getInterceptors()
+                .add(
+                        (request, body, execution) -> {
+                            String auth = username + ":" + password;
+                            byte[] encodedAuth = Base64.encodeBase64(auth.getBytes());
+                            request.getHeaders()
+                                    .add("Authorization", "Basic " + new String(encodedAuth));
+                            return execution.execute(request, body);
+                        });
         return restTemplate;
     }
 
