@@ -10,8 +10,8 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.soap.SOAPMessage;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -50,19 +50,9 @@ public class SoapConfig extends WsConfigurerAdapter {
     }
 
     @Bean
-    public RestTemplate restTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
+    public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
+        var restTemplate = restTemplateBuilder.basicAuthentication(username, password).build();
         restTemplate.getMessageConverters().add(0, createMappingJacksonHttpMessageConverter());
-        restTemplate
-                .getInterceptors()
-                .add(
-                        (request, body, execution) -> {
-                            String auth = username + ":" + password;
-                            byte[] encodedAuth = Base64.encodeBase64(auth.getBytes());
-                            request.getHeaders()
-                                    .add("Authorization", "Basic " + new String(encodedAuth));
-                            return execution.execute(request, body);
-                        });
         return restTemplate;
     }
 
