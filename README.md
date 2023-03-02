@@ -26,6 +26,10 @@ BASIC_AUTH_USER: The username for the basic authentication. This can be any valu
 
 ORDS_HOST: The url for ords rest package.
 
+ORDS_USERNAME: ORDS_HOST authentication
+
+ORDS_PASSWORD: ORDS_HOST authentication
+
 SPLUNK_HTTP_URL: The url for the spluck hec. For local splunk this value should be 127.0.0.1:8088 for
 remote do not include /services/collector.
 
@@ -69,6 +73,10 @@ BASIC_AUTH_PASS
 BASIC_AUTH_USER
 
 ORDS_HOST
+
+ORDS_USERNAME
+
+ORDS_PASSWORD
 
 SPLUNK_HTTP_URL
 
