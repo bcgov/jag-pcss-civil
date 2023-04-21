@@ -7,4 +7,5 @@ pcss:
   namespace: ${PCSS_NAMESPACE}
   password: ${BASIC_AUTH_PASS}
   username: ${BASIC_AUTH_USER}
+  ords-read-timeout: 1
 
