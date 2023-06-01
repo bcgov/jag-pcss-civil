@@ -30,6 +30,8 @@ ORDS_USERNAME: ORDS_HOST authentication
 
 ORDS_PASSWORD: ORDS_HOST authentication
 
+ORDS_READ_TIMEOUT: Timeout in seconds which expects the response/result from ORDS.
+
 SPLUNK_HTTP_URL: The url for the spluck hec. For local splunk this value should be 127.0.0.1:8088 for
 remote do not include /services/collector.
 

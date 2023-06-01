@@ -6,4 +6,5 @@ pcss:
   host: ${ORDS_HOST}
   username: ${ORDS_USERNAME}
   password: ${ORDS_PASSWORD}
+  ords-read-timeout: ${ORDS_READ_TIMEOUT}
 
