@@ -76,6 +76,7 @@ public class SoapConfig extends WsConfigurerAdapter {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Instant.class, new InstantDeserializer());
         module.addSerializer(Instant.class, new InstantSerializer());
