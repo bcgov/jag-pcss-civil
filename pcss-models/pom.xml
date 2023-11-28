@@ -12,7 +12,6 @@
     <version>1.0</version>
     <name>pcss-models</name>
     <description>Models for pcss civil</description>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

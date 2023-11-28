@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pcss-code-coverage</artifactId>
-
     <dependencies>
 <!--        These are being detected as duplicates but they are all needed for code coverage to be generated correctly -->
         <dependency>
@@ -38,7 +37,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <version>0.8.10</version>
                 <configuration>
                     <excludes>
                         <exclude>**/configuration/WSDLFilter*</exclude>
