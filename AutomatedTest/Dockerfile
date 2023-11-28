@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11-jre-alpine
+FROM eclipse-temurin:17-jre-alpine
 
 RUN apk upgrade expat  # Fix for CVE-2022-43680
 
