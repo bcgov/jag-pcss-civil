@@ -74,7 +74,7 @@ public class SyncControllerTests {
         app.setFileNumberTxt("A");
         app.setCourtLevelCd(CourtLevelType.A);
 
-        out.setAppearance(Collections.singletonList(app));
+        out.getAppearance().add(app);
         out.setResponseCd("A");
         out.setResponseCd("A");
         ResponseEntity<ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse> responseEntity =
@@ -123,7 +123,7 @@ public class SyncControllerTests {
         r.setHomeLocationAgenId("A");
         r.setFileNumberTxt("A");
         r.setSocTxt("A");
-        out.setHearingRestriction(Collections.singletonList(r));
+        out.getHearingRestriction().add(r);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionResponse>
                 responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
@@ -232,7 +232,7 @@ public class SyncControllerTests {
         counsel.setCounselId("A");
         counsel.setFullNm("A");
         counsel.setPhoneNumberTxt("A");
-        party.setCounsel(Collections.singletonList(counsel));
+        party.getCounsel().add(counsel);
 
         Document3 doc = new Document3();
         doc.setCivilDocumentId("A");
@@ -247,7 +247,7 @@ public class SyncControllerTests {
         DocumentSupport sup = new DocumentSupport();
         sup.setActCd("A");
         sup.setActDsc("A");
-        doc.setDocumentSupport(Collections.singletonList(sup));
+        doc.getDocumentSupport().add(sup);
 
         HearingRestriction2 hr = new HearingRestriction2();
         hr.setHearingRestrictionId("A");
@@ -260,9 +260,9 @@ public class SyncControllerTests {
         hr.setAdjInitialsTxt("A");
         hr.setHearingRestrictionCcn("A");
 
-        out.setHearingRestriction(Collections.singletonList(hr));
-        out.setDocument(Collections.singletonList(doc));
-        out.setParty(Collections.singletonList(party));
+        out.getHearingRestriction().add(hr);
+        out.getDocument().add(doc);
+        out.getParty().add(party);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetFileDetailCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);

@@ -84,7 +84,7 @@ public class AppearanceControllerTests {
         dt.setDocumentRecCount("A");
         dt.setSupplementalEquipmentTxt("A");
         dt.setOutOfTownJudgeTxt("A");
-        out.setApprDetail(Collections.singletonList(dt));
+        out.getApprDetail().add(dt);
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
 
@@ -123,7 +123,7 @@ public class AppearanceControllerTests {
         am.setAppearanceMethodCd("A");
         am.setRoleTypeCd("A");
 
-        out.setAppearanceMethod(Collections.singletonList(am));
+        out.getAppearanceMethod().add(am);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodResponse>
                 responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
@@ -222,15 +222,15 @@ public class AppearanceControllerTests {
         party.setPartyId("A");
         party.setOperationMode(OperationModeType.ADD);
 
-        dt.setParty(Collections.singletonList(party));
-        dt.setDocument(Collections.singletonList(doc));
+        dt.getParty().add(party);
+        dt.getDocument().add(doc);
 
-        two.setDetail(Collections.singletonList(dt));
+        two.getDetail().add(dt);
         two.setRequestDtm(Instant.now());
         two.setRequestPartId("A");
         two.setRequestAgencyIdentifierId("A");
 
-        two.setDetail(Collections.singletonList(dt));
+        two.getDetail().add(dt);
         one.setSetAppearanceCivilRequest(two);
         sca.setSetAppearanceCivilRequest(one);
 
@@ -243,7 +243,7 @@ public class AppearanceControllerTests {
 
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
-        out.setDetail(Collections.singletonList(dt2));
+        out.getDetail().add(dt2);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.SetAppearanceCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
@@ -291,8 +291,8 @@ public class AppearanceControllerTests {
         is.setIssueResultCd("A");
         is.setIssueResultCd("A");
 
-        doc.setIssue(Collections.singletonList(is));
-        out.setDocument(Collections.singletonList(doc));
+        doc.getIssue().add(is);
+        out.getDocument().add(doc);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
@@ -340,7 +340,7 @@ public class AppearanceControllerTests {
         party.setCourtParticipantId("A");
         party.setGivenNm("A");
 
-        out.setParty(Collections.singletonList(party));
+        out.getParty().add(party);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
@@ -392,7 +392,7 @@ public class AppearanceControllerTests {
         res.setBookedByNm("A");
         res.setBookingCommentTxt("A");
         res.setBookingCcn("A");
-        out.setResource(Collections.singletonList(res));
+        out.getResource().add(res);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
@@ -428,7 +428,7 @@ public class AppearanceControllerTests {
         dt.setCounselLastNm("A");
         dt.setCounselFirstNm("A");
         dt.setOfficePhoneNoTxt("A");
-        two.setDetail(Collections.singletonList(dt));
+        two.getDetail().add(dt);
 
         one.setSetCounselDetailCivilRequest(two);
         cd.setSetCounselDetailCivilRequest(one);

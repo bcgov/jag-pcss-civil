@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.13</version>
+        <version>3.1.3</version>
     </parent>
     <groupId>ca.bc.gov.open</groupId>
     <artifactId>pcss-civil</artifactId>
@@ -14,10 +14,11 @@
     <name>pcss-civil</name>
     <description>Pcss Civil Wrapper</description>
     <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <log4j2.version>2.17.1</log4j2.version>
-        <java.version>11</java.version>
         <snakeyaml.version>2.0</snakeyaml.version>
-        <jackson-bom.version>2.13.4.20221013</jackson-bom.version>
     </properties>
     <repositories>
         <repository>
@@ -32,7 +33,6 @@
         <module>pcss-secure-models</module>
         <module>pcss-models</module>
         <module>pcss-code-coverage</module>
-        <module>comparison-tool</module>
     </modules>
 
     <build>
@@ -59,19 +59,12 @@
                             </indent>
                         </format>
                     </formats>
-                    <!-- define a language-specific format -->
-                    <java>
-                        <googleJavaFormat>
-                            <version>1.8</version>
-                            <style>AOSP</style>
-                        </googleJavaFormat>
-                    </java>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <version>0.8.10</version>
                 <executions>
                     <execution>
                         <goals>
@@ -82,5 +75,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

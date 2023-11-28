@@ -62,7 +62,7 @@ public class SecureEndpointTests {
         am.setAppearanceMethodCd("A");
         am.setApprMethodCcn("A");
         am.setRoleTypeCd("A");
-        resp.setAppearanceMethod(Collections.singletonList(am));
+        resp.getAppearanceMethod().add(am);
 
         ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse>
                 responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
@@ -114,7 +114,7 @@ public class SecureEndpointTests {
         party.setCourtParticipantId("A");
         party.setPartyRoleTypeCd("A");
 
-        resp.setParty(Collections.singletonList(party));
+        resp.getParty().add(party);
 
         ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse>
                 responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
@@ -180,7 +180,7 @@ public class SecureEndpointTests {
         ap.setSecurityRestrictionTxt("A");
         ap.setOutOfTownJudgeTxt("A");
 
-        resp.setApprDetail(Collections.singletonList(ap));
+        resp.getApprDetail().add(ap);
 
         ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse> responseEntity =
                 new ResponseEntity<>(resp, HttpStatus.OK);
@@ -242,7 +242,7 @@ public class SecureEndpointTests {
         hr.setHearingRestrictionId("A");
         hr.setHearingRestrictionTypeCd(HearingRestrictionType.S);
 
-        resp.setHearingRestriction(Collections.singletonList(hr));
+        resp.getHearingRestriction().add(hr);
 
         Party pt = new Party();
         pt.setGivenNm("A");
@@ -255,9 +255,9 @@ public class SecureEndpointTests {
         counsel.setCounselId("A");
         counsel.setPhoneNumberTxt("A");
         counsel.setFullNm("A");
-        pt.setCounsel(Collections.singletonList(counsel));
+        pt.getCounsel().add(counsel);
 
-        resp.setParty(Collections.singletonList(pt));
+        resp.getParty().add(pt);
 
         Document doc = new Document();
         doc.setCivilDocumentId("A");
@@ -274,7 +274,7 @@ public class SecureEndpointTests {
         ds.setActCd("A");
         ds.setActDsc("A");
 
-        doc.setDocumentSupport(Collections.singletonList(ds));
+        doc.getDocumentSupport().add(ds);
 
         Issue is = new Issue();
         is.setConcludedYn(YesNoType.Y);
@@ -284,7 +284,7 @@ public class SecureEndpointTests {
         is.setIssueResultCd("A");
         is.setIssueTypeCd("A");
 
-        doc.setIssue(Collections.singletonList(is));
+        doc.getIssue().add(is);
 
         ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse> responseEntity =
                 new ResponseEntity<>(resp, HttpStatus.OK);
