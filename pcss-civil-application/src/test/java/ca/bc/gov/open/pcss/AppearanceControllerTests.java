@@ -20,9 +20,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -31,19 +34,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AppearanceControllerTests {
 
-    private AppearanceController appearanceController;
-    private ObjectMapper objectMapper = new ObjectMapper();
+    @Mock private ObjectMapper objectMapper;
+    @Mock private RestTemplate restTemplate;
+    @Mock private AppearanceController appearanceController;
 
-    @Mock private RestTemplate restTemplate = new RestTemplate();
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        appearanceController = Mockito.spy(new AppearanceController(restTemplate, objectMapper));
+    }
 
     @Test
     public void getAppearanceCivilTest() throws JsonProcessingException, BadDateException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
-
         GetAppearanceCivil ac = new GetAppearanceCivil();
         GetAppearanceCivilRequest one = new GetAppearanceCivilRequest();
         var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
@@ -103,7 +108,6 @@ public class AppearanceControllerTests {
 
     @Test
     public void getAppearanceCivilApprMethod() throws JsonProcessingException, BadDateException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var cam = new GetAppearanceCivilApprMethod();
         var one = new GetAppearanceCivilApprMethodRequest();
@@ -147,7 +151,6 @@ public class AppearanceControllerTests {
 
     @Test
     public void setAppearanceMethodCivilTest() throws JsonProcessingException, BadDateException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var sam = new SetAppearanceMethodCivil();
         var one = new SetAppearanceMethodCivilRequest();
@@ -190,7 +193,7 @@ public class AppearanceControllerTests {
 
     @Test
     public void setAppearanceCivilTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
+
         var sca = new SetAppearanceCivil();
         var one = new SetAppearanceCivilRequest();
         var two = new ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest();
@@ -263,7 +266,7 @@ public class AppearanceControllerTests {
 
     @Test
     public void getAppearanceCivilDocumentTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
+
         var cd = new GetAppearanceCivilDocument();
         var one = new GetAppearanceCivilDocumentRequest();
         var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentRequest();
@@ -314,7 +317,6 @@ public class AppearanceControllerTests {
 
     @Test
     public void getAppearanceCivilPartyTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var acp = new GetAppearanceCivilParty();
         var one = new GetAppearanceCivilPartyRequest();
@@ -361,7 +363,7 @@ public class AppearanceControllerTests {
 
     @Test
     public void getAppearanceCivilResourceTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
+
         var cr = new GetAppearanceCivilResource();
         var one = new GetAppearanceCivilResourceRequest();
         var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest();
@@ -414,7 +416,7 @@ public class AppearanceControllerTests {
 
     @Test
     public void setCounselDetailCivilTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
+
         var cd = new SetCounselDetailCivil();
         var one = new SetCounselDetailCivilRequest();
         var two = new ca.bc.gov.open.pcss.one.SetCounselDetailCivilRequest();

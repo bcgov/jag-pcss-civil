@@ -16,9 +16,12 @@ import java.net.URI;
 import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
@@ -28,19 +31,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SyncControllerTests {
 
-    private SyncController syncController;
+    @Mock private ObjectMapper objectMapper;
+    @Mock private RestTemplate restTemplate;
+    @Mock private SyncController syncController;
 
-    @Mock private RestTemplate restTemplate = new RestTemplate();
-
-    @Autowired private ObjectMapper objectMapper;
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        syncController = Mockito.spy(new SyncController(restTemplate, objectMapper));
+    }
 
     @Test
     public void getSyncCivilAppearanceTest() throws JsonProcessingException {
-        syncController = new SyncController(restTemplate, objectMapper);
 
         var sca = new GetSyncCivilAppearance();
         var one = new GetSyncCivilAppearanceRequest();
@@ -97,7 +102,6 @@ public class SyncControllerTests {
 
     @Test
     public void getSyncCivilHearingRestrictionTest() throws JsonProcessingException {
-        syncController = new SyncController(restTemplate, objectMapper);
 
         var chr = new GetSyncCivilHearingRestriction();
         var one = new GetSyncCivilHearingRestrictionRequest();
@@ -147,7 +151,6 @@ public class SyncControllerTests {
 
     @Test
     public void setSyncCivilHearingRestrictionTest() throws JsonProcessingException {
-        syncController = new SyncController(restTemplate, objectMapper);
 
         var hrc = new SetHearingRestrictionCivil();
         var one = new SetHearingRestrictionCivilRequest();
@@ -192,7 +195,6 @@ public class SyncControllerTests {
 
     @Test
     public void getFileDetailCivilTest() throws JsonProcessingException {
-        syncController = new SyncController(restTemplate, objectMapper);
 
         var fsc = new GetFileDetailCivil();
         var one = new GetFileDetailCivilRequest();
