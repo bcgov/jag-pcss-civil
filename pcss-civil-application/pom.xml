@@ -11,11 +11,9 @@
     <artifactId>pcss-civil-application</artifactId>
     <version>1.0</version>
     <name>pcss-civil-application</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Pcss Civil Application</description>
     <properties>
         <default-package>ca.bc.gov.open.pcss</default-package>
-        <java.version>11</java.version>
-        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
     <repositories>
@@ -84,14 +82,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
-            <version>2.6.2</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.13.1</version>
         </dependency>
-
 
         <!-- Splunk logging -->
         <dependency>
@@ -104,12 +100,12 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.10</version>
+            <version>1.4.8</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>1.2.10</version>
+            <version>1.4.8</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -129,7 +125,6 @@
             <groupId>wsdl4j</groupId>
             <artifactId>wsdl4j</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
@@ -169,16 +164,6 @@
             <groupId>io.gsonfire</groupId>
             <artifactId>gson-fire</artifactId>
             <version>1.8.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jvnet.jaxb2_commons</groupId>
-            <artifactId>jaxb2-commons-lang</artifactId>
-            <version>2.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jvnet.jaxb2_commons</groupId>
-            <artifactId>jaxb2-basics</artifactId>
-            <version>1.11.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -241,19 +226,12 @@
                             </indent>
                         </format>
                     </formats>
-                    <!-- define a language-specific format -->
-                    <java>
-                        <googleJavaFormat>
-                            <version>1.8</version>
-                            <style>AOSP</style>
-                        </googleJavaFormat>
-                    </java>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <version>0.8.10</version>
                 <executions>
                     <execution>
                         <goals>

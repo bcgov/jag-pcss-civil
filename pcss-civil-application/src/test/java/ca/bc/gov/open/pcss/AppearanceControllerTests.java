@@ -20,9 +20,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -31,19 +34,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AppearanceControllerTests {
 
-    private AppearanceController appearanceController;
-    private ObjectMapper objectMapper = new ObjectMapper();
+    @Mock private ObjectMapper objectMapper;
+    @Mock private RestTemplate restTemplate;
+    @Mock private AppearanceController appearanceController;
 
-    @Mock private RestTemplate restTemplate = new RestTemplate();
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        appearanceController = Mockito.spy(new AppearanceController(restTemplate, objectMapper));
+    }
 
     @Test
     public void getAppearanceCivilTest() throws JsonProcessingException, BadDateException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
-
         GetAppearanceCivil ac = new GetAppearanceCivil();
         GetAppearanceCivilRequest one = new GetAppearanceCivilRequest();
         var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilRequest();
@@ -84,7 +89,7 @@ public class AppearanceControllerTests {
         dt.setDocumentRecCount("A");
         dt.setSupplementalEquipmentTxt("A");
         dt.setOutOfTownJudgeTxt("A");
-        out.setApprDetail(Collections.singletonList(dt));
+        out.getApprDetail().add(dt);
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
 
@@ -103,7 +108,6 @@ public class AppearanceControllerTests {
 
     @Test
     public void getAppearanceCivilApprMethod() throws JsonProcessingException, BadDateException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var cam = new GetAppearanceCivilApprMethod();
         var one = new GetAppearanceCivilApprMethodRequest();
@@ -123,7 +127,7 @@ public class AppearanceControllerTests {
         am.setAppearanceMethodCd("A");
         am.setRoleTypeCd("A");
 
-        out.setAppearanceMethod(Collections.singletonList(am));
+        out.getAppearanceMethod().add(am);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodResponse>
                 responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
@@ -147,7 +151,6 @@ public class AppearanceControllerTests {
 
     @Test
     public void setAppearanceMethodCivilTest() throws JsonProcessingException, BadDateException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var sam = new SetAppearanceMethodCivil();
         var one = new SetAppearanceMethodCivilRequest();
@@ -190,7 +193,7 @@ public class AppearanceControllerTests {
 
     @Test
     public void setAppearanceCivilTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
+
         var sca = new SetAppearanceCivil();
         var one = new SetAppearanceCivilRequest();
         var two = new ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest();
@@ -222,15 +225,15 @@ public class AppearanceControllerTests {
         party.setPartyId("A");
         party.setOperationMode(OperationModeType.ADD);
 
-        dt.setParty(Collections.singletonList(party));
-        dt.setDocument(Collections.singletonList(doc));
+        dt.getParty().add(party);
+        dt.getDocument().add(doc);
 
-        two.setDetail(Collections.singletonList(dt));
+        two.getDetail().add(dt);
         two.setRequestDtm(Instant.now());
         two.setRequestPartId("A");
         two.setRequestAgencyIdentifierId("A");
 
-        two.setDetail(Collections.singletonList(dt));
+        two.getDetail().add(dt);
         one.setSetAppearanceCivilRequest(two);
         sca.setSetAppearanceCivilRequest(one);
 
@@ -243,7 +246,7 @@ public class AppearanceControllerTests {
 
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
-        out.setDetail(Collections.singletonList(dt2));
+        out.getDetail().add(dt2);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.SetAppearanceCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
@@ -263,7 +266,7 @@ public class AppearanceControllerTests {
 
     @Test
     public void getAppearanceCivilDocumentTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
+
         var cd = new GetAppearanceCivilDocument();
         var one = new GetAppearanceCivilDocumentRequest();
         var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentRequest();
@@ -291,8 +294,8 @@ public class AppearanceControllerTests {
         is.setIssueResultCd("A");
         is.setIssueResultCd("A");
 
-        doc.setIssue(Collections.singletonList(is));
-        out.setDocument(Collections.singletonList(doc));
+        doc.getIssue().add(is);
+        out.getDocument().add(doc);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
@@ -314,7 +317,6 @@ public class AppearanceControllerTests {
 
     @Test
     public void getAppearanceCivilPartyTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
 
         var acp = new GetAppearanceCivilParty();
         var one = new GetAppearanceCivilPartyRequest();
@@ -340,7 +342,7 @@ public class AppearanceControllerTests {
         party.setCourtParticipantId("A");
         party.setGivenNm("A");
 
-        out.setParty(Collections.singletonList(party));
+        out.getParty().add(party);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
@@ -361,7 +363,7 @@ public class AppearanceControllerTests {
 
     @Test
     public void getAppearanceCivilResourceTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
+
         var cr = new GetAppearanceCivilResource();
         var one = new GetAppearanceCivilResourceRequest();
         var two = new ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest();
@@ -392,7 +394,7 @@ public class AppearanceControllerTests {
         res.setBookedByNm("A");
         res.setBookingCommentTxt("A");
         res.setBookingCcn("A");
-        out.setResource(Collections.singletonList(res));
+        out.getResource().add(res);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);
@@ -414,7 +416,7 @@ public class AppearanceControllerTests {
 
     @Test
     public void setCounselDetailCivilTest() throws JsonProcessingException {
-        appearanceController = new AppearanceController(restTemplate, objectMapper);
+
         var cd = new SetCounselDetailCivil();
         var one = new SetCounselDetailCivilRequest();
         var two = new ca.bc.gov.open.pcss.one.SetCounselDetailCivilRequest();
@@ -428,7 +430,7 @@ public class AppearanceControllerTests {
         dt.setCounselLastNm("A");
         dt.setCounselFirstNm("A");
         dt.setOfficePhoneNoTxt("A");
-        two.setDetail(Collections.singletonList(dt));
+        two.getDetail().add(dt);
 
         one.setSetCounselDetailCivilRequest(two);
         cd.setSetCounselDetailCivilRequest(one);

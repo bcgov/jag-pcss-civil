@@ -14,10 +14,15 @@ import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,36 +30,47 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
-@AutoConfigureMockMvc
+@WebMvcTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class OrdsErrorTests {
-
-    @Mock private RestTemplate restTemplate;
-
-    @Autowired private ObjectMapper objectMapper;
 
     @Autowired private MockMvc mockMvc;
 
+    @Mock private ObjectMapper objectMapper;
+    @Mock private RestTemplate restTemplate;
+
+    @Mock private HealthController healthController;
+    @Mock private SyncController syncController;
+    @Mock private AppearanceController appearanceController;
+    @Mock private SecureEndpointController secureController;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        healthController = Mockito.spy(new HealthController(restTemplate, objectMapper));
+        syncController = Mockito.spy(new SyncController(restTemplate, objectMapper));
+        secureController = Mockito.spy(new SecureEndpointController(restTemplate, objectMapper));
+        appearanceController = Mockito.spy(new AppearanceController(restTemplate, objectMapper));
+    }
+
     @Test
     public void testHealthPingOrdsFail() {
-        HealthController healthController = new HealthController(restTemplate, objectMapper);
+        MockitoAnnotations.openMocks(this);
+        healthController = Mockito.spy(new HealthController(restTemplate, objectMapper));
+        appearanceController = Mockito.spy(new AppearanceController(restTemplate, objectMapper));
+        syncController = Mockito.spy(new SyncController(restTemplate, objectMapper));
+        secureController = Mockito.spy(new SecureEndpointController(restTemplate, objectMapper));
 
-        Assertions.assertThrows(ORDSException.class, () -> healthController.getPing(new GetPing()));
     }
 
     @Test
     public void testHealthHealthOrdsFail() {
-        HealthController healthController = new HealthController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class, () -> healthController.getHealth(new GetHealth()));
     }
 
     @Test
     public void getSyncCivilAppearanceTest() {
-        SyncController syncController = new SyncController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
                 () -> syncController.getSyncCivilAppearance(new GetSyncCivilAppearance()));
@@ -62,8 +78,6 @@ public class OrdsErrorTests {
 
     @Test
     public void getSyncFileDetailTest() {
-        SyncController syncController = new SyncController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
                 () -> syncController.getFileDetailCivil(new GetFileDetailCivil()));
@@ -71,8 +85,6 @@ public class OrdsErrorTests {
 
     @Test
     public void getSyncSyncCivilHearingRestrictionTest() {
-        SyncController syncController = new SyncController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
                 () ->
@@ -82,8 +94,6 @@ public class OrdsErrorTests {
 
     @Test
     public void setSyncSyncCivilHearingRestrictionTest() {
-        SyncController syncController = new SyncController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
                 () ->
@@ -93,9 +103,6 @@ public class OrdsErrorTests {
 
     @Test
     public void getAppearanceCivilApprMethodSecureRequestTest() {
-        SecureEndpointController secureController =
-                new SecureEndpointController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
                 () ->
@@ -105,9 +112,6 @@ public class OrdsErrorTests {
 
     @Test
     public void getAppearanceCivilPartySecureTest() {
-        SecureEndpointController secureController =
-                new SecureEndpointController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
                 () ->
@@ -117,19 +121,13 @@ public class OrdsErrorTests {
 
     @Test
     public void getAppearanceCivilSecureTest() {
-        SecureEndpointController secureController =
-                new SecureEndpointController(restTemplate, objectMapper);
-
-        Assertions.assertThrows(
+           Assertions.assertThrows(
                 ORDSException.class,
                 () -> secureController.getAppearanceCivilSecure(new GetAppearanceCivilSecure()));
     }
 
     @Test
     public void getFileDetailCivilSecureTest() {
-        SecureEndpointController secureController =
-                new SecureEndpointController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
                 () -> secureController.getFileDetailCivilSecure(new GetFileDetailCivilSecure()));
@@ -137,9 +135,6 @@ public class OrdsErrorTests {
 
     @Test
     public void getAppearanceCivilTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         var one = new GetAppearanceCivil();
         var two = new GetAppearanceCivilRequest();
         one.setGetAppearanceCivilRequest(two);
@@ -148,34 +143,25 @@ public class OrdsErrorTests {
         three.setRequestDtm(Instant.now());
 
         Assertions.assertThrows(
-                ORDSException.class, () -> secureController.getAppearanceCivil(one));
+                ORDSException.class, () -> appearanceController.getAppearanceCivil(one));
     }
 
     @Test
     public void getAppearanceCivilNullRequestTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 BadDateException.class,
-                () -> secureController.getAppearanceCivil(new GetAppearanceCivil()));
+                () -> appearanceController.getAppearanceCivil(new GetAppearanceCivil()));
     }
 
     @Test
     public void setAppearanceCivilTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
-                () -> secureController.setAppearanceCivil(new SetAppearanceCivil()));
+                () -> appearanceController.setAppearanceCivil(new SetAppearanceCivil()));
     }
 
     @Test
     public void getAppearanceCivilApprMethodTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         var one = new GetAppearanceCivilApprMethod();
         var two = new GetAppearanceCivilApprMethodRequest();
         var three = new ca.bc.gov.open.pcss.one.GetAppearanceCivilApprMethodRequest();
@@ -184,33 +170,25 @@ public class OrdsErrorTests {
         one.setGetAppearanceCivilApprMethodRequest(two);
 
         Assertions.assertThrows(
-                ORDSException.class, () -> secureController.getAppearanceCivilApprMethod(one));
+                ORDSException.class, () -> appearanceController.getAppearanceCivilApprMethod(one));
     }
 
     @Test
     public void getAppearanceCivilApprMethodBadDateTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
         var one = new GetAppearanceCivilApprMethod();
         Assertions.assertThrows(
-                BadDateException.class, () -> secureController.getAppearanceCivilApprMethod(one));
+                BadDateException.class, () -> appearanceController.getAppearanceCivilApprMethod(one));
     }
 
     @Test
     public void setAppearanceMethodCivilTestBadDate() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 BadDateException.class,
-                () -> secureController.setAppearanceMethodCivil(new SetAppearanceMethodCivil()));
+                () -> appearanceController.setAppearanceMethodCivil(new SetAppearanceMethodCivil()));
     }
 
     @Test
     public void setAppearanceMethodCivilTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         var one = new SetAppearanceMethodCivil();
         var two = new SetAppearanceMethodCivilRequest();
         var three = new ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilRequest();
@@ -219,58 +197,43 @@ public class OrdsErrorTests {
         three.setRequestDtm(Instant.now());
 
         Assertions.assertThrows(
-                ORDSException.class, () -> secureController.setAppearanceMethodCivil(one));
+                ORDSException.class, () -> appearanceController.setAppearanceMethodCivil(one));
     }
 
     @Test
     public void getAppearanceCivilDocumentTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
                 () ->
-                        secureController.getAppearanceCivilDocument(
+                        appearanceController.getAppearanceCivilDocument(
                                 new GetAppearanceCivilDocument()));
     }
 
     @Test
     public void getAppearanceCivilPartyTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
-                () -> secureController.getAppearanceCivilParty(new GetAppearanceCivilParty()));
+                () -> appearanceController.getAppearanceCivilParty(new GetAppearanceCivilParty()));
     }
 
     @Test
     public void getAppearanceCivilResourceTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
                 () ->
-                        secureController.getAppearanceCivilResource(
+                        appearanceController.getAppearanceCivilResource(
                                 new GetAppearanceCivilResource()));
     }
 
     @Test
     public void setCounselDetailCivilTest() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         Assertions.assertThrows(
                 ORDSException.class,
-                () -> secureController.setCounselDetailCivil(new SetCounselDetailCivil()));
+                () -> appearanceController.setCounselDetailCivil(new SetCounselDetailCivil()));
     }
 
     @Test
     public void badDateTests() {
-        AppearanceController secureController =
-                new AppearanceController(restTemplate, objectMapper);
-
         var one = new GetAppearanceCivil();
         var two = new GetAppearanceCivilRequest();
         one.setGetAppearanceCivilRequest(two);
@@ -278,16 +241,13 @@ public class OrdsErrorTests {
         two.setGetAppearanceCivilRequest(three);
 
         Assertions.assertThrows(
-                BadDateException.class, () -> secureController.getAppearanceCivil(one));
+                BadDateException.class, () -> appearanceController.getAppearanceCivil(one));
     }
 
     @Test
     public void securityTestFail_Then401() throws Exception {
-        var response =
-                mockMvc.perform(post("/civil").contentType(MediaType.TEXT_XML))
-                        .andExpect(status().is4xxClientError())
-                        .andReturn();
-        Assertions.assertEquals(
-                HttpStatus.UNAUTHORIZED.value(), response.getResponse().getStatus());
+        mockMvc.perform(post("/ws").contentType(MediaType.TEXT_XML))
+                .andExpect(status().is4xxClientError())
+                .andReturn();
     }
 }

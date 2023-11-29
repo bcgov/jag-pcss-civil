@@ -16,9 +16,12 @@ import java.net.URI;
 import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -27,18 +30,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SecureEndpointTests {
 
-    private SecureEndpointController endpointController;
-    private ObjectMapper objectMapper = new ObjectMapper();
+    @Mock private ObjectMapper objectMapper;
+    @Mock private RestTemplate restTemplate;
+    @Mock private SecureEndpointController endpointController;
 
-    @Mock private RestTemplate restTemplate = new RestTemplate();
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        endpointController = Mockito.spy(new SecureEndpointController(restTemplate, objectMapper));
+    }
 
     @Test
     public void getGetAppearanceCivilApprMethodSecureRequestTest() throws JsonProcessingException {
-        endpointController = new SecureEndpointController(restTemplate, objectMapper);
         var req = new GetAppearanceCivilApprMethodSecure();
         var two = new GetAppearanceCivilApprMethodSecureRequest();
         var one = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodSecureRequest();
@@ -62,7 +68,7 @@ public class SecureEndpointTests {
         am.setAppearanceMethodCd("A");
         am.setApprMethodCcn("A");
         am.setRoleTypeCd("A");
-        resp.setAppearanceMethod(Collections.singletonList(am));
+        resp.getAppearanceMethod().add(am);
 
         ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilApprMethodResponse>
                 responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
@@ -85,7 +91,6 @@ public class SecureEndpointTests {
 
     @Test
     public void getAppearanceCivilPartySecure() throws JsonProcessingException {
-        endpointController = new SecureEndpointController(restTemplate, objectMapper);
 
         var req = new GetAppearanceCivilPartySecure();
         var one = new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
@@ -114,7 +119,7 @@ public class SecureEndpointTests {
         party.setCourtParticipantId("A");
         party.setPartyRoleTypeCd("A");
 
-        resp.setParty(Collections.singletonList(party));
+        resp.getParty().add(party);
 
         ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartyResponse>
                 responseEntity = new ResponseEntity<>(resp, HttpStatus.OK);
@@ -137,7 +142,6 @@ public class SecureEndpointTests {
 
     @Test
     public void getAppearanceCivilSecure() throws JsonProcessingException {
-        endpointController = new SecureEndpointController(restTemplate, objectMapper);
 
         var req = new GetAppearanceCivilSecure();
         var one = new GetAppearanceCivilSecureRequest();
@@ -180,7 +184,7 @@ public class SecureEndpointTests {
         ap.setSecurityRestrictionTxt("A");
         ap.setOutOfTownJudgeTxt("A");
 
-        resp.setApprDetail(Collections.singletonList(ap));
+        resp.getApprDetail().add(ap);
 
         ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilResponse> responseEntity =
                 new ResponseEntity<>(resp, HttpStatus.OK);
@@ -201,7 +205,6 @@ public class SecureEndpointTests {
 
     @Test
     public void getFileDetailCivilSecure() throws JsonProcessingException {
-        endpointController = new SecureEndpointController(restTemplate, objectMapper);
 
         var req = new GetFileDetailCivilSecure();
         var one = new ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilSecureRequest();
@@ -242,7 +245,7 @@ public class SecureEndpointTests {
         hr.setHearingRestrictionId("A");
         hr.setHearingRestrictionTypeCd(HearingRestrictionType.S);
 
-        resp.setHearingRestriction(Collections.singletonList(hr));
+        resp.getHearingRestriction().add(hr);
 
         Party pt = new Party();
         pt.setGivenNm("A");
@@ -255,9 +258,9 @@ public class SecureEndpointTests {
         counsel.setCounselId("A");
         counsel.setPhoneNumberTxt("A");
         counsel.setFullNm("A");
-        pt.setCounsel(Collections.singletonList(counsel));
+        pt.getCounsel().add(counsel);
 
-        resp.setParty(Collections.singletonList(pt));
+        resp.getParty().add(pt);
 
         Document doc = new Document();
         doc.setCivilDocumentId("A");
@@ -274,7 +277,7 @@ public class SecureEndpointTests {
         ds.setActCd("A");
         ds.setActDsc("A");
 
-        doc.setDocumentSupport(Collections.singletonList(ds));
+        doc.getDocumentSupport().add(ds);
 
         Issue is = new Issue();
         is.setConcludedYn(YesNoType.Y);
@@ -284,7 +287,7 @@ public class SecureEndpointTests {
         is.setIssueResultCd("A");
         is.setIssueTypeCd("A");
 
-        doc.setIssue(Collections.singletonList(is));
+        doc.getIssue().add(is);
 
         ResponseEntity<ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilResponse> responseEntity =
                 new ResponseEntity<>(resp, HttpStatus.OK);

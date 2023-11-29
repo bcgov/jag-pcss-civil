@@ -1,9 +1,9 @@
 package ca.bc.gov.open.pcss.configuration;
 
 import java.io.IOException;
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 import org.springframework.stereotype.Component;
 
 @Component
