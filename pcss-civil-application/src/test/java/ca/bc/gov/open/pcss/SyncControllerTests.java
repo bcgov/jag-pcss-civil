@@ -61,7 +61,7 @@ public class SyncControllerTests {
 
         var out = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse();
         Appearance app = new Appearance();
-        app.setOperationModeCd(OperationModeType.ADD);
+        app.setOperationModeCd("A");
         app.setTransactionDtm(Instant.now());
         app.setAppearanceId("A");
         app.setAppearanceDt(Instant.now());
@@ -117,7 +117,7 @@ public class SyncControllerTests {
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
         HearingRestriction r = new HearingRestriction();
-        r.setOperationModeCd(OperationModeType.F_ADD);
+        r.setOperationModeCd("A");
         r.setTransactionDtm(Instant.now());
         r.setHearingRestrictionId("A");
         r.setAdjudicatorPartId("A");
@@ -158,7 +158,7 @@ public class SyncControllerTests {
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         two.setRequestDtm(Instant.now());
-        two.setOperationModeCd(OperationModeType.I_ADD);
+        two.setOperationModeCd("A");
         two.setHearingRestrictionId("A");
         two.setAdjudicatorPartId("A");
         two.setHearingRestrictionCd(HearingRestrictionType.G);

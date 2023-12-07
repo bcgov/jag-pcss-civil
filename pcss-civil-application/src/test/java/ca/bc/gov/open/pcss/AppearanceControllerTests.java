@@ -159,7 +159,7 @@ public class AppearanceControllerTests {
         two.setRequestPartId("A");
         two.setRequestDtm(Instant.now());
         Detail3 dt = new Detail3();
-        dt.setOperationModeCd(OperationModeType.ADD);
+        dt.setOperationModeCd("A");
         dt.setAppearanceId("A");
         dt.setOldRoleTypeCd("A");
         dt.setOldAppearanceMethodCd("A");
@@ -199,7 +199,7 @@ public class AppearanceControllerTests {
         var two = new ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest();
 
         Detail dt = new Detail();
-        dt.setOperationMode(OperationModeType.ADD);
+        dt.setOperationMode("A");
         dt.setPcssAppearanceId("A");
         dt.setPhysicalFileId("A");
         dt.setAppearanceDt(Instant.now());
@@ -215,7 +215,7 @@ public class AppearanceControllerTests {
         dt.setAppearanceCcn("A");
 
         Document2 doc = new Document2();
-        doc.setOperationMode(OperationModeType.ADD);
+        doc.setOperationMode("A");
         doc.setCivilDocumentId("A");
         doc.setAppearanceReasonCd("A");
         doc.setEstimatedTimeHour("A");
@@ -223,7 +223,7 @@ public class AppearanceControllerTests {
 
         var party = new Party2();
         party.setPartyId("A");
-        party.setOperationMode(OperationModeType.ADD);
+        party.setOperationMode("A");
 
         dt.getParty().add(party);
         dt.getDocument().add(doc);
