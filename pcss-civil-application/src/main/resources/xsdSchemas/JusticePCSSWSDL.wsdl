@@ -569,6 +569,7 @@
                     <xsd:enumeration value="SCHD"/>
                     <xsd:enumeration value="CNCL"/>
                     <xsd:enumeration value="UNCF"/>
+                    <xsd:enumeration value="COMP"/>
                 </xsd:restriction>
             </xsd:simpleType>
             <xsd:simpleType name="AppearanceResultCivilType">
