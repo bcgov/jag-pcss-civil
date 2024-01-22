@@ -712,7 +712,6 @@
                     xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1">
 
             <xsd:import namespace="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"/>
-            <xsd:element name="getPing" type="v1:getPing"/>
             <xsd:element name="getAppearanceCivil" type="tns:getAppearanceCivil"/>
             <xsd:element name="getAppearanceCivilResponse" type="tns:getAppearanceCivilResponse"/>
             <xsd:element name="getAppearanceCivilApprMethod" type="tns:getAppearanceCivilApprMethod"/>
