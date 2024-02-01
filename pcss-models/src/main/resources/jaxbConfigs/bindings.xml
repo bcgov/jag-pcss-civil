@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
-<jxb:bindings version="1.0"
-              xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+<jxb:bindings version="3.0"
+              xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xmlns:namespace="http://jaxb2-commons.dev.java.net/namespace-prefix"
+              xmlns:namespace="http://jaxb.dev.java.net/plugin/code-injector"
               xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd
-    http://jaxb2-commons.dev.java.net/namespace-prefix https://raw.githubusercontent.com/Siggen/jaxb2-namespace-prefix/master/src/main/resources/prefix-namespace-schema.xsd">
+    http://jaxb2-commons.dev.java.net/namespace-prefix https://raw.githubusercontent.com/Siggen/jaxb2-namespace-prefix/master/src/main/resources/prefix-namespace-schema.xsd
+https://jakarta.ee/xml/ns/jaxb ">
 
     <jxb:bindings schemaLocation="../xsdSchemas/pcss-civil-models-1.xsd">
         <jxb:schemaBindings>

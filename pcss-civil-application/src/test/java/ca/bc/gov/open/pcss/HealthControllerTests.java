@@ -7,9 +7,12 @@ import ca.bc.gov.open.pcss.three.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -18,18 +21,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class HealthControllerTests {
 
-    @Mock private RestTemplate restTemplate = new RestTemplate();
+    @Mock private ObjectMapper objectMapper;
+    @Mock private RestTemplate restTemplate;
+    @Mock private HealthController healthController;
 
-    private HealthController healthController;
-    private ObjectMapper objectMapper = new ObjectMapper();
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        healthController = Mockito.spy(new HealthController(restTemplate, objectMapper));
+    }
 
     @Test
     public void getPingTest() throws JsonProcessingException {
-        healthController = new HealthController(restTemplate, objectMapper);
 
         var get = new GetPing();
 
@@ -52,8 +58,6 @@ public class HealthControllerTests {
 
     @Test
     public void getHealthTest() throws JsonProcessingException {
-        healthController = new HealthController(restTemplate, objectMapper);
-
         var get = new GetHealth();
 
         var out = new GetHealthResponse();

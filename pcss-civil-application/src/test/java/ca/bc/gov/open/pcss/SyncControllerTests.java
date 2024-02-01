@@ -16,9 +16,12 @@ import java.net.URI;
 import java.time.Instant;
 import java.util.Collections;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
@@ -28,19 +31,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SyncControllerTests {
 
-    private SyncController syncController;
+    @Mock private ObjectMapper objectMapper;
+    @Mock private RestTemplate restTemplate;
+    @Mock private SyncController syncController;
 
-    @Mock private RestTemplate restTemplate = new RestTemplate();
-
-    @Autowired private ObjectMapper objectMapper;
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        syncController = Mockito.spy(new SyncController(restTemplate, objectMapper));
+    }
 
     @Test
     public void getSyncCivilAppearanceTest() throws JsonProcessingException {
-        syncController = new SyncController(restTemplate, objectMapper);
 
         var sca = new GetSyncCivilAppearance();
         var one = new GetSyncCivilAppearanceRequest();
@@ -56,7 +61,7 @@ public class SyncControllerTests {
 
         var out = new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse();
         Appearance app = new Appearance();
-        app.setOperationModeCd(OperationModeType.ADD);
+        app.setOperationModeCd("A");
         app.setTransactionDtm(Instant.now());
         app.setAppearanceId("A");
         app.setAppearanceDt(Instant.now());
@@ -74,7 +79,7 @@ public class SyncControllerTests {
         app.setFileNumberTxt("A");
         app.setCourtLevelCd(CourtLevelType.A);
 
-        out.setAppearance(Collections.singletonList(app));
+        out.getAppearance().add(app);
         out.setResponseCd("A");
         out.setResponseCd("A");
         ResponseEntity<ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceResponse> responseEntity =
@@ -97,7 +102,6 @@ public class SyncControllerTests {
 
     @Test
     public void getSyncCivilHearingRestrictionTest() throws JsonProcessingException {
-        syncController = new SyncController(restTemplate, objectMapper);
 
         var chr = new GetSyncCivilHearingRestriction();
         var one = new GetSyncCivilHearingRestrictionRequest();
@@ -113,7 +117,7 @@ public class SyncControllerTests {
         out.setResponseCd("A");
         out.setResponseMessageTxt("A");
         HearingRestriction r = new HearingRestriction();
-        r.setOperationModeCd(OperationModeType.F_ADD);
+        r.setOperationModeCd("A");
         r.setTransactionDtm(Instant.now());
         r.setHearingRestrictionId("A");
         r.setAdjudicatorPartId("A");
@@ -123,7 +127,7 @@ public class SyncControllerTests {
         r.setHomeLocationAgenId("A");
         r.setFileNumberTxt("A");
         r.setSocTxt("A");
-        out.setHearingRestriction(Collections.singletonList(r));
+        out.getHearingRestriction().add(r);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionResponse>
                 responseEntity = new ResponseEntity<>(out, HttpStatus.OK);
@@ -147,7 +151,6 @@ public class SyncControllerTests {
 
     @Test
     public void setSyncCivilHearingRestrictionTest() throws JsonProcessingException {
-        syncController = new SyncController(restTemplate, objectMapper);
 
         var hrc = new SetHearingRestrictionCivil();
         var one = new SetHearingRestrictionCivilRequest();
@@ -155,7 +158,7 @@ public class SyncControllerTests {
         two.setRequestAgencyIdentifierId("A");
         two.setRequestPartId("A");
         two.setRequestDtm(Instant.now());
-        two.setOperationModeCd(OperationModeType.I_ADD);
+        two.setOperationModeCd("A");
         two.setHearingRestrictionId("A");
         two.setAdjudicatorPartId("A");
         two.setHearingRestrictionCd(HearingRestrictionType.G);
@@ -192,7 +195,6 @@ public class SyncControllerTests {
 
     @Test
     public void getFileDetailCivilTest() throws JsonProcessingException {
-        syncController = new SyncController(restTemplate, objectMapper);
 
         var fsc = new GetFileDetailCivil();
         var one = new GetFileDetailCivilRequest();
@@ -232,7 +234,7 @@ public class SyncControllerTests {
         counsel.setCounselId("A");
         counsel.setFullNm("A");
         counsel.setPhoneNumberTxt("A");
-        party.setCounsel(Collections.singletonList(counsel));
+        party.getCounsel().add(counsel);
 
         Document3 doc = new Document3();
         doc.setCivilDocumentId("A");
@@ -247,7 +249,7 @@ public class SyncControllerTests {
         DocumentSupport sup = new DocumentSupport();
         sup.setActCd("A");
         sup.setActDsc("A");
-        doc.setDocumentSupport(Collections.singletonList(sup));
+        doc.getDocumentSupport().add(sup);
 
         HearingRestriction2 hr = new HearingRestriction2();
         hr.setHearingRestrictionId("A");
@@ -260,9 +262,9 @@ public class SyncControllerTests {
         hr.setAdjInitialsTxt("A");
         hr.setHearingRestrictionCcn("A");
 
-        out.setHearingRestriction(Collections.singletonList(hr));
-        out.setDocument(Collections.singletonList(doc));
-        out.setParty(Collections.singletonList(party));
+        out.getHearingRestriction().add(hr);
+        out.getDocument().add(doc);
+        out.getParty().add(party);
 
         ResponseEntity<ca.bc.gov.open.pcss.one.GetFileDetailCivilResponse> responseEntity =
                 new ResponseEntity<>(out, HttpStatus.OK);

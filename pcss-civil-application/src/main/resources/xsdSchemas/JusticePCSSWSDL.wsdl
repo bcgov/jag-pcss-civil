@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions name="pcssCivil" targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
                   xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapjms="http://www.w3.org/2010/soapjms/"
-                  xmlns:tns="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:soapjms="http://www.w3.org/2010/soapjms/"
+                  xmlns:tns="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                   xmlns:HDR1="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"
-                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                  xmlns:HDR2="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:HDR2="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"
                   xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
     <wsdl:types>
-        <xsd:schema targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
-                    xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
+        <xsd:schema targetNamespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"
                     xmlns:dx="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"
-                    xmlns:pcss="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
+                    xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"
                     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
             <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/common/1.0.0"/>
             <xsd:element name="getAppearanceCivilRequest" type="pcss:getAppearanceCivilRequest"/>
@@ -569,6 +571,7 @@
                     <xsd:enumeration value="SCHD"/>
                     <xsd:enumeration value="CNCL"/>
                     <xsd:enumeration value="UNCF"/>
+                    <xsd:enumeration value="COMP"/>
                 </xsd:restriction>
             </xsd:simpleType>
             <xsd:simpleType name="AppearanceResultCivilType">
@@ -705,13 +708,10 @@
             </xsd:simpleType>
         </xsd:schema>
         <xsd:schema targetNamespace="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
-                    xmlns:pcss="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
+                    xmlns:pcss="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"
                     xmlns:tns="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"
-                    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                    xmlns:v1="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1">
-
-            <xsd:import namespace="http://courts.gov.bc.ca/xml/ns/pcss/civil/v1"/>
-            <xsd:element name="getPing" type="v1:getPing"/>
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://courts.gov.bc.ca/XMLSchema/PCSS/1.0.0"/>
             <xsd:element name="getAppearanceCivil" type="tns:getAppearanceCivil"/>
             <xsd:element name="getAppearanceCivilResponse" type="tns:getAppearanceCivilResponse"/>
             <xsd:element name="getAppearanceCivilApprMethod" type="tns:getAppearanceCivilApprMethod"/>
