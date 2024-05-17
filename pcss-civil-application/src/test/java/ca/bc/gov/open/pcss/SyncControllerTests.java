@@ -220,6 +220,7 @@ public class SyncControllerTests {
         out.setLeftRoleDsc("A");
         out.setRightRoleDsc("A");
         out.setTrialRemarkTxt("A");
+        out.setIndigenousLawFileYn("A");
         out.setCommentToJudgeTxt("A");
 
         Party3 party = new Party3();
