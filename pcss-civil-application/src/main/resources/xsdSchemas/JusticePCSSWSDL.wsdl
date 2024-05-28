@@ -440,7 +440,7 @@
                     <xsd:element form="qualified" minOccurs="0" name="RightRoleDsc" type="xsd:string"/>
                     <xsd:element form="qualified" minOccurs="0" name="TrialRemarkTxt" type="xsd:string"/>
                     <xsd:element form="qualified" minOccurs="0" name="CommentToJudgeTxt" type="xsd:string"/>
-                    <xsd:element form="qualified" minOccurs="0" name="indigenousLawFileYn" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="IndigenousLawFileYn" type="xsd:string"/>
                     <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party3"/>
                     <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Document"
                                  type="pcss:Document3"/>
