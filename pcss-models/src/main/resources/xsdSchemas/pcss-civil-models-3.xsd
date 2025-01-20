@@ -382,7 +382,6 @@
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
-
     <xsd:complexType name="getCivilFileDetailRequest">
         <xsd:sequence>
             <xsd:element ref="pcss:getCivilFileDetailRequest"/>
@@ -392,16 +391,16 @@
     <xsd:element name="getCivilFileDetailResponse">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="getCivilFileDetailResponse" nillable="true" type="v1:getCivilFileDetailResponse"/>
+                <xsd:element name="getCivilFileDetailResponse" nillable="true" type="v1:getCivilFileDetailResponse2"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
 
-    <xsd:complexType name="getCivilFileDetailResponse">
+    <xsd:complexType name="getCivilFileDetailResponse2">
         <xsd:sequence>
             <xsd:element ref="pcss:getCivilFileDetailResponse"/>
         </xsd:sequence>
     </xsd:complexType>
 
-
 </xsd:schema>
+
