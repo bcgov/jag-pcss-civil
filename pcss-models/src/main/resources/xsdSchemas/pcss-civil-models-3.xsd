@@ -397,6 +397,11 @@
         </xsd:complexType>
     </xsd:element>
 
-</xsd:schema>
+    <xsd:complexType name="getCivilFileDetailResponse">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getCivilFileDetailResponse"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
 
 </xsd:schema>
