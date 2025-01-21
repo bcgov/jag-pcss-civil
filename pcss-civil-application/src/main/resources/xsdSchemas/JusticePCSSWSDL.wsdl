@@ -43,6 +43,8 @@
             <xsd:element name="setHearingRestrictionCivilResponse" type="pcss:setHearingRestrictionCivilResponse"/>
             <xsd:element name="getFileDetailCivilRequest" type="pcss:getFileDetailCivilRequest"/>
             <xsd:element name="getFileDetailCivilResponse" type="pcss:getFileDetailCivilResponse"/>
+            <xsd:element name="getCivilFileDetailRequest" type="pcss:getCivilFileDetailRequest"/>
+            <xsd:element name="getCivilFileDetailResponse" type="pcss:getCivilFileDetailResponse"/>
 
             <xsd:complexType name="getAppearanceCivilRequest">
                 <xsd:sequence>
@@ -448,6 +450,39 @@
                                  type="pcss:HearingRestriction2"/>
                 </xsd:sequence>
             </xsd:complexType>
+
+            <xsd:complexType name="getCivilFileDetailRequest">
+                <xsd:sequence>
+                    <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
+                    <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
+                    <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
+                    <xsd:element form="qualified" name="PhysicalFileId" type="dx:SystemIdType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getCivilFileDetailResponse">
+                <xsd:sequence>
+                    <xsd:element form="qualified" name="ResponseCd" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="FileNumberTxt" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="HomeLocationAgenId"
+                                 type="dx:AgencyIdentifierType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="CourtClassCd" type="dx:CourtClassType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="SocTxt" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="LeftRoleDsc" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="RightRoleDsc" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="TrialRemarkTxt" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="CommentToJudgeTxt" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="IndigenousLawFileYn" type="xsd:string"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party3"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Document"
+                                 type="pcss:Document3"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="HearingRestriction"
+                                 type="pcss:HearingRestriction2"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
             <xsd:complexType name="Party3">
                 <xsd:sequence>
                     <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
@@ -999,6 +1034,29 @@
                     <xsd:element ref="pcss:getFileDetailCivilResponse"/>
                 </xsd:sequence>
             </xsd:complexType>
+
+            <xsd:complexType name="getCivilFileDetail">
+                <xsd:sequence>
+                    <xsd:element name="getCivilFileDetailRequest" nillable="true" type="tns:getCivilFileDetailRequest"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getCivilFileDetailRequest">
+                <xsd:sequence>
+                    <xsd:element ref="pcss:getCivilFileDetailRequest"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getCivilFileDetailResponse">
+                <xsd:sequence>
+                    <xsd:element name="getCivilFileDetailResponse" nillable="true"
+                                 type="tns:getCivilFileDetailResponse2"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getCivilFileDetailResponse2">
+                <xsd:sequence>
+                    <xsd:element ref="pcss:getCivilFileDetailResponse"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
         </xsd:schema>
     </wsdl:types>
     <wsdl:message name="pcssCivil_PortType_setAppearanceMethodCivilResponse">
@@ -1093,6 +1151,14 @@
         <wsdl:part name="parameters" element="tns:getFileDetailCivilResponse">
         </wsdl:part>
     </wsdl:message>
+    <wsdl:message name="pcssCivil_PortType_getCivilFileDetail">
+        <wsdl:part name="parameters" element="tns:getCivilFileDetail">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pcssCivil_PortType_getCivilFileDetailResponse">
+        <wsdl:part name="parameters" element="tns:getCivilFileDetailResponse">
+        </wsdl:part>
+    </wsdl:message>
     <wsdl:message name="pcssCivil_PortType_setCounselDetailCivilResponse">
         <wsdl:part name="parameters" element="tns:setCounselDetailCivilResponse">
         </wsdl:part>
@@ -1120,6 +1186,12 @@
             <wsdl:input message="tns:pcssCivil_PortType_getFileDetailCivil">
             </wsdl:input>
             <wsdl:output message="tns:pcssCivil_PortType_getFileDetailCivilResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCivilFileDetail">
+            <wsdl:input message="tns:pcssCivil_PortType_getCivilFileDetail">
+            </wsdl:input>
+            <wsdl:output message="tns:pcssCivil_PortType_getCivilFileDetailResponse">
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="setAppearanceCivil">
@@ -1205,6 +1277,16 @@
         </wsdl:operation>
         <wsdl:operation name="getFileDetailCivil">
             <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getFileDetailCivil"
+                              style="document"/>
+            <wsdl:input>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCivilFileDetail">
+            <soap12:operation soapAction="JusticePCSSCivil_wsProvider_pcssCivil_Binder_getCivilFileDetail"
                               style="document"/>
             <wsdl:input>
                 <soap12:body parts="parameters" use="literal"/>
