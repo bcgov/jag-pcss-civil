@@ -450,12 +450,8 @@
                                  type="pcss:HearingRestriction2"/>
                 </xsd:sequence>
             </xsd:complexType>
-
             <xsd:complexType name="getCivilFileDetailRequest">
                 <xsd:sequence>
-                    <xsd:element form="qualified" name="RequestAgencyIdentifierId" type="dx:AgencyIdentifierType"/>
-                    <xsd:element form="qualified" name="RequestPartId" type="dx:SystemIdType"/>
-                    <xsd:element form="qualified" name="RequestDtm" type="dx:DateTimeType"/>
                     <xsd:element form="qualified" name="PhysicalFileId" type="dx:SystemIdType"/>
                 </xsd:sequence>
             </xsd:complexType>
@@ -465,21 +461,73 @@
                     <xsd:element form="qualified" minOccurs="0" name="ResponseMessageTxt" type="xsd:string"/>
                     <xsd:element form="qualified" minOccurs="0" name="PhysicalFileId" type="dx:SystemIdType"/>
                     <xsd:element form="qualified" minOccurs="0" name="FileNumberTxt" type="xsd:string"/>
-                    <xsd:element form="qualified" minOccurs="0" name="HomeLocationAgenId"
-                                 type="dx:AgencyIdentifierType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="HomeLocationAgenId" type="dx:AgencyIdentifierType"/>
                     <xsd:element form="qualified" minOccurs="0" name="CourtLevelCd" type="dx:CourtLevelType"/>
                     <xsd:element form="qualified" minOccurs="0" name="CourtClassCd" type="dx:CourtClassType"/>
                     <xsd:element form="qualified" minOccurs="0" name="SocTxt" type="xsd:string"/>
                     <xsd:element form="qualified" minOccurs="0" name="LeftRoleDsc" type="xsd:string"/>
                     <xsd:element form="qualified" minOccurs="0" name="RightRoleDsc" type="xsd:string"/>
-                    <xsd:element form="qualified" minOccurs="0" name="TrialRemarkTxt" type="xsd:string"/>
-                    <xsd:element form="qualified" minOccurs="0" name="CommentToJudgeTxt" type="xsd:string"/>
-                    <xsd:element form="qualified" minOccurs="0" name="IndigenousLawFileYn" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="SealedYN" type="xsd:string"/>
                     <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party3"/>
-                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Document"
-                                 type="pcss:Document3"/>
-                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="HearingRestriction"
-                                 type="pcss:HearingRestriction2"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Document" type="pcss:Document4"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ReferenceDocument" type="pcss:ReferenceDocument"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="HearingRestriction" type="pcss:HearingRestriction2"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Appearance" type="pcss:Appearance2"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Document4">
+                <xsd:sequence>
+                    <xsd:element form="qualified" name="CivilDocumentId" type="dx:SystemIdType"/>
+                    <xsd:element form="qualified" name="FileSeqNo" type="xsd:string"/>
+                    <xsd:element form="qualified" name="DocumentTypeCd" type="dx:CivilDocumentType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="FiledDt" type="dx:DateType"/>
+                    <xsd:element form="qualified" name="ConcludedYn" type="dx:YesNoType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="LastAppearanceId" type="dx:SystemIdType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="LastAppearanceDt" type="dx:DateType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="LastAppearanceTm" type="dx:TimeType"/>
+                    <xsd:element form="qualified" name="ImageId" type="dx:SystemIdType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="DateGranted" type="dx:DateType"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="FiledByName" type="xsd:string"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Issue" type="pcss:DocumentIssue"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="DocumentSupport" type="pcss:DocumentSupport"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Appearance" type="pcss:DocumentAppearance"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="DocumentIssue">
+                <xsd:sequence>
+                    <xsd:element form="qualified" name="IssueNumber" type="dx:SystemSeqNoType"/>
+                    <xsd:element form="qualified" name="IssueTypeCd" type="dx:IssueType"/>
+                    <xsd:element form="qualified" name="IssueDsc" type="xsd:string"/>
+                    <xsd:element form="qualified" name="ConcludedYn" type="dx:YesNoType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="DocumentAppearance">
+                <xsd:sequence>
+                    <xsd:element form="qualified" name="AppearanceId" type="dx:SystemSeqNoType"/>
+                    <xsd:element form="qualified" name="AppearanceDate" type="dx:DateType"/>
+                    <xsd:element form="qualified" name="CourtAgencyIdentifier" type="dx:AgencyIdentifierType"/>
+                    <xsd:element form="qualified" name="CourtRoom" type="dx:CourtRoomCdType"/>
+                    <xsd:element form="qualified" name="AppearanceReason" type="dx:AppearanceResultCivilType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Appearance2">
+                <xsd:sequence>
+                    <xsd:element form="qualified" name="AppearanceId" type="dx:SystemIdType"/>
+                    <xsd:element form="qualified" name="AppearanceDate" type="dx:DateType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="AdjudicatorComment" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ReferenceDocument">
+                <xsd:sequence>
+                    <xsd:element form="qualified" name="ReferenceDocumentId" type="dx:SystemSeqNoType"/>
+                    <xsd:element form="qualified" name="ReferenceDocumentNo" type="dx:SystemSeqNoType"/>
+                    <xsd:element form="qualified" name="AppearanceId" type="dx:SystemSeqNoType"/>
+                    <xsd:element form="qualified" name="AppearanceDate" type="dx:DateType"/>
+                    <xsd:element form="qualified" name="ObjectGuid" type="xsd:string"/>
+                    <xsd:element form="qualified" name="DescriptionText" type="xsd:string"/>
+                    <xsd:element form="qualified" name="EnterDtm" type="dx:DateType"/>
+                    <xsd:element form="qualified" name="ReferenceDocumentTypeCd" type="xsd:string"/>
+                    <xsd:element form="qualified" name="ReferenceDocumentTypeDsc" type="xsd:string"/>
                 </xsd:sequence>
             </xsd:complexType>
 
@@ -773,6 +821,8 @@
             <xsd:element name="setHearingRestrictionCivilResponse" type="tns:setHearingRestrictionCivilResponse"/>
             <xsd:element name="getFileDetailCivil" type="tns:getFileDetailCivil"/>
             <xsd:element name="getFileDetailCivilResponse" type="tns:getFileDetailCivilResponse"/>
+            <xsd:element name="getCivilFileDetail" type="tns:getCivilFileDetail"/>
+            <xsd:element name="getCivilFileDetailResponse" type="tns:getCivilFileDetailResponse"/>
             <xsd:complexType name="getAppearanceCivil">
                 <xsd:sequence>
                     <xsd:element name="getAppearanceCivilRequest" nillable="true" type="tns:getAppearanceCivilRequest"/>
@@ -1034,7 +1084,6 @@
                     <xsd:element ref="pcss:getFileDetailCivilResponse"/>
                 </xsd:sequence>
             </xsd:complexType>
-
             <xsd:complexType name="getCivilFileDetail">
                 <xsd:sequence>
                     <xsd:element name="getCivilFileDetailRequest" nillable="true" type="tns:getCivilFileDetailRequest"/>

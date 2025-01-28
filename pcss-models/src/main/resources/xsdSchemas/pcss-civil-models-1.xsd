@@ -442,14 +442,15 @@
         <xsd:sequence>
             <xsd:element form="qualified" name="CivilDocumentId" type="dx:SystemIdType"/>
             <xsd:element form="qualified" name="FileSeqNo" type="xsd:string"/>
-            <xsd:element form="qualified" name="DocumentTypeCd" type="dx:CivilDocumentType"/>
             <xsd:element form="qualified" minOccurs="0" name="FiledDt" type="dx:DateType"/>
+            <xsd:element form="qualified" name="DocumentTypeCd" type="dx:CivilDocumentType"/>
             <xsd:element form="qualified" name="ConcludedYn" type="dx:YesNoType"/>
             <xsd:element form="qualified" minOccurs="0" name="LastAppearanceId" type="dx:SystemIdType"/>
             <xsd:element form="qualified" minOccurs="0" name="LastAppearanceDt" type="dx:DateType"/>
             <xsd:element form="qualified" minOccurs="0" name="LastAppearanceTm" type="dx:TimeType"/>
             <xsd:element form="qualified" name="ImageId" type="dx:SystemIdType"/>
             <xsd:element form="qualified" minOccurs="0" name="DateGranted" type="dx:DateType"/>
+            <xsd:element form="qualified" name="SealedYN" type="dx:YesNoType"/>
             <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="FiledByName" type="xsd:string"/>
             <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Issue" type="pcss:DocumentIssue"/>
             <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="DocumentSupport" type="pcss:DocumentSupport"/>
@@ -458,9 +459,9 @@
     </xsd:complexType>
     <xsd:complexType name="DocumentIssue">
         <xsd:sequence>
+            <xsd:element form="qualified" name="IssueDsc" type="xsd:string"/>
             <xsd:element form="qualified" name="IssueNumber" type="dx:SystemSeqNoType"/>
             <xsd:element form="qualified" name="IssueTypeCd" type="dx:IssueType"/>
-            <xsd:element form="qualified" name="IssueDsc" type="xsd:string"/>
             <xsd:element form="qualified" name="ConcludedYn" type="dx:YesNoType"/>
         </xsd:sequence>
     </xsd:complexType>
