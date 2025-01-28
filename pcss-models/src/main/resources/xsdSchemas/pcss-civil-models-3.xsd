@@ -374,4 +374,33 @@
             <xsd:element ref="pcss:getFileDetailCivilResponse"/>
         </xsd:sequence>
     </xsd:complexType>
+
+    <xsd:element name="getCivilFileDetail">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getCivilFileDetailRequest" nillable="true" type="v1:getCivilFileDetailRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="getCivilFileDetailRequest">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getCivilFileDetailRequest"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getCivilFileDetailResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="getCivilFileDetailResponse" nillable="true" type="v1:getCivilFileDetailResponse2"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="getCivilFileDetailResponse2">
+        <xsd:sequence>
+            <xsd:element ref="pcss:getCivilFileDetailResponse"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
 </xsd:schema>
+
