@@ -468,6 +468,10 @@
                     <xsd:element form="qualified" minOccurs="0" name="LeftRoleDsc" type="xsd:string"/>
                     <xsd:element form="qualified" minOccurs="0" name="RightRoleDsc" type="xsd:string"/>
                     <xsd:element form="qualified" minOccurs="0" name="SealedYN" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="CommentToJudgeTxt" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="TrialRemark" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="SheriffCommentText" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="IndigenousLawFileYn" type="xsd:string"/>
                     <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Party" type="pcss:Party3"/>
                     <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Document" type="pcss:Document4"/>
                     <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ReferenceDocument" type="pcss:ReferenceDocument"/>
@@ -487,6 +491,11 @@
                     <xsd:element form="qualified" minOccurs="0" name="LastAppearanceTm" type="dx:TimeType"/>
                     <xsd:element form="qualified" name="ImageId" type="dx:SystemIdType"/>
                     <xsd:element form="qualified" minOccurs="0" name="DateGranted" type="dx:DateType"/>
+                    <xsd:element form="qualified" name="SealedYN" type="dx:YesNoType"/>
+                    <xsd:element form="qualified" name="DocumentCommentText" type="xsd:string"/>
+                    <xsd:element form="qualified" name="SwornByNm" type="xsd:string"/>
+                    <xsd:element form="qualified" name="AffidavitNo" type="xsd:string"/>
+                    <xsd:element form="qualified" name="FileLanguageCd" type="xsd:string"/>
                     <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="FiledByName" type="xsd:string"/>
                     <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Issue" type="pcss:DocumentIssue"/>
                     <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="DocumentSupport" type="pcss:DocumentSupport"/>
@@ -498,7 +507,7 @@
                     <xsd:element form="qualified" name="IssueNumber" type="dx:SystemSeqNoType"/>
                     <xsd:element form="qualified" name="IssueTypeCd" type="dx:IssueType"/>
                     <xsd:element form="qualified" name="IssueDsc" type="xsd:string"/>
-                    <xsd:element form="qualified" name="ConcludedYn" type="dx:YesNoType"/>
+                    <xsd:element form="qualified" name="ConcludedYN" type="dx:YesNoType"/>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:complexType name="DocumentAppearance">
@@ -528,9 +537,16 @@
                     <xsd:element form="qualified" name="EnterDtm" type="dx:DateType"/>
                     <xsd:element form="qualified" name="ReferenceDocumentTypeCd" type="xsd:string"/>
                     <xsd:element form="qualified" name="ReferenceDocumentTypeDsc" type="xsd:string"/>
+                    <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ReferenceDocumentInterest" type="pcss:ReferenceDocumentInterest"/>
                 </xsd:sequence>
             </xsd:complexType>
-
+            <xsd:complexType name="ReferenceDocumentInterest">
+                <xsd:sequence>
+                    <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
+                    <xsd:element form="qualified" minOccurs="0" name="partyName" type="xsd:string"/>
+                    <xsd:element form="qualified" minOccurs="0" name="nonPartyName" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
             <xsd:complexType name="Party3">
                 <xsd:sequence>
                     <xsd:element form="qualified" name="PartyId" type="dx:SystemIdType"/>
