@@ -459,6 +459,7 @@
             <xsd:element form="qualified" name="SwornByNm" type="xsd:string"/>
             <xsd:element form="qualified" name="AffidavitNo" type="xsd:string"/>
             <xsd:element form="qualified" name="FileLanguageCd" type="xsd:string"/>
+            <xsd:element form="qualified" name="DocumentPageCount" type="xsd:string"/>
             <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="FiledByName" type="xsd:string"/>
             <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Issue" type="pcss:DocumentIssue"/>
             <xsd:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="DocumentSupport" type="pcss:DocumentSupport"/>
