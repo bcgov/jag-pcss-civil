@@ -241,6 +241,51 @@ public class SyncController {
         }
     }
 
+    @PayloadRoot(namespace = SoapConfig.SOAP_NAMESPACE, localPart = "getCivilFileDetail")
+    @ResponsePayload
+    public GetCivilFileDetailResponse getCivilFileDetail(@RequestPayload GetCivilFileDetail search)
+            throws JsonProcessingException {
+        addEndpointHeader("getCivilFileDetail");
+        var inner =
+                search.getGetCivilFileDetailRequest() != null
+                        && search.getGetCivilFileDetailRequest()
+                        .getGetCivilFileDetailRequest()
+                        != null
+                        ? search.getGetCivilFileDetailRequest().getGetCivilFileDetailRequest()
+                        : new ca.bc.gov.open.pcss.one.GetCivilFileDetailRequest();
+
+        UriComponentsBuilder builder =
+                UriComponentsBuilder.fromHttpUrl(host + "file/" + inner.getPhysicalFileId());
+
+        try {
+            HttpEntity<ca.bc.gov.open.pcss.one.GetCivilFileDetailResponse> resp =
+                    restTemplate.exchange(
+                            builder.toUriString(),
+                            HttpMethod.GET,
+                            new HttpEntity<>(new HttpHeaders()),
+                            ca.bc.gov.open.pcss.one.GetCivilFileDetailResponse.class);
+
+            var out = new GetCivilFileDetailResponse();
+            var one = new GetCivilFileDetailResponse2();
+            one.setGetCivilFileDetailResponse(resp.getBody());
+            out.setGetCivilFileDetailResponse(one);
+
+            log.info(
+                    objectMapper.writeValueAsString(
+                            new RequestSuccessLog("Request Success", "GetCivilFileDetail")));
+            return out;
+        } catch (Exception ex) {
+            log.error(
+                    objectMapper.writeValueAsString(
+                            new OrdsErrorLog(
+                                    "Error received from ORDS",
+                                    "GetCivilFileDetail",
+                                    ex.getMessage(),
+                                    inner)));
+            throw new ORDSException();
+        }
+    }
+
     private void addEndpointHeader(String endpoint) {
         try {
             TransportContext context = TransportContextHolder.getTransportContext();

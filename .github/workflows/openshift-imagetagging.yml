@@ -29,7 +29,7 @@ on:
         default: 'Select a Target Env to deploy the Source Image'
 jobs:
   oc-image-tagging:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     environment: ${{ github.event.inputs.imageTargetEnv }}
     steps:
 
@@ -44,6 +44,11 @@ jobs:
           
       - name: Git Checkout
         uses: actions/checkout@v3
+
+      - name: Install oc
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: latest
         
         # Get the version number which is prefixed with the Github release branches in format release/{version}
       - name: Get Release Version
