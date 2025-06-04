@@ -3,7 +3,7 @@ To run unit tests for controllers, the following components are recommended:
 
 If Linux terminal is preferred, set up WSL by the following instructions:
 * WSL (Windows Subsystem for Linux)
-1) Install Ubuntu 20.04 from Windows Store
+1) Install Ubuntu latest from Windows Store
 2) Make sure Virtualization Technology is turned on (the default is ON), verified through BIOS 
 3) Open up a Windows Powershell (admin)
 4) Enable the Virtual Machine Platform optional feature - ```dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart```

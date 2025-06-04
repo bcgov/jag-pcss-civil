@@ -29,7 +29,7 @@ on:
         default: 'Select a Target Env to deploy the Source Image'
 jobs:
   oc-image-tagging:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.imageTargetEnv }}
     steps:
 
