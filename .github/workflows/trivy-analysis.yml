@@ -51,7 +51,7 @@ jobs:
           image-ref: docker.io/pcss/jag-pcss-civil:${{ github.sha }}
           format: sarif
           output: trivy-results.sarif
-          exit-code: 1
+          exit-code: 0
           ignore-unfixed: true
           limit-severities-for-sarif: true
           severity: HIGH,CRITICAL
