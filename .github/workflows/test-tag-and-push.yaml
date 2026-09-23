@@ -1,0 +1,90 @@
+name: Action for TEST Deployment
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: jag-pcss-civil
+  WORKING_DIRECTORY: .
+  ENV_TAG: test
+  BRANCH_NAME: test
+  ARTIFACTORY_REPO: pcd1-jag-pcss
+
+jobs:
+  push-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to Artifactory
+        uses: docker/login-action@v1
+        with:
+          registry: artifacts.developer.gov.bc.ca
+          username: ${{ secrets.ARTIFACTORY_USERNAME }}
+          password: ${{ secrets.ARTIFACTORY_PASSWORD }}
+      
+      # Get SHORT_SHA for the version
+      - name: Get short SHA
+        id: short_sha
+        run: |
+          echo "::set-output name=SHORT_SHA::$(git rev-parse --short HEAD)"
+          echo "Short SHA: $SHORT_SHA"
+      
+      # Prints vital release paramters used
+      - name: Print Release Variables
+        run: |
+          echo "Release Application: ${{env.IMAGE_NAME}}"
+          echo "Release Environment: ${{env.ENV_TAG}}"
+          echo "Release Git Sha: ${{ steps.short_sha.outputs.SHORT_SHA }}"
+
+      - name: Pull and Retag Image
+        run: |
+          docker pull artifacts.developer.gov.bc.ca/${{env.ARTIFACTORY_REPO}}/${{env.IMAGE_NAME}}:dev
+          docker tag artifacts.developer.gov.bc.ca/${{env.ARTIFACTORY_REPO}}/${{env.IMAGE_NAME}}:dev artifacts.developer.gov.bc.ca/${{env.ARTIFACTORY_REPO}}/${{env.IMAGE_NAME}}:${{env.ENV_TAG}}
+
+      - name: Docker Push to Artifactory
+        run: |
+          docker push artifacts.developer.gov.bc.ca/${{env.ARTIFACTORY_REPO}}/${{env.IMAGE_NAME}}:${{env.ENV_TAG}}
+
+      - name: Set GitOps SSH Key
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Update Helm Values and Commit
+        id: helm
+        run: |
+          
+          # Commit and push the changes
+          git config --global user.email "actions@github.com"
+          git config --global user.name "JAG PCSS Civil GitHub Actions"
+          git clone -b ${{ env.BRANCH_NAME }} --single-branch git@github.com:bcgov-c/tenant-gitops-cd1cf7.git
+          
+          # Navigate to the directory containing your Helm values file for the environment develop -> DEV, test -> test
+          cd tenant-gitops-cd1cf7/charts
+
+          # Update the Helm values file with the new image tag and version
+          DATETIME=$(date +'%Y-%m-%d %H:%M:%S')  # Get current date and time
+
+          sed -i "s/tag: .*/tag: ${{ env.ENV_TAG }} # Image Updated on $DATETIME/" ../deploy/${{ env.ENV_TAG }}_values.yaml
+          sed -i "s/version: .*/version: ${{ steps.short_sha.outputs.SHORT_SHA }} # Version Updated on $DATETIME/" ../deploy/${{ env.ENV_TAG }}_values.yaml
+          
+          git add .
+          
+          git add ../deploy/${{ env.ENV_TAG }}_values.yaml
+          
+          # Repackage Helm Chart      
+
+          cd gitops
+
+          helm dependency build
+          
+          cd charts
+
+          git add .
+          
+          git commit -m "Update PCSS Civil image tag"
+          git push origin ${{ env.BRANCH_NAME }} # Update the branch name as needed
