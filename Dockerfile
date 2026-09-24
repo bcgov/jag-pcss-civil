@@ -3,16 +3,11 @@
 #############################################################################################
 FROM maven:3.9.9-eclipse-temurin-17 as build
 
-ARG SKIP_TESTS=false
-ARG MVN_PROFILE=default
-
 WORKDIR /
 
 COPY . .
 
-RUN mvn -ntp -B clean install \
-        -P ${MVN_PROFILE} \
-        -Dmaven.test.skip=${SKIP_TESTS}
+RUN mvn clean package -Dmaven.test.skip=true
 
 #############################################################################################
 
