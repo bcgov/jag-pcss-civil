@@ -76,8 +76,8 @@ jobs:
           # Update the Helm values file with the new image tag and version
           DATETIME=$(date +'%Y-%m-%d %H:%M:%S')  # Get current date and time
 
-          sed -i "s/tag: .*/tag: ${{ env.ENV_TAG }} # Image Updated on $DATETIME/" ../deploy/${{ env.ENV_TAG }}_values.yaml
-          sed -i "s/version: .*/version: ${{ steps.short_sha.outputs.SHORT_SHA }} # Version Updated on $DATETIME/" ../deploy/${{ env.ENV_TAG }}_values.yaml
+          sed -i "s/civiltag: .*/civiltag: ${{ env.ENV_TAG }} # Image Updated on $DATETIME/" ../deploy/${{ env.ENV_TAG }}_values.yaml
+          sed -i "s/civilversion: .*/civilversion: ${{ steps.short_sha.outputs.SHORT_SHA }} # Version Updated on $DATETIME/" ../deploy/${{ env.ENV_TAG }}_values.yaml
           
           git add .
           
