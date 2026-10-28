@@ -74,7 +74,7 @@ jobs:
       
       #Login to OpenShift Container Repository - Silver
       - name: Login to OpenShift Container Repository - Silver
-        uses: docker/login-action@v2
+        uses: docker/login-action@v4
         with:
           registry: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_SILVER}}
           username: ${{secrets.OPENSHIFT_SA_USERNAME}}
@@ -95,7 +95,7 @@ jobs:
 
       # #Login to OpenShift Container Repository - Kamloops (OC PROD)
       # - name: Login to OpenShift Container Repository - Kamloops (OC PROD)
-      #   uses: docker/login-action@v2
+      #   uses: docker/login-action@v4
       #   with:
       #     registry: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY}}
       #     username: ${{secrets.OPENSHIFT_SA_USERNAME}}
@@ -116,7 +116,7 @@ jobs:
 
       # #Login to OpenShift Container Repository - Calgary (OC DR)
       # - name: Login to OpenShift Container Repository - Calgary (OC DR)
-      #   uses: docker/login-action@v2
+      #   uses: docker/login-action@v4
       #   with:
       #     registry: ${{secrets.OPENSHIFT_EXTERNAL_REPOSITORY_DR}}
       #     username: ${{secrets.OPENSHIFT_SA_USERNAME}}
