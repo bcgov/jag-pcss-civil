@@ -36,7 +36,6 @@ build/
 /AutomatedTests/node_modules/
 /AutomatedTests/cypress/videos/
 /AutomatedTests/cypress/screenshots/
-cc-test-reporter
 /JusticePCSSsecure-soapui-project.xml
 /PCSSCivil-soapui-project.xml
 /TestErrors.zip
