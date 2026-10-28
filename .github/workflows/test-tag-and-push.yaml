@@ -50,7 +50,7 @@ jobs:
           docker push artifacts.developer.gov.bc.ca/${{env.ARTIFACTORY_REPO}}/${{env.IMAGE_NAME}}:${{env.ENV_TAG}}
 
       - name: Set GitOps SSH Key
-        uses: webfactory/ssh-agent@v0.5.4
+        uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
