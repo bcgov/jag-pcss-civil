@@ -8,13 +8,13 @@ jobs:
     name: Scan the application
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       
       - name: Update zap properties file
         run: echo  "replacer.full_list(0).replacement=${{ secrets.BASIC_AUTH_HEADER_DEV }}" >> "$GITHUB_WORKSPACE/zapoptions.prop"
       
       - name: ZAP Scan - PCSS Civil API
-        uses: zaproxy/action-api-scan@v0.1.0
+        uses: zaproxy/action-api-scan@v0.10.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           format: soap
@@ -25,7 +25,7 @@ jobs:
           cmd_options: '-c "zaprules.conf" -S -z "-configFile /zap/wrk/zapoptions.prop"'
       
       - name: ZAP Scan - PCSS Civil Secure API
-        uses: zaproxy/action-api-scan@v0.1.0
+        uses: zaproxy/action-api-scan@v0.10.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           format: soap

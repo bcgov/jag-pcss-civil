@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Login to Artifactory
-        uses: docker/login-action@v1
+        uses: docker/login-action@v4
         with:
           registry: artifacts.developer.gov.bc.ca
           username: ${{ secrets.ARTIFACTORY_USERNAME }}
@@ -50,7 +50,7 @@ jobs:
           docker push artifacts.developer.gov.bc.ca/${{env.ARTIFACTORY_REPO}}/${{env.IMAGE_NAME}}:${{env.ENV_TAG}}
 
       - name: Set GitOps SSH Key
-        uses: webfactory/ssh-agent@v0.5.4
+        uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
