@@ -1,3 +1,25 @@
+spring:
+  application:
+    name: jag-pcss-civil
+
+management:
+  server:
+    port: ${MANAGEMENT_PORT:-1}
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      slo:
+        pcss.soap.server.requests: 100ms,250ms,500ms,1s,2s,5s,10s,15s,30s,60s,120s
+
 security:
   basic-auth:
     password: ${BASIC_AUTH_PASS}
