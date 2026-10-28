@@ -1,8 +1,6 @@
 # PCSS
 
 [![Lifecycle:Stable](https://img.shields.io/badge/Lifecycle-Stable-97ca00)](https://github.com/bcgov/jag-pcss-civil)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a492f352f279a2d1621e/maintainability)](https://codeclimate.com/github/bcgov/jag-pcss/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a492f352f279a2d1621e/test_coverage)](https://codeclimate.com/github/bcgov/jag-pcss/test_coverage)
 
 ### Recommended Tools
 * Intellij
@@ -15,8 +13,6 @@
 ### Application Endpoints
 
 Local Host: http://127.0.0.1:8080
-
-Code Climate: https://codeclimate.com/github/bcgov/jag-pcss
 
 ### Required Environmental Variables
 
