@@ -137,7 +137,7 @@ jobs:
       
       #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Silver
       - name: Authenticate OC Env Specific SA - Silver
-        uses: redhat-actions/oc-login@v1
+        uses: redhat-actions/oc-login@v2
         env:
           OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE_SILVER}}-${{ github.event.inputs.env }}
           OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME}}
@@ -165,7 +165,7 @@ jobs:
 
       # #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Kamloops (OC PROD)
       # - name: Authenticate OC Env Specific SA - Kamloops (OC PROD)
-      #   uses: redhat-actions/oc-login@v1
+      #   uses: redhat-actions/oc-login@v2
       #   env:
       #     OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
       #     OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME}}
@@ -193,7 +193,7 @@ jobs:
 
       # #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Calgary (OC DR)
       # - name: Authenticate OC Env Specific SA - Calgary (OC DR)
-      #   uses: redhat-actions/oc-login@v1
+      #   uses: redhat-actions/oc-login@v2
       #   env:
       #     OPENSHIFT_NAMESPACE: ${{secrets.OPENSHIFT_LICENSE_PLATE}}-${{ github.event.inputs.env }}
       #     OPENSHIFT_USER: ${{secrets.OPENSHIFT_SA_Env_DEPLOYER_NAME}}
