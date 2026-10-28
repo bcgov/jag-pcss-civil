@@ -20,7 +20,7 @@ jobs:
       BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       
       # Set up JDK build environment
       - name: Set up JDK 17
