@@ -85,6 +85,12 @@ SPLUNK_INDEX
 
 4) Create POM goals: clean install, spring-boot:run  (when running locally).
 
+### Update Project Version
+
+```bash
+mvn versions:set -DartifactId=*  -DgroupId=*
+```
+
 ### Pre Commit
 1) Do not commit \CRLF use unix line enders
 2) Run the linter ```mvn spotless:apply```
