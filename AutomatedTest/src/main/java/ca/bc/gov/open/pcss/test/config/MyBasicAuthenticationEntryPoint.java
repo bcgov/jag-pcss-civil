@@ -1,6 +1,6 @@
 package ca.bc.gov.open.pcss.test.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.Instant;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
 
-    @Autowired private ObjectMapper objectMapper;
+    @Autowired private JsonMapper objectMapper;
 
     @Override
     public void commence(

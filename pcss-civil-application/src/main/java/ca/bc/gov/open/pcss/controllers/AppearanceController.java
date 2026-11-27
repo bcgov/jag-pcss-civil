@@ -65,7 +65,7 @@ public class AppearanceController {
         }
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "appearance")
+                UriComponentsBuilder.fromUriString(host + "appearance")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
@@ -114,7 +114,7 @@ public class AppearanceController {
                         ? payload.getSetAppearanceCivilRequest().getSetAppearanceCivilRequest()
                         : new ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest();
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "appearance");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(host + "appearance");
 
         HttpEntity<ca.bc.gov.open.pcss.one.SetAppearanceCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
@@ -174,7 +174,7 @@ public class AppearanceController {
         }
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "appearance/appearance-method")
+                UriComponentsBuilder.fromUriString(host + "appearance/appearance-method")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
@@ -239,7 +239,7 @@ public class AppearanceController {
                 new HttpEntity<>(inner, new HttpHeaders());
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "appearance/appearance-method");
+                UriComponentsBuilder.fromUriString(host + "appearance/appearance-method");
         try {
             HttpEntity<ca.bc.gov.open.pcss.one.SetAppearanceMethodCivilResponse> resp =
                     restTemplate.exchange(
@@ -283,7 +283,7 @@ public class AppearanceController {
                         : new ca.bc.gov.open.pcss.one.GetAppearanceCivilDocumentRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "appearance/document")
+                UriComponentsBuilder.fromUriString(host + "appearance/document")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
@@ -333,7 +333,7 @@ public class AppearanceController {
                         : new ca.bc.gov.open.pcss.one.GetAppearanceCivilPartyRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "appearance/party")
+                UriComponentsBuilder.fromUriString(host + "appearance/party")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
@@ -382,7 +382,7 @@ public class AppearanceController {
                         : new ca.bc.gov.open.pcss.one.GetAppearanceCivilResourceRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "appearance/resource")
+                UriComponentsBuilder.fromUriString(host + "appearance/resource")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
@@ -434,7 +434,7 @@ public class AppearanceController {
         HttpEntity<ca.bc.gov.open.pcss.one.SetCounselDetailCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "counsel");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(host + "counsel");
         try {
             HttpEntity<ca.bc.gov.open.pcss.one.SetCounselDetailCivilResponse> resp =
                     restTemplate.exchange(

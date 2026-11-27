@@ -47,7 +47,7 @@ public class HealthController {
     public GetHealthResponse getHealth(@RequestPayload GetHealth empty)
             throws JsonProcessingException {
         addEndpointHeader("getHealth");
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "health");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(host + "health");
         try {
             HttpEntity<GetHealthResponse> resp =
                     restTemplate.exchange(
@@ -75,7 +75,7 @@ public class HealthController {
     @ResponsePayload
     public GetPingResponse getPing(@RequestPayload GetPing empty) throws JsonProcessingException {
         addEndpointHeader("getDigitalDisplayCourtList");
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(host + "ping");
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(host + "ping");
         try {
             HttpEntity<GetPingResponse> resp =
                     restTemplate.exchange(
