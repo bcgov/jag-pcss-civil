@@ -27,11 +27,15 @@
     </repositories>
     <dependencyManagement>
         <dependencies>
-            <!-- CVE-2025-48734: transitive via soapui; force the fixed release -->
             <dependency>
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
                 <version>1.11.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>7.8.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
