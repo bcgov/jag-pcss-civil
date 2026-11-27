@@ -58,7 +58,7 @@ public class SecureEndpointController {
                         : new ca.bc.gov.open.pcss.secure.one
                                 .GetAppearanceCivilApprMethodSecureRequest();
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/appearance-method")
+                UriComponentsBuilder.fromUriString(host + "secure/appearance/appearance-method")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
@@ -109,7 +109,7 @@ public class SecureEndpointController {
                         : new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilPartySecureRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance/party")
+                UriComponentsBuilder.fromUriString(host + "secure/appearance/party")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
@@ -158,7 +158,7 @@ public class SecureEndpointController {
                                 .getGetAppearanceCivilSecureRequest()
                         : new ca.bc.gov.open.pcss.secure.one.GetAppearanceCivilSecureRequest();
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "secure/appearance")
+                UriComponentsBuilder.fromUriString(host + "secure/appearance")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
@@ -209,7 +209,7 @@ public class SecureEndpointController {
                         : new ca.bc.gov.open.pcss.secure.one.GetFileDetailCivilSecureRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "secure/file-detail")
+                UriComponentsBuilder.fromUriString(host + "secure/file-detail")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))

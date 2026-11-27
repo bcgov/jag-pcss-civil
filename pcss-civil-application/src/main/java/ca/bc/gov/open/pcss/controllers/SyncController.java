@@ -54,7 +54,7 @@ public class SyncController {
                         : new ca.bc.gov.open.pcss.one.GetSyncCivilAppearanceRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "sync/appearance")
+                UriComponentsBuilder.fromUriString(host + "sync/appearance")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
@@ -108,7 +108,7 @@ public class SyncController {
                         : new ca.bc.gov.open.pcss.one.GetSyncCivilHearingRestrictionRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "hearing-restriction")
+                UriComponentsBuilder.fromUriString(host + "hearing-restriction")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", InstantSerializer.convert(inner.getRequestDtm()))
@@ -160,7 +160,7 @@ public class SyncController {
                         : new ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "hearing-restriction");
+                UriComponentsBuilder.fromUriString(host + "hearing-restriction");
 
         HttpEntity<ca.bc.gov.open.pcss.one.SetHearingRestrictionCivilRequest> body =
                 new HttpEntity<>(inner, new HttpHeaders());
@@ -207,7 +207,7 @@ public class SyncController {
                         : new ca.bc.gov.open.pcss.one.GetFileDetailCivilRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "file-detail")
+                UriComponentsBuilder.fromUriString(host + "file-detail")
                         .queryParam("requestAgenId", inner.getRequestAgencyIdentifierId())
                         .queryParam("requestPartId", inner.getRequestPartId())
                         .queryParam("requestDtm", inner.getRequestDtm())
@@ -255,7 +255,7 @@ public class SyncController {
                         : new ca.bc.gov.open.pcss.one.GetCivilFileDetailRequest();
 
         UriComponentsBuilder builder =
-                UriComponentsBuilder.fromHttpUrl(host + "file/" + inner.getPhysicalFileId());
+                UriComponentsBuilder.fromUriString(host + "file/" + inner.getPhysicalFileId());
 
         try {
             HttpEntity<ca.bc.gov.open.pcss.one.GetCivilFileDetailResponse> resp =

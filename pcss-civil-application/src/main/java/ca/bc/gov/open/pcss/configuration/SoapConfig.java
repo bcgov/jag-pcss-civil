@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.List;
 import jakarta.xml.soap.SOAPMessage;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.boot.restclient.RestTemplateBuilder;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.ws.config.annotation.EnableWs;
-import org.springframework.ws.config.annotation.WsConfigurerAdapter;
+import org.springframework.ws.config.annotation.WsConfigurer;
 import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.soap.SoapVersion;
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
@@ -34,7 +34,7 @@ import org.springframework.ws.wsdl.wsdl11.Wsdl11Definition;
 
 @EnableWs
 @Configuration
-public class SoapConfig extends WsConfigurerAdapter {
+public class SoapConfig implements WsConfigurer {
     private final SoapMetricsInterceptor soapMetricsInterceptor;
 
     public SoapConfig(SoapMetricsInterceptor soapMetricsInterceptor) {
@@ -71,7 +71,7 @@ public class SoapConfig extends WsConfigurerAdapter {
         var restTemplate =
                 restTemplateBuilder
                         .basicAuthentication(username, password)
-                        .setReadTimeout(Duration.ofSeconds(Integer.parseInt(ordsReadTimeout)))
+                        .readTimeout(Duration.ofSeconds(Integer.parseInt(ordsReadTimeout)))
                         .build();
         restTemplate.getMessageConverters().add(0, createMappingJacksonHttpMessageConverter());
         return restTemplate;
